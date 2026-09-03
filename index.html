@@ -16,7 +16,7 @@
             --color-muted: #7A7670;
             --border-light: #E8E4DC;
             --color-gold: #C29A5B;
-            --lavender: #E6E6FA; /* THE LIGHTEST LAVENDER */
+            --lavender: #E6E6FA;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -54,28 +54,19 @@
         .btn-light { border-color: var(--bg-cream); color: var(--bg-cream); }
         .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
 
-        /* --- NAVIGATION WITH THE FULL LAVENDER STRIP AND SHADOW --- */
+        /* --- NAV --- */
         nav { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            background: #F0EEFA; /* Pale Lavender Background */
-            backdrop-filter: blur(10px); 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background: #F0EEFA; 
+            backdrop-filter: blur(12px); 
             z-index: 1000; 
-            padding: 20px 0; 
-            border-bottom: 4px solid var(--lavender); /* Strong Visible Lavender Line */
-            box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8); /* Deep Lavender Glow */
+            padding: 15px 0; 
+            border-bottom: 4px solid var(--lavender); 
+            box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8); 
         }
-        
-        nav.scrolled {
-            background: #E6E6FA; /* Even more lavender on scroll */
-            border-bottom: 4px solid #D0CFFA; 
-            box-shadow: 0 10px 35px rgba(230, 230, 250, 1);
-        }
-
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .logo img { height: 40px; width: auto; }
+        .logo img { height: 60px; width: auto; }
+        
         .nav-links { display: flex; gap: 40px; align-items: center; }
         .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--color-rust); transition: width 0.3s; }
@@ -83,12 +74,7 @@
 
         .dropdown { position: relative; display: inline-block; }
         .dropdown-btn { cursor: pointer; font-size: 0.8rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
-        .dropdown-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--color-rust); transition: width 0.3s; }
-        .dropdown:hover .dropdown-btn::after { width: 100%; }
-        .dropdown-content {
-            display: none; position: absolute; top: 100%; left: 0; background-color: #F0EEFA; min-width: 220px;
-            box-shadow: 0px 15px 30px rgba(230, 230, 250, 0.9); border: 1px solid #D0CFFA; z-index: 1000; padding: 10px 0;
-        }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #F0EEFA; min-width: 220px; box-shadow: 0px 15px 30px rgba(230, 230, 250, 0.9); border: 1px solid #D0CFFA; z-index: 1000; padding: 10px 0; }
         .dropdown-content a { display: block; color: var(--text-charcoal); padding: 12px 20px; text-decoration: none; letter-spacing: 1px; font-size: 0.8rem; font-weight: 500; }
         .dropdown-content a:hover { background-color: var(--color-rust); color: var(--bg-cream); }
         .dropdown:hover .dropdown-content { display: block; }
@@ -98,14 +84,21 @@
         .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: #F0EEFA; padding: 30px 20px; z-index: 999; flex-direction: column; gap: 25px; border-bottom: 1px solid var(--border-light); }
         .mobile-menu a { font-size: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--text-charcoal); }
         .mobile-menu.active { display: flex; }
-        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .container { padding: 0 20px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 45px; } .container { padding: 0 20px; } }
 
         /* --- HERO --- */
-        .hero { height: 100vh; height: 100dvh; display: flex; overflow: hidden; }
-        .hero-left, .hero-right { width: 50%; height: 100%; position: relative; overflow: hidden; }
+        .hero { height: 100vh; height: 100dvh; display: flex; overflow: hidden; position: relative; }
+        .hero-left, .hero-right { width: 50%; height: 100%; position: relative; }
         .hero-left img, .hero-right img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-content { position: absolute; bottom: 40px; left: 40px; right: 40px; z-index: 10; }
-        .hero-content p { font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; color: var(--bg-cream); }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.5); z-index: 2; }
+        .hero-content { position: absolute; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; padding: 0 40px; }
+        .hero-content h1 { color: var(--bg-cream); font-size: clamp(4rem, 10vw, 9rem); margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); background: none; -webkit-text-fill-color: var(--bg-cream); animation: none; }
+        .hero-content p { font-size: 1.5rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        
+        .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.8); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
+        .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
         @media (max-width: 768px) { .hero { flex-direction: column; } .hero-left, .hero-right { width: 100%; height: 50%; } }
 
         /* --- ABOUT --- */
@@ -114,9 +107,9 @@
         .about-img { width: 100%; height: 600px; overflow: hidden; }
         .about-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
         .about-img:hover img { transform: scale(1.05); }
-        .about-text h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px; }
+        .about-text h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px; color: var(--bg-cream); background: none; -webkit-text-fill-color: var(--bg-cream); filter: none; }
         .about-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
-        .about-signature { font-size: 2rem; margin-top: 20px; }
+        .about-signature { font-size: 2rem; margin-top: 20px; color: var(--color-gold); background: none; -webkit-text-fill-color: var(--color-gold); animation: none; }
         @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
 
         /* --- SERVICES --- */
@@ -124,12 +117,13 @@
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
         .service-card:hover { background: var(--bg-cream); color: var(--color-moss); transform: translateY(-10px); }
-        .service-num { font-size: 3.5rem; margin-bottom: 20px; }
-        .service-card h3 { margin-bottom: 15px; }
+        .service-num { font-size: 3.5rem; margin-bottom: 20px; background: none; -webkit-text-fill-color: var(--bg-cream); }
+        .service-card:hover .service-num { -webkit-text-fill-color: var(--color-moss); }
+        .service-card h3 { margin-bottom: 15px; background: none; -webkit-text-fill-color: var(--bg-cream); }
+        .service-card:hover h3 { -webkit-text-fill-color: var(--color-moss); }
         .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
-        .service-card:hover p { color: var(--color-muted); }
 
-        /* --- MASTERPIECES SLIDER --- */
+        /* --- SLIDER --- */
         .projects-showcase-section { background-color: var(--bg-cream); padding: 120px 0; }
         .slider-header { text-align: center; margin-bottom: 60px; }
         .project-slider { position: relative; width: 100%; height: 80vh; height: 80dvh; overflow: hidden; background: var(--text-charcoal); }
@@ -138,60 +132,53 @@
         .project-slide img { width: 100%; height: 100%; object-fit: cover; }
         .project-slide-content { position: absolute; bottom: 80px; left: 80px; right: 80px; color: var(--bg-cream); z-index: 3; max-width: 600px; }
         .project-slide-content .project-tag { font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; opacity: 0; animation: textSlideIn 1s ease forwards; animation-delay: 0.5s; }
-        .project-slide-content h3 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 15px; opacity: 0; animation: textSlideIn 1s ease forwards; animation-delay: 0.8s; }
+        .project-slide-content h3 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 15px; color: var(--bg-cream); background: none; -webkit-text-fill-color: var(--bg-cream); opacity: 0; animation: textSlideIn 1s ease forwards; animation-delay: 0.8s; }
         .project-slide-content p { font-size: 1.1rem; font-weight: 300; opacity: 0; animation: textSlideIn 1s ease forwards; animation-delay: 1.1s; }
         .project-btn { display: inline-block; margin-top: 20px; padding: 15px 30px; border: 1px solid var(--bg-cream); color: var(--bg-cream); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; opacity: 0; animation: textSlideIn 1s ease forwards; animation-delay: 1.4s; transition: all 0.3s; }
         .project-btn:hover { background: var(--bg-cream); color: var(--text-charcoal); }
         @keyframes textSlideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
         .slider-nav { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 30px; z-index: 10; }
-        .slider-arrow { background: none; border: none; color: var(--bg-cream); font-size: 2rem; cursor: pointer; transition: color 0.3s; }
-        .slider-arrow:hover { color: var(--color-rust); }
+        .slider-arrow { background: none; border: none; color: var(--bg-cream); font-size: 2rem; cursor: pointer; }
         .slider-dots { display: flex; gap: 15px; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: background 0.3s; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; }
         .dot.active { background: var(--bg-cream); }
-        @media (max-width: 768px) { .project-slider { height: 70vh; height: 70dvh; } .project-slide-content { bottom: 100px; left: 20px; right: 20px; } .slider-nav { bottom: 20px; } }
 
-        /* --- PORTFOLIO GRID --- */
+        /* --- PORTFOLIO --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
         .portfolio-item:hover img { transform: scale(1.08); }
-        .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--text-charcoal); padding: 20px; transform: translateY(100%); transition: transform 0.5s ease; font-size: 1.8rem; }
-        .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
-        @media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
+        .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--text-charcoal); color: var(--bg-cream); padding: 20px; transform: translateY(100%); transition: transform 0.5s ease; font-size: 1.8rem; background: none; -webkit-text-fill-color: var(--bg-cream); }
+        .portfolio-item:hover .portfolio-overlay { transform: translateY(0); background: var(--text-charcoal); }
 
         /* --- CAREERS --- */
         .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
         .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .team-img { width: 100%; height: auto; }
+        .team-text h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 30px; color: var(--bg-cream); background: none; -webkit-text-fill-color: var(--bg-cream); filter: none; }
         .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
-        @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } }
 
         /* --- CONTACT --- */
         .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .contact-info h2 { font-size: clamp(2.5rem, 4vw, 4.5rem); margin-bottom: 20px; color: var(--bg-cream); background: none; -webkit-text-fill-color: var(--bg-cream); filter: none; }
         .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
         form { display: grid; gap: 20px; }
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: rgba(248, 246, 240, 0.6); }
         .form-group input, .form-group textarea { padding: 15px; border: 1px solid rgba(248, 246, 240, 0.3); font-family: inherit; font-size: 1rem; background: transparent; color: var(--bg-cream); }
         .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-gold); }
-        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 
-        /* --- FOOTER --- */
         footer { background-color: var(--text-charcoal); color: var(--bg-cream); padding: 60px 0; text-align: center; }
-        footer p { font-size: 0.9rem; font-weight: 300; letter-spacing: 1px; }
-
-        /* --- SMOOTH REVEAL --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
+    <!-- NAVIGATION -->
     <nav id="nav">
         <div class="nav-container">
-            <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 40px;"></div>
+            <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 60px;"></div>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -216,27 +203,27 @@
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#past-projects">Past Projects</a>
-            <a href="#grooved">- Grooved Panels</a>
-            <a href="#textured">- Textured Panels</a>
-            <a href="#mashrabiya">- Mashrabiya Grills</a>
-            <a href="#office">- Office Partitions</a>
             <a href="#careers">Careers</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- 1. HERO -->
     <section id="home" class="hero">
-        <div class="hero-left"><img src="hero1.jpg" alt="Fizza Interior Grooved Panels"></div>
-        <div class="hero-right"><img src="hero2.jpg" alt="Fizza Interior Textured Panels"></div>
+        <div class="hero-left"><img src="hero1.jpg" alt="Fizza Interior"></div>
+        <div class="hero-right"><img src="hero2.jpg" alt="Fizza Interior"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Silence.<br>Texture.<br>Home.</h1>
             <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
             <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
         </div>
+        <div class="hero-marquee">
+            <span>FIZZA INTERIOR // SEASON YOUR WALLS // 350+ DESIGNS // BESPOKE CRAFTSMANSHIP //</span>
+        </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- 2. ABOUT -->
     <section id="about" class="section-padding about-section">
         <div class="container about-grid">
             <div class="about-img reveal"><img src="about.jpg" alt="About Fizza Interior"></div>
@@ -249,153 +236,94 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- 3. SERVICES -->
     <section id="services" class="section-padding services-section">
         <div class="container">
             <h2 class="reveal">The Art of Making Spaces Feel Alive</h2>
             <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-num">01</div>
-                    <h3>The Sanctuary</h3>
-                    <p>Step into a home where walls breathe. We layer deep, warm textures to build not just rooms, but emotional retreats that cradle your most intimate moments.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-num">02</div>
-                    <h3>The Command</h3>
-                    <p>For businesses, the first impression is a silent speech. We engineer high-impact, durable walls for offices and boutiques that command attention and whisper luxury.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-num">03</div>
-                    <h3>The Bespoke Cut</h3>
-                    <p>Your vision, carved in wood. Utilizing precision CNC routing, we bring impossible geometries to life across MDF, Corian, and veneers to match your exact blueprint.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="service-num">04</div>
-                    <h3>The Promise</h3>
-                    <p>From our "one-roof" quality control to your doorstep, we promise a flawless journey. Every piece is inspected, every deadline is met, and every space is transformed.</p>
-                </div>
+                <div class="service-card reveal"><div class="service-num">01</div><h3>The Sanctuary</h3><p>Step into a home where walls breathe. We layer deep, warm textures to build emotional retreats.</p></div>
+                <div class="service-card reveal"><div class="service-num">02</div><h3>The Command</h3><p>For businesses, the first impression is a silent speech. We engineer high-impact, durable walls.</p></div>
+                <div class="service-card reveal"><div class="service-num">03</div><h3>The Bespoke Cut</h3><p>Precision CNC routing across MDF, Corian, and veneers to match your exact blueprint.</p></div>
+                <div class="service-card reveal"><div class="service-num">04</div><h3>The Promise</h3><p>From one-roof quality control to your doorstep, every deadline is met and every space is transformed.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- MASTERPIECES SLIDER -->
+    <!-- 4. MASTERPIECES SLIDER -->
     <section id="past-projects" class="projects-showcase-section">
-        <div class="container slider-header">
-            <h2>Our Masterpieces</h2>
-            <p>A cinematic journey through the spaces we have had the privilege to shape.</p>
-        </div>
+        <div class="container slider-header"><h2>Our Masterpieces</h2></div>
         <div class="project-slider" id="projectSlider">
-            <div class="project-slide active">
-                <img src="past-project-1.jpg" alt="The Mumbai Masterpiece">
-                <div class="project-slide-content">
-                    <div class="project-tag">Residential | 2025</div>
-                    <h3>The Mumbai Masterpiece</h3>
-                    <p>A private sanctuary bathed in warm oak and intricate Mashrabiya grills.</p>
-                    <a href="#contact" class="project-btn">View Project</a>
-                </div>
-            </div>
-            <div class="project-slide">
-                <img src="past-project-2.jpg" alt="The Corporate Loft">
-                <div class="project-slide-content">
-                    <div class="project-tag">Commercial | 2024</div>
-                    <h3>The Corporate Loft</h3>
-                    <p>Sleek glass partitions and textured panels engineered for absolute focus.</p>
-                    <a href="#contact" class="project-btn">View Project</a>
-                </div>
-            </div>
-            <div class="project-slide">
-                <img src="past-project-3.jpg" alt="The Heritage Villa">
-                <div class="project-slide-content">
-                    <div class="project-tag">Bespoke | 2023</div>
-                    <h3>The Heritage Villa</h3>
-                    <p>Where ornate CNC detailing meets the timeless elegance of raw wood.</p>
-                    <a href="#contact" class="project-btn">View Project</a>
-                </div>
-            </div>
-            
+            <div class="project-slide active"><img src="past-project-1.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Residential | 2025</div><h3>The Mumbai Masterpiece</h3><p>A private sanctuary bathed in warm oak.</p><a href="#contact" class="project-btn">View Project</a></div></div>
+            <div class="project-slide"><img src="past-project-2.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Commercial | 2024</div><h3>The Corporate Loft</h3><p>Sleek glass partitions engineered for focus.</p><a href="#contact" class="project-btn">View Project</a></div></div>
+            <div class="project-slide"><img src="past-project-3.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Bespoke | 2023</div><h3>The Heritage Villa</h3><p>Where ornate CNC detailing meets raw wood.</p><a href="#contact" class="project-btn">View Project</a></div></div>
             <div class="slider-nav">
                 <button class="slider-arrow" id="prevBtn">&#10094;</button>
-                <div class="slider-dots">
-                    <span class="dot active" onclick="goToSlide(0)"></span>
-                    <span class="dot" onclick="goToSlide(1)"></span>
-                    <span class="dot" onclick="goToSlide(2)"></span>
-                </div>
+                <div class="slider-dots"><span class="dot active" onclick="goToSlide(0)"></span><span class="dot" onclick="goToSlide(1)"></span><span class="dot" onclick="goToSlide(2)"></span></div>
                 <button class="slider-arrow" id="nextBtn">&#10095;</button>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO GRID -->
+    <!-- 5. PORTFOLIO -->
     <section id="portfolio" class="section-padding">
         <div class="container">
-            <h2 class="text-center reveal" style="font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 400; margin-bottom: 20px;">Signature Textures</h2>
-            <p class="text-center reveal" style="color: var(--color-muted); margin-bottom: 60px; font-size: 1.2rem; font-weight: 300;">Explore the exact panels that define our legacy.</p>
+            <h2 class="text-center reveal">Signature Textures</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item reveal" id="grooved"><img src="project1.jpg" alt="Grooved Wall Panel"><div class="portfolio-overlay">Grooved Wall Panel</div></div>
-                <div class="portfolio-item reveal" id="textured"><img src="project2.jpg" alt="Textured Wall Panel"><div class="portfolio-overlay">Textured Wall Panel</div></div>
+                <div class="portfolio-item reveal" id="grooved"><img src="project1.jpg" alt="Grooved Panel"><div class="portfolio-overlay">Grooved Wall Panel</div></div>
+                <div class="portfolio-item reveal" id="textured"><img src="project2.jpg" alt="Textured Panel"><div class="portfolio-overlay">Textured Wall Panel</div></div>
                 <div class="portfolio-item reveal" id="mashrabiya"><img src="project3.jpg" alt="Mashrabiya Grill"><div class="portfolio-overlay">Mashrabiya Grill</div></div>
-                <div class="portfolio-item reveal" id="office"><img src="project4.jpg" alt="Office Glass Partition"><div class="portfolio-overlay">Office Glass Partition</div></div>
+                <div class="portfolio-item reveal" id="office"><img src="project4.jpg" alt="Office Partition"><div class="portfolio-overlay">Office Partition</div></div>
             </div>
         </div>
     </section>
 
-    <!-- CAREERS -->
+    <!-- 6. CAREERS -->
     <section id="careers" class="section-padding team-section">
         <div class="container team-grid">
-            <div class="team-img reveal"><img src="team.jpg" alt="Join the Fizza Interior Team"></div>
+            <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
             <div class="team-text reveal">
                 <h2>Carve Your Name into Our Legacy</h2>
-                <p>We are searching for dreamers, architects, and artisans who believe that beauty is a responsibility. If you have the passion to shape India's most breathtaking walls, we want to build the future with you.</p>
-                <p>One key asset is our people. We offer boundless opportunities for growth at all levels. Send us your story today.</p>
+                <p>We are searching for dreamers, architects, and artisans who believe beauty is a responsibility.</p>
                 <a href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position." target="_blank" class="btn btn-light">Send Your Story via WhatsApp</a>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- 7. CONTACT -->
     <section id="contact" class="contact-section">
         <div class="container contact-grid">
             <div class="contact-info reveal">
                 <h2>Your Canvas Awaits</h2>
-                <p>Speak with our design alchemists. Let’s explore the textures, lights, and geometries that will tell your unique story.</p>
+                <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
                 <p><strong>Email:</strong> info@fizzainterior.com</p>
                 <p><strong>Phone:</strong> +91 98765 43210</p>
                 <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
             </div>
             <form class="reveal" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Vision</label>
-                    <textarea id="message" rows="5" placeholder="Describe the feeling you want your space to evoke..." required></textarea>
-                </div>
+                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required></div>
+                <div class="form-group"><label for="message">Your Vision</label><textarea id="message" rows="5" required></textarea></div>
                 <button type="submit" class="btn btn-light">Send Your Vision via WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Fizza Interior. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer><div class="container"><p>&copy; 2026 Fizza Interior. All rights reserved.</p></div></footer>
 
     <script>
+        // Navbar Scroll Effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) { nav.classList.add('scrolled'); }
-            else { nav.classList.remove('scrolled'); }
+            if (window.scrollY > 50) { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 1)'; }
+            else { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 0.8)'; }
         });
+
+        // Mobile Menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('active'); });
 
+        // Reveal Animations
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -404,6 +332,7 @@
         }, { threshold: 0.1 });
         reveals.forEach(el => revealObserver.observe(el));
 
+        // WhatsApp Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -413,7 +342,7 @@
             window.open(`https://wa.me/919876543210?text=${encodeURIComponent(text)}`, '_blank');
         });
 
-        // --- PAST PROJECTS SLIDER ---
+        // Masterpieces Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.project-slide');
         const dots = document.querySelectorAll('.dot');
