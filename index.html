@@ -16,16 +16,16 @@
             --color-muted: #7A7670;
             --border-light: #E8E4DC;
             --color-gold: #C29A5B;
-            --lavender: #015D67;
+            --lavender: #E6E6FA;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: 'Mageline', Mageline; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
         
         /* SOFT CHARCOAL PENCIL SPARKLE (Milder Version) */
         h1, h2, h3, h4, h5, h6, .about-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
-            font-family: 'Barbra', cursive;
+            font-family: 'Kalam', cursive;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: 0.5px;
@@ -40,7 +40,7 @@
         }
 
         @keyframes sparkleSweep { to { background-position: -200% center; } }
-        h1 { font-size: clamp(4rem, 9vw, 8rem); }
+        h1 { font-size: clamp(3rem, 7vw, 6rem); } /* REDUCED SIZE FOR HERO */
         h2 { font-size: clamp(3rem, 5vw, 5rem); }
         h3 { font-size: 2.2rem; }
 
@@ -74,7 +74,6 @@
             height: 150px; 
         }
         
-        /* Logo & Admin Wrapper */
         .nav-left {
             display: flex;
             flex-direction: column;
@@ -90,7 +89,6 @@
             object-fit: contain; 
         }
 
-        /* Admin Login Button under logo */
         .nav-admin-btn {
             background: none;
             border: 1px solid var(--color-rust);
@@ -100,7 +98,7 @@
             font-size: 0.7rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-top: -15px; /* Tuck it under the logo */
+            margin-top: -15px;
             transition: all 0.3s;
         }
         .nav-admin-btn:hover {
@@ -131,9 +129,9 @@
         .hero { height: 100vh; height: 100dvh; display: flex; overflow: hidden; position: relative; }
         .hero-left, .hero-right { width: 50%; height: 100%; position: relative; }
         .hero-left img, .hero-right img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220,20,60,0.95), rgba(139,0,0,0.9)); z-index: 2; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220,20,60,0.95), rgba(139,0,0,0.9)); z-index: 2; } /* CRIMSON RED */
         .hero-content { position: absolute; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; padding: 0 40px; }
-        .hero-content h1 { font-size: clamp(4rem, 10vw, 9rem); margin-bottom: 20px; }
+        .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; } /* SMALLER SIZE */
         .hero-content p { font-size: 1.5rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
         
         .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
@@ -299,7 +297,6 @@
     <!-- NAVIGATION -->
     <nav id="nav">
         <div class="nav-container">
-            <!-- LEFT SIDE: Logo & Admin -->
             <div class="nav-left">
                 <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 110px;"></div>
                 <button class="nav-admin-btn" onclick="openAdmin()">Admin Login</button>
@@ -340,7 +337,7 @@
         <div class="hero-right"><img src="hero2.jpg" alt="Fizza Interior"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Silence.<br>Texture.<br>Home.</h1>
+            <h1>Texture.<br>Home.</h1>
             <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
             <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
         </div>
@@ -422,7 +419,7 @@
                 <h2>Your Canvas Awaits</h2>
                 <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
                 <p><strong>Email:</strong> info@fizzainterior.com</p>
-                <p><strong>Phone:</strong> +91 90040 15018 </p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
                 <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
             </div>
             <form class="reveal" id="contactForm">
@@ -454,19 +451,16 @@
     </div>
 
     <script>
-        // Navbar Scroll Effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 1)'; }
             else { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 0.8)'; }
         });
 
-        // Mobile Menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('active'); });
 
-        // Reveal Animations
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -475,7 +469,6 @@
         }, { threshold: 0.1 });
         reveals.forEach(el => revealObserver.observe(el));
 
-        // WhatsApp Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -485,7 +478,6 @@
             window.open(`https://wa.me/919876543210?text=${encodeURIComponent(text)}`, '_blank');
         });
 
-        // Admin Login (For Demo Purposes Only)
         function openAdmin() {
             document.getElementById('adminModal').classList.add('active');
         }
@@ -495,7 +487,6 @@
         function checkLogin() {
             const email = document.getElementById('adminEmail').value;
             const pass = document.getElementById('adminPass').value;
-            // DUMMY LOGIN FOR DEMO PURPOSES
             if (email === 'admin@fizza.com' && pass === 'admin123') {
                 alert('Welcome Admin! Redirecting to Dashboard...');
                 closeAdmin();
@@ -506,7 +497,6 @@
             }
         }
 
-        // Masterpieces Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.project-slide');
         const dots = document.querySelectorAll('.dot');
