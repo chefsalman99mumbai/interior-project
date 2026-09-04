@@ -40,7 +40,7 @@
         }
 
         @keyframes sparkleSweep { to { background-position: -200% center; } }
-        h1 { font-size: clamp(3rem, 7vw, 6rem); } /* REDUCED SIZE FOR HERO */
+        h1 { font-size: clamp(3rem, 7vw, 6rem); }
         h2 { font-size: clamp(3rem, 5vw, 5rem); }
         h3 { font-size: 2.2rem; }
 
@@ -55,9 +55,7 @@
         .btn-light { border-color: var(--bg-cream); color: var(--bg-cream); }
         .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
 
-        /* =========================================
-           NAV - MASSIVE LOGO + ADMIN BUTTON BELOW
-           ========================================= */
+        /* --- NAV --- */
         nav { 
             position: fixed; top: 0; left: 0; width: 100%; 
             background: #F0EEFA; 
@@ -73,7 +71,6 @@
             max-width: 1400px; margin: 0 auto; padding: 0 40px; 
             height: 150px; 
         }
-        
         .nav-left {
             display: flex;
             flex-direction: column;
@@ -81,14 +78,12 @@
             justify-content: center;
             height: 100%;
         }
-        
         .logo img { 
             height: 110px !important; 
             width: auto; 
             max-width: 400px; 
             object-fit: contain; 
         }
-
         .nav-admin-btn {
             background: none;
             border: 1px solid var(--color-rust);
@@ -105,7 +100,6 @@
             background: var(--color-rust);
             color: var(--bg-cream);
         }
-        
         .nav-links { display: flex; gap: 40px; align-items: center; }
         .nav-links a { font-size: 0.9rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
         .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--color-rust); transition: width 0.3s; }
@@ -125,20 +119,55 @@
         .mobile-menu.active { display: flex; }
         @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 80px; } .nav-admin-btn { margin-top: -10px; } .nav-container { height: 100px; } nav { height: 100px; } .container { padding: 0 20px; } }
 
-        /* --- HERO (CRIMSON RED OVERLAY) --- */
-        .hero { height: 100vh; height: 100dvh; display: flex; overflow: hidden; position: relative; }
-        .hero-left, .hero-right { width: 50%; height: 100%; position: relative; }
-        .hero-left img, .hero-right img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220,20,60,0.95), rgba(139,0,0,0.9)); z-index: 2; } /* CRIMSON RED */
-        .hero-content { position: absolute; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; padding: 0 40px; }
-        .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; } /* SMALLER SIZE */
-        .hero-content p { font-size: 1.5rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+        /* =========================================================
+           HERO - SINGLE FULL SCREEN IMAGE + VISIBLE CRIMSON LAYER + PENCIL TEXT
+           ========================================================= */
+        .hero { 
+            height: 100vh; height: 100dvh; 
+            position: relative; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow: hidden; 
+            text-align: center; 
+        }
+        
+        /* Single full background image */
+        .hero-bg { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            z-index: 1; 
+        }
+        
+        /* Crimson Red Layer - REDUCED TO 50% & 40% SO IMAGE IS VISIBLE */
+        .hero-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.5), rgba(139, 0, 0, 0.4)); 
+            z-index: 2; 
+        }
+        
+        .hero-content { 
+            position: relative; 
+            z-index: 10; 
+            max-width: 1200px; 
+            padding: 0 40px; 
+        }
+        
+        /* PENCIL TEXT WITH BRIGHT WHITE GLOW TO STAY VISIBLE ON RED */
+        .hero-content h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            margin-bottom: 20px;
+            /* Increased white drop shadow so the dark pencil text pops */
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+        }
+        
+        .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
         
         .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
         .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        @media (max-width: 768px) { .hero { flex-direction: column; } .hero-left, .hero-right { width: 100%; height: 50%; } }
 
         /* --- ABOUT --- */
         .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
@@ -205,9 +234,7 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* =========================================
-           ADMIN LOGIN MODAL
-           ========================================= */
+        /* ADMIN LOGIN MODAL */
         .admin-modal {
             position: fixed;
             top: 0; left: 0;
@@ -331,16 +358,20 @@
         </div>
     </nav>
 
-    <!-- 1. HERO -->
+    <!-- 1. HERO - SINGLE FULL IMAGE, CRIMSON TINT, PENCIL TEXT -->
     <section id="home" class="hero">
-        <div class="hero-left"><img src="hero1.jpg" alt="Fizza Interior"></div>
-        <div class="hero-right"><img src="hero2.jpg" alt="Fizza Interior"></div>
+        <!-- Rename your image to hero1.jpg and replace -->
+        <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg">
+        
+        <!-- Softened Crimson Red layer -->
         <div class="hero-overlay"></div>
+        
         <div class="hero-content">
             <h1>Texture.<br>Home.</h1>
             <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
             <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
         </div>
+        
         <div class="hero-marquee">
             <span>FIZZA INTERIOR // SEASON YOUR WALLS // 350+ DESIGNS // BESPOKE CRAFTSMANSHIP //</span>
         </div>
