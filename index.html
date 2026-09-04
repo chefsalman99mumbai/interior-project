@@ -23,20 +23,20 @@
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
         
-        /* UNIVERSAL CHARCOAL PENCIL SPARKLE */
+        /* SOFT CHARCOAL PENCIL SPARKLE (Milder Version) */
         h1, h2, h3, h4, h5, h6, .about-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
             font-family: 'Kalam', cursive;
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: 0.5px;
             transform: skewX(-1deg);
-            background: linear-gradient(90deg, #121212 0%, #444444 30%, #e3e3e3 50%, #444444 70%, #121212 100%);
+            background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
-            animation: sparkleSweep 4s linear infinite;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
+            animation: sparkleSweep 6s linear infinite;
         }
 
         @keyframes sparkleSweep { to { background-position: -200% center; } }
@@ -56,29 +56,56 @@
         .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
 
         /* =========================================
-           NAV - LOGO FILLS THE ENTIRE STRAP (FIXED)
+           NAV - MASSIVE LOGO + ADMIN BUTTON BELOW
            ========================================= */
         nav { 
             position: fixed; top: 0; left: 0; width: 100%; 
             background: #F0EEFA; 
             backdrop-filter: blur(12px); 
             z-index: 1000; 
-            padding: 0; /* No padding */
-            height: 150px; /* Massive Nav Height */
+            padding: 0; 
+            height: 150px; 
             border-bottom: 4px solid var(--lavender); 
             box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8); 
         }
         .nav-container { 
             display: flex; justify-content: space-between; align-items: center; 
             max-width: 1400px; margin: 0 auto; padding: 0 40px; 
-            height: 150px; /* Match nav height */
+            height: 150px; 
         }
-        .logo { display: flex; align-items: center; }
+        
+        /* Logo & Admin Wrapper */
+        .nav-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+        }
+        
         .logo img { 
-            height: 140px !important; /* MASSIVE LOGO */
+            height: 110px !important; 
             width: auto; 
             max-width: 400px; 
             object-fit: contain; 
+        }
+
+        /* Admin Login Button under logo */
+        .nav-admin-btn {
+            background: none;
+            border: 1px solid var(--color-rust);
+            color: var(--color-rust);
+            padding: 5px 15px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -15px; /* Tuck it under the logo */
+            transition: all 0.3s;
+        }
+        .nav-admin-btn:hover {
+            background: var(--color-rust);
+            color: var(--bg-cream);
         }
         
         .nav-links { display: flex; gap: 40px; align-items: center; }
@@ -98,13 +125,13 @@
         .mobile-menu { display: none; position: fixed; top: 150px; left: 0; width: 100%; background: #F0EEFA; padding: 30px 20px; z-index: 999; flex-direction: column; gap: 25px; border-bottom: 1px solid var(--border-light); }
         .mobile-menu a { font-size: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--text-charcoal); }
         .mobile-menu.active { display: flex; }
-        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 100px; } .nav-container { height: 100px; } nav { height: 100px; } .container { padding: 0 20px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 80px; } .nav-admin-btn { margin-top: -10px; } .nav-container { height: 100px; } nav { height: 100px; } .container { padding: 0 20px; } }
 
         /* --- HERO (CRIMSON RED OVERLAY) --- */
         .hero { height: 100vh; height: 100dvh; display: flex; overflow: hidden; position: relative; }
         .hero-left, .hero-right { width: 50%; height: 100%; position: relative; }
         .hero-left img, .hero-right img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220,20,60,0.95), rgba(139,0,0,0.9)); z-index: 2; } /* CRIMSON RED */
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220,20,60,0.95), rgba(139,0,0,0.9)); z-index: 2; }
         .hero-content { position: absolute; z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; padding: 0 40px; }
         .hero-content h1 { font-size: clamp(4rem, 10vw, 9rem); margin-bottom: 20px; }
         .hero-content p { font-size: 1.5rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
@@ -181,7 +208,7 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* =========================================
-           ADMIN LOGIN MODAL (FEATURE FOR DEMO)
+           ADMIN LOGIN MODAL
            ========================================= */
         .admin-modal {
             position: fixed;
@@ -272,7 +299,12 @@
     <!-- NAVIGATION -->
     <nav id="nav">
         <div class="nav-container">
-            <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 140px;"></div>
+            <!-- LEFT SIDE: Logo & Admin -->
+            <div class="nav-left">
+                <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 110px;"></div>
+                <button class="nav-admin-btn" onclick="openAdmin()">Admin Login</button>
+            </div>
+            
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
@@ -406,8 +438,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Fizza Interior. All rights reserved.</p>
-            <br>
-            <button onclick="openAdmin()" style="background: none; border: 1px solid #F9F7F2; padding: 10px 25px; color: #F9F7F2; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">Admin Login</button>
         </div>
     </footer>
 
