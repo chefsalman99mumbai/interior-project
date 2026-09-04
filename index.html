@@ -24,7 +24,7 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
         
         /* SOFT CHARCOAL PENCIL SPARKLE */
-        h1, h2, h3, h4, h5, h6, .about-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
+        h1, h2, h3, h4, h5, h6, .about-signature, .owner-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
             font-family: 'Kalam', cursive;
             font-weight: 700;
             line-height: 1.2;
@@ -55,9 +55,7 @@
         .btn-light { border-color: var(--bg-cream); color: var(--bg-cream); }
         .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
 
-        /* =========================================
-           NAV - COMPACT & ELEGANT (FIXED)
-           ========================================= */
+        /* NAV */
         nav { 
             position: fixed; top: 0; left: 0; width: 100%; 
             background: #F0EEFA; 
@@ -121,48 +119,18 @@
         .mobile-menu.active { display: flex; }
         @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 50px; } .nav-admin-btn { margin-top: -5px; } .nav-container { height: 70px; } nav { height: 70px; } .container { padding: 0 20px; } }
 
-        /* =========================================================
-           HERO - SINGLE FULL SCREEN IMAGE + CRIMSON TINT + PENCIL TEXT
-           ========================================================= */
-        .hero { 
-            height: 100vh; height: 100dvh; 
-            position: relative; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            overflow: hidden; 
-            text-align: center; 
-        }
-        .hero-bg { 
-            position: absolute; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            z-index: 1; 
-        }
-        .hero-overlay { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(135deg, rgba(220, 20, 60, 0.5), rgba(139, 0, 0, 0.4)); 
-            z-index: 2; 
-        }
-        .hero-content { 
-            position: relative; 
-            z-index: 10; 
-            max-width: 1200px; 
-            padding: 0 40px; 
-        }
-        .hero-content h1 {
-            font-size: clamp(3rem, 7vw, 6rem);
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
-        }
+        /* HERO */
+        .hero { height: 100vh; height: 100dvh; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-align: center; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220, 20, 60, 0.5), rgba(139, 0, 0, 0.4)); z-index: 2; }
+        .hero-content { position: relative; z-index: 10; max-width: 1200px; padding: 0 40px; }
+        .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)); }
         .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-        
         .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
         .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* --- ABOUT --- */
+        /* ABOUT */
         .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .about-img { width: 100%; height: 600px; overflow: hidden; }
@@ -172,7 +140,18 @@
         .about-signature { font-size: 2rem; margin-top: 20px; }
         @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
 
-        /* --- SERVICES --- */
+        /* OWNER'S STORY SECTION (COLOR CHANGED TO GOLD) */
+        .owner-section { background-color: var(--color-gold); }
+        .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .owner-text { order: 1; }
+        .owner-img { order: 2; width: 100%; height: 600px; overflow: hidden; }
+        .owner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .owner-img:hover img { transform: scale(1.05); }
+        .owner-text p { font-size: 1.1rem; color: var(--text-charcoal); margin-bottom: 20px; }
+        .owner-signature { font-size: 2rem; margin-top: 20px; color: var(--color-brown); }
+        @media (max-width: 768px) { .owner-grid { grid-template-columns: 1fr; gap: 40px; } .owner-img { height: 400px; } }
+
+        /* SERVICES */
         .services-section { background-color: var(--color-moss); color: var(--bg-cream); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
@@ -180,7 +159,7 @@
         .service-num { font-size: 3.5rem; margin-bottom: 20px; }
         .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
 
-        /* --- SLIDER --- */
+        /* SLIDER */
         .projects-showcase-section { background-color: var(--bg-cream); padding: 120px 0; }
         .slider-header { text-align: center; margin-bottom: 60px; }
         .project-slider { position: relative; width: 100%; height: 80vh; height: 80dvh; overflow: hidden; background: var(--text-charcoal); }
@@ -199,7 +178,7 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; }
         .dot.active { background: var(--bg-cream); }
 
-        /* --- PORTFOLIO --- */
+        /* PORTFOLIO */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -207,13 +186,13 @@
         .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--text-charcoal); padding: 20px; transform: translateY(100%); transition: transform 0.5s ease; font-size: 1.8rem; }
         .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
 
-        /* --- CAREERS --- */
+        /* CAREERS */
         .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
         .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .team-img { width: 100%; height: auto; }
         .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
 
-        /* --- CONTACT --- */
+        /* CONTACT */
         .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
@@ -378,7 +357,22 @@
         </div>
     </section>
 
-    <!-- 3. SERVICES -->
+    <!-- 3. OWNER'S INSPIRING STORY (GOLD SECTION) -->
+    <section class="section-padding owner-section">
+        <div class="container owner-grid">
+            <div class="owner-text reveal">
+                <h2>The Heart Behind the Craft</h2>
+                <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
+                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
+                <p class="owner-signature">— Fizza, Founder & Principal Curator</p>
+            </div>
+            <div class="owner-img reveal">
+                <img src="owner.jpg" alt="Founder of Fizza Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVICES -->
     <section id="services" class="section-padding services-section">
         <div class="container">
             <h2 class="reveal">The Art of Making Spaces Feel Alive</h2>
@@ -391,7 +385,7 @@
         </div>
     </section>
 
-    <!-- 4. MASTERPIECES SLIDER -->
+    <!-- 5. MASTERPIECES SLIDER -->
     <section id="past-projects" class="projects-showcase-section">
         <div class="container slider-header"><h2>Our Masterpieces</h2></div>
         <div class="project-slider" id="projectSlider">
@@ -406,7 +400,7 @@
         </div>
     </section>
 
-    <!-- 5. PORTFOLIO -->
+    <!-- 6. PORTFOLIO -->
     <section id="portfolio" class="section-padding">
         <div class="container">
             <h2 class="text-center reveal">Signature Textures</h2>
@@ -419,7 +413,7 @@
         </div>
     </section>
 
-    <!-- 6. CAREERS -->
+    <!-- 7. CAREERS -->
     <section id="careers" class="section-padding team-section">
         <div class="container team-grid">
             <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
@@ -431,7 +425,7 @@
         </div>
     </section>
 
-    <!-- 7. CONTACT -->
+    <!-- 8. CONTACT -->
     <section id="contact" class="contact-section">
         <div class="container contact-grid">
             <div class="contact-info reveal">
