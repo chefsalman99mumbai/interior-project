@@ -119,13 +119,10 @@
         .mobile-menu.active { display: flex; }
         @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 50px; } .nav-admin-btn { margin-top: -5px; } .nav-container { height: 70px; } nav { height: 70px; } .container { padding: 0 20px; } }
 
-        /* --- HERO (OVERLAY REMOVED - IMAGE FULLY VISIBLE) --- */
+        /* HERO (Overlay removed) */
         .hero { height: 100vh; height: 100dvh; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-align: center; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        
-        /* CHANGED: Overlay completely removed */
         .hero-overlay { display: none; }
-        
         .hero-content { position: relative; z-index: 10; max-width: 1200px; padding: 0 40px; }
         .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)); }
         .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--text-charcoal); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(255,255,255,0.8); }
@@ -133,7 +130,7 @@
         .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* --- ABOUT --- */
+        /* ABOUT */
         .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .about-img { width: 100%; height: 600px; overflow: hidden; }
@@ -143,7 +140,7 @@
         .about-signature { font-size: 2rem; margin-top: 20px; }
         @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
 
-        /* --- OWNER'S STORY (GOLD) --- */
+        /* OWNER'S STORY (GOLD) */
         .owner-section { background-color: var(--color-gold); }
         .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .owner-text { order: 1; }
@@ -154,9 +151,10 @@
         .owner-signature { font-size: 2rem; margin-top: 20px; color: var(--color-brown); }
         @media (max-width: 768px) { .owner-grid { grid-template-columns: 1fr; gap: 40px; } .owner-img { height: 400px; } }
 
-        /* --- CLIENTS MARQUEE --- */
+        /* --- CLIENTS MARQUEE (OPTION 1: SPOTLIGHT FADE) --- */
         .clients-section { background-color: var(--bg-cream); padding: 80px 0; overflow: hidden; }
         .clients-header { text-align: center; margin-bottom: 50px; }
+        .marquee-wrapper { position: relative; width: 100%; overflow: hidden; }
         .marquee-container { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
         .marquee-track { display: inline-flex; align-items: center; gap: 60px; padding-right: 60px; animation: scrollLogos 25s linear infinite; }
         .client-logo { height: 50px; max-width: 180px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s; cursor: pointer; }
@@ -164,7 +162,27 @@
         .client-text { font-family: 'Kalam', cursive; font-size: 1.8rem; font-weight: 700; margin-right: 60px; color: var(--color-muted); }
         @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- SERVICES --- */
+        /* SPOTLIGHT FADE */
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-cream), transparent);
+        }
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-cream), transparent);
+        }
+
+        /* SERVICES */
         .services-section { background-color: var(--color-moss); color: var(--bg-cream); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
@@ -172,7 +190,7 @@
         .service-num { font-size: 3.5rem; margin-bottom: 20px; }
         .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
 
-        /* --- SLIDER --- */
+        /* SLIDER */
         .projects-showcase-section { background-color: var(--bg-cream); padding: 120px 0; }
         .slider-header { text-align: center; margin-bottom: 60px; }
         .project-slider { position: relative; width: 100%; height: 80vh; height: 80dvh; overflow: hidden; background: var(--text-charcoal); }
@@ -191,7 +209,7 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; }
         .dot.active { background: var(--bg-cream); }
 
-        /* --- PORTFOLIO --- */
+        /* PORTFOLIO */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -199,13 +217,13 @@
         .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--text-charcoal); padding: 20px; transform: translateY(100%); transition: transform 0.5s ease; font-size: 1.8rem; }
         .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
 
-        /* --- CAREERS --- */
+        /* CAREERS */
         .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
         .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .team-img { width: 100%; height: auto; }
         .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
 
-        /* --- CONTACT --- */
+        /* CONTACT */
         .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
@@ -272,7 +290,7 @@
         </div>
     </nav>
 
-    <!-- 1. HERO (Image Fully Visible) -->
+    <!-- 1. HERO -->
     <section id="home" class="hero">
         <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg">
         <div class="hero-content">
@@ -298,7 +316,7 @@
         </div>
     </section>
 
-    <!-- 3. OWNER'S INSPIRING STORY (GOLD SECTION) -->
+    <!-- 3. OWNER'S INSPIRING STORY (GOLD) -->
     <section class="section-padding owner-section">
         <div class="container owner-grid">
             <div class="owner-text reveal">
@@ -313,43 +331,62 @@
         </div>
     </section>
 
-    <!-- 4. RUNNING TRUSTED CLIENTS SECTION -->
+    <!-- 4. RUNNING TRUSTED CLIENTS SECTION (SPOTLIGHT FADE) -->
     <section id="clients" class="clients-section">
         <div class="container clients-header">
             <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
         </div>
         
-        <div class="marquee-container">
-            <div class="marquee-track">
-                <img src="client-1.png" class="client-logo" alt="L&T">
-                <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
-                <img src="client-3.png" class="client-logo" alt="Tata Housing">
-                <img src="client-4.png" class="client-logo" alt="Lodha">
-                <img src="client-5.png" class="client-logo" alt="Neelkanth">
-                <img src="client-6.png" class="client-logo" alt="Sheth Developers">
-                <img src="client-7.png" class="client-logo" alt="Lokhandwala">
-                <img src="client-8.png" class="client-logo" alt="Wadhwa">
-                
-                <span class="client-text">L&T</span>
-                <span class="client-text">Oberoi Realty</span>
-                <span class="client-text">Tata Housing</span>
-                <span class="client-text">Lodha</span>
-                <span class="client-text">Neelkanth</span>
+        <div class="marquee-wrapper">
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <!-- LOOP SET 1 -->
+                    <img src="client-1.png" class="client-logo" alt="L&T">
+                    <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
+                    <img src="client-3.png" class="client-logo" alt="Satellite Group">
+                    <img src="client-4.png" class="client-logo" alt="Wadhwa Group">
+                    <img src="client-5.png" class="client-logo" alt="Yashraj Developers">
+                    <img src="client-6.png" class="client-logo" alt="Lokhandwala Const.">
+                    <img src="client-7.png" class="client-logo" alt="City Corporation Ltd">
+                    <img src="client-8.png" class="client-logo" alt="Ashford HSG Corporation">
+                    <img src="client-9.png" class="client-logo" alt="Ajmera Group">
+                    <img src="client-10.png" class="client-logo" alt="Bafna Builders">
+                    <img src="client-11.png" class="client-logo" alt="Ashapura Developers">
+                    <img src="client-12.png" class="client-logo" alt="Ashapura & Ratan Developers">
+                    <img src="client-13.png" class="client-logo" alt="Kalpataru Enterprises">
+                    <img src="client-14.png" class="client-logo" alt="Tata Housing">
+                    <img src="client-15.png" class="client-logo" alt="Gee Cee Venture">
+                    
+                    <!-- FALLBACK TEXT IF LOGOS MISSING -->
+                    <span class="client-text">L&T</span>
+                    <span class="client-text">Oberoi Realty</span>
+                    <span class="client-text">Tata Housing</span>
+                    <span class="client-text">Lodha</span>
+                    <span class="client-text">Kalpataru</span>
 
-                <img src="client-1.png" class="client-logo" alt="L&T">
-                <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
-                <img src="client-3.png" class="client-logo" alt="Tata Housing">
-                <img src="client-4.png" class="client-logo" alt="Lodha">
-                <img src="client-5.png" class="client-logo" alt="Neelkanth">
-                <img src="client-6.png" class="client-logo" alt="Sheth Developers">
-                <img src="client-7.png" class="client-logo" alt="Lokhandwala">
-                <img src="client-8.png" class="client-logo" alt="Wadhwa">
-                
-                <span class="client-text">L&T</span>
-                <span class="client-text">Oberoi Realty</span>
-                <span class="client-text">Tata Housing</span>
-                <span class="client-text">Lodha</span>
-                <span class="client-text">Neelkanth</span>
+                    <!-- LOOP SET 2 (Duplicate for seamless scroll) -->
+                    <img src="client-1.png" class="client-logo" alt="L&T">
+                    <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
+                    <img src="client-3.png" class="client-logo" alt="Satellite Group">
+                    <img src="client-4.png" class="client-logo" alt="Wadhwa Group">
+                    <img src="client-5.png" class="client-logo" alt="Yashraj Developers">
+                    <img src="client-6.png" class="client-logo" alt="Lokhandwala Const.">
+                    <img src="client-7.png" class="client-logo" alt="City Corporation Ltd">
+                    <img src="client-8.png" class="client-logo" alt="Ashford HSG Corporation">
+                    <img src="client-9.png" class="client-logo" alt="Ajmera Group">
+                    <img src="client-10.png" class="client-logo" alt="Bafna Builders">
+                    <img src="client-11.png" class="client-logo" alt="Ashapura Developers">
+                    <img src="client-12.png" class="client-logo" alt="Ashapura & Ratan Developers">
+                    <img src="client-13.png" class="client-logo" alt="Kalpataru Enterprises">
+                    <img src="client-14.png" class="client-logo" alt="Tata Housing">
+                    <img src="client-15.png" class="client-logo" alt="Gee Cee Venture">
+                    
+                    <span class="client-text">L&T</span>
+                    <span class="client-text">Oberoi Realty</span>
+                    <span class="client-text">Tata Housing</span>
+                    <span class="client-text">Lodha</span>
+                    <span class="client-text">Kalpataru</span>
+                </div>
             </div>
         </div>
     </section>
