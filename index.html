@@ -79,7 +79,7 @@
             height: 100%;
         }
         .logo img { 
-            height: 90px !important; 
+            height: 70px !important; 
             width: auto; 
             max-width: 400px; 
             object-fit: contain; 
@@ -119,18 +119,21 @@
         .mobile-menu.active { display: flex; }
         @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 50px; } .nav-admin-btn { margin-top: -5px; } .nav-container { height: 70px; } nav { height: 70px; } .container { padding: 0 20px; } }
 
-        /* HERO */
+        /* --- HERO (OVERLAY REMOVED - IMAGE FULLY VISIBLE) --- */
         .hero { height: 100vh; height: 100dvh; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-align: center; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(220, 20, 60, 0.5), rgba(139, 0, 0, 0.4)); z-index: 2; }
+        
+        /* CHANGED: Overlay completely removed */
+        .hero-overlay { display: none; }
+        
         .hero-content { position: relative; z-index: 10; max-width: 1200px; padding: 0 40px; }
         .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)); }
-        .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--bg-cream); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--text-charcoal); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(255,255,255,0.8); }
         .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
         .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* ABOUT */
+        /* --- ABOUT --- */
         .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .about-img { width: 100%; height: 600px; overflow: hidden; }
@@ -140,7 +143,7 @@
         .about-signature { font-size: 2rem; margin-top: 20px; }
         @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
 
-        /* OWNER'S STORY SECTION (COLOR CHANGED TO GOLD) */
+        /* --- OWNER'S STORY (GOLD) --- */
         .owner-section { background-color: var(--color-gold); }
         .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .owner-text { order: 1; }
@@ -151,7 +154,17 @@
         .owner-signature { font-size: 2rem; margin-top: 20px; color: var(--color-brown); }
         @media (max-width: 768px) { .owner-grid { grid-template-columns: 1fr; gap: 40px; } .owner-img { height: 400px; } }
 
-        /* SERVICES */
+        /* --- CLIENTS MARQUEE --- */
+        .clients-section { background-color: var(--bg-cream); padding: 80px 0; overflow: hidden; }
+        .clients-header { text-align: center; margin-bottom: 50px; }
+        .marquee-container { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-track { display: inline-flex; align-items: center; gap: 60px; padding-right: 60px; animation: scrollLogos 25s linear infinite; }
+        .client-logo { height: 50px; max-width: 180px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s; cursor: pointer; }
+        .client-logo:hover { filter: grayscale(0%) opacity(1); }
+        .client-text { font-family: 'Kalam', cursive; font-size: 1.8rem; font-weight: 700; margin-right: 60px; color: var(--color-muted); }
+        @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- SERVICES --- */
         .services-section { background-color: var(--color-moss); color: var(--bg-cream); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
@@ -159,7 +172,7 @@
         .service-num { font-size: 3.5rem; margin-bottom: 20px; }
         .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
 
-        /* SLIDER */
+        /* --- SLIDER --- */
         .projects-showcase-section { background-color: var(--bg-cream); padding: 120px 0; }
         .slider-header { text-align: center; margin-bottom: 60px; }
         .project-slider { position: relative; width: 100%; height: 80vh; height: 80dvh; overflow: hidden; background: var(--text-charcoal); }
@@ -178,7 +191,7 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; }
         .dot.active { background: var(--bg-cream); }
 
-        /* PORTFOLIO */
+        /* --- PORTFOLIO --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
@@ -186,13 +199,13 @@
         .portfolio-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: var(--text-charcoal); padding: 20px; transform: translateY(100%); transition: transform 0.5s ease; font-size: 1.8rem; }
         .portfolio-item:hover .portfolio-overlay { transform: translateY(0); }
 
-        /* CAREERS */
+        /* --- CAREERS --- */
         .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
         .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .team-img { width: 100%; height: auto; }
         .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
 
-        /* CONTACT */
+        /* --- CONTACT --- */
         .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
@@ -207,89 +220,17 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* ADMIN LOGIN MODAL */
-        .admin-modal {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(17, 17, 17, 0.9);
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
-        .admin-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .admin-login-box {
-            background: #F9F7F2;
-            padding: 50px;
-            max-width: 400px;
-            width: 90%;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-        .admin-modal.active .admin-login-box {
-            transform: translateY(0);
-        }
-        .admin-login-box h2 {
-            font-family: 'Kalam', cursive;
-            color: #3E2C2C;
-            background: none;
-            -webkit-text-fill-color: #3E2C2C;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            filter: none;
-            animation: none;
-        }
-        .admin-login-box input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #E8E4DC;
-            font-family: 'Inter', sans-serif;
-            background: #F9F7F2;
-            outline: none;
-        }
-        .admin-login-box input:focus {
-            border-color: #B05C42;
-        }
-        .admin-login-btn {
-            width: 100%;
-            padding: 15px;
-            background: #B05C42;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 2px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: background 0.3s;
-        }
-        .admin-login-btn:hover {
-            background: #3E2C2C;
-        }
-        .admin-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        .login-error {
-            color: #B05C42;
-            font-size: 0.85rem;
-            margin-top: 15px;
-            display: none;
-        }
+        .admin-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.9); z-index: 99999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
+        .admin-modal.active { opacity: 1; visibility: visible; }
+        .admin-login-box { background: #F9F7F2; padding: 50px; max-width: 400px; width: 90%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; transform: translateY(20px); transition: transform 0.4s ease; }
+        .admin-modal.active .admin-login-box { transform: translateY(0); }
+        .admin-login-box h2 { font-family: 'Kalam', cursive; color: #3E2C2C; background: none; -webkit-text-fill-color: #3E2C2C; margin-bottom: 30px; font-size: 2rem; filter: none; animation: none; }
+        .admin-login-box input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E8E4DC; font-family: 'Inter', sans-serif; background: #F9F7F2; outline: none; }
+        .admin-login-box input:focus { border-color: #B05C42; }
+        .admin-login-btn { width: 100%; padding: 15px; background: #B05C42; color: white; border: none; cursor: pointer; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; transition: background 0.3s; }
+        .admin-login-btn:hover { background: #3E2C2C; }
+        .admin-close { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; }
+        .login-error { color: #B05C42; font-size: 0.85rem; margin-top: 15px; display: none; }
     </style>
 </head>
 <body>
@@ -297,7 +238,7 @@
     <nav id="nav">
         <div class="nav-container">
             <div class="nav-left">
-                <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 90px;"></div>
+                <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 70px;"></div>
                 <button class="nav-admin-btn" onclick="openAdmin()">Admin Login</button>
             </div>
             
@@ -306,15 +247,16 @@
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <div class="dropdown">
-                    <span class="dropdown-btn">Portfolio</span>
+                    <span class="dropdown-btn">Projects</span>
                     <div class="dropdown-content">
                         <a href="#past-projects">Past Projects</a>
-                        <a href="#grooved">Grooved Panels</a>
-                        <a href="#textured">Textured Panels</a>
-                        <a href="#mashrabiya">Mashrabiya Grills</a>
-                        
-                  </div>
+                        <a href="#grooved">On-Site Execution</a>
+                        <a href="#textured">Interior Finishing</a>
+                        <a href="#mashrabiya">Bespoke Furniture</a>
+                        <a href="#office">Client Works</a>
+                    </div>
                 </div>
+                <a href="#clients">Clientele</a>
                 <a href="#careers">Careers</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -324,23 +266,22 @@
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#past-projects">Past Projects</a>
+            <a href="#clients">Clientele</a>
             <a href="#careers">Careers</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <!-- 1. HERO -->
+    <!-- 1. HERO (Image Fully Visible) -->
     <section id="home" class="hero">
         <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Texture.<br>Home.</h1>
             <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
             <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
         </div>
         <div class="hero-marquee">
-            <span>FIZZA INTERIOR // SEASON YOUR WALLS // 350+ DESIGNS // BESPOKE CRAFTSMANSHIP //</span>
+            <span>FIZZA INTERIOR // TURNKEY PROJECT EXECUTION // INTERIOR FINISHING // FAÇADE & EXTERNAL SPECIALISTS //</span>
         </div>
     </section>
 
@@ -350,8 +291,8 @@
             <div class="about-img reveal"><img src="about.jpg" alt="About Fizza Interior"></div>
             <div class="about-text reveal">
                 <h2>The Silent Philosophy of Fizza</h2>
-                <p>We do not manufacture panels. We curate the stage upon which life unfolds. Born in the heart of Mumbai's bustling industrial estate, our craft is rooted in the belief that the backdrop of a room changes how we feel within it.</p>
-                <p>With over 350 textures—from the infinite rhythm of our CNC-cut Mashrabiya grills to the raw warmth of grooved oak—we "Season Your Walls." We give architecture a heartbeat, layering memory, light, and a profound sense of belonging into every single grain.</p>
+                <p>We are a turnkey execution studio dedicated to delivering architectural finishing and interior works for India's most prestigious developers and homeowners. Our craft is rooted in precision, scale, and uncompromising quality.</p>
+                <p>From external façade plastering and painting to internal finishing and bespoke furniture, we are the single-point partner for entire luxury spaces.</p>
                 <p class="about-signature">— Fizza, Founder & Principal Curator</p>
             </div>
         </div>
@@ -363,8 +304,8 @@
             <div class="owner-text reveal">
                 <h2>The Heart Behind the Craft</h2>
                 <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
-                <p>Through years of relentless dedication, Fazila transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
-                <p class="owner-signature">— Fazila, Founder & Principal Curator</p>
+                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
+                <p class="owner-signature">— Fizza, Founder & Principal Curator</p>
             </div>
             <div class="owner-img reveal">
                 <img src="owner.jpg" alt="Founder of Fizza Interior">
@@ -372,26 +313,67 @@
         </div>
     </section>
 
-    <!-- 4. SERVICES -->
-    <section id="services" class="section-padding services-section">
-        <div class="container">
-            <h2 class="reveal">The Art of Making Spaces Feel Alive</h2>
-            <div class="services-grid">
-                <div class="service-card reveal"><div class="service-num">01</div><h3>The Sanctuary</h3><p>Step into a home where walls breathe. We layer deep, warm textures to build emotional retreats.</p></div>
-                <div class="service-card reveal"><div class="service-num">02</div><h3>The Command</h3><p>For businesses, the first impression is a silent speech. We engineer high-impact, durable walls.</p></div>
-                <div class="service-card reveal"><div class="service-num">03</div><h3>The Bespoke Cut</h3><p>Precision CNC routing across MDF, Corian, and veneers to match your exact blueprint.</p></div>
-                <div class="service-card reveal"><div class="service-num">04</div><h3>The Promise</h3><p>From one-roof quality control to your doorstep, every deadline is met and every space is transformed.</p></div>
+    <!-- 4. RUNNING TRUSTED CLIENTS SECTION -->
+    <section id="clients" class="clients-section">
+        <div class="container clients-header">
+            <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
+        </div>
+        
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <img src="client-1.png" class="client-logo" alt="L&T">
+                <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
+                <img src="client-3.png" class="client-logo" alt="Tata Housing">
+                <img src="client-4.png" class="client-logo" alt="Lodha">
+                <img src="client-5.png" class="client-logo" alt="Neelkanth">
+                <img src="client-6.png" class="client-logo" alt="Sheth Developers">
+                <img src="client-7.png" class="client-logo" alt="Lokhandwala">
+                <img src="client-8.png" class="client-logo" alt="Wadhwa">
+                
+                <span class="client-text">L&T</span>
+                <span class="client-text">Oberoi Realty</span>
+                <span class="client-text">Tata Housing</span>
+                <span class="client-text">Lodha</span>
+                <span class="client-text">Neelkanth</span>
+
+                <img src="client-1.png" class="client-logo" alt="L&T">
+                <img src="client-2.png" class="client-logo" alt="Oberoi Realty">
+                <img src="client-3.png" class="client-logo" alt="Tata Housing">
+                <img src="client-4.png" class="client-logo" alt="Lodha">
+                <img src="client-5.png" class="client-logo" alt="Neelkanth">
+                <img src="client-6.png" class="client-logo" alt="Sheth Developers">
+                <img src="client-7.png" class="client-logo" alt="Lokhandwala">
+                <img src="client-8.png" class="client-logo" alt="Wadhwa">
+                
+                <span class="client-text">L&T</span>
+                <span class="client-text">Oberoi Realty</span>
+                <span class="client-text">Tata Housing</span>
+                <span class="client-text">Lodha</span>
+                <span class="client-text">Neelkanth</span>
             </div>
         </div>
     </section>
 
-    <!-- 5. MASTERPIECES SLIDER -->
+    <!-- 5. SERVICES -->
+    <section id="services" class="section-padding services-section">
+        <div class="container">
+            <h2 class="reveal">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card reveal"><div class="service-num">01</div><h3>Turnkey Project Execution</h3><p>End-to-end execution of luxury residential and commercial spaces. One partner, total accountability.</p></div>
+                <div class="service-card reveal"><div class="service-num">02</div><h3>Façade & External Finishing</h3><p>Premium plastering, painting, and weatherproofing for iconic high-rise towers.</p></div>
+                <div class="service-card reveal"><div class="service-num">03</div><h3>Premium Interior Finishing</h3><p>Internal painting, textures, and high-end surface solutions designed for luxury living.</p></div>
+                <div class="service-card reveal"><div class="service-num">04</div><h3>Bespoke Furniture & Interiors</h3><p>Custom-crafted pieces and complete interior fit-outs for elite homes and offices.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. MASTERPIECES SLIDER -->
     <section id="past-projects" class="projects-showcase-section">
         <div class="container slider-header"><h2>Our Masterpieces</h2></div>
         <div class="project-slider" id="projectSlider">
-            <div class="project-slide active"><img src="past-project-1.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Residential | 2025</div><h3>The Mumbai Masterpiece</h3><p>A private sanctuary bathed in warm oak.</p><a href="#contact" class="project-btn">View Project</a></div></div>
-            <div class="project-slide"><img src="past-project-2.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Commercial | 2024</div><h3>The Corporate Loft</h3><p>Sleek glass partitions engineered for focus.</p><a href="#contact" class="project-btn">View Project</a></div></div>
-            <div class="project-slide"><img src="past-project-3.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Bespoke | 2023</div><h3>The Heritage Villa</h3><p>Where ornate CNC detailing meets raw wood.</p><a href="#contact" class="project-btn">View Project</a></div></div>
+            <div class="project-slide active"><img src="past-project-1.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Commercial | 2025</div><h3>The Oberoi Splendor</h3><p>End-to-end façade execution for a luxury high-rise.</p><a href="#contact" class="project-btn">View Project</a></div></div>
+            <div class="project-slide"><img src="past-project-2.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Commercial | 2024</div><h3>L&T ECC Division</h3><p>Precision interior finishing and plastering for a corporate giant.</p><a href="#contact" class="project-btn">View Project</a></div></div>
+            <div class="project-slide"><img src="past-project-3.jpg" alt="Project"><div class="project-slide-content"><div class="project-tag">Residential | 2023</div><h3>Tata Housing Towers</h3><p>Turnkey painting and interior execution at scale.</p><a href="#contact" class="project-btn">View Project</a></div></div>
             <div class="slider-nav">
                 <button class="slider-arrow" id="prevBtn">&#10094;</button>
                 <div class="slider-dots"><span class="dot active" onclick="goToSlide(0)"></span><span class="dot" onclick="goToSlide(1)"></span><span class="dot" onclick="goToSlide(2)"></span></div>
@@ -400,20 +382,20 @@
         </div>
     </section>
 
-    <!-- 6. PORTFOLIO -->
+    <!-- 7. PORTFOLIO GRID -->
     <section id="portfolio" class="section-padding">
         <div class="container">
-            <h2 class="text-center reveal">Signature Textures</h2>
+            <h2 class="text-center reveal">Signature Work</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item reveal" id="grooved"><img src="project1.jpg" alt="Grooved Panel"><div class="portfolio-overlay">Grooved Wall Panel</div></div>
-                <div class="portfolio-item reveal" id="textured"><img src="project2.jpg" alt="Textured Panel"><div class="portfolio-overlay">Textured Wall Panel</div></div>
-                <div class="portfolio-item reveal" id="mashrabiya"><img src="project3.jpg" alt="Mashrabiya Grill"><div class="portfolio-overlay">Mashrabiya Grill</div></div>
-                
+                <div class="portfolio-item reveal" id="grooved"><img src="project1.jpg" alt="On-Site Execution"><div class="portfolio-overlay">On-Site Execution</div></div>
+                <div class="portfolio-item reveal" id="textured"><img src="project2.jpg" alt="Interior Finishing"><div class="portfolio-overlay">Interior Finishing</div></div>
+                <div class="portfolio-item reveal" id="mashrabiya"><img src="project3.jpg" alt="Bespoke Furniture"><div class="portfolio-overlay">Bespoke Furniture</div></div>
+                <div class="portfolio-item reveal" id="office"><img src="project4.jpg" alt="Client Works"><div class="portfolio-overlay">Client Works</div></div>
             </div>
         </div>
     </section>
 
-    <!-- 7. CAREERS -->
+    <!-- 8. CAREERS -->
     <section id="careers" class="section-padding team-section">
         <div class="container team-grid">
             <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
@@ -425,14 +407,14 @@
         </div>
     </section>
 
-    <!-- 8. CONTACT -->
+    <!-- 9. CONTACT -->
     <section id="contact" class="contact-section">
         <div class="container contact-grid">
             <div class="contact-info reveal">
                 <h2>Your Canvas Awaits</h2>
                 <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
                 <p><strong>Email:</strong> info@fizzainterior.com</p>
-                <p><strong>Phone:</strong> +91 90040 15018</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
                 <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
             </div>
             <form class="reveal" id="contactForm">
