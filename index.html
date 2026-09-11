@@ -1,1739 +1,700 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FIZZA INTERIOR | The Art of Sensory Walls</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ===== ORIGINAL CSS (exactly as you had) ===== */
-    :root {
-      --bg-cream: #F9F7F2;
-      --text-charcoal: #111111;
-      --color-rust: #B05C42;
-      --color-moss: #4A5D43;
-      --color-blue: #2B3A67;
-      --color-brown: #3E2C2C;
-      --color-muted: #7A7670;
-      --border-light: #E8E4DC;
-      --color-gold: #C29A5B;
-      --lavender: #E6E6FA;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIZZA INTERIOR | The Art of Sensory Walls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #F9F7F2;
+            --text-charcoal: #111111;
+            --color-rust: #B05C42;
+            --color-moss: #4A5D43;
+            --color-blue: #2B3A67;
+            --color-brown: #3E2C2C;
+            --color-muted: #7A7670;
+            --border-light: #E8E4DC;
+            --color-gold: #C29A5B;
+            --lavender: #E6E6FA;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--text-charcoal);
-      line-height: 1.7;
-      overflow-x: hidden;
-      font-weight: 400;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
+        
+        /* SOFT CHARCOAL PENCIL SPARKLE */
+        h1, h2, h3, h4, h5, h6, .about-signature, .owner-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+            transform: skewX(-1deg);
+            background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
+            animation: sparkleSweep 6s linear infinite;
+        }
 
-    /* SOFT CHARCOAL PENCIL SPARKLE */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .about-signature,
-    .owner-signature,
-    .service-num,
-    .portfolio-overlay,
-    .project-slide-content h3,
-    .project-slide-content .project-tag {
-      font-family: 'Kalam', cursive;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: 0.5px;
-      transform: skewX(-1deg);
-      background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
-      animation: sparkleSweep 6s linear infinite;
-    }
+        @keyframes sparkleSweep { to { background-position: -200% center; } }
+        h1 { font-size: clamp(3rem, 7vw, 6rem); }
+        h2 { font-size: clamp(3rem, 5vw, 5rem); }
+        h3 { font-size: 2.2rem; }
 
-    @keyframes sparkleSweep {
-      to {
-        background-position: -200% center;
-      }
-    }
-    h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
-    }
-    h2 {
-      font-size: clamp(3rem, 5vw, 5rem);
-    }
-    h3 {
-      font-size: 2.2rem;
-    }
+        /* FIX: Clientele headline smaller */
+        .clients-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+        }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    img {
-      display: block;
-      max-width: 100%;
-    }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .section-padding {
-      padding: 120px 0;
-    }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .section-padding { padding: 120px 0; }
 
-    .btn {
-      display: inline-block;
-      background-color: transparent;
-      color: var(--text-charcoal);
-      padding: 18px 40px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: 1px solid var(--text-charcoal);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .btn:hover {
-      background-color: var(--text-charcoal);
-      color: var(--bg-cream);
-    }
-    .btn-light {
-      border-color: var(--bg-cream);
-      color: var(--bg-cream);
-    }
-    .btn-light:hover {
-      background-color: var(--bg-cream);
-      color: var(--text-charcoal);
-    }
+        .btn { display: inline-block; background-color: transparent; color: var(--text-charcoal); padding: 18px 40px; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--text-charcoal); cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; }
+        .btn:hover { background-color: var(--text-charcoal); color: var(--bg-cream); }
+        .btn-light { border-color: var(--bg-cream); color: var(--bg-cream); }
+        .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #F0EEFA;
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      padding: 0;
-      height: 90px;
-      border-bottom: 4px solid var(--lavender);
-      box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8);
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 40px;
-      height: 90px;
-    }
-    .nav-left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      height: 100%;
-    }
-    .logo img {
-      height: 70px !important;
-      width: auto;
-      max-width: 400px;
-      object-fit: contain;
-    }
-    .nav-admin-btn {
-      background: none;
-      border: 1px solid var(--color-rust);
-      color: var(--color-rust);
-      padding: 3px 10px;
-      cursor: pointer;
-      font-size: 0.6rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-top: -5px;
-      transition: all 0.3s;
-    }
-    .nav-admin-btn:hover {
-      background: var(--color-rust);
-      color: var(--bg-cream);
-    }
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-    }
-    .nav-links a {
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      position: relative;
-      padding-bottom: 5px;
-      color: var(--text-charcoal);
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--color-rust);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+        /* NAV */
+        nav { 
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background: #F0EEFA; 
+            backdrop-filter: blur(12px); 
+            z-index: 1000; 
+            padding: 0; 
+            height: 90px; 
+            border-bottom: 4px solid var(--lavender); 
+            box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8); 
+        }
+        .nav-container { 
+            display: flex; justify-content: space-between; align-items: center; 
+            max-width: 1400px; margin: 0 auto; padding: 0 40px; 
+            height: 90px; 
+        }
+        .nav-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+        }
+        .logo img { 
+            height: 70px !important; 
+            width: auto; 
+            max-width: 400px; 
+            object-fit: contain; 
+        }
+        .nav-admin-btn {
+            background: none;
+            border: 1px solid var(--color-rust);
+            color: var(--color-rust);
+            padding: 3px 10px;
+            cursor: pointer;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -5px;
+            transition: all 0.3s;
+        }
+        .nav-admin-btn:hover {
+            background: var(--color-rust);
+            color: var(--bg-cream);
+        }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--color-rust); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-btn {
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      position: relative;
-      padding-bottom: 5px;
-      color: var(--text-charcoal);
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #F0EEFA;
-      min-width: 220px;
-      box-shadow: 0px 15px 30px rgba(230, 230, 250, 0.9);
-      border: 1px solid #D0CFFA;
-      z-index: 1000;
-      padding: 10px 0;
-    }
-    .dropdown-content a {
-      display: block;
-      color: var(--text-charcoal);
-      padding: 12px 20px;
-      text-decoration: none;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-    .dropdown-content a:hover {
-      background-color: var(--color-rust);
-      color: var(--bg-cream);
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-btn { cursor: pointer; font-size: 0.9rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #F0EEFA; min-width: 220px; box-shadow: 0px 15px 30px rgba(230, 230, 250, 0.9); border: 1px solid #D0CFFA; z-index: 1000; padding: 10px 0; }
+        .dropdown-content a { display: block; color: var(--text-charcoal); padding: 12px 20px; text-decoration: none; letter-spacing: 1px; font-size: 0.8rem; font-weight: 500; }
+        .dropdown-content a:hover { background-color: var(--color-rust); color: var(--bg-cream); }
+        .dropdown:hover .dropdown-content { display: block; }
 
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 2px;
-      background: var(--text-charcoal);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 90px;
-      left: 0;
-      width: 100%;
-      background: #F0EEFA;
-      padding: 30px 20px;
-      z-index: 999;
-      flex-direction: column;
-      gap: 25px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .mobile-menu a {
-      font-size: 1.2rem;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 500;
-      color: var(--text-charcoal);
-    }
-    .mobile-menu.active {
-      display: flex;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .logo img {
-        height: 50px;
-      }
-      .nav-admin-btn {
-        margin-top: -5px;
-      }
-      .nav-container {
-        height: 70px;
-      }
-      nav {
-        height: 70px;
-      }
-      .container {
-        padding: 0 20px;
-      }
-    }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-charcoal); }
+        .mobile-menu { display: none; position: fixed; top: 90px; left: 0; width: 100%; background: #F0EEFA; padding: 30px 20px; z-index: 999; flex-direction: column; gap: 25px; border-bottom: 1px solid var(--border-light); }
+        .mobile-menu a { font-size: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--text-charcoal); }
+        .mobile-menu.active { display: flex; }
+        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 50px; } .nav-admin-btn { margin-top: -5px; } .nav-container { height: 70px; } nav { height: 70px; } .container { padding: 0 20px; } }
 
-    /* HERO */
-    .hero {
-      height: 100vh;
-      height: 100dvh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      text-align: center;
-    }
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
-    }
-    .hero-overlay {
-      display: none;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      max-width: 1200px;
-      padding: 0 40px;
-    }
-    .hero-content h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
-    }
-    .hero-content p {
-      font-size: 1.3rem;
-      font-weight: 300;
-      color: var(--text-charcoal);
-      margin-bottom: 40px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
-    }
-    .hero-marquee {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(17, 17, 17, 0.9);
-      color: var(--bg-cream);
-      padding: 15px 0;
-      overflow: hidden;
-      z-index: 10;
-      white-space: nowrap;
-    }
-    .hero-marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      font-size: 1.2rem;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      animation: marquee 20s linear infinite;
-    }
-    @keyframes marquee {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
+        /* HERO */
+        .hero { height: 100vh; height: 100dvh; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-align: center; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-overlay { display: none; }
+        .hero-content { position: relative; z-index: 10; max-width: 1200px; padding: 0 40px; }
+        .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)); }
+        .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--text-charcoal); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(255,255,255,0.8); }
+        .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
+        .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-    /* ABOUT */
-    .about-section {
-      background-color: var(--color-rust);
-      color: var(--bg-cream);
-    }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .about-img {
-      width: 100%;
-      height: 600px;
-      overflow: hidden;
-    }
-    .about-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s ease;
-    }
-    .about-img:hover img {
-      transform: scale(1.05);
-    }
-    .about-text p {
-      font-size: 1.1rem;
-      color: rgba(248, 246, 240, 0.95);
-      margin-bottom: 20px;
-    }
-    .about-signature {
-      font-size: 2rem;
-      margin-top: 20px;
-    }
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .about-img {
-        height: 400px;
-      }
-    }
+        /* ABOUT */
+        .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-img { width: 100%; height: 600px; overflow: hidden; }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .about-img:hover img { transform: scale(1.05); }
+        .about-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
+        .about-signature { font-size: 2rem; margin-top: 20px; }
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
 
-    /* OWNER */
-    .owner-section {
-      background-color: var(--color-gold);
-    }
-    .owner-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .owner-text {
-      order: 1;
-    }
-    .owner-img {
-      order: 2;
-      width: 100%;
-      height: 600px;
-      overflow: hidden;
-    }
-    .owner-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s ease;
-    }
-    .owner-img:hover img {
-      transform: scale(1.05);
-    }
-    .owner-text p {
-      font-size: 1.1rem;
-      color: var(--text-charcoal);
-      margin-bottom: 20px;
-    }
-    .owner-signature {
-      font-size: 2rem;
-      margin-top: 20px;
-      color: var(--color-brown);
-    }
-    @media (max-width: 768px) {
-      .owner-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .owner-img {
-        height: 400px;
-      }
-    }
+        /* OWNER */
+        .owner-section { background-color: var(--color-gold); }
+        .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .owner-text { order: 1; }
+        .owner-img { order: 2; width: 100%; height: 600px; overflow: hidden; }
+        .owner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .owner-img:hover img { transform: scale(1.05); }
+        .owner-text p { font-size: 1.1rem; color: var(--text-charcoal); margin-bottom: 20px; }
+        .owner-signature { font-size: 2rem; margin-top: 20px; color: var(--color-brown); }
+        @media (max-width: 768px) { .owner-grid { grid-template-columns: 1fr; gap: 40px; } .owner-img { height: 400px; } }
 
-    /* CLIENTELE FADE */
-    .clients-section {
-      background-color: var(--bg-cream);
-      padding: 80px 0;
-      overflow: hidden;
-    }
-    .clients-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        /* CLIENTELE FADE */
+        .clients-section { background-color: var(--bg-cream); padding: 80px 0; overflow: hidden; }
+        .clients-header { text-align: center; margin-bottom: 40px; }
+        
+        .clients-crossfade {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
+        }
+        
+        .client-item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            opacity: 0;
+            filter: blur(5px);
+            transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        .client-item.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            filter: blur(0);
+        }
+        
+        .client-item.exit {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+            filter: blur(8px);
+        }
+        
+        .client-text {
+            font-family: 'Kalam', cursive;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
+            animation: sparkleSweep 6s linear infinite;
+        }
+        
+        .client-item img.client-logo {
+            height: 40px;
+            max-width: 150px;
+            object-fit: contain;
+            filter: grayscale(100%) opacity(0.8);
+            transition: filter 0.3s;
+        }
+        
+        .clients-crossfade::before,
+        .clients-crossfade::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, var(--bg-cream), transparent);
+            z-index: 10;
+            pointer-events: none;
+            transition: transform 1.2s ease;
+        }
+        .clients-crossfade::before { top: 0; transform: translateY(0); }
+        .clients-crossfade::after { bottom: 0; transform: translateY(0); background: linear-gradient(to top, var(--bg-cream), transparent); }
+        .clients-crossfade.fog-up::before { transform: translateY(-100%); }
+        .clients-crossfade.fog-down::after { transform: translateY(100%); }
 
-    .clients-crossfade {
-      position: relative;
-      width: 100%;
-      height: 60px;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-      mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-    }
+        /* SERVICES */
+        .services-section { background-color: var(--color-moss); color: var(--bg-cream); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
+        .service-card:hover { background: var(--bg-cream); color: var(--color-moss); transform: translateY(-10px); }
+        .service-num { font-size: 3.5rem; margin-bottom: 20px; }
+        .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
 
-    .client-item {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
-      opacity: 0;
-      filter: blur(5px);
-      transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
-      white-space: nowrap;
-      text-align: center;
-    }
-    .client-item.active {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-      filter: blur(0);
-    }
-    .client-item.exit {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.9);
-      filter: blur(8px);
-    }
-    .client-text {
-      font-family: 'Kalam', cursive;
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
-      animation: sparkleSweep 6s linear infinite;
-    }
-    .client-item img.client-logo {
-      height: 40px;
-      max-width: 150px;
-      object-fit: contain;
-      filter: grayscale(100%) opacity(0.8);
-      transition: filter 0.3s;
-    }
+        /* TURNKEY SOLUTIONS */
+        .turnkey-section {
+            background-color: var(--bg-cream);
+            padding: 120px 0;
+        }
+        .turnkey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .turnkey-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            background: var(--text-charcoal);
+            cursor: default;
+        }
+        .turnkey-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            opacity: 0.85;
+        }
+        .turnkey-card:hover img {
+            transform: scale(1.08);
+            opacity: 0.7;
+        }
+        .turnkey-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--text-charcoal);
+            padding: 24px 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            color: var(--bg-cream);
+            font-family: 'Inter', sans-serif;
+        }
+        .turnkey-card:hover .turnkey-overlay {
+            transform: translateY(0);
+        }
+        .turnkey-overlay h3 {
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            font-size: 1.6rem;
+            background: linear-gradient(90deg, #f9f7f2, #c29a5b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+            transform: none;
+            animation: none;
+            filter: none;
+        }
+        .turnkey-overlay p {
+            font-size: 0.9rem;
+            color: rgba(249, 247, 242, 0.8);
+            margin: 0;
+            line-height: 1.5;
+        }
 
-    .clients-crossfade::before,
-    .clients-crossfade::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background: linear-gradient(to bottom, var(--bg-cream), transparent);
-      z-index: 10;
-      pointer-events: none;
-      transition: transform 1.2s ease;
-    }
-    .clients-crossfade::before {
-      top: 0;
-      transform: translateY(0);
-    }
-    .clients-crossfade::after {
-      bottom: 0;
-      transform: translateY(0);
-      background: linear-gradient(to top, var(--bg-cream), transparent);
-    }
-    .clients-crossfade.fog-up::before {
-      transform: translateY(-100%);
-    }
-    .clients-crossfade.fog-down::after {
-      transform: translateY(100%);
-    }
+        /* CAREERS */
+        .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
+        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .team-img { width: 100%; height: auto; }
+        .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
 
-    /* SERVICES */
-    .services-section {
-      background-color: var(--color-moss);
-      color: var(--bg-cream);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    .service-card {
-      background: transparent;
-      border: 1px solid rgba(248, 246, 240, 0.2);
-      padding: 50px 30px;
-      transition: all 0.4s ease;
-    }
-    .service-card:hover {
-      background: var(--bg-cream);
-      color: var(--color-moss);
-      transform: translateY(-10px);
-    }
-    .service-num {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-    }
-    .service-card p {
-      font-size: 1rem;
-      color: rgba(248, 246, 240, 0.7);
-    }
+        /* CONTACT */
+        .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
+        form { display: grid; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: rgba(248, 246, 240, 0.6); }
+        .form-group input, .form-group textarea { padding: 15px; border: 1px solid rgba(248, 246, 240, 0.3); font-family: inherit; font-size: 1rem; background: transparent; color: var(--bg-cream); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-gold); }
 
-    /* SLIDER */
-    .projects-showcase-section {
-      background-color: var(--bg-cream);
-      padding: 120px 0;
-    }
-    .slider-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .project-slider {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-      height: 80dvh;
-      overflow: hidden;
-      background: var(--text-charcoal);
-    }
-    .project-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-      z-index: 1;
-    }
-    .project-slide.active {
-      opacity: 1;
-      z-index: 2;
-    }
-    .project-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .project-slide-content {
-      position: absolute;
-      bottom: 80px;
-      left: 80px;
-      right: 80px;
-      color: var(--bg-cream);
-      z-index: 3;
-      max-width: 600px;
-    }
-    .project-slide-content .project-tag {
-      font-size: 1rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      opacity: 0;
-      animation: textSlideIn 1s ease forwards;
-      animation-delay: 0.5s;
-    }
-    .project-slide-content p {
-      font-size: 1.1rem;
-      font-weight: 300;
-      opacity: 0;
-      animation: textSlideIn 1s ease forwards;
-      animation-delay: 1.1s;
-    }
-    .project-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 30px;
-      border: 1px solid var(--bg-cream);
-      color: var(--bg-cream);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.85rem;
-      opacity: 0;
-      animation: textSlideIn 1s ease forwards;
-      animation-delay: 1.4s;
-      transition: all 0.3s;
-    }
-    .project-btn:hover {
-      background: var(--bg-cream);
-      color: var(--text-charcoal);
-    }
-    @keyframes textSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .slider-nav {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      z-index: 10;
-    }
-    .slider-arrow {
-      background: none;
-      border: none;
-      color: var(--bg-cream);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    .slider-dots {
-      display: flex;
-      gap: 15px;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-    }
-    .dot.active {
-      background: var(--bg-cream);
-    }
+        footer { background-color: var(--text-charcoal); color: var(--bg-cream); padding: 60px 0; text-align: center; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* PORTFOLIO */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 20px;
-    }
-    .portfolio-item {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-    }
-    .portfolio-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-    .portfolio-item:hover img {
-      transform: scale(1.08);
-    }
-    .portfolio-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--text-charcoal);
-      padding: 20px;
-      transform: translateY(100%);
-      transition: transform 0.5s ease;
-      font-size: 1.8rem;
-    }
-    .portfolio-item:hover .portfolio-overlay {
-      transform: translateY(0);
-    }
+        /* ADMIN MODAL */
+        .admin-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.9); z-index: 99999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
+        .admin-modal.active { opacity: 1; visibility: visible; }
+        .admin-login-box { background: #F9F7F2; padding: 50px; max-width: 420px; width: 90%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; transform: translateY(20px); transition: transform 0.4s ease; }
+        .admin-modal.active .admin-login-box { transform: translateY(0); }
+        .admin-login-box h2 { font-family: 'Kalam', cursive; color: #3E2C2C; background: none; -webkit-text-fill-color: #3E2C2C; margin-bottom: 30px; font-size: 2rem; filter: none; animation: none; }
+        .admin-login-box input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E8E4DC; font-family: 'Inter', sans-serif; background: #F9F7F2; outline: none; border-radius: 4px; }
+        .admin-login-box input:focus { border-color: #B05C42; }
+        .admin-login-btn { width: 100%; padding: 15px; background: #B05C42; color: white; border: none; cursor: pointer; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; transition: background 0.3s; border-radius: 4px; }
+        .admin-login-btn:hover { background: #3E2C2C; }
+        .admin-close { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; }
+        .login-error { color: #B05C42; font-size: 0.85rem; margin-top: 15px; display: none; }
 
-    /* CAREERS */
-    .team-section {
-      background-color: var(--color-blue);
-      color: var(--bg-cream);
-    }
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .team-img {
-      width: 100%;
-      height: auto;
-    }
-    .team-text p {
-      font-size: 1.1rem;
-      color: rgba(248, 246, 240, 0.95);
-      margin-bottom: 20px;
-    }
-
-    /* CONTACT */
-    .contact-section {
-      background-color: var(--color-brown);
-      color: var(--bg-cream);
-      padding: 120px 0;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .contact-info p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      color: rgba(248, 246, 240, 0.8);
-    }
-    form {
-      display: grid;
-      gap: 20px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .form-group label {
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: rgba(248, 246, 240, 0.6);
-    }
-    .form-group input,
-    .form-group textarea {
-      padding: 15px;
-      border: 1px solid rgba(248, 246, 240, 0.3);
-      font-family: inherit;
-      font-size: 1rem;
-      background: transparent;
-      color: var(--bg-cream);
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--color-gold);
-    }
-
-    footer {
-      background-color: var(--text-charcoal);
-      color: var(--bg-cream);
-      padding: 60px 0;
-      text-align: center;
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== ADMIN MODAL ===== */
-    .admin-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(17, 17, 17, 0.9);
-      z-index: 99999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s ease;
-    }
-    .admin-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .admin-login-box {
-      background: #F9F7F2;
-      padding: 50px;
-      max-width: 420px;
-      width: 90%;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-    .admin-modal.active .admin-login-box {
-      transform: translateY(0);
-    }
-    .admin-login-box h2 {
-      font-family: 'Kalam', cursive;
-      color: #3E2C2C;
-      background: none;
-      -webkit-text-fill-color: #3E2C2C;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      filter: none;
-      animation: none;
-    }
-    .admin-login-box input {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid #E8E4DC;
-      font-family: 'Inter', sans-serif;
-      background: #F9F7F2;
-      outline: none;
-      border-radius: 4px;
-    }
-    .admin-login-box input:focus {
-      border-color: #B05C42;
-    }
-    .admin-login-btn {
-      width: 100%;
-      padding: 15px;
-      background: #B05C42;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      letter-spacing: 2px;
-      font-weight: 600;
-      text-transform: uppercase;
-      transition: background 0.3s;
-      border-radius: 4px;
-    }
-    .admin-login-btn:hover {
-      background: #3E2C2C;
-    }
-    .admin-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    .login-error {
-      color: #B05C42;
-      font-size: 0.85rem;
-      margin-top: 15px;
-      display: none;
-    }
-    .admin-login-box .login-remember {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: var(--color-muted);
-      margin: 10px 0 15px;
-      cursor: pointer;
-    }
-    .admin-login-box .login-remember input {
-      width: auto;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* ===== ADMIN DASHBOARD ===== */
-    .admin-dashboard {
-      display: none;
-      position: fixed;
-      top: 90px;
-      right: 20px;
-      width: 380px;
-      max-height: calc(100vh - 120px);
-      background: #F9F7F2;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      z-index: 99998;
-      padding: 30px 25px;
-      overflow-y: auto;
-      border: 1px solid var(--border-light);
-      font-family: 'Inter', sans-serif;
-      color: var(--text-charcoal);
-      transition: all 0.3s ease;
-    }
-    .admin-dashboard.open {
-      display: block;
-    }
-    .admin-dashboard h3 {
-      font-family: 'Kalam', cursive;
-      font-size: 1.8rem;
-      background: none;
-      -webkit-text-fill-color: var(--text-charcoal);
-      animation: none;
-      transform: none;
-      filter: none;
-      margin-bottom: 5px;
-    }
-    .admin-dashboard .admin-sub {
-      font-size: 0.8rem;
-      color: var(--color-muted);
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 15px;
-    }
-    .admin-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 25px;
-    }
-    .admin-stat-card {
-      background: var(--bg-cream);
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
-      padding: 15px 12px;
-      text-align: center;
-    }
-    .admin-stat-card .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--color-rust);
-      display: block;
-    }
-    .admin-stat-card .stat-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--color-muted);
-    }
-    .admin-messages {
-      max-height: 200px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-      border-top: 1px solid var(--border-light);
-      padding-top: 15px;
-    }
-    .admin-messages .msg-item {
-      padding: 10px 0;
-      border-bottom: 1px solid #f0ede8;
-      font-size: 0.85rem;
-    }
-    .admin-messages .msg-item .msg-name {
-      font-weight: 600;
-    }
-    .admin-messages .msg-item .msg-phone {
-      color: var(--color-muted);
-      font-size: 0.75rem;
-    }
-    .admin-messages .msg-item .msg-text {
-      margin-top: 4px;
-      color: #333;
-      font-size: 0.85rem;
-    }
-    .admin-messages .empty-msg {
-      color: var(--color-muted);
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-    }
-    .admin-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--border-light);
-      padding-top: 18px;
-    }
-    .admin-actions button {
-      flex: 1;
-      padding: 10px 16px;
-      border: 1px solid var(--border-light);
-      background: transparent;
-      cursor: pointer;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s;
-      border-radius: 4px;
-      min-width: 80px;
-    }
-    .admin-actions .btn-logout {
-      background: var(--color-rust);
-      color: white;
-      border-color: var(--color-rust);
-    }
-    .admin-actions .btn-logout:hover {
-      background: #3E2C2C;
-      border-color: #3E2C2C;
-    }
-    .admin-actions .btn-close-dash {
-      background: transparent;
-      color: var(--color-muted);
-    }
-    .admin-actions .btn-close-dash:hover {
-      background: var(--border-light);
-    }
-    .admin-dashboard .dash-toggle {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--color-muted);
-      transition: color 0.3s;
-    }
-    .admin-dashboard .dash-toggle:hover {
-      color: var(--text-charcoal);
-    }
-    @media (max-width: 768px) {
-      .admin-dashboard {
-        top: 80px;
-        right: 10px;
-        left: 10px;
-        width: auto;
-        max-height: calc(100vh - 100px);
-      }
-    }
-
-    .footer-admin-link {
-      background: none;
-      border: none;
-      color: rgba(249, 247, 242, 0.4);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-    .footer-admin-link:hover {
-      color: var(--color-gold);
-    }
-  </style>
+        .password-change-section {
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .password-change-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .password-change-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+        }
+        .password-change-section .update-btn {
+            background: #3E2C2C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .password-change-section .update-btn:hover { background: #1f1818; }
+        .password-change-section .update-msg {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            color: #2e7d32;
+        }
+        .password-change-section .update-msg.error { color: #c62828; }
+    </style>
 </head>
 <body>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav id="nav">
-    <div class="nav-container">
-      <div class="nav-left">
-        <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 70px;" /></div>
-        <button class="nav-admin-btn" id="adminLoginBtn">Admin Login</button>
-      </div>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <div class="dropdown">
-          <span class="dropdown-btn">Projects</span>
-          <div class="dropdown-content">
-            <a href="#past-projects">Past Projects</a>
-            <a href="#grooved">On-Site Execution</a>
-            <a href="#textured">Interior Finishing</a>
-            <a href="#mashrabiya">Bespoke Furniture</a>
-            <a href="#office">Client Works</a>
-          </div>
+    <!-- NAVIGATION -->
+    <nav id="nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 70px;"></div>
+                <button class="nav-admin-btn" onclick="openAdmin()">Admin Login</button>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#clients">Clientele</a>
+                <a href="#turnkey">Turnkey Solutions</a>
+                <a href="#careers">Careers</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </div>
-        <a href="#clients">Clientele</a>
-        <a href="#careers">Careers</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#clients">Clientele</a>
-      <a href="#careers">Careers</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#clients">Clientele</a>
+            <a href="#turnkey">Turnkey Solutions</a>
+            <a href="#careers">Careers</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-  <!-- ===== HERO ===== -->
-  <section id="home" class="hero">
-    <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg" />
-    <div class="hero-content">
-      <h1>Texture.<br />Home.</h1>
-      <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
-      <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
-    </div>
-    <div class="hero-marquee">
-      <span>FIZZA INTERIOR // TURNKEY PROJECT EXECUTION // INTERIOR FINISHING // FAÇADE &amp; EXTERNAL SPECIALISTS //</span>
-    </div>
-  </section>
+    <!-- 1. HERO -->
+    <section id="home" class="hero">
+        <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg">
+        <div class="hero-content">
+            <h1>Texture.<br>Home.</h1>
+            <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
+            <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
+        </div>
+        <div class="hero-marquee">
+            <span>FIZZA INTERIOR // TURNKEY PROJECT EXECUTION // INTERIOR FINISHING // FAÇADE & EXTERNAL SPECIALISTS //</span>
+        </div>
+    </section>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="section-padding about-section">
-    <div class="container about-grid">
-      <div class="about-img reveal"><img src="about.jpg" alt="About Fizza Interior" /></div>
-      <div class="about-text reveal">
-        <h2>The Silent Philosophy of Fizza</h2>
-        <p>We are a turnkey execution studio dedicated to delivering architectural finishing and interior works for India's most prestigious developers and homeowners. Our craft is rooted in precision, scale, and uncompromising quality.</p>
-        <p>From external façade plastering and painting to internal finishing and bespoke furniture, we are the single-point partner for entire luxury spaces.</p>
-        <p class="about-signature">— Fizza, Founder &amp; Principal Curator</p>
-      </div>
-    </div>
-  </section>
+    <!-- 2. ABOUT -->
+    <section id="about" class="section-padding about-section">
+        <div class="container about-grid">
+            <div class="about-img reveal"><img src="about.jpg" alt="About Fizza Interior"></div>
+            <div class="about-text reveal">
+                <h2>The Silent Philosophy of Fizza</h2>
+                <p>We are a turnkey execution studio dedicated to delivering architectural finishing and interior works for India's most prestigious developers and homeowners. Our craft is rooted in precision, scale, and uncompromising quality.</p>
+                <p>From external façade plastering and painting to internal finishing and bespoke furniture, we are the single-point partner for entire luxury spaces.</p>
+                <p class="about-signature">— Fizza, Founder & Principal Curator</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== OWNER ===== -->
-  <section class="section-padding owner-section">
-    <div class="container owner-grid">
-      <div class="owner-text reveal">
-        <h2>The Heart Behind the Craft</h2>
-        <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
-        <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
-        <p class="owner-signature">— Fizza, Founder &amp; Principal Curator</p>
-      </div>
-      <div class="owner-img reveal">
-        <img src="owner.jpg" alt="Founder of Fizza Interior" />
-      </div>
-    </div>
-  </section>
+    <!-- 3. OWNER -->
+    <section class="section-padding owner-section">
+        <div class="container owner-grid">
+            <div class="owner-text reveal">
+                <h2>The Heart Behind the Craft</h2>
+                <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
+                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
+                <p class="owner-signature">— Fizza, Founder & Principal Curator</p>
+            </div>
+            <div class="owner-img reveal">
+                <img src="owner.jpg" alt="Founder of Fizza Interior">
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== CLIENTELE ===== -->
-  <section id="clients" class="clients-section">
-    <div class="container clients-header">
-      <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
-    </div>
-    <div class="clients-crossfade" id="clientsFade">
-      <!-- injected by JS -->
-    </div>
-  </section>
+    <!-- 4. CLIENTELE -->
+    <section id="clients" class="clients-section">
+        <div class="container clients-header">
+            <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
+        </div>
+        <div class="clients-crossfade" id="clientsFade">
+            <!-- injected by JS -->
+        </div>
+    </section>
 
-  <!-- ===== SERVICES ===== -->
-  <section id="services" class="section-padding services-section">
-    <div class="container">
-      <h2 class="reveal">Our Expertise</h2>
-      <div class="services-grid">
-        <div class="service-card reveal"><div class="service-num">01</div><h3>Turnkey Project Execution</h3><p>End-to-end execution of luxury residential and commercial spaces. One partner, total accountability.</p></div>
-        <div class="service-card reveal"><div class="service-num">02</div><h3>Façade &amp; External Finishing</h3><p>Premium plastering, painting, and weatherproofing for iconic high-rise towers.</p></div>
-        <div class="service-card reveal"><div class="service-num">03</div><h3>Premium Interior Finishing</h3><p>Internal painting, textures, and high-end surface solutions designed for luxury living.</p></div>
-        <div class="service-card reveal"><div class="service-num">04</div><h3>Bespoke Furniture &amp; Interiors</h3><p>Custom-crafted pieces and complete interior fit-outs for elite homes and offices.</p></div>
-      </div>
-    </div>
-  </section>
+    <!-- 5. SERVICES -->
+    <section id="services" class="section-padding services-section">
+        <div class="container">
+            <h2 class="reveal">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card reveal"><div class="service-num">01</div><h3>Turnkey Project Execution</h3><p>End-to-end execution of luxury residential and commercial spaces. One partner, total accountability.</p></div>
+                <div class="service-card reveal"><div class="service-num">02</div><h3>Façade & External Finishing</h3><p>Premium plastering, painting, and weatherproofing for iconic high-rise towers.</p></div>
+                <div class="service-card reveal"><div class="service-num">03</div><h3>Premium Interior Finishing</h3><p>Internal painting, textures, and high-end surface solutions designed for luxury living.</p></div>
+                <div class="service-card reveal"><div class="service-num">04</div><h3>Bespoke Furniture & Interiors</h3><p>Custom-crafted pieces and complete interior fit-outs for elite homes and offices.</p></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== PROJECT SLIDER ===== -->
-  <section id="past-projects" class="projects-showcase-section">
-    <div class="container slider-header"><h2>Our Masterpieces</h2></div>
-    <div class="project-slider" id="projectSlider">
-      <div class="project-slide active"><img src="past-project-1.jpg" alt="Project" /><div class="project-slide-content"><div class="project-tag">Commercial | 2025</div><h3>The Oberoi Splendor</h3><p>End-to-end façade execution for a luxury high-rise.</p><a href="#contact" class="project-btn">View Project</a></div></div>
-      <div class="project-slide"><img src="past-project-2.jpg" alt="Project" /><div class="project-slide-content"><div class="project-tag">Commercial | 2024</div><h3>L&amp;T ECC Division</h3><p>Precision interior finishing and plastering for a corporate giant.</p><a href="#contact" class="project-btn">View Project</a></div></div>
-      <div class="project-slide"><img src="past-project-3.jpg" alt="Project" /><div class="project-slide-content"><div class="project-tag">Residential | 2023</div><h3>Tata Housing Towers</h3><p>Turnkey painting and interior execution at scale.</p><a href="#contact" class="project-btn">View Project</a></div></div>
-      <div class="slider-nav">
-        <button class="slider-arrow" id="prevBtn">&#10094;</button>
-        <div class="slider-dots"><span class="dot active" data-index="0"></span><span class="dot" data-index="1"></span><span class="dot" data-index="2"></span></div>
-        <button class="slider-arrow" id="nextBtn">&#10095;</button>
-      </div>
-    </div>
-  </section>
+    <!-- 6. TURNKEY SOLUTIONS -->
+    <section id="turnkey" class="turnkey-section">
+        <div class="container">
+            <h2 class="text-center reveal">Turnkey Solutions</h2>
+            <div class="turnkey-grid">
+                <div class="turnkey-card reveal">
+                    <img src="project1.jpg" alt="Concept to Creation">
+                    <div class="turnkey-overlay">
+                        <h3>Concept to Creation</h3>
+                        <p>We translate your vision into a comprehensive execution plan, ensuring every detail is captured from the very first sketch.</p>
+                    </div>
+                </div>
+                <div class="turnkey-card reveal">
+                    <img src="project2.jpg" alt="Design & Material Curation">
+                    <div class="turnkey-overlay">
+                        <h3>Design & Material Curation</h3>
+                        <p>We source and curate the finest materials, finishes, and furnishings – all aligned with your aesthetic and functional requirements.</p>
+                    </div>
+                </div>
+                <div class="turnkey-card reveal">
+                    <img src="project3.jpg" alt="Precision Construction">
+                    <div class="turnkey-overlay">
+                        <h3>Precision Construction</h3>
+                        <p>Our in‑house teams execute with military precision, maintaining the highest standards of quality, safety, and timeline adherence.</p>
+                    </div>
+                </div>
+                <div class="turnkey-card reveal">
+                    <img src="project4.jpg" alt="Seamless Handover">
+                    <div class="turnkey-overlay">
+                        <h3>Seamless Handover</h3>
+                        <p>We deliver your space complete, immaculate, and ready for use – with full documentation and post‑completion support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== PORTFOLIO ===== -->
-  <section id="portfolio" class="section-padding">
-    <div class="container">
-      <h2 class="text-center reveal">Signature Work</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item reveal" id="grooved"><img src="project1.jpg" alt="On-Site Execution" /><div class="portfolio-overlay">On-Site Execution</div></div>
-        <div class="portfolio-item reveal" id="textured"><img src="project2.jpg" alt="Interior Finishing" /><div class="portfolio-overlay">Interior Finishing</div></div>
-        <div class="portfolio-item reveal" id="mashrabiya"><img src="project3.jpg" alt="Bespoke Furniture" /><div class="portfolio-overlay">Bespoke Furniture</div></div>
-        <div class="portfolio-item reveal" id="office"><img src="project4.jpg" alt="Client Works" /><div class="portfolio-overlay">Client Works</div></div>
-      </div>
-    </div>
-  </section>
+    <!-- 7. CAREERS -->
+    <section id="careers" class="section-padding team-section">
+        <div class="container team-grid">
+            <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
+            <div class="team-text reveal">
+                <h2>Carve Your Name into Our Legacy</h2>
+                <p>We are searching for dreamers, architects, and artisans who believe beauty is a responsibility.</p>
+                <a href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position." target="_blank" class="btn btn-light">Send Your Story via WhatsApp</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- ===== CAREERS ===== -->
-  <section id="careers" class="section-padding team-section">
-    <div class="container team-grid">
-      <div class="team-img reveal"><img src="team.jpg" alt="Join Us" /></div>
-      <div class="team-text reveal">
-        <h2>Carve Your Name into Our Legacy</h2>
-        <p>We are searching for dreamers, architects, and artisans who believe beauty is a responsibility.</p>
-        <a href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position." target="_blank" class="btn btn-light">Send Your Story via WhatsApp</a>
-      </div>
-    </div>
-  </section>
+    <!-- 8. CONTACT -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-info reveal">
+                <h2>Your Canvas Awaits</h2>
+                <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
+                <p><strong>Email:</strong> info@fizzainterior.com</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
+            </div>
+            <form class="reveal" id="contactForm">
+                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required></div>
+                <div class="form-group"><label for="message">Your Vision</label><textarea id="message" rows="5" required></textarea></div>
+                <button type="submit" class="btn btn-light">Send Your Vision via WhatsApp</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-grid">
-      <div class="contact-info reveal">
-        <h2>Your Canvas Awaits</h2>
-        <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
-        <p><strong>Email:</strong> info@fizzainterior.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
-      </div>
-      <form class="reveal" id="contactForm">
-        <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required /></div>
-        <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required /></div>
-        <div class="form-group"><label for="message">Your Vision</label><textarea id="message" rows="5" required></textarea></div>
-        <button type="submit" class="btn btn-light">Send Your Vision via WhatsApp</button>
-      </form>
-    </div>
-  </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fizza Interior. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Fizza Interior. All rights reserved. &nbsp;|&nbsp;
-        <button class="footer-admin-link" id="footerAdminBtn">Admin Login</button>
-      </p>
-    </div>
-  </footer>
-
-  <!-- ============================================
-  ADMIN MODAL
-  ============================================ -->
-  <div class="admin-modal" id="adminModal">
-    <span class="admin-close" id="adminCloseBtn">&times;</span>
-    <div class="admin-login-box">
-      <h2>Admin Access</h2>
-      <input type="email" id="adminEmail" placeholder="Email" value="admin@fizza.com" />
-      <input type="password" id="adminPass" placeholder="Password" value="admin123" />
-      <div class="login-remember">
-        <input type="checkbox" id="rememberMe" checked />
-        <label for="rememberMe">Stay signed in</label>
-      </div>
-      <button class="admin-login-btn" id="loginBtn">Login</button>
-      <p class="login-error" id="loginError">Invalid credentials. Please try again.</p>
-      <p style="margin-top:12px;font-size:0.7rem;color:#999;">Demo: admin@fizza.com / admin123</p>
-    </div>
-  </div>
-
-  <!-- ============================================
-  ADMIN DASHBOARD
-  ============================================ -->
-  <div class="admin-dashboard" id="adminDashboard">
-    <button class="dash-toggle" id="dashCloseBtn">✕</button>
-    <h3>Admin Panel</h3>
-    <div class="admin-sub">Welcome back, Admin</div>
-
-    <div class="admin-stats">
-      <div class="admin-stat-card">
-        <span class="stat-number" id="msgCount">0</span>
-        <span class="stat-label">Messages</span>
-      </div>
-      <div class="admin-stat-card">
-        <span class="stat-number">4</span>
-        <span class="stat-label">Projects</span>
-      </div>
+    <!-- ADMIN MODAL -->
+    <div class="admin-modal" id="adminModal">
+        <span class="admin-close" onclick="closeAdmin()">&times;</span>
+        <div class="admin-login-box">
+            <h2>Admin Access</h2>
+            <input type="email" id="adminEmail" placeholder="Email" value="admin@fizza.com">
+            <input type="password" id="adminPass" placeholder="Password">
+            <button class="admin-login-btn" onclick="checkLogin()">Login</button>
+            <p class="login-error" id="loginError">Invalid Credentials. Try again!</p>
+            <div class="password-change-section" id="passwordChangeSection">
+                <h4>Change Password</h4>
+                <input type="password" id="newPass" placeholder="New Password (min 4 chars)">
+                <button class="update-btn" onclick="updatePassword()">Update Password</button>
+                <div class="update-msg" id="updateMsg"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="admin-messages" id="messageList">
-      <div class="empty-msg">No messages yet.</div>
-    </div>
-
-    <div class="admin-actions">
-      <button id="exportBtn">📥 Export</button>
-      <button id="clearBtn">🗑️ Clear</button>
-      <button class="btn-logout" id="logoutBtn">Logout</button>
-      <button class="btn-close-dash" id="dashCloseBtn2">Close</button>
-    </div>
-  </div>
-
-  <!-- ============================================
-  JAVASCRIPT (all logic inside, no inline onclick)
-  ============================================ -->
-  <script>
-    (function() {
-      'use strict';
-
-      // ---------- EXISTING CODE (nav, hamburger, reveals, slider, client fade) ----------
-      const nav = document.getElementById('nav');
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 1)';
-        } else {
-          nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 0.8)';
-        }
-      });
-
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobileMenu');
-      hamburger.addEventListener('click', function() {
-        mobileMenu.classList.toggle('active');
-      });
-
-      // Reveal animations
-      const reveals = document.querySelectorAll('.reveal');
-      const revealObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            revealObserver.unobserve(entry.target);
-          }
+    <script>
+        // ===== ORIGINAL JS (unchanged except removal of slider code) =====
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 1)'; }
+            else { nav.style.boxShadow = '0 10px 35px rgba(230, 230, 250, 0.8)'; }
         });
-      }, { threshold: 0.1 });
-      reveals.forEach(function(el) {
-        revealObserver.observe(el);
-      });
 
-      // Contact form
-      document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const message = document.getElementById('message').value.trim();
-        if (!name || !phone || !message) {
-          alert('Please fill in all fields.');
-          return;
-        }
-        // Save message to localStorage
-        saveMessage({ name, phone, message, date: new Date().toLocaleString() });
-        const text = 'Hello Fizza Interior! My name is ' + name + ' (' + phone + '). I have a specific vision for my space: ' +
-          message;
-        window.open('https://wa.me/919876543210?text=' + encodeURIComponent(text), '_blank');
-        document.getElementById('contactForm').reset();
-        // Refresh dashboard if open
-        if (document.getElementById('adminDashboard').classList.contains('open')) {
-          renderMessages();
-        }
-      });
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('active'); });
 
-      // ---------- PROJECT SLIDER ----------
-      let currentSlide = 0;
-      const slides = document.querySelectorAll('.project-slide');
-      const dots = document.querySelectorAll('.dot');
-      const totalSlides = slides.length;
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
 
-      function updateSlider() {
-        slides.forEach(function(slide) { slide.classList.remove('active'); });
-        dots.forEach(function(dot) { dot.classList.remove('active'); });
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
-      }
-
-      function goToSlide(index) {
-        currentSlide = index;
-        updateSlider();
-      }
-
-      // Attach dot click events
-      dots.forEach(function(dot, idx) {
-        dot.addEventListener('click', function() {
-          goToSlide(idx);
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            const text = `Hello Fizza Interior! My name is ${name} (${phone}). I have a specific vision for my space: ${message}`;
+            window.open(`https://wa.me/919876543210?text=${encodeURIComponent(text)}`, '_blank');
         });
-      });
 
-      document.getElementById('nextBtn').addEventListener('click', function() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateSlider();
-      });
-      document.getElementById('prevBtn').addEventListener('click', function() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateSlider();
-      });
+        // --- ADMIN LOGIC ---
+        function getStoredPassword() {
+            return localStorage.getItem('fizza_admin_password') || 'admin123';
+        }
+        function openAdmin() {
+            document.getElementById('adminModal').classList.add('active');
+            document.getElementById('passwordChangeSection').style.display = 'none';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('updateMsg').textContent = '';
+            document.getElementById('updateMsg').className = 'update-msg';
+            document.getElementById('adminEmail').value = 'admin@fizza.com';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('newPass').value = '';
+        }
+        function closeAdmin() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+        function checkLogin() {
+            const email = document.getElementById('adminEmail').value.trim();
+            const pass = document.getElementById('adminPass').value.trim();
+            const storedPass = getStoredPassword();
+            if (email === 'admin@fizza.com' && pass === storedPass) {
+                document.getElementById('loginError').style.display = 'none';
+                document.getElementById('passwordChangeSection').style.display = 'block';
+                document.getElementById('adminPass').value = '';
+                alert('Welcome Admin! You can now change your password below.');
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+        function updatePassword() {
+            const newPass = document.getElementById('newPass').value.trim();
+            const msgEl = document.getElementById('updateMsg');
+            if (newPass.length < 4) {
+                msgEl.textContent = 'Password must be at least 4 characters.';
+                msgEl.className = 'update-msg error';
+                return;
+            }
+            localStorage.setItem('fizza_admin_password', newPass);
+            msgEl.textContent = '✅ Password updated successfully! (for this browser only)';
+            msgEl.className = 'update-msg';
+            document.getElementById('newPass').value = '';
+        }
 
-      let slideInterval = setInterval(function() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateSlider();
-      }, 5000);
-
-      const slider = document.getElementById('projectSlider');
-      slider.addEventListener('mouseenter', function() { clearInterval(slideInterval); });
-      slider.addEventListener('mouseleave', function() {
-        slideInterval = setInterval(function() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateSlider();
-        }, 5000);
-      });
-
-      // ---------- CLIENT FADE ----------
-      const clientNames = [
-        "LARSEN & TOUBRO LTD", "OBEROI REALITY", "SATELLITE GROUP", "NEELKANTH GROUP", "SHETH DEVELOPERS PVT. LTD",
-        "NAMAN GROUP", "WADHWA GROUP", "PURANIK DEVELOPERS", "YASHRAJ DEVELOPERS", "LOKHANDWALA CONST. PVT.LTD",
-        "SHREELAXMI DEVELOPERS", "CITY CORPORATTION LTD", "ASHFORD HSG CORPORATION", "AJMERA GROUP",
-        "BAFNA BUILDERS & DEVELOPERS", "ASHAPURA DEVELOPERS", "ASHAPURA & RATAN DEVELOPERS", "KALPATARU ENTERPRISES",
-        "TATA HOUSING", "SHETH N CHOPRA DEVELOPERS", "GEE CEE VENTURE PVT LTD"
-      ];
-
-      const fadeContainer = document.getElementById('clientsFade');
-      clientNames.forEach(function(name, idx) {
-        const item = document.createElement('div');
-        item.className = 'client-item';
-        const logoImg = document.createElement('img');
-        logoImg.src = 'client-' + (idx + 1) + '.png';
-        logoImg.alt = name;
-        logoImg.className = 'client-logo';
-        logoImg.onerror = function() {
-          this.style.display = 'none';
-          const textSpan = document.createElement('span');
-          textSpan.className = 'client-text';
-          textSpan.textContent = name;
-          item.appendChild(textSpan);
-        };
-        item.appendChild(logoImg);
-        fadeContainer.appendChild(item);
-      });
-
-      let currentClient = 0;
-      const clientItems = document.querySelectorAll('.client-item');
-      const totalClients = clientItems.length;
-      const crossfadeBox = document.querySelector('.clients-crossfade');
-
-      function showClient(index) {
-        clientItems.forEach(function(item) {
-          item.classList.remove('active', 'exit');
+        // ----- CLIENT FADE (original) -----
+        const clientNames = [
+            "LARSEN & TOUBRO LTD", "OBEROI REALITY", "SATELLITE GROUP", "NEELKANTH GROUP", "SHETH DEVELOPERS PVT. LTD",
+            "NAMAN GROUP", "WADHWA GROUP", "PURANIK DEVELOPERS", "YASHRAJ DEVELOPERS", "LOKHANDWALA CONST. PVT.LTD",
+            "SHREELAXMI DEVELOPERS", "CITY CORPORATTION LTD", "ASHFORD HSG CORPORATION", "AJMERA GROUP",
+            "BAFNA BUILDERS & DEVELOPERS", "ASHAPURA DEVELOPERS", "ASHAPURA & RATAN DEVELOPERS", "KALPATARU ENTERPRISES",
+            "TATA HOUSING", "SHETH N CHOPRA DEVELOPERS", "GEE CEE VENTURE PVT LTD"
+        ];
+        const fadeContainer = document.getElementById('clientsFade');
+        clientNames.forEach(name => {
+            const item = document.createElement('div');
+            item.className = 'client-item';
+            const logoImg = document.createElement('img');
+            logoImg.src = `client-${clientNames.indexOf(name) + 1}.png`;
+            logoImg.alt = name;
+            logoImg.className = 'client-logo';
+            logoImg.onerror = function() {
+                this.style.display = 'none';
+                const textSpan = document.createElement('span');
+                textSpan.className = 'client-text';
+                textSpan.textContent = name;
+                item.appendChild(textSpan);
+            };
+            item.appendChild(logoImg);
+            fadeContainer.appendChild(item);
         });
-        clientItems[index].classList.add('active');
-        crossfadeBox.classList.add('fog-up', 'fog-down');
-        setTimeout(function() {
-          crossfadeBox.classList.remove('fog-up', 'fog-down');
-        }, 1200);
-      }
-
-      function nextClient() {
-        clientItems[currentClient].classList.add('exit');
-        setTimeout(function() {
-          currentClient = (currentClient + 1) % totalClients;
-          showClient(currentClient);
-        }, 800);
-      }
-      showClient(0);
-      setInterval(nextClient, 2500);
-
-      // ============================================
-      // ADMIN LOGIC (all event listeners)
-      // ============================================
-
-      // ---------- CREDENTIALS ----------
-      const ADMIN_CREDENTIALS = {
-        email: 'admin@fizza.com',
-        password: 'admin123'
-      };
-
-      // ---------- LOCAL STORAGE KEYS ----------
-      const STORAGE_KEYS = {
-        messages: 'fizza_messages',
-        session: 'fizza_admin_session'
-      };
-
-      // ---------- UTILITY FUNCTIONS ----------
-      function getMessages() {
-        try {
-          return JSON.parse(localStorage.getItem(STORAGE_KEYS.messages)) || [];
-        } catch (e) { return []; }
-      }
-
-      function saveMessage(msg) {
-        const messages = getMessages();
-        messages.push(msg);
-        localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages));
-      }
-
-      function clearAllMessages() {
-        localStorage.setItem(STORAGE_KEYS.messages, JSON.stringify([]));
-        renderMessages();
-      }
-
-      function isLoggedIn() {
-        return localStorage.getItem(STORAGE_KEYS.session) === 'true';
-      }
-
-      function setSession(remember) {
-        localStorage.setItem(STORAGE_KEYS.session, 'true');
-        // remember flag is not used for persistence (we keep session until logout)
-      }
-
-      function clearSession() {
-        localStorage.removeItem(STORAGE_KEYS.session);
-      }
-
-      // ---------- RENDER MESSAGES IN DASHBOARD ----------
-      function renderMessages() {
-        const messages = getMessages();
-        const container = document.getElementById('messageList');
-        const countEl = document.getElementById('msgCount');
-
-        countEl.textContent = messages.length;
-
-        if (messages.length === 0) {
-          container.innerHTML = '<div class="empty-msg">No messages yet.</div>';
-          return;
+        let currentClient = 0;
+        const clientItems = document.querySelectorAll('.client-item');
+        const totalClients = clientItems.length;
+        const crossfadeBox = document.querySelector('.clients-crossfade');
+        function showClient(index) {
+            clientItems.forEach(item => { item.classList.remove('active', 'exit'); });
+            clientItems[index].classList.add('active');
+            crossfadeBox.classList.add('fog-up', 'fog-down');
+            setTimeout(() => { crossfadeBox.classList.remove('fog-up', 'fog-down'); }, 1200);
         }
+        function nextClient() {
+            clientItems[currentClient].classList.add('exit');
+            setTimeout(() => {
+                currentClient = (currentClient + 1) % totalClients;
+                showClient(currentClient);
+            }, 800);
+        }
+        showClient(0);
+        setInterval(nextClient, 2500);
 
-        let html = '';
-        const reversed = messages.slice().reverse();
-        reversed.forEach(function(msg) {
-          html += '<div class="msg-item">';
-          html += '<div class="msg-name">' + escapeHtml(msg.name) + ' <span class="msg-phone">' + escapeHtml(msg.phone) +
-            '</span></div>';
-          html += '<div class="msg-text">' + escapeHtml(msg.message) + '</div>';
-          if (msg.date) {
-            html += '<div style="font-size:0.65rem;color:#aaa;margin-top:3px;">' + escapeHtml(msg.date) + '</div>';
-          }
-          html += '</div>';
+        // --- ESC to close modal ---
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAdmin();
         });
-        container.innerHTML = html;
-      }
-
-      function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-      }
-
-      // ---------- EXPORT MESSAGES ----------
-      function exportMessages() {
-        const messages = getMessages();
-        if (messages.length === 0) {
-          alert('No messages to export.');
-          return;
-        }
-        let text = 'FIZZA INTERIOR - Messages Export\n';
-        text += '====================================\n\n';
-        messages.forEach(function(msg, idx) {
-          text += (idx + 1) + '. ' + msg.name + ' | ' + msg.phone + '\n';
-          text += '   ' + msg.message + '\n';
-          if (msg.date) text += '   ' + msg.date + '\n';
-          text += '------------------------------------\n';
+        document.getElementById('adminModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeAdmin();
         });
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'fizza_messages_export.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      // ---------- DASHBOARD TOGGLE ----------
-      function toggleDashboard() {
-        const dash = document.getElementById('adminDashboard');
-        dash.classList.toggle('open');
-        if (dash.classList.contains('open')) {
-          renderMessages();
-        }
-      }
-
-      // ---------- LOGIN / LOGOUT ----------
-      function openAdmin() {
-        if (isLoggedIn()) {
-          toggleDashboard();
-          return;
-        }
-        document.getElementById('adminModal').classList.add('active');
-      }
-
-      function closeAdmin() {
-        document.getElementById('adminModal').classList.remove('active');
-        document.getElementById('loginError').style.display = 'none';
-      }
-
-      function handleLogin() {
-        const email = document.getElementById('adminEmail').value.trim();
-        const pass = document.getElementById('adminPass').value.trim();
-        const remember = document.getElementById('rememberMe').checked;
-
-        if (email === ADMIN_CREDENTIALS.email && pass === ADMIN_CREDENTIALS.password) {
-          setSession(remember);
-          closeAdmin();
-          // Open dashboard
-          const dash = document.getElementById('adminDashboard');
-          dash.classList.add('open');
-          renderMessages();
-          // Update nav button text
-          const adminBtn = document.getElementById('adminLoginBtn');
-          if (adminBtn) adminBtn.textContent = 'Dashboard';
-          const footerBtn = document.getElementById('footerAdminBtn');
-          if (footerBtn) footerBtn.textContent = 'Dashboard';
-        } else {
-          document.getElementById('loginError').style.display = 'block';
-        }
-      }
-
-      function handleLogout() {
-        if (confirm('Are you sure you want to logout?')) {
-          clearSession();
-          const dash = document.getElementById('adminDashboard');
-          dash.classList.remove('open');
-          const adminBtn = document.getElementById('adminLoginBtn');
-          if (adminBtn) adminBtn.textContent = 'Admin Login';
-          const footerBtn = document.getElementById('footerAdminBtn');
-          if (footerBtn) footerBtn.textContent = 'Admin Login';
-        }
-      }
-
-      // ---------- CHECK SESSION ON LOAD ----------
-      function checkSession() {
-        if (isLoggedIn()) {
-          const adminBtn = document.getElementById('adminLoginBtn');
-          if (adminBtn) adminBtn.textContent = 'Dashboard';
-          const footerBtn = document.getElementById('footerAdminBtn');
-          if (footerBtn) footerBtn.textContent = 'Dashboard';
-        }
-      }
-      checkSession();
-
-      // ---------- SEED DEMO MESSAGES ----------
-      (function seedDemoMessage() {
-        const msgs = getMessages();
-        if (msgs.length === 0) {
-          saveMessage({
-            name: 'Rahul Sharma',
-            phone: '+91 98765 43210',
-            message: 'I am interested in your bespoke furniture services for my new penthouse in Mumbai. Please share your portfolio.',
-            date: new Date().toLocaleString()
-          });
-          saveMessage({
-            name: 'Priya Mehta',
-            phone: '+91 87654 32100',
-            message: 'We are a real estate developer in Pune looking for a turnkey partner for our luxury tower project. Can we schedule a meeting?',
-            date: new Date().toLocaleString()
-          });
-        }
-      })();
-
-      // ============================================
-      // ATTACH ALL EVENT LISTENERS
-      // ============================================
-
-      // Admin login button (nav)
-      document.getElementById('adminLoginBtn').addEventListener('click', openAdmin);
-
-      // Admin login button (footer)
-      document.getElementById('footerAdminBtn').addEventListener('click', openAdmin);
-
-      // Admin close button (modal)
-      document.getElementById('adminCloseBtn').addEventListener('click', closeAdmin);
-
-      // Modal backdrop click
-      document.getElementById('adminModal').addEventListener('click', function(e) {
-        if (e.target === this) closeAdmin();
-      });
-
-      // Login button inside modal
-      document.getElementById('loginBtn').addEventListener('click', handleLogin);
-
-      // Enter key on password field
-      document.getElementById('adminPass').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') handleLogin();
-      });
-
-      // Dashboard close buttons
-      document.getElementById('dashCloseBtn').addEventListener('click', toggleDashboard);
-      document.getElementById('dashCloseBtn2').addEventListener('click', toggleDashboard);
-
-      // Export & Clear buttons
-      document.getElementById('exportBtn').addEventListener('click', exportMessages);
-      document.getElementById('clearBtn').addEventListener('click', function() {
-        if (confirm('Delete all messages permanently?')) {
-          clearAllMessages();
-        }
-      });
-
-      // Logout button
-      document.getElementById('logoutBtn').addEventListener('click', handleLogout);
-
-      // ---------- KEYBOARD ESC TO CLOSE MODAL ----------
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeAdmin();
-        }
-      });
-
-    })();
-  </script>
-
+    </script>
 </body>
 </html>
