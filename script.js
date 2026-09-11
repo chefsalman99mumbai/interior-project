@@ -74,35 +74,24 @@ function updatePassword() {
 }
 
 // ===== CLIENT FADE (crossfade + fog) =====
-const clientNames = [
-    "LARSEN & TOUBRO LTD", "OBEROI REALITY", "SATELLITE GROUP", "NEELKANTH GROUP", "SHETH DEVELOPERS PVT. LTD",
-    "NAMAN GROUP", "WADHWA GROUP", "PURANIK DEVELOPERS", "YASHRAJ DEVELOPERS", "LOKHANDWALA CONST. PVT.LTD",
-    "SHREELAXMI DEVELOPERS", "CITY CORPORATTION LTD", "ASHFORD HSG CORPORATION", "AJMERA GROUP",
-    "BAFNA BUILDERS & DEVELOPERS", "ASHAPURA DEVELOPERS", "ASHAPURA & RATAN DEVELOPERS", "KALPATARU ENTERPRISES",
-    "TATA HOUSING", "SHETH N CHOPRA DEVELOPERS", "GEE CEE VENTURE PVT LTD"
-];
+const totalClients = 12;
 const fadeContainer = document.getElementById('clientsFade');
-clientNames.forEach(name => {
+
+for (let i = 1; i <= totalClients; i++) {
     const item = document.createElement('div');
     item.className = 'client-item';
     const logoImg = document.createElement('img');
-    logoImg.src = `client-${clientNames.indexOf(name) + 1}.png`;
-    logoImg.alt = name;
+    logoImg.src = `client-${i}.png`;
+    logoImg.alt = `Client ${i}`;
     logoImg.className = 'client-logo';
-    logoImg.onerror = function() {
-        this.style.display = 'none';
-        const textSpan = document.createElement('span');
-        textSpan.className = 'client-text';
-        textSpan.textContent = name;
-        item.appendChild(textSpan);
-    };
     item.appendChild(logoImg);
     fadeContainer.appendChild(item);
-});
+}
+
 let currentClient = 0;
 const clientItems = document.querySelectorAll('.client-item');
-const totalClients = clientItems.length;
 const crossfadeBox = document.querySelector('.clients-crossfade');
+
 function showClient(index) {
     clientItems.forEach(item => { item.classList.remove('active', 'exit'); });
     clientItems[index].classList.add('active');
