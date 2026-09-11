@@ -5,311 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIZZA INTERIOR | The Art of Sensory Walls</title>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-cream: #F9F7F2;
-            --text-charcoal: #111111;
-            --color-rust: #B05C42;
-            --color-moss: #4A5D43;
-            --color-blue: #2B3A67;
-            --color-brown: #3E2C2C;
-            --color-muted: #7A7670;
-            --border-light: #E8E4DC;
-            --color-gold: #C29A5B;
-            --lavender: #E6E6FA;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; overflow-x: hidden; font-weight: 400; }
-        
-        /* SOFT CHARCOAL PENCIL SPARKLE */
-        h1, h2, h3, h4, h5, h6, .about-signature, .owner-signature, .service-num, .portfolio-overlay, .project-slide-content h3, .project-slide-content .project-tag {
-            font-family: 'Kalam', cursive;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.5px;
-            transform: skewX(-1deg);
-            background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
-            animation: sparkleSweep 6s linear infinite;
-        }
-
-        @keyframes sparkleSweep { to { background-position: -200% center; } }
-        h1 { font-size: clamp(3rem, 7vw, 6rem); }
-        h2 { font-size: clamp(3rem, 5vw, 5rem); }
-        h3 { font-size: 2.2rem; }
-
-        /* FIX: Clientele headline smaller */
-        .clients-header h2 {
-            font-size: clamp(1.8rem, 3.5vw, 3rem);
-        }
-
-        a { text-decoration: none; color: inherit; }
-        img { display: block; max-width: 100%; }
-
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .section-padding { padding: 120px 0; }
-
-        .btn { display: inline-block; background-color: transparent; color: var(--text-charcoal); padding: 18px 40px; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--text-charcoal); cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; }
-        .btn:hover { background-color: var(--text-charcoal); color: var(--bg-cream); }
-        .btn-light { border-color: var(--bg-cream); color: var(--bg-cream); }
-        .btn-light:hover { background-color: var(--bg-cream); color: var(--text-charcoal); }
-
-        /* NAV */
-        nav { 
-            position: fixed; top: 0; left: 0; width: 100%; 
-            background: #F0EEFA; 
-            backdrop-filter: blur(12px); 
-            z-index: 1000; 
-            padding: 0; 
-            height: 90px; 
-            border-bottom: 4px solid var(--lavender); 
-            box-shadow: 0 10px 35px rgba(230, 230, 250, 0.8); 
-        }
-        .nav-container { 
-            display: flex; justify-content: space-between; align-items: center; 
-            max-width: 1400px; margin: 0 auto; padding: 0 40px; 
-            height: 90px; 
-        }
-        .nav-left {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            height: 100%;
-        }
-        .logo img { 
-            height: 70px !important; 
-            width: auto; 
-            max-width: 400px; 
-            object-fit: contain; 
-        }
-        .nav-admin-btn {
-            background: none;
-            border: 1px solid var(--color-rust);
-            color: var(--color-rust);
-            padding: 3px 10px;
-            cursor: pointer;
-            font-size: 0.6rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: -5px;
-            transition: all 0.3s;
-        }
-        .nav-admin-btn:hover {
-            background: var(--color-rust);
-            color: var(--bg-cream);
-        }
-        .nav-links { display: flex; gap: 40px; align-items: center; }
-        .nav-links a { font-size: 0.9rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; position: relative; padding-bottom: 5px; color: var(--text-charcoal); }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--color-rust); transition: width 0.3s; }
-        .nav-links a:hover::after { width: 100%; }
-
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-charcoal); }
-        .mobile-menu { display: none; position: fixed; top: 90px; left: 0; width: 100%; background: #F0EEFA; padding: 30px 20px; z-index: 999; flex-direction: column; gap: 25px; border-bottom: 1px solid var(--border-light); }
-        .mobile-menu a { font-size: 1.2rem; text-align: center; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; color: var(--text-charcoal); }
-        .mobile-menu.active { display: flex; }
-        @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } .logo img { height: 50px; } .nav-admin-btn { margin-top: -5px; } .nav-container { height: 70px; } nav { height: 70px; } .container { padding: 0 20px; } }
-
-        /* HERO */
-        .hero { height: 100vh; height: 100dvh; position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; text-align: center; }
-        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        .hero-overlay { display: none; }
-        .hero-content { position: relative; z-index: 10; max-width: 1200px; padding: 0 40px; }
-        .hero-content h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)); }
-        .hero-content p { font-size: 1.3rem; font-weight: 300; color: var(--text-charcoal); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 8px rgba(255,255,255,0.8); }
-        .hero-marquee { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(17, 17, 17, 0.9); color: var(--bg-cream); padding: 15px 0; overflow: hidden; z-index: 10; white-space: nowrap; }
-        .hero-marquee span { display: inline-block; padding-left: 100%; font-size: 1.2rem; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; animation: marquee 20s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        /* ABOUT */
-        .about-section { background-color: var(--color-rust); color: var(--bg-cream); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-img { width: 100%; height: 600px; overflow: hidden; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
-        .about-img:hover img { transform: scale(1.05); }
-        .about-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
-        .about-signature { font-size: 2rem; margin-top: 20px; }
-        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img { height: 400px; } }
-
-        /* OWNER */
-        .owner-section { background-color: var(--color-gold); }
-        .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .owner-text { order: 1; }
-        .owner-img { order: 2; width: 100%; height: 600px; overflow: hidden; }
-        .owner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
-        .owner-img:hover img { transform: scale(1.05); }
-        .owner-text p { font-size: 1.1rem; color: var(--text-charcoal); margin-bottom: 20px; }
-        .owner-signature { font-size: 2rem; margin-top: 20px; color: var(--color-brown); }
-        @media (max-width: 768px) { .owner-grid { grid-template-columns: 1fr; gap: 40px; } .owner-img { height: 400px; } }
-
-        /* CLIENTELE FADE */
-        .clients-section { background-color: var(--bg-cream); padding: 80px 0; overflow: hidden; }
-        .clients-header { text-align: center; margin-bottom: 40px; }
-        
-        .clients-crossfade {
-            position: relative;
-            width: 100%;
-            height: 60px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-            mask-image: linear-gradient(to bottom, transparent, black 35%, black 65%, transparent);
-        }
-        
-        .client-item {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.95);
-            opacity: 0;
-            filter: blur(5px);
-            transition: opacity 1.2s ease, transform 1.2s ease, filter 1.2s ease;
-            white-space: nowrap;
-            text-align: center;
-        }
-        
-        .client-item.active {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            filter: blur(0);
-        }
-        
-        .client-item.exit {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.9);
-            filter: blur(8px);
-        }
-        
-        .client-text {
-            font-family: 'Kalam', cursive;
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #121212 0%, #333333 30%, #a9a9a9 50%, #333333 70%, #121212 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.15));
-            animation: sparkleSweep 6s linear infinite;
-        }
-        
-        .client-item img.client-logo {
-            height: 40px;
-            max-width: 150px;
-            object-fit: contain;
-            filter: grayscale(100%) opacity(0.8);
-            transition: filter 0.3s;
-        }
-        
-        .clients-crossfade::before,
-        .clients-crossfade::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to bottom, var(--bg-cream), transparent);
-            z-index: 10;
-            pointer-events: none;
-            transition: transform 1.2s ease;
-        }
-        .clients-crossfade::before { top: 0; transform: translateY(0); }
-        .clients-crossfade::after { bottom: 0; transform: translateY(0); background: linear-gradient(to top, var(--bg-cream), transparent); }
-        .clients-crossfade.fog-up::before { transform: translateY(-100%); }
-        .clients-crossfade.fog-down::after { transform: translateY(100%); }
-
-        /* SERVICES */
-        .services-section { background-color: var(--color-moss); color: var(--bg-cream); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: transparent; border: 1px solid rgba(248, 246, 240, 0.2); padding: 50px 30px; transition: all 0.4s ease; }
-        .service-card:hover { background: var(--bg-cream); color: var(--color-moss); transform: translateY(-10px); }
-        .service-num { font-size: 3.5rem; margin-bottom: 20px; }
-        .service-card p { font-size: 1rem; color: rgba(248, 246, 240, 0.7); }
-
-        /* CAREERS */
-        .team-section { background-color: var(--color-blue); color: var(--bg-cream); }
-        .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .team-img { width: 100%; height: auto; }
-        .team-text p { font-size: 1.1rem; color: rgba(248, 246, 240, 0.95); margin-bottom: 20px; }
-
-        /* CONTACT */
-        .contact-section { background-color: var(--color-brown); color: var(--bg-cream); padding: 120px 0; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .contact-info p { margin-bottom: 20px; font-size: 1.1rem; color: rgba(248, 246, 240, 0.8); }
-        form { display: grid; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group label { font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; color: rgba(248, 246, 240, 0.6); }
-        .form-group input, .form-group textarea { padding: 15px; border: 1px solid rgba(248, 246, 240, 0.3); font-family: inherit; font-size: 1rem; background: transparent; color: var(--bg-cream); }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--color-gold); }
-
-        footer { background-color: var(--text-charcoal); color: var(--bg-cream); padding: 60px 0; text-align: center; }
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* ADMIN MODAL */
-        .admin-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.9); z-index: 99999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
-        .admin-modal.active { opacity: 1; visibility: visible; }
-        .admin-login-box { background: #F9F7F2; padding: 50px; max-width: 420px; width: 90%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; transform: translateY(20px); transition: transform 0.4s ease; }
-        .admin-modal.active .admin-login-box { transform: translateY(0); }
-        .admin-login-box h2 { font-family: 'Kalam', cursive; color: #3E2C2C; background: none; -webkit-text-fill-color: #3E2C2C; margin-bottom: 30px; font-size: 2rem; filter: none; animation: none; }
-        .admin-login-box input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #E8E4DC; font-family: 'Inter', sans-serif; background: #F9F7F2; outline: none; border-radius: 4px; }
-        .admin-login-box input:focus { border-color: #B05C42; }
-        .admin-login-btn { width: 100%; padding: 15px; background: #B05C42; color: white; border: none; cursor: pointer; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; transition: background 0.3s; border-radius: 4px; }
-        .admin-login-btn:hover { background: #3E2C2C; }
-        .admin-close { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; }
-        .login-error { color: #B05C42; font-size: 0.85rem; margin-top: 15px; display: none; }
-
-        .password-change-section {
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
-            margin-top: 20px;
-            display: none;
-        }
-        .password-change-section h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .password-change-section input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-        }
-        .password-change-section .update-btn {
-            background: #3E2C2C;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s;
-        }
-        .password-change-section .update-btn:hover { background: #1f1818; }
-        .password-change-section .update-msg {
-            font-size: 0.8rem;
-            margin-top: 8px;
-            color: #2e7d32;
-        }
-        .password-change-section .update-msg.error { color: #c62828; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -371,4 +67,94 @@
             <div class="owner-text reveal">
                 <h2>The Heart Behind the Craft</h2>
                 <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
-                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. He
+                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
+                <p class="owner-signature">— Fizza, Founder & Principal Curator</p>
+            </div>
+            <div class="owner-img reveal">
+                <img src="owner.jpg" alt="Founder of Fizza Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CLIENTELE -->
+    <section id="clients" class="clients-section">
+        <div class="container clients-header">
+            <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
+        </div>
+        <div class="clients-crossfade" id="clientsFade">
+            <!-- injected by JS -->
+        </div>
+    </section>
+
+    <!-- 5. OUR EXPERTISE -->
+    <section id="services" class="section-padding services-section">
+        <div class="container">
+            <h2 class="reveal">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card reveal"><div class="service-num">01</div><h3>Turnkey Project Execution</h3><p>End-to-end execution of luxury residential and commercial spaces. One partner, total accountability.</p></div>
+                <div class="service-card reveal"><div class="service-num">02</div><h3>Façade & External Finishing</h3><p>Premium plastering, painting, and weatherproofing for iconic high-rise towers.</p></div>
+                <div class="service-card reveal"><div class="service-num">03</div><h3>Premium Interior Finishing</h3><p>Internal painting, textures, and high-end surface solutions designed for luxury living.</p></div>
+                <div class="service-card reveal"><div class="service-num">04</div><h3>Bespoke Furniture & Interiors</h3><p>Custom-crafted pieces and complete interior fit-outs for elite homes and offices.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CAREERS -->
+    <section id="careers" class="section-padding team-section">
+        <div class="container team-grid">
+            <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
+            <div class="team-text reveal">
+                <h2>Carve Your Name into Our Legacy</h2>
+                <p>We are searching for dreamers, architects, and artisans who believe beauty is a responsibility.</p>
+                <a href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position." target="_blank" class="btn btn-light">Send Your Story via WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-info reveal">
+                <h2>Your Canvas Awaits</h2>
+                <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
+                <p><strong>Email:</strong> info@fizzainterior.com</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
+            </div>
+            <form class="reveal" id="contactForm">
+                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required></div>
+                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required></div>
+                <div class="form-group"><label for="message">Your Vision</label><textarea id="message" rows="5" required></textarea></div>
+                <button type="submit" class="btn btn-light">Send Your Vision via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fizza Interior. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ADMIN MODAL -->
+    <div class="admin-modal" id="adminModal">
+        <span class="admin-close" onclick="closeAdmin()">&times;</span>
+        <div class="admin-login-box">
+            <h2>Admin Access</h2>
+            <input type="email" id="adminEmail" placeholder="Email" value="admin@fizza.com">
+            <input type="password" id="adminPass" placeholder="Password">
+            <button class="admin-login-btn" onclick="checkLogin()">Login</button>
+            <p class="login-error" id="loginError">Invalid Credentials. Try again!</p>
+            <div class="password-change-section" id="passwordChangeSection">
+                <h4>Change Password</h4>
+                <input type="password" id="newPass" placeholder="New Password (min 4 chars)">
+                <button class="update-btn" onclick="updatePassword()">Update Password</button>
+                <div class="update-msg" id="updateMsg"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+                </html>
