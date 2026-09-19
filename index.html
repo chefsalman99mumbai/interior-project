@@ -3,158 +3,692 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FIZZA INTERIOR | The Art of Sensory Walls</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- NAVIGATION -->
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
     <nav id="nav">
+
         <div class="nav-container">
+
             <div class="nav-left">
-                <div class="logo"><img src="logo.png" alt="FIZZA INTERIOR" style="height: 70px;"></div>
-                <button class="nav-admin-btn" onclick="openAdmin()">Admin Login</button>
+
+                <div class="logo">
+                    <img
+                        src="logo.png"
+                        alt="FIZZA INTERIOR"
+                    >
+                </div>
+
+                <button
+                    type="button"
+                    class="nav-admin-btn"
+                    onclick="openAdmin()"
+                    aria-label="Open Admin Login"
+                >
+                    Admin Login
+                </button>
+
             </div>
+
             <div class="nav-links">
+
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#clients">Clientele</a>
                 <a href="#careers">Careers</a>
                 <a href="#contact">Contact</a>
+
             </div>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+
+            <button
+                type="button"
+                class="hamburger"
+                id="hamburger"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
         </div>
-        <div class="mobile-menu" id="mobileMenu">
+
+
+        <!-- MOBILE MENU -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#clients">Clientele</a>
             <a href="#careers">Careers</a>
             <a href="#contact">Contact</a>
+
         </div>
+
     </nav>
 
-    <!-- 1. HERO -->
-    <section id="home" class="hero">
-        <img src="hero1.jpg" alt="Fizza Interior" class="hero-bg">
+
+    <!-- =====================================================
+         1. HERO
+         ===================================================== -->
+
+    <section
+        id="home"
+        class="hero"
+    >
+
+        <img
+            src="hero1.jpg"
+            alt="Fizza Interior"
+            class="hero-bg"
+        >
+
         <div class="hero-content">
-            <h1>Texture.<br>Home.</h1>
-            <p>The walls don't just hold the roof. They hold the light, the silence, and the soul of your space.</p>
-            <a href="#contact" class="btn btn-light">Book a Private Consultation</a>
+
+            <h1>
+                Texture.<br>
+                Home.
+            </h1>
+
+            <p>
+                The walls don't just hold the roof.
+                They hold the light, the silence,
+                and the soul of your space.
+            </p>
+
+            <a
+                href="#contact"
+                class="btn btn-light"
+            >
+                Book a Private Consultation
+            </a>
+
         </div>
+
+
         <div class="hero-marquee">
-            <span>FIZZA INTERIOR // TURNKEY PROJECT EXECUTION // INTERIOR FINISHING // FAÇADE & EXTERNAL SPECIALISTS //</span>
+
+            <span>
+                FIZZA INTERIOR //
+                TURNKEY PROJECT EXECUTION //
+                INTERIOR FINISHING //
+                FAÇADE &amp; EXTERNAL SPECIALISTS //
+            </span>
+
         </div>
+
     </section>
 
-    <!-- 2. ABOUT -->
-    <section id="about" class="section-padding about-section">
+
+    <!-- =====================================================
+         2. ABOUT
+         ===================================================== -->
+
+    <section
+        id="about"
+        class="section-padding about-section"
+    >
+
         <div class="container about-grid">
-            <div class="about-img reveal"><img src="about.jpg" alt="About Fizza Interior"></div>
+
+            <div class="about-img reveal">
+
+                <img
+                    src="about.jpg"
+                    alt="About Fizza Interior"
+                >
+
+            </div>
+
+
             <div class="about-text reveal">
-                <h2>The Silent Philosophy of Fizza</h2>
-                <p>We are a turnkey execution studio dedicated to delivering architectural finishing and interior works for India's most prestigious developers and homeowners. Our craft is rooted in precision, scale, and uncompromising quality.</p>
-                <p>From external façade plastering and painting to internal finishing and bespoke furniture, we are the single-point partner for entire luxury spaces.</p>
-                <p class="about-signature">— Fizza, Founder & Principal Curator</p>
+
+                <h2>
+                    The Silent Philosophy of Fizza
+                </h2>
+
+                <p>
+                    We are a turnkey execution studio dedicated
+                    to delivering architectural finishing and
+                    interior works for India's most prestigious
+                    developers and homeowners. Our craft is
+                    rooted in precision, scale, and
+                    uncompromising quality.
+                </p>
+
+                <p>
+                    From external façade plastering and painting
+                    to internal finishing and bespoke furniture,
+                    we are the single-point partner for entire
+                    luxury spaces.
+                </p>
+
+                <p class="about-signature">
+                    — Fizza, Founder &amp; Principal Curator
+                </p>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- 3. OWNER -->
+
+    <!-- =====================================================
+         3. OWNER
+         ===================================================== -->
+
     <section class="section-padding owner-section">
+
         <div class="container owner-grid">
+
             <div class="owner-text reveal">
-                <h2>The Heart Behind the Craft</h2>
-                <p>Fizza's journey began with a simple, profound belief: that a home should hold your soul, not just your furniture. Inspired by the raw textures of nature and the intricate geometry of traditional Indian architecture, she set out to create walls that breathe and spaces that feel alive.</p>
-                <p>Through years of relentless dedication, Fizza transformed a small workshop into a sanctuary of craftsmanship. Her philosophy is simple—never just manufacture panels; curate the story that your walls will tell for generations.</p>
-                <p class="owner-signature">— Fizza, Founder & Principal Curator</p>
+
+                <h2>
+                    The Heart Behind the Craft
+                </h2>
+
+                <p>
+                    Fizza's journey began with a simple, profound
+                    belief: that a home should hold your soul,
+                    not just your furniture. Inspired by the raw
+                    textures of nature and the intricate geometry
+                    of traditional Indian architecture, she set
+                    out to create walls that breathe and spaces
+                    that feel alive.
+                </p>
+
+                <p>
+                    Through years of relentless dedication,
+                    Fizza transformed a small workshop into a
+                    sanctuary of craftsmanship. Her philosophy
+                    is simple—never just manufacture panels;
+                    curate the story that your walls will tell
+                    for generations.
+                </p>
+
+                <p class="owner-signature">
+                    — Fizza, Founder &amp; Principal Curator
+                </p>
+
             </div>
+
+
             <div class="owner-img reveal">
-                <img src="owner.jpg" alt="Founder of Fizza Interior">
+
+                <img
+                    src="owner.jpg"
+                    alt="Founder of Fizza Interior"
+                >
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- 4. CLIENTELE -->
-    <section id="clients" class="clients-section">
+
+    <!-- =====================================================
+         4. CLIENTELE
+         ===================================================== -->
+
+    <section
+        id="clients"
+        class="clients-section"
+    >
+
         <div class="container clients-header">
-            <h2 class="reveal">Trusted by India's Most Prestigious Developers</h2>
+
+            <h2 class="reveal">
+                Trusted by India's Most Prestigious Developers
+            </h2>
+
         </div>
-        <div class="clients-crossfade" id="clientsFade">
-            <!-- injected by JS -->
+
+
+        <div
+            class="clients-crossfade"
+            id="clientsFade"
+        >
+            <!-- Client logos are generated by script.js -->
         </div>
+
     </section>
 
-    <!-- 5. OUR EXPERTISE -->
-    <section id="services" class="section-padding services-section">
+
+    <!-- =====================================================
+         5. OUR EXPERTISE
+         ===================================================== -->
+
+    <section
+        id="services"
+        class="section-padding services-section"
+    >
+
         <div class="container">
-            <h2 class="reveal">Our Expertise</h2>
+
+            <h2 class="reveal">
+                Our Expertise
+            </h2>
+
+
             <div class="services-grid">
-                <div class="service-card reveal"><div class="service-num">01</div><h3>Turnkey Project Execution</h3><p>End-to-end execution of luxury residential and commercial spaces. One partner, total accountability.</p></div>
-                <div class="service-card reveal"><div class="service-num">02</div><h3>Façade & External Finishing</h3><p>Premium plastering, painting, and weatherproofing for iconic high-rise towers.</p></div>
-                <div class="service-card reveal"><div class="service-num">03</div><h3>Premium Interior Finishing</h3><p>Internal painting, textures, and high-end surface solutions designed for luxury living.</p></div>
-                <div class="service-card reveal"><div class="service-num">04</div><h3>Bespoke Furniture & Interiors</h3><p>Custom-crafted pieces and complete interior fit-outs for elite homes and offices.</p></div>
+
+                <div class="service-card reveal">
+
+                    <div class="service-num">
+                        01
+                    </div>
+
+                    <h3>
+                        Turnkey Project Execution
+                    </h3>
+
+                    <p>
+                        End-to-end execution of luxury
+                        residential and commercial spaces.
+                        One partner, total accountability.
+                    </p>
+
+                </div>
+
+
+                <div class="service-card reveal">
+
+                    <div class="service-num">
+                        02
+                    </div>
+
+                    <h3>
+                        Façade &amp; External Finishing
+                    </h3>
+
+                    <p>
+                        Premium plastering, painting, and
+                        weatherproofing for iconic high-rise
+                        towers.
+                    </p>
+
+                </div>
+
+
+                <div class="service-card reveal">
+
+                    <div class="service-num">
+                        03
+                    </div>
+
+                    <h3>
+                        Premium Interior Finishing
+                    </h3>
+
+                    <p>
+                        Internal painting, textures, and
+                        high-end surface solutions designed
+                        for luxury living.
+                    </p>
+
+                </div>
+
+
+                <div class="service-card reveal">
+
+                    <div class="service-num">
+                        04
+                    </div>
+
+                    <h3>
+                        Bespoke Furniture &amp; Interiors
+                    </h3>
+
+                    <p>
+                        Custom-crafted pieces and complete
+                        interior fit-outs for elite homes
+                        and offices.
+                    </p>
+
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- 6. CAREERS -->
-    <section id="careers" class="section-padding team-section">
+
+    <!-- =====================================================
+         6. CAREERS
+         ===================================================== -->
+
+    <section
+        id="careers"
+        class="section-padding team-section"
+    >
+
         <div class="container team-grid">
-            <div class="team-img reveal"><img src="team.jpg" alt="Join Us"></div>
+
+            <div class="team-img reveal">
+
+                <img
+                    src="team.jpg"
+                    alt="Join Fizza Interior"
+                >
+
+            </div>
+
+
             <div class="team-text reveal">
-                <h2>Carve Your Name into Our Legacy</h2>
-                <p>We are searching for dreamers, architects, and artisans who believe beauty is a responsibility.</p>
-                <a href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position." target="_blank" class="btn btn-light">Send Your Story via WhatsApp</a>
+
+                <h2>
+                    Carve Your Name into Our Legacy
+                </h2>
+
+                <p>
+                    We are searching for dreamers, architects,
+                    and artisans who believe beauty is a
+                    responsibility.
+                </p>
+
+                <a
+                    href="https://wa.me/919876543210?text=Hello%20Fizza%20Interior!%20I%20would%20like%20to%20apply%20for%20a%20position."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-light"
+                >
+                    Send Your Story via WhatsApp
+                </a>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- 7. CONTACT -->
-    <section id="contact" class="contact-section">
+
+    <!-- =====================================================
+         7. CONTACT
+         ===================================================== -->
+
+    <section
+        id="contact"
+        class="contact-section"
+    >
+
         <div class="container contact-grid">
+
             <div class="contact-info reveal">
-                <h2>Your Canvas Awaits</h2>
-                <p>Speak with our design alchemists. Let's explore the textures that will tell your unique story.</p>
-                <p><strong>Email:</strong> info@fizzainterior.com</p>
-                <p><strong>Phone:</strong> +91 98765 43210</p>
-                <p><strong>Address:</strong> 84, Virwani Ind. Estate, Goregaon (E), Mumbai - 400063</p>
+
+                <h2>
+                    Your Canvas Awaits
+                </h2>
+
+                <p>
+                    Speak with our design alchemists.
+                    Let's explore the textures that will
+                    tell your unique story.
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    info@fizzainterior.com
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <strong>Address:</strong>
+                    84, Virwani Ind. Estate,
+                    Goregaon (E), Mumbai - 400063
+                </p>
+
             </div>
-            <form class="reveal" id="contactForm">
-                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required></div>
-                <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required></div>
-                <div class="form-group"><label for="message">Your Vision</label><textarea id="message" rows="5" required></textarea></div>
-                <button type="submit" class="btn btn-light">Send Your Vision via WhatsApp</button>
+
+
+            <form
+                class="reveal"
+                id="contactForm"
+            >
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Your Vision
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-light"
+                >
+                    Send Your Vision via WhatsApp
+                </button>
+
             </form>
+
         </div>
+
     </section>
 
-    <!-- FOOTER -->
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Fizza Interior. All rights reserved.</p>
+
+        <!--
+            Existing footer remains dark.
+            This matching glass strip sits at its bottom.
+        -->
+
+        <div
+            id="fi-footer-note"
+            aria-label="Fizza Interior footer information"
+        >
+
+            <div class="fi-footer-brand">
+
+                <img
+                    src="logo.png"
+                    alt="FIZZA INTERIOR"
+                >
+
+            </div>
+
+
+            <div class="fi-footer-copy">
+
+                &copy; 2026 Fizza Interior.
+                All rights reserved.
+
+            </div>
+
+
+            <div class="fi-footer-heritage">
+
+                The Art of Sensory Walls
+
+            </div>
+
         </div>
+
     </footer>
 
-    <!-- ADMIN MODAL -->
-    <div class="admin-modal" id="adminModal">
-        <span class="admin-close" onclick="closeAdmin()">&times;</span>
+
+    <!-- =====================================================
+         ADMIN MODAL
+         ===================================================== -->
+
+    <div
+        class="admin-modal"
+        id="adminModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adminModalTitle"
+    >
+
+        <span
+            class="admin-close"
+            onclick="closeAdmin()"
+            role="button"
+            tabindex="0"
+            aria-label="Close Admin Login"
+        >
+            &times;
+        </span>
+
+
         <div class="admin-login-box">
-            <h2>Admin Access</h2>
-            <input type="email" id="adminEmail" placeholder="Email" value="admin@fizza.com">
-            <input type="password" id="adminPass" placeholder="Password">
-            <button class="admin-login-btn" onclick="checkLogin()">Login</button>
-            <p class="login-error" id="loginError">Invalid Credentials. Try again!</p>
-            <div class="password-change-section" id="passwordChangeSection">
-                <h4>Change Password</h4>
-                <input type="password" id="newPass" placeholder="New Password (min 4 chars)">
-                <button class="update-btn" onclick="updatePassword()">Update Password</button>
-                <div class="update-msg" id="updateMsg"></div>
+
+            <h2 id="adminModalTitle">
+                Admin Access
+            </h2>
+
+
+            <input
+                type="email"
+                id="adminEmail"
+                placeholder="Email"
+                value="admin@fizza.com"
+                autocomplete="username"
+            >
+
+
+            <input
+                type="password"
+                id="adminPass"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+
+
+            <button
+                type="button"
+                class="admin-login-btn"
+                onclick="checkLogin()"
+            >
+                Login
+            </button>
+
+
+            <p
+                class="login-error"
+                id="loginError"
+            >
+                Invalid Credentials. Try again!
+            </p>
+
+
+            <div
+                class="password-change-section"
+                id="passwordChangeSection"
+            >
+
+                <h4>
+                    Change Password
+                </h4>
+
+
+                <input
+                    type="password"
+                    id="newPass"
+                    placeholder="New Password (min 4 chars)"
+                    autocomplete="new-password"
+                >
+
+
+                <button
+                    type="button"
+                    class="update-btn"
+                    onclick="updatePassword()"
+                >
+                    Update Password
+                </button>
+
+
+                <div
+                    class="update-msg"
+                    id="updateMsg"
+                    aria-live="polite"
+                ></div>
+
             </div>
+
         </div>
+
     </div>
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
     <script src="script.js"></script>
+
 </body>
-                </html>
+</html>
