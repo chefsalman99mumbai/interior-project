@@ -117,24 +117,22 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .reveal.visible{opacity:1;transform:none}
 
 /* ============================================================
-   NAV — thin 15% frosted glass, bigger, logo-fitted
+   NAV — taller, logo fills full height, 15% frosted glass
    ============================================================ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:14px 0;
+  padding:0;
   background:rgba(244, 241, 234, 0.15);
   backdrop-filter:blur(24px) saturate(180%);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
   border-bottom:1px solid rgba(244,241,234,0.15);
   transition:
-    padding .45s var(--ease),
+    height .4s var(--ease),
     background .45s var(--ease),
     border-color .45s var(--ease),
     color .35s var(--ease);
   color:var(--off-white);
 }
-.nav.scrolled{padding:10px 0}
-
 .nav.on-light{
   background:rgba(244, 241, 234, 0.15);
   border-bottom-color:rgba(15,15,15,0.10);
@@ -146,33 +144,38 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   color:var(--off-white);
 }
 
+/* The row IS the nav height — logo fills it edge-to-edge */
 .nav-row{
   display:flex;align-items:center;justify-content:space-between;gap:24px;
-  min-height:80px;
+  height:96px;
+  transition:height .4s var(--ease);
 }
+.nav.scrolled .nav-row{height:78px}
 
-/* Logo — fills the nav height */
+/* Logo — fills 100% of the nav row height */
 .logo{
   display:flex;align-items:center;
-  height:80px;
+  height:100%;
   flex-shrink:0;
-  transition:height .4s var(--ease);
+  padding:8px 0;
 }
 .logo-img{
   height:100%;
   width:auto;
-  max-width:340px;
+  max-width:none;
   object-fit:contain;
   object-position:left center;
   display:block;
   transition:height .4s var(--ease);
-  /* If your logo has a white background and you can't edit it:
-     uncomment the line below to blend it away on light backgrounds.
-     But the proper fix is removing the background in an image editor. */
-  /* mix-blend-mode:multiply; */
+
+  /* Blend-mode to hide a white background on the light sections.
+     If your logo has a BLACK background instead, change `multiply` to `screen`. */
+  mix-blend-mode:multiply;
 }
-.nav.scrolled .logo{height:64px}
-.nav.scrolled .logo-img{max-width:280px}
+.nav.on-dark .logo-img{
+  /* On dark sections, blend differently so a light logo shows correctly */
+  mix-blend-mode:screen;
+}
 
 /* Nav links */
 .nav-links{display:flex;gap:42px}
@@ -197,7 +200,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .nav.on-light .nav-links a.active{color:var(--crimson)}
 .nav.on-dark .nav-links a.active{color:var(--crimson-soft)}
 
-/* Menu button */
 .menu-btn{
   display:none;
   background:transparent;
@@ -793,9 +795,6 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
 }
 .toast.show{transform:none}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media(max-width:1100px){
   .service{grid-template-columns:80px 1fr 1.2fr 56px;gap:32px}
   .service h3{font-size:34px}
@@ -806,16 +805,11 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
 
 @media(max-width:900px){
   .container{width:min(100% - 40px,1360px)}
-  .nav{padding:10px 0}
-  .nav.scrolled{padding:8px 0}
+  .nav-row{height:78px}
+  .nav.scrolled .nav-row{height:64px}
   .nav-links{display:none}
   .nav .btn{display:none}
   .menu-btn{display:flex}
-  .nav-row{min-height:64px}
-  .logo{height:64px}
-  .logo-img{max-width:240px}
-  .nav.scrolled .logo{height:52px}
-  .nav.scrolled .logo-img{max-width:200px}
 
   .section-light,
   .section-dark,
@@ -824,7 +818,7 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
   .section-head{grid-template-columns:1fr;gap:32px;margin-bottom:64px}
   .section-head h2{font-size:clamp(40px,10vw,64px)}
 
-  .hero-content{padding-top:130px;padding-bottom:90px}
+  .hero-content{padding-top:140px;padding-bottom:90px}
   .hero-kicker{margin-bottom:50px;font-size:9px}
   .hero-masthead{margin-bottom:36px}
   .hero-masthead .tagline{font-size:17px}
@@ -871,11 +865,8 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
   .section-light,
   .section-dark,
   .section-sage{padding:80px 0}
-  .nav-row{min-height:56px}
-  .logo{height:56px}
-  .logo-img{max-width:180px}
-  .nav.scrolled .logo{height:46px}
-  .nav.scrolled .logo-img{max-width:150px}
+  .nav-row{height:68px}
+  .nav.scrolled .nav-row{height:58px}
   .hero-copy p{font-size:14px}
   .hero-masthead .brand{font-size:9px;letter-spacing:.34em}
   .hero-masthead .tagline{font-size:15px}
@@ -1239,7 +1230,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const onScroll = () => {
     const y = scrollY;
     nav.classList.toggle("scrolled", y > 30);
-    const zone = getZoneAtY(y + 80);
+    const zone = getZoneAtY(y + 100);
     nav.classList.toggle("on-light", zone === "light");
     nav.classList.toggle("on-dark",  zone === "dark");
     let current = offsets.length ? offsets[0].id : "home";
@@ -1443,4 +1434,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </body>
-</html>
+</html>      
