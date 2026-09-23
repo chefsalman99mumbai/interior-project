@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="FIZZA INTERIOR — luxury interior design, turnkey contracting and sensory wall experiences. Crafting landmarks since 2012.">
+<meta name="description" content="FIZZA INTERIOR — luxury interior design, turnkey contracting and sensory wall experiences. Crafting landmarks since 2009.">
 <meta name="theme-color" content="#F4F1EA">
 <title>FIZZA INTERIOR — Crafting Landmarks</title>
 
 <link rel="canonical" href="https://fizzainterior.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230F0F0F'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='42' fill='%23A61E2C' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="logo.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="FIZZA INTERIOR — Crafting Landmarks">
@@ -39,7 +39,7 @@
 
 <style>
 /* ============================================================
-   PALETTE — Crimson Red · Sage Green · Off-White · Black · White
+   PALETTE
    ============================================================ */
 :root{
   --black:#0F0F0F;
@@ -84,7 +84,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 ::selection{background:var(--crimson);color:var(--white)}
 
 /* ============================================================
-   TYPOGRAPHY — elegant editorial pairing
+   TYPOGRAPHY
    ============================================================ */
 .display{
   font-family:var(--font-display);
@@ -94,7 +94,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 }
 .serif{font-family:var(--font-display);font-weight:400}
 
-/* Eyebrow — small caps with tick */
 .eyebrow{
   display:inline-flex;align-items:center;gap:14px;
   font-family:var(--font-body);
@@ -111,10 +110,8 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .eyebrow.on-dark{color:var(--off-white)}
 .eyebrow.on-dark:before{background:var(--crimson-soft)}
 
-/* Container */
 .container{width:min(1360px,calc(100% - 56px));margin:auto}
 
-/* Buttons */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:12px;
   padding:18px 30px;
@@ -132,82 +129,110 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .btn-ghost-light{border-color:rgba(244,241,234,.4);color:var(--off-white)}
 .btn-ghost-light:hover{background:var(--off-white);border-color:var(--off-white);color:var(--black)}
 
-/* Reveal */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
 
 /* ============================================================
-   NAV — solid off-white, thin black border, no blur
+   NAV — thin 15% frosted glass, adaptive text colour
    ============================================================ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:30px 0;
-  background:var(--off-white);
-  border-bottom:1px solid var(--line-dark);
-  transition:padding .45s var(--ease), background .45s var(--ease);
+  padding:26px 0;
+  background:rgba(244, 241, 234, 0.15);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(244,241,234,0.15);
+  transition:
+    padding .45s var(--ease),
+    background .45s var(--ease),
+    border-color .45s var(--ease),
+    color .35s var(--ease);
+  color:var(--off-white);
 }
-.nav.scrolled{padding:20px 0;background:var(--off-white)}
+.nav.scrolled{padding:18px 0}
+
+/* On light sections: slightly different tint + black text */
+.nav.on-light{
+  background:rgba(244, 241, 234, 0.15);
+  border-bottom-color:rgba(15,15,15,0.10);
+  color:var(--black);
+}
+/* On dark sections: off-white text */
+.nav.on-dark{
+  background:rgba(15, 15, 15, 0.15);
+  border-bottom-color:rgba(244,241,234,0.14);
+  color:var(--off-white);
+}
+
 .nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
 
+/* Logo — uses your logo.png */
 .logo{
-  display:flex;align-items:baseline;gap:14px;
-  font-family:var(--font-display);
-  color:var(--black);
-  white-space:nowrap;
+  display:flex;align-items:center;
+  height:46px;
+  flex-shrink:0;
 }
-.logo .mark{
-  font-family:var(--font-display);
-  font-size:22px;font-weight:700;
-  letter-spacing:.04em;text-transform:uppercase;
-  line-height:1;
+.logo-img{
+  height:46px;
+  width:auto;
+  max-width:240px;
+  object-fit:contain;
+  display:block;
+  transition:height .4s var(--ease);
 }
-.logo .mark .dot{
-  display:inline-block;
-  width:6px;height:6px;border-radius:50%;
-  background:var(--crimson);
-  margin:0 6px 3px;
-  vertical-align:middle;
-}
-.logo .sub{
-  font-family:var(--font-body);
-  font-size:9px;font-weight:500;
-  letter-spacing:.32em;text-transform:uppercase;
-  color:var(--black);
-  padding-bottom:2px;
-  opacity:.65;
-}
+.nav.scrolled .logo-img{height:38px}
+.nav.scrolled .logo{height:38px}
 
+/* Nav links */
 .nav-links{display:flex;gap:42px}
 .nav-links a{
   position:relative;
   font-family:var(--font-body);
   font-size:10px;font-weight:500;
   letter-spacing:.28em;text-transform:uppercase;
-  color:var(--black);
+  color:inherit;
   padding:6px 0;
   transition:.3s;
 }
 .nav-links a:after{
   content:"";position:absolute;left:0;bottom:0;
-  width:0;height:1px;background:var(--crimson);
+  width:0;height:1px;background:var(--crimson-soft);
   transition:.35s var(--ease);
 }
-.nav-links a:hover{color:var(--crimson)}
+.nav.on-light .nav-links a:after{background:var(--crimson)}
 .nav-links a:hover:after,
 .nav-links a.active:after{width:100%}
-.nav-links a.active{color:var(--crimson)}
+.nav-links a.active{color:var(--crimson-soft)}
+.nav.on-light .nav-links a.active{color:var(--crimson)}
+.nav.on-dark .nav-links a.active{color:var(--crimson-soft)}
 
+/* Menu button */
 .menu-btn{
   display:none;
-  background:none;border:1px solid var(--black);
+  background:transparent;
+  border:1px solid currentColor;
   width:44px;height:44px;
   align-items:center;justify-content:center;
-  color:var(--black);font-size:16px;
+  color:inherit;font-size:15px;
   transition:.3s;
 }
-.menu-btn:hover{background:var(--black);color:var(--off-white)}
+.menu-btn:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white)}
 
-/* Mobile menu — solid, no blur */
+/* Solid CTA on nav — readable on both */
+.nav .btn-solid{
+  border-color:var(--crimson);
+  background:var(--crimson);
+  color:var(--white);
+}
+.nav .btn-solid:hover{
+  background:var(--black);
+  border-color:var(--black);
+  color:var(--off-white);
+}
+
+/* ============================================================
+   MOBILE MENU — solid black, no blur
+   ============================================================ */
 .mobile-menu{
   position:fixed;inset:0;
   background:var(--black);
@@ -232,7 +257,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .mobile-links a:hover{color:var(--crimson-soft)}
 
 /* ============================================================
-   HERO — spiral staircase + GSAP pin-zoom (unchanged mechanics)
+   HERO — spiral staircase + GSAP pin-zoom
    ============================================================ */
 .hero{
   position:relative;
@@ -263,7 +288,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   50%{transform:scale(1.06)}
 }
 
-/* Crisp vignette — no blur, just layered gradients */
 .hero-vignette{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
@@ -275,15 +299,12 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   background:radial-gradient(ellipse at center,rgba(15,15,15,.35),rgba(15,15,15,.88) 90%);
   opacity:0;
 }
-
-/* Thin crimson stripe at the bottom */
 .hero:after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:1px;z-index:8;
   background:var(--crimson);
   opacity:.85;
 }
 
-/* Hero content */
 .hero-content{
   position:relative;z-index:10;
   padding-top:160px;
@@ -359,23 +380,15 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   letter-spacing:.32em;text-transform:uppercase;
   color:var(--off-white);
 }
-.scroll-note .line{
-  width:44px;height:1px;
-  background:var(--crimson-soft);
-}
-.scroll-note i{
-  color:var(--crimson-soft);
-  animation:bob 1.8s ease-in-out infinite;
-}
+.scroll-note .line{width:44px;height:1px;background:var(--crimson-soft)}
+.scroll-note i{color:var(--crimson-soft);animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(6px)}}
 
-/* When GSAP active, hide hero content until GSAP animates it */
 html.gsap-active .hero-kicker,
 html.gsap-active .hero-masthead,
 html.gsap-active .hero-title,
 html.gsap-active .hero-copy{opacity:0}
 
-/* Hero end cue */
 .hero-end-cue{
   display:flex;justify-content:center;align-items:center;gap:16px;
   padding:22px 0;
@@ -426,7 +439,7 @@ html.gsap-active .hero-copy{opacity:0}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ============================================================
-   SECTION BASE
+   SECTIONS
    ============================================================ */
 .section-light{background:var(--off-white);color:var(--black);padding:150px 0;position:relative}
 .section-dark{background:var(--black);color:var(--off-white);padding:150px 0;position:relative}
@@ -476,9 +489,7 @@ html.gsap-active .hero-copy{opacity:0}
   opacity:.8;
 }
 
-/* ============================================================
-   INTRO / ABOUT
-   ============================================================ */
+/* INTRO */
 .intro .intro-grid{
   display:grid;
   grid-template-columns:1fr 2fr;
@@ -529,10 +540,7 @@ html.gsap-active .hero-copy{opacity:0}
   margin-top:80px;
   border-top:1px solid var(--line-dark);
 }
-.stat{
-  padding:36px 0 0;
-  border-right:1px solid var(--line-dark);
-}
+.stat{padding:36px 0 0;border-right:1px solid var(--line-dark)}
 .stat:last-child{border-right:0}
 .stat:not(:first-child){padding-left:36px}
 .stat:not(:last-child){padding-right:36px}
@@ -547,24 +555,19 @@ html.gsap-active .hero-copy{opacity:0}
 }
 .stat strong .accent{color:var(--crimson);font-size:.55em;vertical-align:top;margin-left:2px}
 .stat small{
-  display:block;
-  margin-top:14px;
+  display:block;margin-top:14px;
   font-family:var(--font-body);
   font-size:9px;font-weight:500;
   letter-spacing:.32em;text-transform:uppercase;
-  color:var(--black);
-  opacity:.55;
+  color:var(--black);opacity:.55;
 }
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
+/* PROJECTS */
 .projects{padding-top:150px}
 .filter{
   display:flex;gap:0;
   border:1px solid var(--line-dark);
-  align-self:end;
-  justify-self:end;
+  align-self:end;justify-self:end;
 }
 .filter button{
   background:transparent;border:0;
@@ -608,29 +611,24 @@ html.gsap-active .hero-copy{opacity:0}
 .project:focus-visible{outline:2px solid var(--crimson);outline-offset:-6px}
 
 .project-info{
-  position:absolute;
-  left:0;right:0;bottom:0;
+  position:absolute;left:0;right:0;bottom:0;
   padding:36px 40px;
   background:linear-gradient(to top,rgba(15,15,15,.9),transparent);
   color:var(--off-white);
-  display:flex;justify-content:space-between;align-items:flex-end;
-  gap:24px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
 }
 .project-info .idx{
   font-family:var(--font-display);
   font-style:italic;
   font-size:20px;
   color:var(--crimson-soft);
-  line-height:1;
-  margin-bottom:10px;
+  line-height:1;margin-bottom:10px;
 }
 .project-info h3{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:38px;
-  line-height:1;
-  letter-spacing:-.035em;
-  margin:0;
+  font-size:38px;line-height:1;
+  letter-spacing:-.035em;margin:0;
 }
 .project-info .meta{
   margin-top:10px;
@@ -654,23 +652,17 @@ html.gsap-active .hero-copy{opacity:0}
   transform:rotate(-45deg);
 }
 
-/* ============================================================
-   SERVICES — dark section
-   ============================================================ */
+/* SERVICES */
 .services .section-head h2{color:var(--off-white)}
 .services .section-head p{color:rgba(244,241,234,.72)}
 .services .eyebrow{color:var(--off-white)}
 .services .eyebrow:before{background:var(--crimson-soft)}
 
-.service-list{
-  border-top:1px solid var(--line-light);
-  position:relative;z-index:1;
-}
+.service-list{border-top:1px solid var(--line-light);position:relative;z-index:1}
 .service{
   display:grid;
   grid-template-columns:100px 1fr 1.4fr 60px;
-  gap:40px;
-  align-items:start;
+  gap:40px;align-items:start;
   padding:48px 0;
   border-bottom:1px solid var(--line-light);
   position:relative;
@@ -686,16 +678,13 @@ html.gsap-active .hero-copy{opacity:0}
   font-style:italic;
   font-size:24px;
   color:var(--crimson-soft);
-  line-height:1;
-  padding-top:8px;
+  line-height:1;padding-top:8px;
 }
 .service h3{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:40px;
-  line-height:1.05;
-  letter-spacing:-.035em;
-  margin:0;
+  font-size:40px;line-height:1.05;
+  letter-spacing:-.035em;margin:0;
   color:var(--off-white);
 }
 .service p{
@@ -713,8 +702,7 @@ html.gsap-active .hero-copy{opacity:0}
   border-radius:50%;
   color:var(--off-white);
   transition:.4s var(--ease);
-  justify-self:end;
-  margin-top:4px;
+  justify-self:end;margin-top:4px;
 }
 .service:hover .go{
   background:var(--crimson);
@@ -722,9 +710,7 @@ html.gsap-active .hero-copy{opacity:0}
   transform:rotate(-45deg);
 }
 
-/* ============================================================
-   PROCESS — sage deep background
-   ============================================================ */
+/* PROCESS */
 .process .section-head h2{color:var(--off-white)}
 .process .eyebrow{color:var(--off-white)}
 .process .eyebrow:before{background:var(--crimson-soft)}
@@ -751,14 +737,12 @@ html.gsap-active .hero-copy{opacity:0}
   font-size:10px;font-weight:500;
   letter-spacing:.34em;text-transform:uppercase;
   color:var(--crimson-soft);
-  display:block;
-  margin-bottom:auto;
+  display:block;margin-bottom:auto;
 }
 .step h3{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:38px;
-  line-height:1;
+  font-size:38px;line-height:1;
   letter-spacing:-.035em;
   margin:60px 0 18px;
   color:var(--off-white);
@@ -772,9 +756,7 @@ html.gsap-active .hero-copy{opacity:0}
   color:rgba(244,241,234,.75);
 }
 
-/* ============================================================
-   EXPERIENCE — full-bleed dark image
-   ============================================================ */
+/* EXPERIENCE */
 .experience{
   position:relative;
   min-height:80vh;
@@ -815,9 +797,7 @@ html.gsap-active .hero-copy{opacity:0}
   margin:0 0 40px;
 }
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
+/* CONTACT */
 .contact .section-head{grid-template-columns:1fr;margin-bottom:80px}
 .contact h2{
   font-family:var(--font-display);
@@ -836,18 +816,14 @@ html.gsap-active .hero-copy{opacity:0}
   position:relative;z-index:1;
 }
 .contact-info{display:grid;gap:0}
-.contact-info > div{
-  padding:26px 0;
-  border-top:1px solid var(--line-dark);
-}
+.contact-info > div{padding:26px 0;border-top:1px solid var(--line-dark)}
 .contact-info > div:last-child{border-bottom:1px solid var(--line-dark)}
 .contact-info small{
   display:block;
   font-family:var(--font-body);
   font-size:9px;font-weight:500;
   letter-spacing:.34em;text-transform:uppercase;
-  color:var(--black);
-  opacity:.55;
+  color:var(--black);opacity:.55;
   margin-bottom:12px;
 }
 .contact-info p{
@@ -912,9 +888,7 @@ textarea.field{resize:vertical;min-height:120px;line-height:1.7}
   padding-left:44px;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* FOOTER */
 footer{
   background:var(--black);
   color:var(--off-white);
@@ -930,21 +904,17 @@ footer{
 }
 .footer-brand{
   font-family:var(--font-display);
-  font-size:52px;
-  font-weight:400;
-  line-height:1;
-  letter-spacing:-.04em;
+  font-size:52px;font-weight:400;
+  line-height:1;letter-spacing:-.04em;
   margin:0 0 20px;
 }
 .footer-brand .accent{color:var(--crimson-soft)}
 .footer-tagline{
   font-family:var(--font-display);
   font-style:italic;
-  font-size:22px;
-  line-height:1.4;
+  font-size:22px;line-height:1.4;
   color:var(--sage-soft);
-  max-width:340px;
-  margin:0;
+  max-width:340px;margin:0;
 }
 .footer-col h4{
   font-family:var(--font-body);
@@ -954,8 +924,7 @@ footer{
   margin:0 0 26px;
 }
 .footer-col ul{
-  list-style:none;
-  padding:0;margin:0;
+  list-style:none;padding:0;margin:0;
   display:grid;gap:14px;
 }
 .footer-col a{
@@ -970,8 +939,7 @@ footer{
 .footer-col p{
   margin:0;
   font-family:var(--font-body);
-  font-size:14px;
-  font-weight:300;
+  font-size:14px;font-weight:300;
   line-height:1.8;
   color:rgba(244,241,234,.7);
 }
@@ -989,16 +957,12 @@ footer{
   letter-spacing:.28em;text-transform:uppercase;
   color:rgba(244,241,234,.55);
 }
-.footer-bottom .made{
-  display:flex;align-items:center;gap:12px;
-}
+.footer-bottom .made{display:flex;align-items:center;gap:12px}
 .footer-bottom .made:before{
   content:"";width:24px;height:1px;background:var(--crimson);
 }
 
-/* ============================================================
-   MODAL
-   ============================================================ */
+/* MODAL */
 .modal{
   position:fixed;inset:0;
   background:rgba(15,15,15,.92);
@@ -1017,11 +981,7 @@ footer{
   position:relative;
   padding:56px;
 }
-.modal-card img{
-  height:400px;
-  margin-bottom:36px;
-  background:var(--off-white-deep);
-}
+.modal-card img{height:400px;margin-bottom:36px;background:var(--off-white-deep)}
 .modal-card .eyebrow{color:var(--black)}
 .modal-card .eyebrow:before{background:var(--crimson)}
 .modal-card h2{
@@ -1051,9 +1011,7 @@ footer{
 .modal-card .btn{border-color:var(--black);color:var(--black)}
 .modal-card .btn:hover{background:var(--crimson);border-color:var(--crimson);color:var(--off-white)}
 
-/* ============================================================
-   TOAST
-   ============================================================ */
+/* TOAST */
 .toast{
   position:fixed;right:24px;bottom:24px;
   background:var(--black);
@@ -1083,12 +1041,11 @@ footer{
 
 @media(max-width:900px){
   .container{width:min(100% - 40px,1360px)}
-  .nav{padding:22px 0}
-  .nav.scrolled{padding:16px 0}
+  .nav{padding:18px 0}
+  .nav.scrolled{padding:14px 0}
   .nav-links{display:none}
   .nav .btn{display:none}
   .menu-btn{display:flex}
-  .logo .sub{display:none}
 
   .section-light,
   .section-dark,
@@ -1155,6 +1112,8 @@ footer{
   .intro .signature{font-size:64px}
   .project-info .idx{font-size:16px}
   .submit{padding:18px 22px;letter-spacing:.24em}
+  .logo-img{height:38px;max-width:180px}
+  .nav.scrolled .logo-img{height:32px}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -1173,9 +1132,8 @@ footer{
 
 <header class="nav" id="nav">
   <div class="container nav-row">
-    <a href="#home" class="logo">
-      <span class="mark">Fizza<span class="dot"></span>Interior</span>
-      <span class="sub">Crafting Landmarks</span>
+    <a href="#home" class="logo" aria-label="Fizza Interior — Crafting Landmarks">
+      <img src="logo.png" alt="Fizza Interior — Crafting Landmarks" class="logo-img">
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#about">About</a>
@@ -1202,8 +1160,8 @@ footer{
 </div>
 
 <main>
-<!-- ============ HERO ============ -->
-<section class="hero" id="home">
+<!-- HERO -->
+<section class="hero" id="home" data-nav="dark">
   <div class="hero-image-wrap" aria-hidden="true">
     <div class="hero-image"></div>
   </div>
@@ -1212,7 +1170,7 @@ footer{
 
   <div class="container hero-content">
     <div class="hero-kicker">
-      <span class="eyebrow">Mumbai · India · Since 2012</span>
+      <span class="eyebrow">Mumbai · India · Since 2009</span>
       <span class="eyebrow no-tick">01 / 06</span>
     </div>
 
@@ -1251,8 +1209,8 @@ footer{
   </div>
 </div>
 
-<!-- ============ ABOUT / INTRO ============ -->
-<section class="section-light intro" id="about">
+<!-- ABOUT -->
+<section class="section-light intro" id="about" data-nav="light">
   <div class="section-number right" aria-hidden="true">01</div>
   <div class="container">
     <div class="intro-grid">
@@ -1274,8 +1232,8 @@ footer{
   </div>
 </section>
 
-<!-- ============ PROJECTS ============ -->
-<section class="section-light projects" id="portfolio">
+<!-- PROJECTS -->
+<section class="section-light projects" id="portfolio" data-nav="light">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -1354,8 +1312,8 @@ footer{
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="section-dark services" id="services">
+<!-- SERVICES -->
+<section class="section-dark services" id="services" data-nav="dark">
   <div class="section-number left" aria-hidden="true">03</div>
   <div class="container">
     <div class="section-head reveal">
@@ -1395,8 +1353,8 @@ footer{
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
-<section class="section-sage process" id="process">
+<!-- PROCESS -->
+<section class="section-sage process" id="process" data-nav="dark">
   <div class="container">
     <div class="section-head reveal">
       <div>
@@ -1431,8 +1389,8 @@ footer{
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="experience" id="experience">
+<!-- EXPERIENCE -->
+<section class="experience" id="experience" data-nav="dark">
   <div class="exp-bg" id="expBg"></div>
   <div class="container exp-content reveal">
     <div class="eyebrow on-dark">Material Intelligence</div>
@@ -1442,8 +1400,8 @@ footer{
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="section-light contact" id="contact">
+<!-- CONTACT -->
+<section class="section-light contact" id="contact" data-nav="light">
   <div class="section-number right" aria-hidden="true">06</div>
   <div class="container">
     <div class="section-head reveal">
@@ -1498,7 +1456,7 @@ footer{
 </section>
 </main>
 
-<footer>
+<footer data-nav="dark">
   <div class="container">
     <div class="footer-top">
       <div>
@@ -1557,26 +1515,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (gsapReady) gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- NAV ---------- */
+  /* ============================================================
+     NAV — scroll state + adaptive colour based on section behind
+     ============================================================ */
   const nav = $("#nav");
   const sections = $$("main section[id]");
+  const navZones = $$("main section[id][data-nav], footer[data-nav]");
+
   let offsets = [];
-  const measure = () => { offsets = sections.map(s => ({ id: s.id, top: s.offsetTop })); };
+  const measure = () => {
+    offsets = sections.map(s => ({ id: s.id, top: s.offsetTop }));
+  };
+
+  /* Which section is behind the nav's midpoint (say y=60)? */
+  const getZoneAtY = y => {
+    let current = null;
+    for (const el of navZones) {
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      if (y >= top && y < bottom) current = el.getAttribute("data-nav");
+    }
+    return current || "dark";
+  };
+
   const onScroll = () => {
-    nav.classList.toggle("scrolled", scrollY > 30);
+    const y = scrollY;
+    nav.classList.toggle("scrolled", y > 30);
+
+    /* Swap text colour based on the section behind the nav */
+    const zone = getZoneAtY(y + 60);
+    nav.classList.toggle("on-light", zone === "light");
+    nav.classList.toggle("on-dark",  zone === "dark");
+
+    /* Active nav link */
     let current = offsets.length ? offsets[0].id : "home";
-    for (const o of offsets) { if (scrollY >= o.top - 180) current = o.id; }
+    for (const o of offsets) { if (y >= o.top - 180) current = o.id; }
     $$(".nav-links a").forEach(a =>
       a.classList.toggle("active", a.getAttribute("href") === "#" + current)
     );
   };
+
   measure();
   addEventListener("resize", measure);
   addEventListener("load", measure);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- MOBILE MENU ---------- */
+  /* ============================================================
+     MOBILE MENU
+     ============================================================ */
   const menu    = $("#mobileMenu");
   const menuBtn = $("#menuBtn");
   const setMenu = open => {
@@ -1595,7 +1582,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Escape" && menu.classList.contains("open")) { setMenu(false); menuBtn.focus(); }
   });
 
-  /* ---------- SMOOTH NAV ---------- */
+  /* ============================================================
+     SMOOTH NAV
+     ============================================================ */
   $$('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
     const id = a.getAttribute("href");
     if (id === "#" || !$(id)) return;
@@ -1607,7 +1596,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }));
 
-  /* ---------- REVEAL ---------- */
+  /* ============================================================
+     REVEAL
+     ============================================================ */
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -1619,7 +1610,9 @@ document.addEventListener("DOMContentLoaded", () => {
     $$(".reveal").forEach(el => el.classList.add("visible"));
   }
 
-  /* ---------- PORTFOLIO FILTERS ---------- */
+  /* ============================================================
+     PORTFOLIO FILTERS
+     ============================================================ */
   $$(".filter button").forEach(btn => btn.addEventListener("click", () => {
     $$(".filter button").forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
     btn.classList.add("active");
@@ -1631,7 +1624,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gsapReady) ScrollTrigger.refresh();
   }));
 
-  /* ---------- PROJECT MODAL ---------- */
+  /* ============================================================
+     PROJECT MODAL
+     ============================================================ */
   const modal    = $("#projectModal");
   const mi       = $("#modalImage");
   const mt       = $("#modalTitle");
@@ -1679,7 +1674,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ---------- EXPERIENCE PARALLAX ---------- */
+  /* ============================================================
+     EXPERIENCE PARALLAX
+     ============================================================ */
   const bg = $("#expBg");
   if (bg && matchMedia("(pointer:fine)").matches && !reducedMotion) {
     let raf = 0;
@@ -1693,7 +1690,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  /* ---------- CONTACT FORM ---------- */
+  /* ============================================================
+     CONTACT FORM
+     ============================================================ */
   const toast = $("#toast");
   let toastTimer;
   const showToast = msg => {
@@ -1721,7 +1720,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $("#year").textContent = new Date().getFullYear();
 
-  /* ---------- GSAP HERO ---------- */
+  /* ============================================================
+     GSAP HERO
+     ============================================================ */
   if (gsapReady) {
     const hero        = document.querySelector(".hero");
     const imageWrap   = document.querySelector(".hero-image-wrap");
