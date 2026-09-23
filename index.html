@@ -27,23 +27,22 @@
 
 <style>
 :root{
-  /* Cobalt-black base — a deep midnight blue-black as the foundation */
+  /* Cobalt-black base */
   --ink:#080D1A;
   --ink-2:#0C1220;
   --ink-3:#111830;
   --paper:#f5f3ed;
   --warm:#ded9cc;
 
-  /* Signature crimson (primary accent) */
+  /* Signature crimson */
   --crimson:#C1122F;
   --crimson-soft:#F0445F;
   --crimson-deep:#7A0B1E;
 
-  /* Cobalt (secondary structural accent) */
+  /* Cobalt */
   --cobalt:#2E56E0;
   --cobalt-soft:#5D82FF;
   --cobalt-deep:#0F1A45;
-  --cobalt-ink:#080D1A;
 
   --muted:#9A98A6;
   --line:rgba(160,175,255,.14);
@@ -74,13 +73,12 @@ button{cursor:pointer}
 img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
 
 /* ============================================================
-   TYPOGRAPHY SYSTEM — editorial / mixed-serif hierarchy
+   TYPOGRAPHY SYSTEM
    ============================================================ */
 .serif{font-family:"Playfair Display",serif}
 .script{font-family:"Great Vibes",cursive;font-weight:400}
 .garamond{font-family:"Cormorant Garamond",serif}
 
-/* Display: dramatic, tightly tracked, high-contrast serif */
 .display{
   font-family:"Playfair Display",serif;
   font-weight:400;
@@ -88,11 +86,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   line-height:.86;
 }
 
-/* Outline / stroke text — used for decorative emphasis */
-.outline{
-  color:transparent;
-  -webkit-text-stroke:1px rgba(245,243,237,.75);
-}
+.outline{color:transparent;-webkit-text-stroke:1px rgba(245,243,237,.75)}
 .outline-crimson{color:transparent;-webkit-text-stroke:1px var(--crimson)}
 .outline-cobalt{color:transparent;-webkit-text-stroke:1px var(--cobalt-soft)}
 @supports not ((-webkit-text-stroke:1px black)){
@@ -101,7 +95,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   .outline-cobalt{color:var(--cobalt-soft)}
 }
 
-/* Eyebrow — small caps, wide tracking, with a leading tick */
 .eyebrow{
   font-size:10px;
   letter-spacing:.34em;
@@ -151,7 +144,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
 
-/* Signature lines */
 .crimson-word{color:var(--crimson)}
 .cobalt-word{color:var(--cobalt-soft)}
 ::selection{background:var(--crimson);color:#fff}
@@ -242,7 +234,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   position:absolute;inset:0;opacity:.08;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
-/* Dual glow — cobalt on the right, crimson on the left */
 .hero:before{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
@@ -258,7 +249,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
 .hero-content{position:relative;z-index:2;width:100%;padding-top:100px}
 .hero-kicker{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
 
-/* The masthead */
 .hero-masthead{
   display:flex;align-items:center;gap:18px;
   margin-bottom:38px;
@@ -282,7 +272,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   color:#e8e4d9;
 }
 
-/* HERO TITLE */
 .hero-title{
   font-family:"Playfair Display",serif;
   font-size:clamp(66px,11.5vw,192px);
@@ -310,7 +299,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   font-weight:400;
 }
 
-/* Half-frosted glass fill on the first line */
 .split-title[data-text]::before{
   content:attr(data-text);position:absolute;inset:0;z-index:2;pointer-events:none;
   font:inherit;letter-spacing:inherit;line-height:inherit;color:transparent;
@@ -360,7 +348,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
 .scroll-note i{animation:bob 1.5s infinite;color:var(--crimson)}
 @keyframes bob{50%{transform:translateY(5px)}}
 
-/* HERO END CUE */
 .hero-end-cue{
   display:flex;justify-content:center;align-items:center;gap:14px;
   padding:20px 0;
@@ -595,7 +582,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   margin:0;
   letter-spacing:-.035em;
 }
-.service p{color:#a5a19a;font-size:13px;line-height:1.75;margin:0;font-family:"Cormorant Garamond",serif;font-size:16px}
+.service p{color:#a5a19a;line-height:1.75;margin:0;font-family:"Cormorant Garamond",serif;font-size:16px}
 .service i{color:var(--crimson);transition:.35s;font-size:14px}
 .service:hover i{transform:translateX(6px);color:var(--cobalt-soft)}
 
@@ -716,7 +703,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a2138}
   font-size:9px;letter-spacing:.26em;text-transform:uppercase;
   color:#7a7570;font-weight:600;
 }
-.contact-info p{margin:9px 0;font-size:15px;font-family:"Cormorant Garamond",serif;font-weight:500}
+.contact-info p{margin:9px 0;font-size:15px;font-family:"Cormorant Garamond",serif;font-weight:500;line-height:1.55}
 .contact-info a{transition:.3s}
 .contact-info a:hover{color:var(--crimson)}
 
@@ -1126,10 +1113,22 @@ footer{background:var(--ink);padding:70px 0 30px;border-top:1px solid var(--line
       <div class="eyebrow">06 — Private Consultation</div>
       <h2>Let's make<br><span class="script">space.</span></h2>
       <div class="contact-info">
-        <div><small>Studio</small><p>Mumbai, Maharashtra, India</p></div>
-        <div><small>Phone</small><p><a href="tel:+919999999999">+91 99999 99999</a></p></div>
-        <div><small>Email</small><p><a href="mailto:hello@fizzainterior.com">hello@fizzainterior.com</a></p></div>
-        <div><small>WhatsApp</small><p><a target="_blank" rel="noopener" href="https://wa.me/919999999999">Start a conversation →</a></p></div>
+        <div>
+          <small>Studio</small>
+          <p>84, Virwani Industrial Estate,<br>Goregaon (East), Mumbai,<br>Maharashtra 400063, India</p>
+        </div>
+        <div>
+          <small>Phone</small>
+          <p><a href="tel:+919004015018">+91 90040 15018</a></p>
+        </div>
+        <div>
+          <small>Email</small>
+          <p><a href="mailto:hello@fizzainterior.com">hello@fizzainterior.com</a></p>
+        </div>
+        <div>
+          <small>WhatsApp</small>
+          <p><a target="_blank" rel="noopener" href="https://wa.me/919004015018">Start a conversation →</a></p>
+        </div>
       </div>
     </div>
     <form class="form reveal" id="contactForm" novalidate>
