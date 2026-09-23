@@ -117,48 +117,62 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 .reveal.visible{opacity:1;transform:none}
 
 /* ============================================================
-   NAV — taller, logo fills full height, 15% frosted glass
+   NAV — bigger, pure white 20%, scroll-shrink logo, magnetic
    ============================================================ */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   padding:0;
-  background:rgba(244, 241, 234, 0.15);
-  backdrop-filter:blur(24px) saturate(180%);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);
-  border-bottom:1px solid rgba(244,241,234,0.15);
+  background:rgba(255, 255, 255, 0.20);
+  backdrop-filter:blur(26px) saturate(180%);
+  -webkit-backdrop-filter:blur(26px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.25);
   transition:
-    height .4s var(--ease),
     background .45s var(--ease),
     border-color .45s var(--ease),
     color .35s var(--ease);
   color:var(--off-white);
 }
 .nav.on-light{
-  background:rgba(244, 241, 234, 0.15);
-  border-bottom-color:rgba(15,15,15,0.10);
+  border-bottom-color:rgba(15,15,15,0.12);
   color:var(--black);
 }
 .nav.on-dark{
-  background:rgba(15, 15, 15, 0.15);
-  border-bottom-color:rgba(244,241,234,0.14);
+  border-bottom-color:rgba(255,255,255,0.25);
   color:var(--off-white);
 }
 
-/* The row IS the nav height — logo fills it edge-to-edge */
+/* The row height drives the whole nav — larger at the top, compact on scroll */
 .nav-row{
   display:flex;align-items:center;justify-content:space-between;gap:24px;
-  height:96px;
-  transition:height .4s var(--ease);
+  height:128px;
+  transition:height .55s cubic-bezier(.22,.61,.36,1);
+  position:relative;
+  z-index:1;
 }
-.nav.scrolled .nav-row{height:78px}
+.nav.scrolled .nav-row{height:84px}
 
-/* Logo — fills 100% of the nav row height */
+/* ---- LOGO ---- */
+/* logo.png MUST have a transparent background for the shine mask to work. */
 .logo{
   display:flex;align-items:center;
   height:100%;
   flex-shrink:0;
   padding:8px 0;
+  will-change:transform;
+  transition:padding .4s var(--ease);
+  position:relative;
 }
+.nav.scrolled .logo{padding:6px 0}
+
+/* Wrapper that clips the shine */
+.logo-inner{
+  position:relative;
+  display:block;
+  height:100%;
+  overflow:hidden;
+  /* GSAP animates this in on page load */
+}
+
 .logo-img{
   height:100%;
   width:auto;
@@ -167,14 +181,32 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   object-position:left center;
   display:block;
   transition:height .4s var(--ease);
-
-  /* Blend-mode to hide a white background on the light sections.
-     If your logo has a BLACK background instead, change `multiply` to `screen`. */
-  mix-blend-mode:multiply;
 }
-.nav.on-dark .logo-img{
-  /* On dark sections, blend differently so a light logo shows correctly */
+
+/* The light sweep — a bright, blurred copy of the logo that glides across it */
+.logo-shine{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:url("logo.png");
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:left center;
+  filter:brightness(4) blur(6px) saturate(0);
+  opacity:0;
   mix-blend-mode:screen;
+  transform:translateX(-140%) skewX(-14deg);
+  will-change:transform,opacity;
+}
+
+@keyframes logoShineSweep{
+  0%   { transform:translateX(-140%) skewX(-14deg); opacity:0; }
+  18%  { opacity:0.95; }
+  82%  { opacity:0.95; }
+  100% { transform:translateX(140%) skewX(-14deg); opacity:0; }
+}
+.logo-shine.sweep{
+  animation:logoShineSweep 1.15s cubic-bezier(.4,0,.2,1) forwards;
 }
 
 /* Nav links */
@@ -204,9 +236,9 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
   display:none;
   background:transparent;
   border:1px solid currentColor;
-  width:52px;height:52px;
+  width:56px;height:56px;
   align-items:center;justify-content:center;
-  color:inherit;font-size:16px;
+  color:inherit;font-size:17px;
   transition:.3s;
 }
 .menu-btn:hover{background:var(--crimson);border-color:var(--crimson);color:var(--white)}
@@ -295,7 +327,7 @@ img{display:block;width:100%;height:100%;object-fit:cover;background:#1a1a1a}
 }
 .hero-content{
   position:relative;z-index:10;
-  padding-top:180px;
+  padding-top:220px;
   padding-bottom:120px;
   width:100%;
   color:var(--off-white);
@@ -805,8 +837,8 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
 
 @media(max-width:900px){
   .container{width:min(100% - 40px,1360px)}
-  .nav-row{height:78px}
-  .nav.scrolled .nav-row{height:64px}
+  .nav-row{height:100px}
+  .nav.scrolled .nav-row{height:72px}
   .nav-links{display:none}
   .nav .btn{display:none}
   .menu-btn{display:flex}
@@ -818,7 +850,7 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
   .section-head{grid-template-columns:1fr;gap:32px;margin-bottom:64px}
   .section-head h2{font-size:clamp(40px,10vw,64px)}
 
-  .hero-content{padding-top:140px;padding-bottom:90px}
+  .hero-content{padding-top:160px;padding-bottom:90px}
   .hero-kicker{margin-bottom:50px;font-size:9px}
   .hero-masthead{margin-bottom:36px}
   .hero-masthead .tagline{font-size:17px}
@@ -865,8 +897,8 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
   .section-light,
   .section-dark,
   .section-sage{padding:80px 0}
-  .nav-row{height:68px}
-  .nav.scrolled .nav-row{height:58px}
+  .nav-row{height:86px}
+  .nav.scrolled .nav-row{height:64px}
   .hero-copy p{font-size:14px}
   .hero-masthead .brand{font-size:9px;letter-spacing:.34em}
   .hero-masthead .tagline{font-size:15px}
@@ -883,6 +915,7 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
   }
   .reveal{opacity:1!important;transform:none!important}
   .hero-image{animation:none!important;transform:none!important}
+  .logo-shine{display:none}
 }
 </style>
 </head>
@@ -891,8 +924,11 @@ footer{background:var(--black);color:var(--off-white);padding:100px 0 40px;borde
 
 <header class="nav" id="nav">
   <div class="container nav-row">
-    <a href="#home" class="logo" aria-label="Fizza Interior — Crafting Landmarks">
-      <img src="logo.png" alt="Fizza Interior — Crafting Landmarks" class="logo-img">
+    <a href="#home" class="logo" id="logoAnchor" aria-label="Fizza Interior — Crafting Landmarks">
+      <span class="logo-inner">
+        <img src="logo.png" alt="Fizza Interior — Crafting Landmarks" class="logo-img">
+        <span class="logo-shine" aria-hidden="true"></span>
+      </span>
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#about">About</a>
@@ -1230,7 +1266,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const onScroll = () => {
     const y = scrollY;
     nav.classList.toggle("scrolled", y > 30);
-    const zone = getZoneAtY(y + 100);
+    const zone = getZoneAtY(y + 120);
     nav.classList.toggle("on-light", zone === "light");
     nav.classList.toggle("on-dark",  zone === "dark");
     let current = offsets.length ? offsets[0].id : "home";
@@ -1384,6 +1420,102 @@ document.addEventListener("DOMContentLoaded", () => {
 
   $("#year").textContent = new Date().getFullYear();
 
+  /* ============================================================
+     LOGO — entrance, shine sweep, magnetic pull
+     ============================================================ */
+  const logoAnchor = document.getElementById("logoAnchor");
+  const logoShine  = document.querySelector(".logo-shine");
+  const logoInner  = document.querySelector(".logo-inner");
+
+  if (logoAnchor && logoShine && logoInner && !reducedMotion) {
+
+    /* --- Shine sweep (used on load and on hover) --- */
+    let sweepTimeout = null;
+    const runSweep = (delay = 0) => {
+      if (sweepTimeout) clearTimeout(sweepTimeout);
+      sweepTimeout = setTimeout(() => {
+        logoShine.classList.remove("sweep");
+        void logoShine.offsetWidth; // force reflow so the animation restarts
+        logoShine.classList.add("sweep");
+      }, delay * 1000);
+    };
+
+    /* --- Entrance: fade + scale in, then one shine sweep --- */
+    if (gsapReady) {
+      gsap.fromTo(logoInner,
+        { opacity: 0, scale: 0.9, y: -6 },
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 1.05,
+          ease: "power3.out",
+          delay: 0.15,
+          onComplete: () => runSweep(0.15)
+        }
+      );
+    } else {
+      runSweep(0.35);
+    }
+
+    /* --- Shine sweep on hover --- */
+    logoAnchor.addEventListener("mouseenter", () => runSweep(0));
+    logoAnchor.addEventListener("focus", () => runSweep(0));
+
+    /* --- Magnetic pull (desktop, fine pointer only) --- */
+    if (matchMedia("(pointer:fine)").matches && gsapReady) {
+      const xTo   = gsap.quickTo(logoAnchor, "x",      { duration: 0.55, ease: "power3.out" });
+      const yTo   = gsap.quickTo(logoAnchor, "y",      { duration: 0.55, ease: "power3.out" });
+      const rotTo = gsap.quickTo(logoAnchor, "rotate", { duration: 0.65, ease: "power3.out" });
+
+      const PULL     = 0.28;  // strength of the pull
+      const MAX_PULL = 16;    // px clamp
+      const RANGE    = 260;   // px radius of influence around the logo
+
+      const onPointerMove = e => {
+        // Coarse check to save CPU when the pointer is far away
+        if (e.clientX > window.innerWidth * 0.55 && e.clientY > 260) {
+          xTo(0); yTo(0); rotTo(0);
+          return;
+        }
+
+        const r = logoAnchor.getBoundingClientRect();
+        // Compensate for the current transform so we measure the TRUE centre
+        const curX = gsap.getProperty(logoAnchor, "x") || 0;
+        const curY = gsap.getProperty(logoAnchor, "y") || 0;
+        const cx = r.left + r.width  / 2 - curX;
+        const cy = r.top  + r.height / 2 - curY;
+
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist > RANGE) {
+          xTo(0); yTo(0); rotTo(0);
+          return;
+        }
+
+        const influence = Math.max(0, 1 - dist / RANGE);
+        let tx = dx * PULL * influence;
+        let ty = dy * PULL * influence;
+        tx = Math.max(-MAX_PULL, Math.min(MAX_PULL, tx));
+        ty = Math.max(-MAX_PULL, Math.min(MAX_PULL, ty));
+
+        xTo(tx);
+        yTo(ty);
+        rotTo(tx * 0.35);
+      };
+
+      window.addEventListener("pointermove", onPointerMove, { passive: true });
+
+      // Reset the magnet when leaving the document
+      document.addEventListener("mouseleave", () => {
+        xTo(0); yTo(0); rotTo(0);
+      });
+    }
+  }
+
+  /* ============================================================
+     HERO — GSAP pin-zoom (unchanged)
+     ============================================================ */
   if (gsapReady) {
     const hero        = document.querySelector(".hero");
     const imageWrap   = document.querySelector(".hero-image-wrap");
