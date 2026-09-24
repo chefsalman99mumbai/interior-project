@@ -12,7 +12,7 @@
 :root{--bg:#27231e;--bg2:#1d1a16;--paper:#ebe6dc;--ink:#27231e;--muted:#a9a297;--line:rgba(235,230,220,.17);--accent:#aa8e67;--crimson:#9f302f;--crimson-soft:rgba(159,48,47,.16)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:Inter,sans-serif;font-weight:300}a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .header{position:fixed;z-index:50;top:0;left:0;right:0;height:78px;padding:0 0 0 0;display:flex;align-items:center;justify-content:space-between;background:rgba(39,35,30,.10);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
-.logo{height:78px;display:flex;align-items:center;margin:0;padding:0}.logo img{height:100%;width:auto;max-width:280px;display:block;object-fit:contain}.logo:after{display:none}.logo:after{content:'•';color:var(--crimson);margin-left:8px;font-size:17px}.logo span{display:block;font:8px Inter;letter-spacing:.27em;color:var(--muted);margin-top:7px}
+ .logo{height:78px;width:min(280px,32vw);display:flex;align-items:center;margin:0;padding:0}.logo-mark{height:100%;width:100%;display:block;background:#fff;mask-image:url("logo.png");-webkit-mask-image:url("logo.png");mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mask-position:left center;-webkit-mask-position:left center;mask-size:contain;-webkit-mask-size:contain;transition:background-color .55s ease,transform .3s ease}.logo:after{display:none}.logo span{display:block;font:8px Inter;letter-spacing:.27em;color:var(--muted);margin-top:7px}
 .header-right{display:flex;gap:22px;align-items:center}.index-btn,.visit-btn{font-size:9px;letter-spacing:.2em;text-transform:uppercase}.visit-btn{border-bottom:1px solid var(--crimson);padding-bottom:6px}
 .index-panel{position:fixed;z-index:60;right:4vw;top:75px;width:min(440px,92vw);background:#28241f;border:1px solid var(--line);padding:28px;display:none;box-shadow:0 30px 80px #0007}.index-panel.open{display:block}.index-panel a{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font:27px "Cormorant Garamond"}.index-panel a small{font:8px Inter;letter-spacing:.15em;color:var(--crimson);align-self:center}
 .page{min-height:100vh;scroll-margin-top:78px}.hero{height:100vh;min-height:720px;position:relative;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.43) saturate(.62)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#27231ef0 0,#27231e91 48%,#27231e20)}.hero-content{position:relative;z-index:2;width:min(1280px,90vw);margin:auto}.eyebrow{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}.hero .eyebrow{color:#d9aaa5}.hero-count{color:var(--crimson)!important}.service-num,.step b{color:var(--crimson)!important}h1,h2,h3{font-family:"Cormorant Garamond";font-weight:300;line-height:.88;margin:0}h1{font-size:clamp(80px,13vw,190px);letter-spacing:-.055em}h2{font-size:clamp(58px,8vw,115px);letter-spacing:-.04em}h3{font-size:42px}.lead{font-size:13px;line-height:1.9;color:#c5bfb5;max-width:490px}.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:45px}.hero-count{font:27px "Cormorant Garamond";color:var(--accent)}
@@ -24,15 +24,15 @@
 .process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}.step{background:#2a2620;padding:38px 25px;min-height:260px}.step b{font:40px "Cormorant Garamond";color:var(--accent)}.step h3{font-size:32px;margin:60px 0 12px}.step p{font-size:10px;line-height:1.7;color:#aaa39a}
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}.project{background:#29251f;min-height:620px;position:relative;overflow:hidden}.project img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.52) brightness(.7);transition:.8s}.project:hover img{transform:scale(1.04);filter:saturate(.62) brightness(.75)}.project-info{position:absolute;z-index:2;left:32px;right:32px;bottom:30px}.project-info h3{font-size:54px}.project-info p{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#c2bbb0}
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw}.form{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{border-bottom:1px solid var(--line);padding:12px 0}.field.full{grid-column:1/-1}.field label{display:block;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}.field input,.field textarea,.field select{width:100%;background:none;border:0;outline:0;color:var(--paper);font:300 14px Inter}.field textarea{min-height:120px;resize:vertical}.field option{background:var(--bg)}.btn{display:inline-flex;border:1px solid rgba(235,230,220,.3);padding:15px 20px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;transition:.25s}.btn:hover{background:var(--paper);color:var(--ink)}.btn:first-letter{color:inherit}
-.footer{padding:80px 0 35px;border-top:1px solid var(--line)}.footer-grid{display:flex;justify-content:space-between;gap:40px}.footer-brand{font:40px "Cormorant Garamond";letter-spacing:.08em;text-transform:uppercase}.toast{position:fixed;right:24px;bottom:24px;background:var(--paper);color:var(--ink);padding:15px 20px;font-size:9px;letter-spacing:.12em;transform:translateY(150px);transition:.35s;z-index:100}.toast.show{transform:none}
-@media(max-width:850px){.header{height:68px}.logo{height:68px}.logo img{max-width:240px}.header-right .visit-btn{display:none}.grid2,.grid2.wideleft,.grid2.wideright,.contact-grid{grid-template-columns:1fr;gap:45px}.offset{margin-left:0}.cards,.projects{grid-template-columns:1fr}.masonry{grid-template-columns:1fr 1fr}.masonry .b{height:520px}.masonry .c{margin-top:0}.service-row{grid-template-columns:55px 1fr}.service-row p{grid-column:2}.process{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{display:block}.footer-brand{margin-bottom:25px}.hero-bottom{display:block}.hero-bottom .lead{margin:25px 0}}
+.footer{padding:110px 0 35px;border-top:1px solid var(--line)}.footer-grid{display:flex;justify-content:space-between;gap:40px;align-items:flex-end}.footer-logo-wrap{width:min(620px,70vw);margin:0 0 30px}.footer-logo-wrap img{display:block;width:100%;height:auto;max-height:180px;object-fit:contain;object-position:left bottom}.footer-brand{font:40px "Cormorant Garamond";letter-spacing:.08em;text-transform:uppercase}.toast{position:fixed;right:24px;bottom:24px;background:var(--paper);color:var(--ink);padding:15px 20px;font-size:9px;letter-spacing:.12em;transform:translateY(150px);transition:.35s;z-index:100}.toast.show{transform:none}
+@media(max-width:850px){.header{height:68px}.logo{height:68px;width:min(240px,55vw)}.header-right .visit-btn{display:none}.grid2,.grid2.wideleft,.grid2.wideright,.contact-grid{grid-template-columns:1fr;gap:45px}.offset{margin-left:0}.cards,.projects{grid-template-columns:1fr}.masonry{grid-template-columns:1fr 1fr}.masonry .b{height:520px}.masonry .c{margin-top:0}.service-row{grid-template-columns:55px 1fr}.service-row p{grid-column:2}.process{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{display:block}.footer-logo-wrap{width:min(520px,92vw);margin-bottom:24px}.footer-logo-wrap img{max-height:130px}.footer-brand{margin-bottom:25px}.hero-bottom{display:block}.hero-bottom .lead{margin:25px 0}}
 @media(max-width:520px){h1{font-size:68px}.section{padding:80px 0}.hero{min-height:650px}.masonry{grid-template-columns:1fr}.masonry .a,.masonry .b,.masonry .c{height:420px}.process,.stats{grid-template-columns:1fr}.service-row h3{font-size:40px}.img-lg{height:520px}}
 </style>
 </head>
 <body>
 
 <header class="header">
-<a class="logo" href="#home" aria-label="FIZZA Interior Home"><img src="logo.png" alt="FIZZA INTERIOR"></a>
+<a class="logo" href="#home" aria-label="FIZZA Interior Home"><span class="logo-mark" aria-hidden="true"></span></a>
 <div class="header-right"><a class="visit-btn" href="#contact">Private consultation</a><button class="index-btn" onclick="toggleIndex()">Index +</button></div>
 </header>
 <nav class="index-panel" id="indexPanel">
@@ -138,6 +138,21 @@ function toggleIndex(){panel.classList.toggle('open')}
 function closeIndex(){panel.classList.remove('open')}
 document.addEventListener('click',e=>{if(panel.classList.contains('open')&&!panel.contains(e.target)&&!e.target.closest('.index-btn'))closeIndex()});
 function submitForm(e){e.preventDefault();document.getElementById('toast').classList.add('show');e.target.reset();setTimeout(()=>document.getElementById('toast').classList.remove('show'),3500)}
+function updateNavLogoColor(){
+ const logo=document.querySelector('.logo-mark');
+ if(!logo)return;
+ const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+ const p=Math.min(0.999,Math.max(0,window.scrollY/max));
+ const stops=['#ffffff','#2456c7','#e5c62e','#9f302f','#b88a3b','#718565','#171717','#ffffff'];
+ const scaled=p*(stops.length-1),i=Math.min(stops.length-2,Math.floor(scaled)),t=scaled-i;
+ const hex=n=>parseInt(n,16), mix=(a,b,t)=>Math.round(a+(b-a)*t).toString(16).padStart(2,'0');
+ const A=stops[i].slice(1),B=stops[i+1].slice(1);
+ logo.style.backgroundColor='#'+mix(hex(A.slice(0,2)),hex(B.slice(0,2)),t)+mix(hex(A.slice(2,4)),hex(B.slice(2,4)),t)+mix(hex(A.slice(4,6)),hex(B.slice(4,6)),t);
+}
+window.addEventListener('scroll',updateNavLogoColor,{passive:true});
+window.addEventListener('resize',updateNavLogoColor);
+window.addEventListener('load',updateNavLogoColor);
+
 </script>
 </body>
 </html>
