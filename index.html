@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>FIZZA INTERIOR — Crafting Landmarks</title>
 <meta name="description" content="FIZZA INTERIOR — turnkey interior design, contracting and execution for residential, commercial and hospitality spaces.">
-<link rel="preload" as="video" href="fizza-hero-property.mp4" type="video/mp4">
+<link rel="preload" as="video" href="fizza-hero-property-scrub.mp4" type="video/mp4">
 <link rel="preload" as="image" href="logo.png">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -45,7 +45,7 @@
 </div>
 <main id="top">
 <section class="hero" id="about" data-theme="dark">
-  <video class="hero-video" id="heroVideo" muted playsinline preload="auto" poster="hero-staircase.jpg"><source src="fizza-hero-property.mp4" type="video/mp4"></video>
+  <video class="hero-video" id="heroVideo" muted playsinline preload="auto" poster="hero-staircase.jpg"><source src="fizza-hero-property-scrub.mp4" type="video/mp4"></video>
   <div class="hero-frame"></div>
   <div class="hero-copy"><div class="hero-kicker">FIZZA INTERIOR / TURNKEY EXECUTION</div><h1 class="hero-title">CRAFTING<br><i>LANDMARKS.</i></h1><p class="hero-sub">From concept to handover, we design, build and finish spaces as one complete system.</p></div>
   <div class="hero-poster"><img src="position.jpg" alt="FIZZA interior detail"><strong>THE<br>DETAIL.</strong><small>DESIGN / BUILD / EXECUTE</small></div>
@@ -62,9 +62,36 @@
 gsap.registerPlugin(ScrollTrigger);
 const isTouch=matchMedia('(pointer:coarse)').matches||innerWidth<801;
 const video=document.getElementById('heroVideo');
-let videoReady=false;
-function setupVideo(){if(videoReady||!video.duration||!isFinite(video.duration))return;videoReady=true;video.pause();video.currentTime=0;const dur=video.duration;ScrollTrigger.create({trigger:'.hero',start:'top top',end:'+=190%',pin:true,scrub:isTouch?.55:1.25,anticipatePin:1,invalidateOnRefresh:true,onUpdate:self=>{if(!videoReady)return;const target=self.progress*dur;if(Math.abs(video.currentTime-target)>.015)video.currentTime=target;}});gsap.to('.hero-video',{scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.3:1}});gsap.fromTo('.hero-copy',{xPercent:-18,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 90%',end:'top 45%',scrub:isTouch?.35:.8}});gsap.fromTo('.hero-poster',{xPercent:30,rotation:8,opacity:0},{xPercent:0,rotation:3,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 75%',end:'top 35%',scrub:isTouch?.4:1}});gsap.to('.hero-frame',{scale:.94,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.4:1}});}
-if(video.readyState>=1)setupVideo();video.addEventListener('loadedmetadata',setupVideo);video.addEventListener('canplay',setupVideo);
+let videoReady=false, targetTime=0, seeking=false, rafId=0;
+function smoothVideoSeek(){
+  if(!videoReady){rafId=requestAnimationFrame(smoothVideoSeek);return;}
+  const delta=targetTime-video.currentTime;
+  if(Math.abs(delta)>0.006 && !seeking){
+    const next=video.currentTime + delta*(isTouch?.30:.42);
+    seeking=true;
+    video.currentTime=Math.max(0,Math.min(video.duration||0,next));
+    seeking=false;
+  }
+  rafId=requestAnimationFrame(smoothVideoSeek);
+}
+function setupVideo(){
+  if(videoReady||!video.duration||!isFinite(video.duration))return;
+  videoReady=true; video.pause(); video.currentTime=0;
+  const dur=video.duration;
+  ScrollTrigger.create({
+    trigger:'.hero',start:'top top',end:'+=190%',pin:true,
+    scrub:isTouch?0.18:0.9,anticipatePin:1,invalidateOnRefresh:true,
+    onUpdate:self=>{targetTime=self.progress*dur;}
+  });
+  gsap.to('.hero-video',{scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.12:.8}});
+  gsap.fromTo('.hero-copy',{xPercent:-18,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 90%',end:'top 45%',scrub:isTouch?.15:.7}});
+  gsap.fromTo('.hero-poster',{xPercent:30,rotation:8,opacity:0},{xPercent:0,rotation:3,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 75%',end:'top 35%',scrub:isTouch?.16:.8}});
+  gsap.to('.hero-frame',{scale:.94,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.15:.8}});
+  if(!rafId) rafId=requestAnimationFrame(smoothVideoSeek);
+}
+if(video.readyState>=1)setupVideo();
+video.addEventListener('loadedmetadata',setupVideo);
+video.addEventListener('canplay',setupVideo);
 const editorial=document.querySelector('.editorial');gsap.fromTo('.editorial h2',{xPercent:-12,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:editorial,start:'top 82%',end:'top 28%',scrub:isTouch?.35:1.2}});gsap.fromTo('.editorial-intro',{xPercent:15,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:editorial,start:'top 72%',end:'top 35%',scrub:isTouch?.3:1}});gsap.fromTo('.marquee',{xPercent:-10},{xPercent:8,ease:'none',scrollTrigger:{trigger:editorial,start:'top bottom',end:'bottom top',scrub:isTouch?.5:1.6}});gsap.from('.service',{y:55,opacity:0,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.service-grid',start:'top 78%',once:true}});
 const dark=document.querySelector('.dark');gsap.fromTo('.dark h2',{xPercent:-14,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 78%',end:'top 25%',scrub:isTouch?.35:1.2}});gsap.fromTo('.dark-copy',{x:80,opacity:0},{x:0,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 65%',end:'top 30%',scrub:isTouch?.3:1}});gsap.fromTo('.dark-image',{x:120,rotation:10,opacity:0},{x:0,rotation:4,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 68%',end:'top 28%',scrub:isTouch?.35:1.1}});
 const projects=document.querySelector('.projects');gsap.fromTo('.projects-word',{xPercent:-8},{xPercent:8,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.6:1.8}});gsap.to('.p1',{y:-70,rotation:-5,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.5:1.7}});gsap.to('.p2',{y:70,rotation:6,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.55:1.9}});gsap.to('.p3',{y:-90,rotation:-1,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.6:2}});
@@ -77,7 +104,7 @@ ScrollTrigger.config({limitCallbacks:true});addEventListener('load',()=>setTimeo
 </script>
 <style>
 .moblink{display:block;font:500 48px/.9 var(--serif);padding:16px 0;border-bottom:1px solid var(--line)}
-@media(max-width:800px){body{overscroll-behavior-y:auto}.hero-video{object-position:center center}.hero:after{background:linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.08) 55%,rgba(0,0,0,.28))}.hero-poster{z-index:4}.hero-title{position:relative;z-index:6}.hero-copy{z-index:6}.project-card{z-index:4}.projects-word{z-index:1}.project-note{z-index:7}.mini{z-index:4}.commercial h2,.commercial p{position:relative;z-index:8}.craft-copy{position:relative;z-index:3}.dark-copy{position:relative;z-index:6}.dark-image{z-index:4}}
+@media(max-width:800px){html{scroll-behavior:auto!important}body{overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch}.hero-video{transform:none!important;filter:saturate(.72) contrast(1.02)!important}.hero-video{object-position:center center}.hero:after{background:linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.08) 55%,rgba(0,0,0,.28))}.hero-poster{z-index:4}.hero-title{position:relative;z-index:6}.hero-copy{z-index:6}.project-card{z-index:4}.projects-word{z-index:1}.project-note{z-index:7}.mini{z-index:4}.commercial h2,.commercial p{position:relative;z-index:8}.craft-copy{position:relative;z-index:3}.dark-copy{position:relative;z-index:6}.dark-image{z-index:4}}
 </style>
 </body>
 </html>
