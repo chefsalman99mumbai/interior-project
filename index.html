@@ -1,158 +1,1411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FIZZA INTERIOR — Turnkey Contracting & Luxury Real Estate Interiors</title>
-<meta name="description" content="FIZZA INTERIOR is a turnkey contracting and interior execution company for premium residential and commercial spaces.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FIZZA INTERIOR — Crafting Landmarks</title>
+<meta name="description" content="FIZZA INTERIOR — turnkey interior design, contracting and execution for residential, commercial and hospitality spaces.">
+<link rel="preload" as="image" href="hero-staircase.jpg">
+<link rel="preload" as="image" href="logo.png">
+<link rel="preload" as="image" href="position.jpg">
+<link rel="preload" as="image" href="process-control.jpg">
+<link rel="preload" as="image" href="residential-01.jpg">
+<link rel="preload" as="image" href="residential-02.jpg">
+<link rel="preload" as="image" href="residential-03.jpg">
+<link rel="preload" as="image" href="commercial-main.jpg">
+<link rel="preload" as="image" href="commercial-workspaces.jpg">
+<link rel="preload" as="image" href="commercial-show-homes.jpg">
+<link rel="preload" as="image" href="commercial-boutique.jpg">
+<link rel="preload" as="image" href="craft-main.jpg">
+<link rel="preload" as="image" href="craft-01.jpg">
+<link rel="preload" as="image" href="craft-02.jpg">
+<link rel="preload" as="image" href="craft-03.jpg">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#27231e;--bg2:#1d1a16;--paper:#ebe6dc;--ink:#27231e;--muted:#a9a297;--line:rgba(235,230,220,.17);--accent:#aa8e67;--crimson:#9f302f;--crimson-soft:rgba(159,48,47,.16)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:Inter,sans-serif;font-weight:300}a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.header{position:fixed;z-index:50;top:0;left:0;right:0;height:78px;padding:0 0 0 0;display:flex;align-items:center;justify-content:space-between;background:rgba(39,35,30,.10);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
- .logo{height:78px;width:min(280px,32vw);display:flex;align-items:center;margin:0;padding:0}.logo-mark{height:100%;width:100%;display:block;background:#fff;mask-image:url("logo.png");-webkit-mask-image:url("logo.png");mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mask-position:left center;-webkit-mask-position:left center;mask-size:contain;-webkit-mask-size:contain;transition:background-color .55s ease,transform .3s ease}.logo:after{display:none}.logo span{display:block;font:8px Inter;letter-spacing:.27em;color:var(--muted);margin-top:7px}
-.header-right{display:flex;gap:22px;align-items:center}.index-btn,.visit-btn{font-size:9px;letter-spacing:.2em;text-transform:uppercase}.visit-btn{border-bottom:1px solid var(--crimson);padding-bottom:6px}
-.index-panel{position:fixed;z-index:60;right:4vw;top:75px;width:min(440px,92vw);background:#28241f;border:1px solid var(--line);padding:28px;display:none;box-shadow:0 30px 80px #0007}.index-panel.open{display:block}.index-panel a{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font:27px "Cormorant Garamond"}.index-panel a small{font:8px Inter;letter-spacing:.15em;color:var(--crimson);align-self:center}
-.page{min-height:100vh;scroll-margin-top:78px}.hero{height:100vh;min-height:720px;position:relative;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.43) saturate(.62)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#27231ef0 0,#27231e91 48%,#27231e20)}.hero-content{position:relative;z-index:2;width:min(1280px,90vw);margin:auto}.eyebrow{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}.hero .eyebrow{color:#d9aaa5}.hero-count{color:var(--crimson)!important}.service-num,.step b{color:var(--crimson)!important}h1,h2,h3{font-family:"Cormorant Garamond";font-weight:300;line-height:.88;margin:0}h1{font-size:clamp(80px,13vw,190px);letter-spacing:-.055em}h2{font-size:clamp(58px,8vw,115px);letter-spacing:-.04em}h3{font-size:42px}.lead{font-size:13px;line-height:1.9;color:#c5bfb5;max-width:490px}.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:45px}.hero-count{font:27px "Cormorant Garamond";color:var(--accent)}
-.container{width:min(1280px,90vw);margin:auto}.section{padding:125px 0}.paper{background:var(--paper);color:var(--ink)}.paper .lead{color:#615c54}.line{height:1px;background:var(--line);margin:38px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}.grid2.wideleft{grid-template-columns:1.25fr .75fr}.grid2.wideright{grid-template-columns:.75fr 1.25fr}.img{overflow:hidden;background:#15130f}.img img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.62);transition:transform .8s}.img:hover img{transform:scale(1.045)}.img-lg{height:680px}.img-md{height:510px}.img-sm{height:310px}.offset{margin-left:10vw}.caption{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:12px;display:flex;justify-content:space-between}
-.statement{background:var(--bg2);padding:120px 0}.statement p{font:300 clamp(48px,7vw,100px)/.94 "Cormorant Garamond";max-width:1050px;margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:90px}.stat{background:var(--bg);padding:42px 25px}.stat strong{font:300 65px "Cormorant Garamond";display:block}.stat span{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}.card{background:#2b2721;padding:14px}.card .img{height:360px}.card-body{padding:25px 10px 18px}.card h3{margin:14px 0;font-size:39px}.card p{font-size:11px;line-height:1.7;color:#aaa39a}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid var(--line);padding:7px 9px;font-size:7px;letter-spacing:.14em;text-transform:uppercase}
-.masonry{display:grid;grid-template-columns:1fr 1.2fr .8fr;gap:15px;align-items:start}.masonry .a{height:460px}.masonry .b{height:700px}.masonry .c{height:350px;margin-top:160px}
-.service-row{border-top:1px solid var(--line);display:grid;grid-template-columns:90px 1fr 1.1fr;gap:35px;padding:35px 0}.service-row:last-child{border-bottom:1px solid var(--line)}.service-num{font:28px "Cormorant Garamond";color:var(--accent)}.service-row h3{font-size:50px}.service-row p{font-size:11px;line-height:1.8;color:#bbb4a9;max-width:450px}
-.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}.step{background:#2a2620;padding:38px 25px;min-height:260px}.step b{font:40px "Cormorant Garamond";color:var(--accent)}.step h3{font-size:32px;margin:60px 0 12px}.step p{font-size:10px;line-height:1.7;color:#aaa39a}
-.projects{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}.project{background:#29251f;min-height:620px;position:relative;overflow:hidden}.project img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.52) brightness(.7);transition:.8s}.project:hover img{transform:scale(1.04);filter:saturate(.62) brightness(.75)}.project-info{position:absolute;z-index:2;left:32px;right:32px;bottom:30px}.project-info h3{font-size:54px}.project-info p{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#c2bbb0}
-.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw}.form{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{border-bottom:1px solid var(--line);padding:12px 0}.field.full{grid-column:1/-1}.field label{display:block;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}.field input,.field textarea,.field select{width:100%;background:none;border:0;outline:0;color:var(--paper);font:300 14px Inter}.field textarea{min-height:120px;resize:vertical}.field option{background:var(--bg)}.btn{display:inline-flex;border:1px solid rgba(235,230,220,.3);padding:15px 20px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;transition:.25s}.btn:hover{background:var(--paper);color:var(--ink)}.btn:first-letter{color:inherit}
-.footer{padding:120px 0 35px;border-top:1px solid var(--line);overflow:hidden}.footer-grid{display:flex;justify-content:space-between;gap:40px;align-items:flex-end}.footer-logo-wrap{width:min(920px,92vw);margin:70px 0 20px}.footer-logo-wrap img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:left bottom;background:transparent!important;filter:none!important}.footer-brand{font:40px "Cormorant Garamond";letter-spacing:.08em;text-transform:uppercase}.toast{position:fixed;right:24px;bottom:24px;background:var(--paper);color:var(--ink);padding:15px 20px;font-size:9px;letter-spacing:.12em;transform:translateY(150px);transition:.35s;z-index:100}.toast.show{transform:none}
-@media(max-width:850px){.footer-logo-wrap{width:94vw;margin-top:55px}.footer-logo-wrap img{max-height:190px}.header{height:68px}.logo{height:68px;width:min(240px,55vw)}.header-right .visit-btn{display:none}.grid2,.grid2.wideleft,.grid2.wideright,.contact-grid{grid-template-columns:1fr;gap:45px}.offset{margin-left:0}.cards,.projects{grid-template-columns:1fr}.masonry{grid-template-columns:1fr 1fr}.masonry .b{height:520px}.masonry .c{margin-top:0}.service-row{grid-template-columns:55px 1fr}.service-row p{grid-column:2}.process{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{display:block}.footer-logo-wrap{width:min(520px,92vw);margin-bottom:24px}.footer-logo-wrap img{max-height:130px}.footer-brand{margin-bottom:25px}.hero-bottom{display:block}.hero-bottom .lead{margin:25px 0}}
-@media(max-width:520px){h1{font-size:68px}.section{padding:80px 0}.hero{min-height:650px}.masonry{grid-template-columns:1fr}.masonry .a,.masonry .b,.masonry .c{height:420px}.process,.stats{grid-template-columns:1fr}.service-row h3{font-size:40px}.img-lg{height:520px}}
+:root{
+  --black:#070707;
+  --white:#f7f7f5;
+  --muted:#8e8e8e;
+  --line:rgba(255,255,255,.22);
+  --red:#e31937;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:#111;font-family:"DM Sans",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{display:block;max-width:100%}
+
+/* =========================================================
+   HEADER — copied as a structural idea from the video:
+   left navigation / centered identity / right navigation
+   ========================================================= */
+.site-header{
+  position:fixed;z-index:1000;left:0;top:0;width:100%;
+  height:86px;padding:0 8.5vw;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  color:#fff;transition:background .45s var(--ease),color .45s var(--ease),backdrop-filter .45s;
+}
+.site-header.light{
+  color:#111;background:rgba(247,247,245,.90);
+  backdrop-filter:blur(16px);
+  box-shadow:0 1px 0 rgba(0,0,0,.06)
+}
+.nav-left,.nav-right{display:flex;align-items:center;gap:42px}
+.nav-right{justify-content:flex-end}
+.nav-link{
+  position:relative;font-size:13px;font-weight:600;white-space:nowrap;
+  transition:color .3s
+}
+.nav-link:after{
+  content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;
+  background:var(--red);transition:width .35s var(--ease)
+}
+.nav-link:hover:after,.nav-link.active:after{width:100%}
+.nav-link.active{color:var(--red)}
+.logo-wrap{
+  width:176px;height:66px;display:grid;place-items:center;
+  overflow:visible
+}
+.logo-wrap img{
+  max-width:160px;max-height:64px;object-fit:contain;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.30))
+}
+.light .logo-wrap img{filter:drop-shadow(0 8px 14px rgba(0,0,0,.12))}
+.help-btn{
+  border:1px solid currentColor;border-radius:999px;padding:11px 20px;
+  font-size:13px;font-weight:600;transition:.35s var(--ease)
+}
+.help-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.menu-btn{display:none;border:0;background:none;color:inherit}
+
+/* =========================================================
+   FULL CINEMATIC STAGE — this is the key behavior from the
+   recording: the same visual world returns across sections.
+   ========================================================= */
+.cinema{
+  position:relative;min-height:100svh;color:#fff;background:#050505;
+  overflow:hidden
+}
+.cinema-bg{
+  position:absolute;inset:-7%;
+  background-image:url("hero-staircase.jpg");
+  background-size:cover;background-position:center;
+  filter:brightness(.46) saturate(.60) contrast(1.10);
+  transform:scale(1.08);
+  will-change:transform,background-position;
+}
+.cinema-bg:after{
+  content:"";position:absolute;inset:0;
+  background:
+   linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.12) 58%,rgba(0,0,0,.45)),
+   linear-gradient(0deg,rgba(0,0,0,.58),transparent 48%,rgba(0,0,0,.24))
+}
+.cinema-noise{
+  position:absolute;inset:0;opacity:.10;pointer-events:none;
+  background:repeating-linear-gradient(11deg,rgba(255,255,255,.12) 0 1px,transparent 1px 15px);
+  mix-blend-mode:screen
+}
+
+/* Hero */
+.hero{height:100svh;min-height:650px}
+.hero-copy{
+  position:absolute;z-index:3;left:41%;top:39%;
+  width:min(690px,52vw)
+}
+.hero-kicker{
+  color:var(--red);font-size:11px;font-weight:800;
+  letter-spacing:.27em;text-transform:uppercase;margin-bottom:18px
+}
+.hero-title{
+  margin:0;font-family:"Manrope",sans-serif;font-size:clamp(42px,4.8vw,76px);
+  font-weight:300;line-height:1.02;letter-spacing:-.055em
+}
+.hero-sub{
+  margin:18px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.72);
+  max-width:550px
+}
+.hero-cycle{
+  position:relative;height:1.12em;overflow:hidden;display:block
+}
+.hero-cycle span{
+  position:absolute;inset:0;opacity:0;transform:translateY(28px);
+  transition:opacity .65s var(--ease),transform .8s var(--ease)
+}
+.hero-cycle span.active{opacity:1;transform:translateY(0)}
+.hero-meta{
+  position:absolute;z-index:4;left:3vw;bottom:28px;
+  font-size:11px;color:rgba(255,255,255,.68)
+}
+.hero-scroll{
+  position:absolute;z-index:4;right:3vw;bottom:28px;
+  writing-mode:vertical-rl;text-transform:uppercase;
+  letter-spacing:.2em;font-size:9px;color:#fff
+}
+.hero-scroll:after{
+  content:"";display:inline-block;width:1px;height:70px;background:rgba(255,255,255,.5);
+  margin-top:10px
+}
+
+/* white services section */
+.white-section{
+  position:relative;background:var(--white);min-height:100svh;color:#111;
+  display:grid;grid-template-columns:46% 54%;align-items:center;
+  padding:120px 8.5vw
+}
+.white-empty{min-height:1px}
+.white-content{max-width:650px}
+.eyebrow{
+  color:#777;font-size:10px;font-weight:800;letter-spacing:.25em;text-transform:uppercase;
+  margin-bottom:18px
+}
+.white-content h2,.dark-content h2{
+  margin:0;font-family:"Manrope",sans-serif;font-size:clamp(40px,4.4vw,70px);
+  line-height:1.02;font-weight:300;letter-spacing:-.055em
+}
+.white-content .intro{
+  margin:17px 0 28px;color:#777;max-width:540px;line-height:1.65;font-size:15px
+}
+.service-grid{
+  border-top:1px solid #ccc;display:grid;grid-template-columns:1fr 1fr
+}
+.service{
+  padding:24px 25px 24px 0;border-bottom:1px solid #ccc;
+  transition:transform .35s var(--ease)
+}
+.service:nth-child(even){padding-left:25px;border-left:1px solid #ccc}
+.service:hover{transform:translateX(8px)}
+.service h3{margin:0 0 9px;font-size:18px;font-weight:500}
+.service p{margin:0;color:#777;font-size:13px;line-height:1.6}
+
+/* dark process */
+.dark-section{
+  position:relative;min-height:100svh;color:#fff;overflow:hidden;background:#080808
+}
+.dark-section .cinema-bg{opacity:1}
+.dark-content{
+  position:relative;z-index:4;min-height:100svh;
+  display:grid;grid-template-columns:50% 50%;align-items:center;
+  padding:130px 7.5vw
+}
+.process-copy{max-width:570px}
+.process-grid{
+  margin-top:34px;border-top:1px solid rgba(255,255,255,.25);
+  display:grid;grid-template-columns:1fr 1fr
+}
+.process-step{
+  min-height:165px;padding:25px 28px 25px 0;
+  border-bottom:1px solid rgba(255,255,255,.22)
+}
+.process-step:nth-child(even){padding-left:28px;border-left:1px solid rgba(255,255,255,.22)}
+.process-step .num{font-size:11px;color:var(--red);font-weight:800;letter-spacing:.15em}
+.process-step h3{font-size:18px;font-weight:500;margin:15px 0 8px}
+.process-step p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.60);margin:0}
+
+/* floating graphic/object language from the video */
+.floating-object{
+  position:absolute;z-index:3;right:5%;bottom:7%;
+  width:min(400px,32vw);transform:rotate(-4deg);
+  filter:drop-shadow(0 30px 35px rgba(0,0,0,.45));
+  animation:floatObject 5s ease-in-out infinite
+}
+@keyframes floatObject{
+  0%,100%{transform:rotate(-4deg) translateY(0)}
+  50%{transform:rotate(-2deg) translateY(-14px)}
+}
+.object-label{
+  position:absolute;right:6%;top:22%;z-index:5;
+  color:#fff;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  opacity:.72
+}
+.dotted-path{
+  position:absolute;z-index:4;right:28%;top:45%;width:150px;height:90px;
+  border-top:1px dashed rgba(255,255,255,.7);
+  border-radius:50%;transform:rotate(-17deg)
+}
+.dotted-path:after{
+  content:"";position:absolute;right:-4px;top:-5px;width:10px;height:10px;
+  border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(45deg)
+}
+
+/* showcase */
+.showcase{
+  min-height:100svh;display:flex;align-items:flex-end;padding:0 8.5vw 110px
+}
+.showcase-copy{margin-left:auto;width:53%;text-align:left}
+.showcase-copy h2{font-size:clamp(45px,5.5vw,82px)}
+.case-strip{
+  position:absolute;left:0;top:26%;width:29vw;max-width:460px;
+  transform:translateX(-10%) rotate(-4deg);
+  box-shadow:0 30px 60px rgba(0,0,0,.48)
+}
+.case-strip img{width:100%;height:340px;object-fit:cover}
+.case-strip .case-label{
+  position:absolute;left:20px;top:-30px;color:#fff;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase
+}
+.showcase-copy p{color:rgba(255,255,255,.68);line-height:1.65;max-width:570px}
+.pill{
+  display:inline-flex;margin-top:25px;border:1px solid rgba(255,255,255,.42);
+  border-radius:999px;padding:13px 22px;font-size:12px
+}
+
+/* project white section */
+.projects-white{
+  background:#f1f1ee;color:#111;padding:120px 8.5vw;min-height:100svh
+}
+.project-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:55px}
+.project-head h2{font-family:"Manrope";font-weight:300;font-size:clamp(45px,6vw,90px);letter-spacing:-.06em;margin:0}
+.project-head p{max-width:400px;color:#777;line-height:1.6}
+.project-grid{
+  display:grid;grid-template-columns:1.35fr .85fr;gap:18px
+}
+.project-card{position:relative;overflow:hidden;background:#ddd}
+.project-card.large{height:600px}
+.project-card.small{height:290px}
+.project-card + .project-card{margin-bottom:18px}
+.project-card img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.project-card:hover img{transform:scale(1.045)}
+.project-card:after{
+  content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.72),transparent 48%)
+}
+.project-caption{position:absolute;z-index:2;left:25px;bottom:23px;color:#fff}
+.project-caption small{color:var(--red);font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.project-caption h3{margin:7px 0 0;font-size:25px;font-weight:500}
+
+/* capabilities / craft */
+.split{
+  min-height:100svh;display:grid;grid-template-columns:52% 48%;background:#fff
+}
+.split-image{min-height:100svh;overflow:hidden}
+.split-image img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.split:hover .split-image img{transform:scale(1.035)}
+.split-copy{display:flex;align-items:center;padding:100px 9vw 100px 7vw}
+.split-copy-inner{max-width:570px}
+.split-copy h2{font-family:"Manrope";font-weight:300;font-size:clamp(45px,5vw,76px);line-height:1;letter-spacing:-.06em;margin:0}
+.capability-list{margin-top:38px;border-top:1px solid #ccc}
+.capability{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid #ccc}
+.capability b{color:var(--red);font-size:12px}
+.capability h3{margin:0 0 6px;font-size:17px;font-weight:500}
+.capability p{margin:0;color:#777;font-size:13px;line-height:1.55}
+
+/* CTA */
+.cta{
+  min-height:72svh;background:#080808;color:#fff;display:grid;place-items:center;
+  text-align:center;padding:100px 7vw;position:relative;overflow:hidden
+}
+.cta:before{
+  content:"FIZZA";position:absolute;left:-4vw;bottom:-8vw;
+  font:800 clamp(170px,30vw,430px)/.7 "Manrope";letter-spacing:-.09em;
+  color:rgba(255,255,255,.035)
+}
+.cta-inner{position:relative;z-index:2}
+.cta h2{font:300 clamp(48px,7vw,100px)/.94 "Manrope";letter-spacing:-.07em;margin:0}
+.cta p{color:#999;max-width:570px;margin:22px auto;line-height:1.6}
+.cta a{display:inline-flex;border:1px solid #fff;border-radius:999px;padding:15px 27px;margin-top:12px}
+.cta a:hover{background:var(--red);border-color:var(--red)}
+
+/* WhatsApp / mobile */
+.whatsapp{
+  position:fixed;z-index:1100;right:26px;bottom:25px;width:52px;height:52px;
+  border-radius:50%;background:#22df65;color:#fff;display:grid;place-items:center;
+  box-shadow:0 10px 35px rgba(34,223,101,.25);font-weight:700
+}
+.mobile-toggle{display:none}
+
+@media(max-width:900px){
+  .site-header{height:72px;padding:0 5vw;grid-template-columns:auto 1fr auto}
+  .nav-left,.nav-right{display:none}
+  .logo-wrap{justify-self:center;width:145px;height:58px}
+  .logo-wrap img{max-width:135px;max-height:54px}
+  .mobile-toggle{display:block;justify-self:end;color:inherit;border:0;background:none;font-size:24px}
+  .white-section,.dark-content,.split{grid-template-columns:1fr}
+  .white-section{min-height:auto;padding:105px 7vw 90px}
+  .white-empty{display:none}
+  .dark-content{padding:110px 7vw 100px}
+  .process-grid{grid-template-columns:1fr}
+  .process-step:nth-child(even){padding-left:0;border-left:0}
+  .floating-object{width:48vw;right:3%;bottom:4%}
+  .showcase{min-height:100svh;padding:0 7vw 100px}
+  .showcase-copy{width:100%;margin-top:auto}
+  .case-strip{width:52vw;top:25%;left:-7%}
+  .project-grid{grid-template-columns:1fr}
+  .project-card.large{height:480px}
+  .split-image{min-height:58vh}
+  .split-copy{padding:80px 7vw}
+}
+@media(max-width:560px){
+  .hero-copy{left:7vw;top:38%;width:86vw}
+  .hero-title{font-size:clamp(37px,10vw,54px)}
+  .hero-sub{font-size:13px}
+  .hero-meta{left:7vw}
+  .hero-scroll{right:5vw}
+  .service-grid{grid-template-columns:1fr}
+  .service:nth-child(even){padding-left:0;border-left:0}
+  .floating-object{width:62vw;opacity:.72}
+  .dotted-path{display:none}
+  .case-strip{width:66vw}
+  .project-card.large{height:390px}
+  .project-card.small{height:250px}
+  .whatsapp{right:17px;bottom:17px;width:48px;height:48px}
+}
+
+/* =========================================================
+   SCROLL-CHOREOGRAPHY LAYER
+   ========================================================= */
+.hero-scroll-scene{
+  height:100svh;
+  min-height:650px;
+  overflow:hidden;
+}
+.hero-copy-main{
+  will-change:transform,opacity;
+}
+.hero-line{display:block}
+.hero-entering-copy{
+  position:absolute;
+  z-index:8;
+  left:8vw;
+  top:50%;
+  width:min(1000px,78vw);
+  transform:translateY(-50%);
+  pointer-events:none;
+  will-change:transform;
+}
+.enter-kicker{
+  color:var(--red);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.28em;
+  margin-bottom:18px;
+}
+.enter-line{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(60px,9.8vw,155px);
+  line-height:.82;
+  letter-spacing:-.075em;
+  font-weight:700;
+  white-space:nowrap;
+  will-change:transform;
+}
+.enter-outline{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.92);
+  text-stroke:1px rgba(255,255,255,.92);
+}
+.enter-note{
+  margin-top:28px;
+  font-size:10px;
+  letter-spacing:.25em;
+  color:rgba(255,255,255,.62);
+}
+.hero-scroll span{
+  display:inline-block;
+  margin-left:8px;
+  animation:scrollPulse 1.7s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(7px)}
+}
+@media(max-width:700px){
+  .hero-entering-copy{
+    left:6vw;
+    width:96vw;
+  }
+  .enter-line{
+    font-size:clamp(48px,14vw,86px);
+    white-space:normal;
+  }
+  .enter-note{font-size:8px}
+}
+
+
+
+/* =========================================================
+   FIZZA / DOT-STYLE POSTER EDITORIAL SYSTEM
+   ========================================================= */
+:root{
+  --cream:#eeeae0;
+  --cream2:#e3ded3;
+  --ink:#090909;
+  --soft:#6f6b63;
+  --line:#bcb7ad;
+  --red:#d51e3a;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"DM Sans",Arial,sans-serif;
+}
+html{background:var(--cream)}
+body{
+  background:var(--cream)!important;
+  color:var(--ink)!important;
+  font-family:var(--sans)!important;
+}
+.site-header{
+  height:74px!important;
+  padding:0 6vw!important;
+  color:#fff!important;
+  background:rgba(8,8,8,.08)!important;
+  border:0!important;
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+.site-header.light{
+  color:var(--ink)!important;
+  background:rgba(238,234,224,.82)!important;
+  border-bottom:1px solid rgba(0,0,0,.1)!important;
+}
+.nav-left,.nav-right{gap:28px!important}
+.nav-link{
+  font-size:9px!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase;
+}
+.nav-link:after{height:1px!important}
+.help-btn{
+  border-radius:0!important;
+  padding:9px 14px!important;
+  font-size:9px!important;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.logo-wrap{width:150px!important;height:56px!important}
+.logo-wrap img{max-width:130px!important;max-height:50px!important;filter:none!important}
+
+.dot-scene{
+  height:100svh;
+  min-height:700px;
+  position:relative;
+  overflow:hidden;
+  background:#151515;
+  color:#fff;
+}
+.poster-field{
+  position:absolute;
+  inset:-8%;
+  background:url("hero-staircase.jpg") center/cover no-repeat;
+  filter:brightness(.42) saturate(.72) contrast(1.05);
+  transform:scale(1.08);
+  will-change:transform;
+}
+.poster-field:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.4),transparent 50%,rgba(0,0,0,.3));
+}
+.poster-grain{
+  position:absolute;inset:0;z-index:2;opacity:.09;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.8) .6px,transparent .7px);
+  background-size:4px 4px;
+  mix-blend-mode:screen;
+}
+.poster-frame{
+  position:absolute;
+  z-index:4;
+  left:10.4vw;
+  top:8.8vh;
+  width:79.2vw;
+  height:82.5vh;
+  padding:17px;
+  background:var(--cream);
+  color:var(--ink);
+  box-shadow:0 35px 80px rgba(0,0,0,.26);
+  transform-origin:center center;
+  will-change:transform;
+}
+.poster-top{
+  height:88px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+  padding:0 0 12px;
+}
+.poster-brand{
+  font-size:23px;
+  line-height:.82;
+  letter-spacing:-.06em;
+  font-weight:500;
+  display:flex;
+  flex-direction:column;
+}
+.poster-brand i{
+  width:86px;height:2px;margin-top:18px;
+  background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px);
+}
+.poster-message{
+  justify-self:end;
+  text-align:right;
+  font-size:12px;
+  line-height:1.25;
+  letter-spacing:.01em;
+  max-width:240px;
+}
+.poster-photo{
+  height:calc(100% - 128px);
+  position:relative;
+  overflow:hidden;
+  background:#222;
+}
+.poster-photo img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(1.06);
+  filter:saturate(.75) contrast(1.02);
+  will-change:transform;
+}
+.poster-title-wrap{
+  position:absolute;
+  z-index:3;
+  left:-1.2%;
+  top:28%;
+  width:103%;
+  pointer-events:none;
+}
+.poster-title{
+  font:500 clamp(75px,10vw,165px)/.62 var(--serif);
+  letter-spacing:-.07em;
+  white-space:nowrap;
+  color:rgba(238,234,224,.82);
+  text-shadow:0 2px 15px rgba(0,0,0,.12);
+}
+.title-outline{
+  margin-left:11%;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(238,234,224,.92);
+}
+.poster-bottom{
+  height:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:end;
+  font-size:8px;
+  letter-spacing:.13em;
+}
+.poster-bottom>div:last-child{text-align:right}
+.barcode{display:flex;gap:2px;height:17px;align-items:end}
+.barcode b{display:block;background:#111;width:2px;height:17px}
+.barcode b:nth-child(2n){height:12px}.barcode b:nth-child(3n){width:1px}
+.poster-scroll{
+  position:absolute;z-index:7;right:3vw;bottom:25px;
+  font-size:8px;letter-spacing:.2em;color:#fff;
+}
+
+/* white editorial block */
+.editorial-white{
+  min-height:120svh;
+  background:var(--cream);
+  color:var(--ink);
+  position:relative;
+  padding:150px 8.5vw 110px;
+  overflow:hidden;
+}
+.editorial-small{
+  font-size:9px;
+  letter-spacing:.22em;
+  margin-bottom:40px;
+}
+.editorial-heading{
+  width:100%;
+  font:500 clamp(74px,11vw,180px)/.67 var(--serif);
+  letter-spacing:-.075em;
+  text-align:center;
+}
+.editorial-heading span{display:block}
+.editorial-heading em{
+  font-style:italic;
+  font-size:.52em;
+  display:inline-block;
+  border:1px solid #111;
+  border-radius:100%;
+  padding:3px 38px 9px;
+  transform:translateY(-18px) rotate(-4deg);
+}
+.editorial-copy{
+  width:350px;
+  margin:65px 0 0 auto;
+  font-size:12px;
+  line-height:1.55;
+}
+.editorial-copy p{margin:0 0 20px}
+.editorial-copy a{
+  font-size:9px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  border-bottom:1px solid #111;
+  padding-bottom:5px;
+}
+.editorial-rule{height:1px;background:#111;opacity:.2;margin:75px 0 0}
+.service-marquee{
+  font:500 clamp(34px,5vw,78px)/.9 var(--serif);
+  letter-spacing:-.06em;
+  white-space:nowrap;
+  margin:30px 0 80px;
+  transform:translateX(-8%);
+}
+.services-editorial-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+}
+.services-editorial-grid article{
+  padding:22px 22px 15px 0;
+  border-bottom:1px solid var(--line);
+}
+.services-editorial-grid article+article{
+  border-left:1px solid var(--line);
+  padding-left:22px;
+}
+.services-editorial-grid small{
+  font-size:8px;letter-spacing:.17em;color:var(--red)
+}
+.services-editorial-grid h3{
+  font:600 28px/1 var(--serif);
+  margin:30px 0 10px;
+}
+.services-editorial-grid p{
+  color:var(--soft);font-size:11px;line-height:1.55;margin:0;
+}
+
+/* black guide */
+.poster-dark{
+  min-height:120svh;
+  background:#111;
+  color:#f2efe7;
+  position:relative;
+  overflow:hidden;
+  padding:130px 8.5vw 100px;
+}
+.dark-number{
+  position:absolute;right:7vw;top:130px;
+  font-size:9px;letter-spacing:.2em;color:var(--red);
+}
+.dark-guide-top{
+  font-size:9px;letter-spacing:.22em;margin-bottom:70px;color:#bdbab2;
+}
+.dark-giant{
+  width:78%;
+  font:500 clamp(70px,10vw,160px)/.63 var(--serif);
+  letter-spacing:-.075em;
+}
+.dark-giant span{display:block}
+.pill-word{
+  display:inline-block!important;
+  width:auto;
+  border:1px solid rgba(242,239,231,.55);
+  border-radius:100%;
+  padding:0 38px 13px;
+  transform:translateX(14%) rotate(-4deg);
+  font-style:italic;
+}
+.dark-description{
+  width:260px;
+  margin:55px 0 0 42%;
+  font-size:11px;
+  line-height:1.55;
+  color:#aaa79f;
+}
+.dark-description a{
+  display:inline-block;
+  margin-top:20px;
+  color:#fff;
+  font-size:8px;
+  letter-spacing:.15em;
+  border:1px solid #777;
+  border-radius:100px;
+  padding:8px 14px;
+}
+.guide-steps{
+  position:absolute;
+  left:8.5vw;right:8.5vw;bottom:45px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #444;
+}
+.guide-steps div{
+  padding:16px 0;
+  display:flex;justify-content:space-between;
+  border-right:1px solid #333;
+  padding-right:15px;
+  font-size:8px;letter-spacing:.16em;
+}
+.guide-steps div+div{padding-left:15px}
+.guide-steps b{color:var(--red)}
+.dark-photo{
+  position:absolute;right:6%;top:37%;width:27vw;height:38vh;
+  transform:rotate(4deg);
+  overflow:hidden;
+  box-shadow:0 25px 50px rgba(0,0,0,.5);
+}
+.dark-photo img{width:100%;height:100%;object-fit:cover}
+.dark-photo span{
+  position:absolute;left:12px;bottom:10px;font-size:7px;letter-spacing:.16em;
+}
+
+/* collage */
+.collage-section{
+  min-height:120svh;background:var(--cream);position:relative;
+  overflow:hidden;padding:100px 7vw;color:#111;
+}
+.collage-topline{
+  display:flex;justify-content:space-between;
+  font-size:8px;letter-spacing:.2em;border-bottom:1px solid var(--line);
+  padding-bottom:12px;
+}
+.collage-word{
+  position:absolute;left:7vw;top:18%;
+  font:500 clamp(120px,22vw,330px)/.7 var(--serif);
+  letter-spacing:-.09em;color:#111;z-index:1;
+}
+.collage-card{
+  position:absolute;background:#111;color:#fff;
+  padding:10px 10px 13px;
+  box-shadow:0 28px 55px rgba(0,0,0,.18);
+  will-change:transform;
+}
+.collage-card img{width:100%;height:100%;object-fit:cover}
+.collage-card div{display:flex;justify-content:space-between;align-items:end;padding-top:8px}
+.collage-card small{font-size:7px;letter-spacing:.15em;color:#aaa}
+.collage-card strong{font:500 18px/1 var(--serif)}
+.card-one{z-index:3;width:34vw;height:49vh;left:10%;top:29%;transform:rotate(-3deg)}
+.card-two{z-index:4;width:30vw;height:43vh;right:12%;top:18%;transform:rotate(4deg)}
+.card-three{z-index:5;width:27vw;height:38vh;right:25%;bottom:5%;transform:rotate(-2deg)}
+.collage-side-note{
+  position:absolute;z-index:6;right:5%;bottom:8%;
+  width:180px;font:italic 17px/1.2 var(--serif);
+}
+.collage-side-note span{
+  display:block;font:8px/1 var(--sans);letter-spacing:.18em;
+  color:var(--red);margin-bottom:12px;
+}
+
+/* split craft */
+.split-poster{
+  min-height:110svh;background:#111;color:#f3f0e8;
+  display:grid;grid-template-columns:53% 47%;overflow:hidden;
+}
+.split-poster-image{overflow:hidden}
+.split-poster-image img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.2) contrast(1.05);
+}
+.split-poster-copy{
+  padding:120px 8vw 90px 7vw;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.split-poster-copy>small{
+  font-size:8px;letter-spacing:.2em;color:var(--red);
+}
+.split-poster-copy h2{
+  font:500 clamp(80px,10vw,160px)/.65 var(--serif);
+  letter-spacing:-.075em;margin:38px 0 45px;
+}
+.split-poster-copy h2 i{font-style:italic}
+.split-poster-copy p{
+  max-width:350px;color:#aaa69d;font-size:11px;line-height:1.6;
+}
+.material-lines{
+  margin-top:55px;border-top:1px solid #444;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.material-lines span{
+  padding:13px 0;border-bottom:1px solid #444;
+  font-size:8px;letter-spacing:.18em;
+}
+
+/* commercial grid */
+.poster-grid-section{
+  min-height:115svh;background:var(--cream);position:relative;
+  padding:120px 8.5vw;color:#111;overflow:hidden;
+}
+.poster-grid-heading{width:38%;position:relative;z-index:5}
+.poster-grid-heading small{font-size:8px;letter-spacing:.2em;color:var(--red)}
+.poster-grid-heading h2{
+  font:500 clamp(75px,9vw,145px)/.64 var(--serif);
+  letter-spacing:-.075em;margin:35px 0;
+}
+.poster-grid-heading h2 i{font-style:italic}
+.poster-grid-heading p{
+  font-size:11px;line-height:1.55;color:var(--soft);max-width:280px;
+}
+.mini-poster{
+  position:absolute;padding:9px;background:#111;color:#fff;
+  box-shadow:0 25px 55px rgba(0,0,0,.18);
+  will-change:transform;
+}
+.mini-poster img{width:100%;height:100%;object-fit:cover}
+.mini-poster span{
+  position:absolute;left:15px;bottom:14px;font-size:7px;letter-spacing:.18em;
+}
+.poster-a{width:26vw;height:43vh;right:21%;top:12%;transform:rotate(4deg)}
+.poster-b{width:23vw;height:37vh;right:4%;top:40%;transform:rotate(-4deg)}
+.poster-c{width:25vw;height:40vh;right:30%;bottom:3%;transform:rotate(2deg)}
+
+/* final */
+.final-poster{
+  min-height:100svh;background:#111;color:#f1eee5;
+  display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
+}
+.final-inner{position:relative;z-index:3}
+.final-micro{font-size:8px;letter-spacing:.25em;color:var(--red);margin-bottom:45px}
+.final-inner h2{
+  font:500 clamp(85px,12vw,190px)/.62 var(--serif);
+  letter-spacing:-.08em;margin:0;
+}
+.final-inner h2 i{font-style:italic}
+.final-inner p{font:italic 22px var(--serif);color:#aaa69d;margin:40px 0}
+.final-inner a{
+  display:inline-block;border:1px solid #777;border-radius:100px;
+  padding:12px 20px;font-size:8px;letter-spacing:.17em;
+}
+.final-inner a:hover{background:var(--red);border-color:var(--red)}
+.final-giant{
+  position:absolute;left:-7%;bottom:-15%;
+  font:500 34vw/.65 var(--serif);
+  color:rgba(255,255,255,.025);letter-spacing:-.1em;
+}
+
+@media(max-width:900px){
+  .poster-frame{left:5vw;top:10vh;width:90vw;height:78vh;padding:11px}
+  .poster-top{height:70px}
+  .poster-message{font-size:9px}
+  .poster-title{font-size:clamp(54px,12vw,105px)}
+  .poster-photo{height:calc(100% - 105px)}
+  .poster-bottom{font-size:6px}
+  .services-editorial-grid{grid-template-columns:1fr 1fr}
+  .dark-giant{width:100%}
+  .dark-photo{width:37vw}
+  .card-one{width:47vw}.card-two{width:42vw}.card-three{width:39vw}
+  .split-poster{grid-template-columns:1fr}
+  .split-poster-image{height:55vh}
+  .split-poster-copy{min-height:65vh}
+  .poster-grid-heading{width:60%}
+  .poster-a{width:34vw}.poster-b{width:31vw}.poster-c{width:33vw}
+}
+@media(max-width:560px){
+  .poster-frame{top:11vh;height:75vh}
+  .poster-top{grid-template-columns:1fr 1fr}
+  .poster-brand{font-size:17px}
+  .poster-message{font-size:8px;max-width:130px}
+  .poster-title{font-size:clamp(42px,14vw,75px);line-height:.7}
+  .title-outline{margin-left:6%}
+  .poster-bottom{grid-template-columns:1fr 1fr}
+  .poster-bottom>div:nth-child(2){display:none}
+  .editorial-heading{font-size:clamp(60px,17vw,100px)}
+  .editorial-copy{width:75%;margin-left:25%}
+  .services-editorial-grid{grid-template-columns:1fr}
+  .services-editorial-grid article+article{border-left:0;padding-left:0}
+  .dark-description{margin-left:8%;width:230px}
+  .dark-photo{position:relative;right:auto;top:auto;width:72vw;height:35vh;margin:60px 0 0 15%}
+  .guide-steps{position:relative;left:auto;right:auto;bottom:auto;margin-top:80px;grid-template-columns:1fr 1fr}
+  .collage-word{top:23%;font-size:29vw}
+  .card-one{width:67vw;height:34vh;left:5%;top:34%}
+  .card-two{width:61vw;height:31vh;right:3%;top:22%}
+  .card-three{width:57vw;height:29vh;right:10%;bottom:11%}
+  .collage-side-note{right:5%;bottom:4%;width:145px;font-size:14px}
+  .poster-grid-heading{width:100%}
+  .poster-a{width:55vw;height:30vh;right:29%;top:42%}
+  .poster-b{width:49vw;height:27vh;right:1%;top:58%}
+  .poster-c{width:52vw;height:28vh;right:20%;bottom:2%}
+}
+
 </style>
 </head>
+
 <body>
 
-<header class="header">
-<a class="logo" href="#home" aria-label="FIZZA Interior Home"><span class="logo-mark" aria-hidden="true"></span></a>
-<div class="header-right"><a class="visit-btn" href="#contact">Private consultation</a><button class="index-btn" onclick="toggleIndex()">Index +</button></div>
+<header class="site-header" id="header">
+  <nav class="nav-left">
+    <a class="nav-link" href="#story">Our Story</a>
+    <a class="nav-link" href="#services">What We Do</a>
+    <a class="nav-link" href="#process">Process</a>
+  </nav>
+
+  <a class="logo-wrap" href="#top" aria-label="FIZZA Interior home">
+    <img src="logo.png" alt="FIZZA Interior">
+  </a>
+
+  <nav class="nav-right">
+    <a class="nav-link" href="#projects">Showcase</a>
+    <a class="nav-link" href="#craft">Craft</a>
+    <a class="help-btn" href="#contact">How can we help?</a>
+  </nav>
+
+  <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
 </header>
-<nav class="index-panel" id="indexPanel">
-<div class="eyebrow">FIZZA INTERIOR / Index</div>
-<a href="#home" onclick="closeIndex()">01 <span>Home</span><small>01</small></a>
-<a href="#services" onclick="closeIndex()">02 <span>Turnkey Services</span><small>02</small></a>
-<a href="#process" onclick="closeIndex()">03 <span>Process</span><small>03</small></a>
-<a href="#residential" onclick="closeIndex()">04 <span>Residential</span><small>04</small></a>
-<a href="#commercial" onclick="closeIndex()">05 <span>Commercial</span><small>05</small></a>
-<a href="#craft" onclick="closeIndex()">06 <span>Craft & Materials</span><small>06</small></a>
-<a href="#projects" onclick="closeIndex()">07 <span>Selected Projects</span><small>07</small></a>
-<a href="#contact" onclick="closeIndex()">08 <span>Private Consultation</span><small>08</small></a>
-</nav>
 
-<main id="home">
-<section class="hero page">
-<div class="hero-bg" style="background-image:url('hero-staircase.jpg')"></div>
-<div class="hero-content">
-<div class="eyebrow">FIZZA INTERIOR · TURNKEY CONTRACTORS · 2026</div>
-<h1>SPACES<br>BUILT<br>COMPLETE.</h1>
-<div class="hero-bottom"><p class="lead">A turnkey contracting studio for discerning homeowners, developers and real-estate clients. From shell to final styling, one team carries the project through.</p><div class="hero-count">01 / 08</div></div>
-<div style="margin-top:38px"><a class="btn" href="#services">Discover Fizza Interior →</a></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#story" onclick="toggleMenu()">Our Story</a>
+  <a href="#services" onclick="toggleMenu()">What We Do</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#projects" onclick="toggleMenu()">Showcase</a>
+  <a href="#craft" onclick="toggleMenu()">Craft</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
 </div>
-</section>
 
-<section class="section page"><div class="container grid2">
-<div><div class="eyebrow">01 / The position</div><h2>ONE TEAM.<br>ONE STANDARD.</h2><p class="lead" style="margin-top:38px">FIZZA INTERIOR operates at the intersection of real estate, architecture, interior design and execution. We coordinate the details that turn a premium property into a finished address.</p></div>
-<div class="img img-lg"><img src="position.jpg"></div>
-</div></section>
 
-<section class="statement page"><div class="container"><p>“The luxury is not in adding more. It is in getting every layer right.”</p><div class="stats"><div class="stat"><strong>360°</strong><span>Turnkey execution</span></div><div class="stat"><strong>01</strong><span>Single project partner</span></div><div class="stat"><strong>04</strong><span>Core execution disciplines</span></div><div class="stat"><strong>∞</strong><span>Attention to detail</span></div></div></div></section>
+<main id="top">
+
+  <!-- ======================================================
+       POSTER HERO
+       Visual language: full photographic field + cream frame,
+       small corner metadata, barcode, oversized display type
+       crossing the photograph.
+       ====================================================== -->
+  <section class="poster-hero dot-scene" id="story" data-theme="dark">
+    <div class="poster-field"></div>
+    <div class="poster-grain"></div>
+
+    <div class="poster-frame">
+      <div class="poster-top">
+        <div class="poster-brand">
+          <span>FIZZA</span>
+          <span>INTERIOR</span>
+          <i></i>
+        </div>
+        <div class="poster-message">
+          Built with intention.<br>
+          Designed for living.<br>
+          Executed completely.
+        </div>
+      </div>
+
+      <div class="poster-photo">
+        <img src="hero-staircase.jpg" alt="FIZZA interior staircase">
+        <div class="poster-title-wrap">
+          <div class="poster-title">CRAFTING</div>
+          <div class="poster-title title-outline">LANDMARKS</div>
+        </div>
+      </div>
+
+      <div class="poster-bottom">
+        <div class="barcode"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+        <div>INTERIOR DESIGN / TURNKEY EXECUTION</div>
+        <div>FIZZA INTERIOR · EST. 2012</div>
+      </div>
+    </div>
+
+    <div class="poster-scroll">SCROLL / 01</div>
+  </section>
+
+  <!-- ======================================================
+       FIRST EDITORIAL INTERRUPTION
+       ====================================================== -->
+  <section class="editorial-white" id="services" data-theme="light">
+    <div class="editorial-small">A TURNKEY INTERIOR FIRM</div>
+
+    <div class="editorial-heading">
+      <span>EVERYTHING</span>
+      <em>IN</em>
+      <span>ALIGNMENT.</span>
+    </div>
+
+    <div class="editorial-copy">
+      <p>
+        From the first drawing to the final handover, FIZZA brings
+        design, construction, materials and execution into one
+        accountable process.
+      </p>
+      <a href="#process">Continue exploring →</a>
+    </div>
+
+    <div class="editorial-rule"></div>
+
+    <div class="service-marquee" aria-hidden="true">
+      DESIGN — BUILD — DETAIL — DELIVER — DESIGN — BUILD — DETAIL — DELIVER —
+    </div>
+
+    <div class="services-editorial-grid">
+      <article>
+        <small>01 / DESIGN</small>
+        <h3>Spatial Direction</h3>
+        <p>Planning, concept, materials and details developed as one coherent interior language.</p>
+      </article>
+      <article>
+        <small>02 / BUILD</small>
+        <h3>Turnkey Execution</h3>
+        <p>Civil, electrical, ceilings, finishes, carpentry and site coordination under one roof.</p>
+      </article>
+      <article>
+        <small>03 / DETAIL</small>
+        <h3>Custom Craft</h3>
+        <p>Furniture and architectural details designed specifically for the character of each space.</p>
+      </article>
+      <article>
+        <small>04 / DELIVER</small>
+        <h3>Final Handover</h3>
+        <p>A controlled finish where every visible detail is checked before the project is complete.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       DARK EDITORIAL GUIDE
+       ====================================================== -->
+  <section class="poster-dark" id="process" data-theme="dark">
+    <div class="dark-number">02</div>
+
+    <div class="dark-guide">
+      <div class="dark-guide-top">THIS IS OUR GUIDE</div>
+
+      <div class="dark-giant">
+        <span>THE</span>
+        <span class="pill-word">WAY</span>
+        <span>WE</span>
+        <span>BUILD.</span>
+      </div>
+
+      <div class="dark-description">
+        <p>
+          Good interiors are not assembled at the end.
+          They are coordinated from the beginning — brief,
+          design, materials, site and people moving in the same direction.
+        </p>
+        <a href="#projects">Continue reading →</a>
+      </div>
+
+      <div class="guide-steps">
+        <div><b>01</b><span>BRIEF</span></div>
+        <div><b>02</b><span>DESIGN</span></div>
+        <div><b>03</b><span>EXECUTE</span></div>
+        <div><b>04</b><span>HANDOVER</span></div>
+      </div>
+    </div>
+
+    <div class="dark-photo">
+      <img src="process-control.jpg" alt="FIZZA project process">
+      <span>CONTROL / DETAIL / DELIVERY</span>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       IMAGE / TYPE COLLAGE
+       ====================================================== -->
+  <section class="collage-section" id="projects" data-theme="light">
+    <div class="collage-topline">
+      <span>03 / SELECTED WORK</span>
+      <span>RESIDENTIAL + COMMERCIAL</span>
+    </div>
+
+    <div class="collage-word">SPACES</div>
+
+    <div class="collage-card card-one">
+      <img src="residential-01.jpg" alt="Residential project">
+      <div><small>RESIDENTIAL / 01</small><strong>Private Residence</strong></div>
+    </div>
+
+    <div class="collage-card card-two">
+      <img src="commercial-main.jpg" alt="Commercial project">
+      <div><small>COMMERCIAL / 01</small><strong>Built for Business</strong></div>
+    </div>
+
+    <div class="collage-card card-three">
+      <img src="residential-02.jpg" alt="Residential detail">
+      <div><small>RESIDENTIAL / 02</small><strong>Quiet Materiality</strong></div>
+    </div>
+
+    <div class="collage-side-note">
+      <span>01—03</span>
+      A selection of environments where design intent and
+      construction discipline meet.
+    </div>
+  </section>
+
+  <!-- ======================================================
+       BLACK + WHITE IMAGE INTERRUPTION
+       ====================================================== -->
+  <section class="split-poster" id="craft" data-theme="dark">
+    <div class="split-poster-image">
+      <img src="craft-main.jpg" alt="FIZZA craftsmanship">
+    </div>
+
+    <div class="split-poster-copy">
+      <small>04 / CRAFT</small>
+      <h2>DETAIL<br><i>IS</i><br>DESIGN.</h2>
+      <p>
+        Materials, junctions, proportions and finishes are treated
+        as part of the architecture — because the final 10% is often
+        what makes the entire space feel considered.
+      </p>
+
+      <div class="material-lines">
+        <span>WOOD</span>
+        <span>STONE</span>
+        <span>METAL</span>
+        <span>TEXTURE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       COMMERCIAL POSTER
+       ====================================================== -->
+  <section class="poster-grid-section" id="commercial" data-theme="light">
+    <div class="poster-grid-heading">
+      <small>05 / COMMERCIAL</small>
+      <h2>MADE FOR<br><i>PEOPLE.</i></h2>
+      <p>Workplaces, retail, hospitality and experience-led environments with a clear visual identity.</p>
+    </div>
+
+    <div class="mini-poster poster-a">
+      <img src="commercial-workspaces.jpg" alt="Commercial workspace">
+      <span>WORKSPACE / 01</span>
+    </div>
+    <div class="mini-poster poster-b">
+      <img src="commercial-boutique.jpg" alt="Boutique interior">
+      <span>RETAIL / 01</span>
+    </div>
+    <div class="mini-poster poster-c">
+      <img src="commercial-show-homes.jpg" alt="Show home interior">
+      <span>SHOW HOME / 01</span>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FINAL POSTER CTA
+       ====================================================== -->
+  <section class="final-poster" id="contact" data-theme="dark">
+    <div class="final-inner">
+      <div class="final-micro">FIZZA INTERIOR / CRAFTING LANDMARKS</div>
+      <h2>LET'S MAKE<br><i>THE SPACE.</i></h2>
+      <p>Design. Build. Detail. Deliver.</p>
+      <a href="mailto:hello@fizzainterior.com">START A PROJECT →</a>
+    </div>
+    <div class="final-giant">FIZZA</div>
+  </section>
+
 </main>
 
-<section id="services" class="section page"><div class="container">
-<div class="eyebrow">02 / Turnkey services</div><h1>FROM<br>SHELL<br>TO SOUL.</h1><p class="lead" style="margin:45px 0 80px">FIZZA INTERIOR can manage the full delivery of a premium space, coordinating design intent, procurement, site execution, specialist trades and final handover.</p>
-<div class="service-row"><div class="service-num">01</div><h3>Civil & Structure</h3><p>Site preparation, partitions, ceilings, flooring, waterproofing, masonry coordination and the invisible work that makes the finished interior precise.</p></div>
-<div class="service-row"><div class="service-num">02</div><h3>Interior Execution</h3><p>Custom joinery, kitchens, wardrobes, stone, metal, glass, wall treatments, lighting and complete interior installation.</p></div>
-<div class="service-row"><div class="service-num">03</div><h3>MEP Coordination</h3><p>Electrical, HVAC, plumbing, lighting controls and specialist services coordinated with the architecture and interior programme.</p></div>
-<div class="service-row"><div class="service-num">04</div><h3>Final Styling</h3><p>Furniture placement, soft furnishings, art coordination and the final layer of presentation before the keys are handed over.</p></div>
-</div></section>
 
-<section id="process" class="section page paper"><div class="container">
-<div class="eyebrow">03 / Process</div><h1>CALM<br>DELIVERY.</h1><p class="lead" style="margin:45px 0 75px">A premium project should feel controlled. Our process is built around clarity, accountable coordination and disciplined site execution.</p>
-<div class="process">
-<div class="step"><b>01</b><h3>Brief</h3><p>Understand the property, lifestyle, budget, aesthetic direction and delivery ambition.</p></div>
-<div class="step"><b>02</b><h3>Plan</h3><p>Translate the design into drawings, quantities, procurement schedules and a realistic site programme.</p></div>
-<div class="step"><b>03</b><h3>Build</h3><p>Coordinate specialist teams and trades while protecting quality, sequencing and finish standards.</p></div>
-<div class="step"><b>04</b><h3>Handover</h3><p>Snag, refine, style and deliver a finished space ready for occupation.</p></div>
-</div>
-<div class="grid2" style="margin-top:100px"><div class="img img-md"><img src="process-control.jpg"></div><div><div class="eyebrow">Project control</div><h2>DETAIL IS A<br>DELIVERY TOOL.</h2><p class="lead">The visual result depends on hundreds of decisions being made in the correct sequence. That is where turnkey coordination matters.</p></div></div>
-</div></section>
+<a class="whatsapp" href="https://wa.me/" aria-label="WhatsApp">WA</a>
 
-<section id="residential" class="section page"><div class="container">
-<div class="eyebrow">04 / Residential</div><h1>HOMES FOR<br>PEOPLE WHO<br>NOTICE.</h1>
-<div class="masonry" style="margin-top:85px"><div class="img a"><img src="residential-01.jpg"></div><div class="img b"><img src="residential-02.jpg"></div><div class="img c"><img src="residential-03.jpg"></div></div>
-<div class="grid2" style="margin-top:110px"><div><h2>PRIVATE<br>RESIDENCES.</h2></div><div><p class="lead">For villas, penthouses and high-value apartments, FIZZA INTERIOR takes responsibility for the complete interior delivery — allowing the client to work with one accountable execution partner.</p><div class="tags" style="margin-top:25px"><span class="tag">Villas</span><span class="tag">Penthouses</span><span class="tag">Apartments</span><span class="tag">Second homes</span></div></div></div>
-</div></section>
 
-<section id="commercial" class="section page"><div class="container">
-<div class="eyebrow">05 / Commercial & real estate</div><h1>PLACES<br>THAT SELL<br>THE VISION.</h1>
-<div class="grid2 wideleft" style="margin-top:90px"><div class="img img-lg"><img src="commercial-main.jpg"></div><div><div class="eyebrow">Developer / Investor / Brand</div><h2>EXECUTION<br>AT SCALE.</h2><p class="lead">Show apartments, sales galleries, luxury offices, hospitality environments and high-end commercial interiors require speed without making the finish feel rushed.</p><div class="line"></div><p class="lead">FIZZA INTERIOR can work from an architect's drawings or collaborate with the design team to convert intent into a buildable, finished environment.</p></div></div>
-<div class="cards" style="margin-top:100px">
-<div class="card"><div class="img"><img src="commercial-workspaces.jpg"></div><div class="card-body"><div class="eyebrow">Corporate</div><h3>Workspaces</h3><p>Executive offices and client-facing environments with controlled material and lighting details.</p></div></div>
-<div class="card"><div class="img"><img src="commercial-show-homes.jpg"></div><div class="card-body"><div class="eyebrow">Real estate</div><h3>Show Homes</h3><p>Sales environments designed to communicate the future value of a development.</p></div></div>
-<div class="card"><div class="img"><img src="commercial-boutique.jpg"></div><div class="card-body"><div class="eyebrow">Hospitality</div><h3>Boutique Spaces</h3><p>Guest-facing interiors where detailing, durability and atmosphere have to coexist.</p></div></div>
-</div></div></section>
 
-<section id="craft" class="section page"><div class="container">
-<div class="eyebrow">06 / Craft & materials</div><h1>THE LAST<br>5% IS<br>EVERYTHING.</h1>
-<div class="grid2 wideright" style="margin-top:90px"><div><p class="lead">Luxury execution is judged at close range: junctions, shadow gaps, stone veins, hardware alignment, paint transitions and the quality of the final clean.</p><div class="line"></div><div class="tags"><span class="tag">Natural stone</span><span class="tag">Solid timber</span><span class="tag">Metalwork</span><span class="tag">Glass</span><span class="tag">Microcement</span><span class="tag">Custom joinery</span></div></div><div class="img img-lg"><img src="craft-main.jpg"></div></div>
-<div class="masonry" style="margin-top:110px"><div class="img a"><img src="craft-01.jpg"></div><div class="img b"><img src="craft-02.jpg"></div><div class="img c"><img src="craft-03.jpg"></div></div>
-</div></section>
 
-<section id="projects" class="section page"><div class="container">
-<div class="eyebrow">07 / Selected projects</div><h1>MADE<br>VISIBLE.</h1>
-<p class="lead" style="margin:40px 0 75px">A project portfolio should demonstrate execution, not just decoration. Replace these presentation images and captions with FIZZA INTERIOR's verified completed work before launch.</p>
-<div class="projects">
-<article class="project"><img src="craft-01.jpg"><div class="project-info"><div class="eyebrow">Private Residence / Interior execution</div><h3>Quiet House</h3><p>Full turnkey · joinery · stone · lighting</p></div></article>
-<article class="project"><img src="commercial-boutique.jpg"><div class="project-info"><div class="eyebrow">Penthouse / Turnkey</div><h3>City Gallery</h3><p>Shell-to-finish · custom interiors</p></div></article>
-<article class="project"><img src="commercial-main.jpg"><div class="project-info"><div class="eyebrow">Commercial / Workplace</div><h3>Private Office</h3><p>Design coordination · MEP · execution</p></div></article>
-<article class="project"><img src="residential-01.jpg"><div class="project-info"><div class="eyebrow">Villa / Complete interior</div><h3>Garden Residence</h3><p>Architecture coordination · interiors · styling</p></div></article>
-</div>
-</div></section>
-
-<section id="contact" class="section page paper"><div class="container contact-grid">
-<div><div class="eyebrow">08 / Private consultation</div><h1>BUILD<br>SOMETHING<br>EXACT.</h1><p class="lead" style="margin-top:40px">Tell us about the property, stage of construction and level of involvement you require. We will arrange a private consultation.</p><div class="line"></div><div class="eyebrow">FIZZA INTERIOR</div><p style="font-size:12px;line-height:1.9">Turnkey contracting<br>Premium residential & commercial interiors<br>Design coordination · Procurement · Execution</p></div>
-<form class="form" onsubmit="submitForm(event)">
-<div class="field"><label>Name</label><input required placeholder="Your name"></div>
-<div class="field"><label>Phone</label><input required type="tel" placeholder="+91"></div>
-<div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
-<div class="field"><label>Project type</label><select><option>Private residence</option><option>Villa</option><option>Penthouse</option><option>Commercial</option><option>Developer / Show home</option></select></div>
-<div class="field full"><label>Project details</label><textarea placeholder="Property location, approximate area, construction stage and what you need us to handle"></textarea></div>
-<div class="field full" style="border:0"><button class="btn" type="submit">Request private consultation →</button></div>
-</form>
-</div>
-<footer class="footer"><div class="container footer-grid"><div><div class="footer-brand">FIZZA INTERIOR</div><div class="eyebrow" style="margin-top:10px">Turnkey Contracting · Premium Real Estate</div></div><p class="lead">A focused digital presentation for FIZZA INTERIOR. Replace placeholder portfolio photography and project information with verified company assets before publication.</p></div><div class="container footer-logo-wrap"><img src="logo.png" alt="FIZZA INTERIOR — Crafting Landmarks"></div></footer>
-</section>
-
-<div class="toast" id="toast">Thank you — your private consultation request has been received.</div>
 <script>
-const panel=document.getElementById('indexPanel');
-function toggleIndex(){panel.classList.toggle('open')}
-function closeIndex(){panel.classList.remove('open')}
-document.addEventListener('click',e=>{if(panel.classList.contains('open')&&!panel.contains(e.target)&&!e.target.closest('.index-btn'))closeIndex()});
-function submitForm(e){e.preventDefault();document.getElementById('toast').classList.add('show');e.target.reset();setTimeout(()=>document.getElementById('toast').classList.remove('show'),3500)}
-function updateNavLogoColor(){
- const logo=document.querySelector('.logo-mark');
- if(!logo)return;
- const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
- const p=Math.min(0.999,Math.max(0,window.scrollY/max));
- const stops=['#ffffff','#2456c7','#e5c62e','#9f302f','#b88a3b','#718565','#171717','#ffffff'];
- const scaled=p*(stops.length-1),i=Math.min(stops.length-2,Math.floor(scaled)),t=scaled-i;
- const hex=n=>parseInt(n,16), mix=(a,b,t)=>Math.round(a+(b-a)*t).toString(16).padStart(2,'0');
- const A=stops[i].slice(1),B=stops[i+1].slice(1);
- logo.style.backgroundColor='#'+mix(hex(A.slice(0,2)),hex(B.slice(0,2)),t)+mix(hex(A.slice(2,4)),hex(B.slice(2,4)),t)+mix(hex(A.slice(4,6)),hex(B.slice(4,6)),t);
-}
-window.addEventListener('scroll',updateNavLogoColor,{passive:true});
-window.addEventListener('resize',updateNavLogoColor);
-window.addEventListener('load',updateNavLogoColor);
+gsap.registerPlugin(ScrollTrigger);
 
+/* Slow, deliberately weighted scrolling */
+const lenis = new Lenis({
+  duration: 1.7,
+  smoothWheel: true,
+  smoothTouch: false,
+  wheelMultiplier: .62,
+  touchMultiplier: 1,
+  lerp: .065
+});
+lenis.on("scroll", ScrollTrigger.update);
+gsap.ticker.add(t => lenis.raf(t*1000));
+gsap.ticker.lagSmoothing(0);
+
+const header=document.getElementById("header");
+
+/* =========================================================
+   SIGNATURE DOT-STYLE HERO CHOREOGRAPHY
+   The poster itself stays pinned while:
+   1. frame gently scales,
+   2. photograph moves,
+   3. giant type crosses the photograph,
+   4. metadata drifts,
+   5. reverse scrolling reverses every movement.
+   ========================================================= */
+const hero=document.querySelector(".dot-scene");
+if(hero){
+  const frame=hero.querySelector(".poster-frame");
+  const field=hero.querySelector(".poster-field");
+  const photo=hero.querySelector(".poster-photo img");
+  const title=hero.querySelector(".poster-title-wrap");
+  const top=hero.querySelector(".poster-top");
+  const bottom=hero.querySelector(".poster-bottom");
+  const scroll=hero.querySelector(".poster-scroll");
+
+  gsap.set(title,{xPercent:-105});
+  gsap.set(frame,{scale:.98});
+  gsap.set(top,{y:0,opacity:1});
+  gsap.set(bottom,{y:0,opacity:1});
+
+  const tl=gsap.timeline({
+    scrollTrigger:{
+      trigger:hero,
+      start:"top top",
+      end:"+=180%",
+      pin:true,
+      scrub:1.65,
+      anticipatePin:1,
+      invalidateOnRefresh:true
+    }
+  });
+
+  tl
+   .to(field,{scale:1.18,xPercent:3,yPercent:-2,duration:.38},0)
+   .to(frame,{scale:1.015,duration:.28},0)
+   .to(photo,{scale:1.12,xPercent:-2,yPercent:-2,duration:.38},0)
+   .to(top,{y:-30,opacity:.15,duration:.24},.05)
+   .to(bottom,{y:25,opacity:.12,duration:.25},.07)
+   .to(title,{xPercent:0,duration:.66,ease:"power3.out"},.18)
+   .to(title,{xPercent:5,yPercent:-7,duration:.35},.68)
+   .to(field,{scale:1.24,xPercent:-2,yPercent:-5,duration:.4},.62)
+   .to(scroll,{opacity:0,duration:.12},.02);
+}
+
+/* =========================================================
+   EDITORIAL WHITE: giant typography drifts horizontally,
+   then the service system reveals slowly.
+   ========================================================= */
+const white=document.querySelector(".editorial-white");
+if(white){
+  const heading=white.querySelector(".editorial-heading");
+  const copy=white.querySelector(".editorial-copy");
+  const marquee=white.querySelector(".service-marquee");
+  const cards=white.querySelectorAll(".services-editorial-grid article");
+
+  gsap.fromTo(heading,{xPercent:-18,opacity:0},{xPercent:0,opacity:1,
+    ease:"none",scrollTrigger:{trigger:white,start:"top 78%",end:"top 24%",scrub:1.5}});
+  gsap.fromTo(copy,{xPercent:18,opacity:0},{xPercent:0,opacity:1,
+    ease:"none",scrollTrigger:{trigger:white,start:"top 68%",end:"top 30%",scrub:1.35}});
+  gsap.fromTo(marquee,{xPercent:-12},{xPercent:7,ease:"none",
+    scrollTrigger:{trigger:white,start:"top bottom",end:"bottom top",scrub:1.8}});
+  gsap.from(cards,{y:70,opacity:0,stagger:.12,duration:1,ease:"power3.out",
+    scrollTrigger:{trigger:white,start:"top 52%",once:true}});
+}
+
+/* =========================================================
+   BLACK GUIDE: giant phrases enter from alternating sides.
+   ========================================================= */
+const dark=document.querySelector(".poster-dark");
+if(dark){
+  const words=dark.querySelectorAll(".dark-giant span");
+  words.forEach((word,i)=>{
+    gsap.fromTo(word,
+      {xPercent:i%2?-16:16,opacity:0},
+      {xPercent:0,opacity:1,ease:"none",
+       scrollTrigger:{trigger:dark,start:"top 78%",end:"top 25%",scrub:1.35}}
+    );
+  });
+  gsap.fromTo(dark.querySelector(".dark-description"),
+    {x:100,opacity:0},{x:0,opacity:1,ease:"none",
+     scrollTrigger:{trigger:dark,start:"top 62%",end:"top 30%",scrub:1.2}});
+  gsap.fromTo(dark.querySelector(".dark-photo"),
+    {x:150,rotation:10,opacity:0},{x:0,rotation:4,opacity:1,ease:"power2.out",
+     scrollTrigger:{trigger:dark,start:"top 65%",end:"top 27%",scrub:1.35}});
+}
+
+/* =========================================================
+   COLLAGE: cards physically travel at different rates.
+   ========================================================= */
+const collage=document.querySelector(".collage-section");
+if(collage){
+  gsap.fromTo(".collage-word",{xPercent:-8},{xPercent:8,ease:"none",
+    scrollTrigger:{trigger:collage,start:"top bottom",end:"bottom top",scrub:2}});
+  gsap.to(".card-one",{y:-90,rotation:-5,ease:"none",
+    scrollTrigger:{trigger:collage,start:"top bottom",end:"bottom top",scrub:1.8}});
+  gsap.to(".card-two",{y:80,rotation:6,ease:"none",
+    scrollTrigger:{trigger:collage,start:"top bottom",end:"bottom top",scrub:2}});
+  gsap.to(".card-three",{y:-120,rotation:-1,ease:"none",
+    scrollTrigger:{trigger:collage,start:"top bottom",end:"bottom top",scrub:2.2}});
+}
+
+/* Craft image + typography */
+const craft=document.querySelector(".split-poster");
+if(craft){
+  gsap.fromTo(craft.querySelector(".split-poster-image"),
+    {clipPath:"inset(0 18% 0 0)"},{clipPath:"inset(0 0 0 0)",ease:"none",
+     scrollTrigger:{trigger:craft,start:"top 80%",end:"top 25%",scrub:1.5}});
+  gsap.fromTo(craft.querySelector("h2"),
+    {xPercent:-20,opacity:0},{xPercent:0,opacity:1,ease:"none",
+     scrollTrigger:{trigger:craft,start:"top 72%",end:"top 27%",scrub:1.3}});
+  gsap.from(craft.querySelectorAll(".material-lines span"),
+    {x:-50,opacity:0,stagger:.1,duration:.8,
+     scrollTrigger:{trigger:craft,start:"top 50%",once:true}});
+}
+
+/* Commercial posters */
+const commercial=document.querySelector(".poster-grid-section");
+if(commercial){
+  gsap.fromTo(commercial.querySelector("h2"),
+    {xPercent:-18,opacity:0},{xPercent:0,opacity:1,ease:"none",
+     scrollTrigger:{trigger:commercial,start:"top 78%",end:"top 30%",scrub:1.4}});
+  gsap.to(".poster-a",{y:-100,rotation:1,ease:"none",
+    scrollTrigger:{trigger:commercial,start:"top bottom",end:"bottom top",scrub:1.8}});
+  gsap.to(".poster-b",{y:120,rotation:-7,ease:"none",
+    scrollTrigger:{trigger:commercial,start:"top bottom",end:"bottom top",scrub:2}});
+  gsap.to(".poster-c",{y:-70,rotation:4,ease:"none",
+    scrollTrigger:{trigger:commercial,start:"top bottom",end:"bottom top",scrub:2.2}});
+}
+
+/* Final CTA */
+const finalPoster=document.querySelector(".final-poster");
+if(finalPoster){
+  gsap.fromTo(finalPoster.querySelector("h2"),
+    {y:100,opacity:0},{y:0,opacity:1,ease:"none",
+     scrollTrigger:{trigger:finalPoster,start:"top 80%",end:"top 25%",scrub:1.4}});
+  gsap.to(finalPoster.querySelector(".final-giant"),
+    {xPercent:8,ease:"none",
+     scrollTrigger:{trigger:finalPoster,start:"top bottom",end:"bottom top",scrub:2}});
+}
+
+/* Header automatically switches between photographic/dark and paper/light */
+const themed=[...document.querySelectorAll("[data-theme]")];
+function headerState(){
+  let chosen=null,best=1e9;
+  themed.forEach(s=>{
+    const r=s.getBoundingClientRect();
+    if(r.bottom>innerHeight*.12 && r.top<innerHeight*.55){
+      const d=Math.abs(r.top-innerHeight*.08);
+      if(d<best){best=d;chosen=s}
+    }
+  });
+  if(chosen) header.classList.toggle("light",chosen.dataset.theme==="light");
+}
+ScrollTrigger.create({start:0,end:"max",onUpdate:headerState});
+window.addEventListener("load",()=>setTimeout(()=>ScrollTrigger.refresh(),400));
+window.addEventListener("resize",()=>ScrollTrigger.refresh());
+
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
 </script>
+
+
+
+<style>
+.mobile-menu{
+  display:none;position:fixed;z-index:1200;inset:72px 0 0;background:#080808;color:#fff;
+  padding:30px 7vw;flex-direction:column;gap:8px
+}
+.mobile-menu a{
+  font:300 42px/1.15 "Manrope";letter-spacing:-.05em;padding:15px 0;border-bottom:1px solid #333
+}
+.mobile-menu.open{display:flex}
+@media(min-width:901px){.mobile-menu{display:none!important}}
+</style>
+
+
+<style>
+.mobile-menu{
+  background:var(--paper)!important;color:var(--ink)!important;
+}
+.mobile-menu a{
+  font-family:var(--serif)!important;
+  font-weight:500!important;
+  font-size:48px!important;
+  border-bottom:1px solid var(--rule)!important;
+}
+</style>
+
+
+<style>
+.mobile-menu{background:var(--cream)!important;color:var(--ink)!important}
+.mobile-menu a{
+  font-family:var(--serif)!important;
+  font-weight:500!important;
+  font-size:48px!important;
+  border-bottom:1px solid var(--line)!important;
+}
+</style>
 </body>
 </html>
