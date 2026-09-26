@@ -2432,202 +2432,151 @@ section{
     }
 
     function initGSAP(){
+        /*
+         * Bullet-proof heading system:
+         * GSAP performs only the animation. A lightweight viewport check
+         * decides when to start it. No mobile scrub, no clip-path, no blur,
+         * and no dependency on Android's changing browser viewport height.
+         */
         if(!window.gsap){
             nativeFallback();
             return;
         }
 
         try{
-            /*
-             * IMPORTANT:
-             * Headings use IntersectionObserver + GSAP instead of relying on
-             * ScrollTrigger's mobile viewport calculations. Android browsers
-             * continuously resize the visual viewport while their address bar
-             * opens/closes; that can make ScrollTrigger-based text reveals
-             * appear to fire late, jump, or not fire at all.
-             */
             const gs = window.gsap;
-            const mobile = mobileQuery.matches;
-            const headings = Array.from(document.querySelectorAll(
+            const isMobile = window.matchMedia('(max-width: 850px)').matches;
+            const allHeadings = Array.from(document.querySelectorAll(
                 'main h1, main h2, main h3, section h1, section h2, section h3'
-            )).filter(function(el, i, arr){
-                return arr.indexOf(el) === i && !el.closest('.hero');
+            ));
+
+            /* Remove duplicates while preserving document order. */
+            const headings = allHeadings.filter(function(el, i, arr){
+                return arr.indexOf(el) === i;
             });
 
-            /* Hero remains a GSAP scroll animation when ScrollTrigger exists. */
-            if(window.ScrollTrigger){
-                gs.registerPlugin(window.ScrollTrigger);
-                window.ScrollTrigger.config({
-                    ignoreMobileResize:true,
-                    limitCallbacks:true
-                });
-
-                const hero = document.querySelector('.hero');
-                const heroContent = document.querySelector('.hero-content');
-                if(hero && heroContent){
-                    gs.set(heroContent, {
-                        xPercent: mobile ? -30 : -42,
-                        opacity:0,
-                        force3D:true
-                    });
-                    gs.to(heroContent, {
-                        xPercent:0,
-                        opacity:1,
-                        ease:'power2.out',
-                        duration:1.15,
-                        scrollTrigger:{
-                            trigger:hero,
-                            start:'top top',
-                            end:mobile ? 'top 55%' : 'top 40%',
-                            scrub:0.55,
-                            invalidateOnRefresh:true
-                        }
-                    });
-                }
-            }else{
-                const heroContent = document.querySelector('.hero-content');
-                if(heroContent){
-                    gs.fromTo(heroContent,
-                        {xPercent:mobile ? -30 : -42, opacity:0},
-                        {xPercent:0, opacity:1, duration:1.15, ease:'power3.out'}
-                    );
-                }
+            /* Hero is deliberately separate from the section-heading system. */
+            const heroContent = document.querySelector('.hero-content');
+            if(heroContent){
+                gs.fromTo(heroContent,
+                    {xPercent:isMobile ? -18 : -28, opacity:0},
+                    {xPercent:0, opacity:1, duration:1.1, ease:'power3.out', overwrite:'auto'}
+                );
             }
 
-            /*
-             * PREMIUM HEADING REVEAL
-             * - GSAP animates the actual heading element, so the typography
-             *   itself moves/fades rather than an external wrapper.
-             * - clip-path prevents any ugly overshoot from being visible.
-             * - blur is kept extremely subtle on mobile for smooth Android GPU
-             *   rendering; transform uses force3D for compositing.
-             */
-            headings.forEach(function(heading, index){
+            const played = new WeakSet();
+            let ticking = false;
+
+            function reveal(heading){
+                if(!heading || played.has(heading)) return;
+                played.add(heading);
+
                 heading.classList.add('gsap-heading');
-                heading.style.opacity = '0';
-                heading.style.visibility = 'visible';
-                heading.style.willChange = 'transform, opacity, clip-path, filter';
-                heading.style.transform = 'translate3d(0,0,0)';
 
-                const fromX = mobile ? -42 : -52;
-                const fromBlur = mobile ? 2.5 : 1.5;
-
-                gs.set(heading, {
-                    xPercent:fromX,
-                    y: mobile ? 10 : 14,
-                    opacity:0,
-                    filter:'blur(' + fromBlur + 'px)',
-                    clipPath:'inset(0 100% 0 0)',
-                    force3D:true
-                });
-
-                /*
-                 * IntersectionObserver is deliberately used only to decide
-                 * WHEN the animation starts. GSAP controls the animation.
-                 * This is substantially more reliable on Android than a
-                 * scroll-linked tween for every heading.
-                 */
-                const play = function(){
-                    if(heading.dataset.gsapPlayed === '1') return;
-                    heading.dataset.gsapPlayed = '1';
-
-                    gs.to(heading, {
+                gs.fromTo(heading,
+                    {
+                        xPercent:isMobile ? -24 : -38,
+                        y:0,
+                        opacity:0
+                    },
+                    {
                         xPercent:0,
                         y:0,
                         opacity:1,
-                        filter:'blur(0px)',
-                        clipPath:'inset(0 0% 0 0)',
-                        duration: mobile ? 0.92 : 1.05,
-                        delay: mobile ? Math.min(index * 0.025, 0.12) : 0,
+                        duration:isMobile ? 0.78 : 0.92,
                         ease:'power3.out',
                         overwrite:'auto',
-                        force3D:true,
-                        onComplete:function(){
-                            heading.style.willChange='auto';
-                            heading.style.filter='none';
-                            heading.style.clipPath='none';
-                        }
-                    });
-                };
+                        clearProps:'willChange'
+                    }
+                );
+            }
 
-                if('IntersectionObserver' in window){
-                    const observer = new IntersectionObserver(function(entries){
-                        entries.forEach(function(entry){
-                            if(entry.isIntersecting){
-                                play();
-                                observer.unobserve(heading);
-                            }
-                        });
-                    }, {
-                        root:null,
-                        rootMargin: mobile ? '0px 0px -8% 0px' : '0px 0px -12% 0px',
-                        threshold:0.01
-                    });
-                    observer.observe(heading);
-                }else if(window.ScrollTrigger){
-                    window.ScrollTrigger.create({
-                        trigger:heading,
-                        start:mobile ? 'top 94%' : 'top 86%',
-                        once:true,
-                        onEnter:play
-                    });
-                }else{
-                    /* Old browser fallback: reveal on first scroll into view. */
-                    const check = function(){
-                        const r=heading.getBoundingClientRect();
-                        if(r.top < (window.innerHeight || document.documentElement.clientHeight)*0.94){
-                            play();
-                            window.removeEventListener('scroll',check);
-                        }
-                    };
-                    window.addEventListener('scroll',check,{passive:true});
-                    check();
-                }
-            });
+            function checkHeadings(){
+                ticking = false;
+                const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+                const trigger = isMobile ? vh * 0.94 : vh * 0.88;
 
-            /* Never leave text hidden if the page is restored from bfcache. */
-            window.addEventListener('pageshow',function(){
-                requestAnimationFrame(function(){
-                    headings.forEach(function(heading){
-                        const r=heading.getBoundingClientRect();
-                        if(r.top < (window.innerHeight || document.documentElement.clientHeight) &&
-                           heading.dataset.gsapPlayed !== '1'){
-                            /* Let the observer normally handle it; this only
-                               nudges the browser to recalculate intersections. */
-                            try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
-                        }
-                    });
-                });
-            },{passive:true});
-
-            /* Refresh ScrollTrigger only for the hero layer. */
-            const refresh = function(){
-                requestAnimationFrame(function(){
-                    if(window.ScrollTrigger){
-                        try{ window.ScrollTrigger.refresh(); }catch(e){}
+                headings.forEach(function(heading){
+                    if(played.has(heading)) return;
+                    const rect = heading.getBoundingClientRect();
+                    if(rect.top <= trigger && rect.bottom >= -40){
+                        reveal(heading);
                     }
                 });
-            };
+            }
 
-            window.addEventListener('load',function(){
-                setTimeout(refresh,250);
-                if(document.fonts && document.fonts.ready){
-                    document.fonts.ready.then(function(){setTimeout(refresh,80);}).catch(function(){});
-                }
-            },{once:true});
+            function requestHeadingCheck(){
+                if(ticking) return;
+                ticking = true;
+                requestAnimationFrame(checkHeadings);
+            }
 
-            window.addEventListener('orientationchange',function(){
-                setTimeout(refresh,350);
-            },{passive:true});
-
-            document.querySelectorAll('img').forEach(function(img){
-                if(!img.complete){
-                    img.addEventListener('load',refresh,{once:true,passive:true});
-                }
+            /*
+             * Critical safety rule: headings are NEVER left permanently hidden.
+             * They start visible, then GSAP creates the reveal only when they
+             * enter the viewport. This prevents the Android blank-heading bug.
+             */
+            headings.forEach(function(heading){
+                heading.classList.add('gsap-heading');
+                heading.style.opacity = '1';
+                heading.style.transform = 'translate3d(0,0,0)';
+                heading.style.visibility = 'visible';
+                heading.style.willChange = 'transform, opacity';
             });
 
+            /* Native viewport check is the primary mobile trigger. */
+            window.addEventListener('scroll', requestHeadingCheck, {passive:true});
+            window.addEventListener('resize', requestHeadingCheck, {passive:true});
+            window.addEventListener('orientationchange', function(){
+                setTimeout(requestHeadingCheck, 120);
+                setTimeout(requestHeadingCheck, 500);
+            }, {passive:true});
+
+            /* IntersectionObserver is an additional trigger, never the only one. */
+            if('IntersectionObserver' in window){
+                const observer = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if(entry.isIntersecting) reveal(entry.target);
+                    });
+                }, {
+                    root:null,
+                    rootMargin:'120px 0px 120px 0px',
+                    threshold:0
+                });
+                headings.forEach(function(heading){ observer.observe(heading); });
+            }
+
+            /* Initial checks after layout, fonts and images settle. */
+            requestAnimationFrame(requestHeadingCheck);
+            setTimeout(requestHeadingCheck, 100);
+            setTimeout(requestHeadingCheck, 400);
+            setTimeout(requestHeadingCheck, 900);
+
+            if(document.fonts && document.fonts.ready){
+                document.fonts.ready.then(function(){
+                    requestHeadingCheck();
+                    setTimeout(requestHeadingCheck, 180);
+                }).catch(function(){});
+            }
+
+            window.addEventListener('load', function(){
+                requestHeadingCheck();
+                setTimeout(requestHeadingCheck, 250);
+            }, {once:true});
+
+            /* Keep the existing dynamic logo behaviour intact. */
+            if(window.ScrollTrigger){
+                try{
+                    gs.registerPlugin(window.ScrollTrigger);
+                    window.ScrollTrigger.config({
+                        ignoreMobileResize:true,
+                        limitCallbacks:true
+                    });
+                }catch(e){}
+            }
+
         }catch(err){
-            console.warn('FIZZA INTERIOR: GSAP animation fallback engaged.',err);
+            console.warn('FIZZA INTERIOR: GSAP heading fallback engaged.', err);
             showAll();
         }
     }
