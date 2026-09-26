@@ -1,110 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>FIZZA INTERIOR — Crafting Landmarks</title>
-<meta name="description" content="FIZZA INTERIOR — turnkey interior design, contracting and execution for residential, commercial and hospitality spaces.">
-<link rel="preload" as="video" href="fizza-hero-property-scrub.mp4" type="video/mp4">
-<link rel="preload" as="image" href="logo.png">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIZZA INTERIOR — Turnkey Contracting & Luxury Real Estate Interiors</title>
+<meta name="description" content="FIZZA INTERIOR is a turnkey contracting and interior execution company for premium residential and commercial spaces.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f3f0e8;--ink:#0b0b0b;--muted:#77736b;--line:#c9c4b9;--red:#d7193f;--serif:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",Arial,sans-serif;--ease:cubic-bezier(.22,1,.36,1)}
-*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);overflow-x:hidden}a{color:inherit;text-decoration:none}img{display:block;width:100%;max-width:100%}button{font:inherit}.site-header{position:fixed;z-index:1000;top:0;left:0;width:100%;height:76px;padding:0 6vw;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;color:#fff;transition:.4s var(--ease);pointer-events:none}.site-header.light{color:#111;background:rgba(243,240,232,.9);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(0,0,0,.08)}.nav-left,.nav-right{display:flex;align-items:center;gap:28px;pointer-events:auto}.nav-right{justify-content:flex-end}.nav-link{font-size:9px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;position:relative}.nav-link:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--red);transition:.3s}.nav-link:hover:after{width:100%}.logo-wrap{width:140px;height:60px;display:grid;place-items:center;pointer-events:auto}.logo-wrap img{width:auto;max-width:125px;max-height:52px;object-fit:contain}.help{border:1px solid currentColor;border-radius:99px;padding:9px 14px;font-size:8px;letter-spacing:.15em;text-transform:uppercase}.menu-btn{display:none;background:none;border:0;color:inherit;font-size:22px}
-/* HERO */
-.hero{height:100svh;min-height:620px;position:relative;background:#111;color:#fff;overflow:hidden}.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.72) contrast(1.05);transform:scale(1.03);will-change:transform}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.56),rgba(0,0,0,.05) 62%,rgba(0,0,0,.28)),linear-gradient(0deg,rgba(0,0,0,.58),transparent 42%);pointer-events:none}.hero-frame{position:absolute;z-index:3;left:6vw;right:6vw;top:12vh;bottom:10vh;border:1px solid rgba(255,255,255,.48);pointer-events:none}.hero-copy{position:absolute;z-index:4;left:8vw;top:39%;max-width:780px}.hero-kicker{font-size:9px;letter-spacing:.24em;color:#fff;margin-bottom:22px}.hero-title{margin:0;font:500 clamp(72px,11vw,180px)/.63 var(--serif);letter-spacing:-.075em;white-space:nowrap}.hero-title i{font-style:italic;font-weight:400}.hero-sub{font-size:11px;line-height:1.5;max-width:330px;margin:28px 0 0;color:rgba(255,255,255,.78)}.hero-meta{position:absolute;z-index:4;left:6vw;bottom:26px;font-size:8px;letter-spacing:.18em}.hero-scroll{position:absolute;z-index:4;right:6vw;bottom:25px;font-size:8px;letter-spacing:.2em;writing-mode:vertical-rl}.hero-scroll:after{content:"";display:block;width:1px;height:58px;background:rgba(255,255,255,.55);margin-top:10px}.hero-poster{position:absolute;z-index:4;right:8vw;top:27%;width:190px;padding:12px;background:var(--paper);color:#111;transform:rotate(3deg);box-shadow:0 25px 55px rgba(0,0,0,.3)}.hero-poster img{height:115px;object-fit:cover}.hero-poster strong{display:block;font:500 27px/.8 var(--serif);margin:10px 0 7px}.hero-poster small{font-size:6px;letter-spacing:.16em}
-/* EDITORIAL */
-.editorial{min-height:110svh;padding:130px 8vw;background:var(--paper);position:relative;overflow:hidden}.micro{font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}.editorial h2{font:500 clamp(76px,12vw,190px)/.62 var(--serif);letter-spacing:-.08em;margin:55px 0 20px;text-align:center}.editorial h2 em{font-style:italic;border:1px solid #111;border-radius:100%;padding:0 30px 10px;display:inline-block;transform:rotate(-4deg)}.editorial-intro{width:330px;margin:40px 0 0 auto;font-size:11px;line-height:1.65;color:var(--muted)}.marquee{font:500 clamp(42px,6vw,92px)/.8 var(--serif);letter-spacing:-.06em;white-space:nowrap;margin:90px 0 70px}.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}.service{padding:20px 20px 10px 0;border-bottom:1px solid var(--line)}.service+ .service{border-left:1px solid var(--line);padding-left:20px}.service small{font-size:7px;letter-spacing:.17em;color:var(--red)}.service h3{font:500 28px/1 var(--serif);margin:30px 0 10px}.service p{font-size:10px;line-height:1.55;color:var(--muted);margin:0}
-/* DARK GUIDE */
-.dark{min-height:115svh;background:#111;color:#f2efe8;position:relative;overflow:hidden;padding:125px 8vw}.dark .micro{color:var(--red)}.dark h2{font:500 clamp(78px,12vw,185px)/.61 var(--serif);letter-spacing:-.08em;margin:65px 0 0;width:75%}.dark h2 em{font-style:italic;border:1px solid #777;border-radius:100%;padding:0 32px 9px}.dark-copy{width:270px;margin:55px 0 0 40%;font-size:10px;line-height:1.65;color:#aaa}.dark-copy a{display:inline-block;margin-top:20px;border:1px solid #666;border-radius:99px;padding:9px 14px;font-size:7px;letter-spacing:.16em}.dark-image{position:absolute;right:7%;top:31%;width:29vw;height:39vh;overflow:hidden;transform:rotate(4deg);box-shadow:0 25px 55px rgba(0,0,0,.5)}.dark-image img{height:100%;object-fit:cover}.steps{position:absolute;left:8vw;right:8vw;bottom:35px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #444}.step{padding:15px 12px 10px 0;font-size:8px;letter-spacing:.16em;display:flex;justify-content:space-between;border-right:1px solid #333}.step+ .step{padding-left:15px}.step b{color:var(--red)}
-/* PROJECTS */
-.projects{min-height:120svh;background:var(--paper);position:relative;overflow:hidden;padding:100px 7vw}.projects-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:8px;letter-spacing:.18em}.projects-word{font:500 22vw/.65 var(--serif);letter-spacing:-.1em;position:absolute;top:20%;left:7vw;z-index:1}.project-card{position:absolute;background:#111;color:#fff;padding:9px;box-shadow:0 25px 55px rgba(0,0,0,.2);will-change:transform}.project-card img{height:calc(100% - 25px);object-fit:cover}.project-card div{height:25px;display:flex;align-items:end;justify-content:space-between}.project-card small{font-size:6px;letter-spacing:.16em;color:#aaa}.project-card strong{font:500 17px var(--serif)}.p1{width:34vw;height:48vh;left:9%;top:29%;transform:rotate(-3deg)}.p2{width:30vw;height:43vh;right:11%;top:18%;transform:rotate(4deg)}.p3{width:27vw;height:37vh;right:25%;bottom:5%;transform:rotate(-2deg)}.project-note{position:absolute;right:5%;bottom:8%;width:170px;font:italic 18px/1.2 var(--serif)}.project-note small{display:block;font:8px var(--sans);letter-spacing:.17em;color:var(--red);margin-bottom:10px}
-/* CRAFT */
-.craft{min-height:110svh;background:#111;color:#f2efe8;display:grid;grid-template-columns:53% 47%;overflow:hidden}.craft-image{overflow:hidden}.craft-image img{height:100%;object-fit:cover}.craft-copy{padding:110px 8vw;display:flex;flex-direction:column;justify-content:center}.craft-copy h2{font:500 clamp(82px,11vw,165px)/.62 var(--serif);letter-spacing:-.08em;margin:35px 0 45px}.craft-copy h2 i{font-style:italic}.craft-copy p{max-width:320px;color:#aaa;font-size:11px;line-height:1.6}.materials{display:grid;grid-template-columns:1fr 1fr;margin-top:50px;border-top:1px solid #444}.materials span{font-size:7px;letter-spacing:.17em;padding:13px 0;border-bottom:1px solid #444}
-/* COMMERCIAL */
-.commercial{min-height:115svh;background:var(--paper);padding:120px 8vw;position:relative;overflow:hidden}.commercial h2{font:500 clamp(80px,11vw,165px)/.62 var(--serif);letter-spacing:-.08em;margin:35px 0}.commercial h2 i{font-style:italic}.commercial p{max-width:290px;color:var(--muted);font-size:11px;line-height:1.55}.mini{position:absolute;background:#111;padding:9px;box-shadow:0 25px 55px rgba(0,0,0,.2);will-change:transform}.mini img{height:100%;object-fit:cover}.mini span{position:absolute;left:15px;bottom:13px;color:#fff;font-size:7px;letter-spacing:.16em}.m1{width:26vw;height:43vh;right:21%;top:13%;transform:rotate(4deg)}.m2{width:23vw;height:37vh;right:4%;top:41%;transform:rotate(-4deg)}.m3{width:25vw;height:40vh;right:30%;bottom:3%;transform:rotate(2deg)}
-/* FINAL */
-.final{min-height:100svh;background:#111;color:#f2efe8;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}.final-content{position:relative;z-index:2}.final h2{font:500 clamp(90px,13vw,200px)/.6 var(--serif);letter-spacing:-.085em;margin:35px 0}.final h2 i{font-style:italic}.final p{font:italic 22px var(--serif);color:#aaa;margin:35px}.final a{display:inline-block;border:1px solid #777;border-radius:99px;padding:12px 19px;font-size:8px;letter-spacing:.16em}.final a:hover{background:var(--red);border-color:var(--red)}.final-word{position:absolute;bottom:-13%;left:-6%;font:500 35vw/.6 var(--serif);color:rgba(255,255,255,.025);letter-spacing:-.1em}
-/* MOBILE */
-@media(max-width:800px){.site-header{height:66px;padding:0 18px;grid-template-columns:1fr auto}.nav-left,.nav-right{display:none}.menu-btn{display:block;justify-self:end}.logo-wrap{justify-self:start;width:105px;height:55px}.logo-wrap img{max-width:98px;max-height:45px}.hero{min-height:100svh}.hero-frame{left:15px;right:15px;top:9vh;bottom:8vh}.hero-copy{left:25px;top:35%;right:25px}.hero-title{font-size:clamp(61px,17vw,105px);white-space:normal}.hero-sub{font-size:10px;max-width:245px}.hero-poster{right:22px;top:17%;width:135px;padding:8px}.hero-poster img{height:78px}.hero-poster strong{font-size:21px}.hero-meta{left:20px;bottom:18px}.hero-scroll{right:20px;bottom:18px}.editorial{min-height:auto;padding:95px 24px 80px}.editorial h2{text-align:left;font-size:clamp(64px,18vw,105px);margin:45px 0}.editorial h2 em{padding:0 22px 7px}.editorial-intro{width:72%;margin-left:auto}.marquee{font-size:48px;margin:65px 0;transform:none!important}.service-grid{grid-template-columns:1fr}.service+ .service{border-left:0;padding-left:0}.dark{min-height:auto;padding:95px 24px 40px}.dark h2{width:100%;font-size:clamp(66px,18vw,105px);margin-top:50px}.dark-copy{margin:45px 0 0 12%;width:70%}.dark-image{position:relative;right:auto;top:auto;width:78vw;height:42vh;margin:60px 0 30px 9%;transform:rotate(2deg)}.steps{position:relative;left:auto;right:auto;bottom:auto;margin-top:50px;grid-template-columns:1fr 1fr}.step{padding:14px 8px 10px 0}.step+ .step{padding-left:10px}.projects{min-height:1050px;padding:80px 18px}.projects-word{font-size:29vw;top:19%;left:18px}.project-card{position:absolute}.p1{width:68vw;height:31vh;left:3%;top:31%}.p2{width:62vw;height:29vh;right:2%;top:20%}.p3{width:58vw;height:27vh;right:9%;bottom:13%}.project-note{right:5%;bottom:4%;width:145px;font-size:14px}.craft{display:block;min-height:auto}.craft-image{height:52vh}.craft-copy{min-height:65vh;padding:75px 24px}.craft-copy h2{font-size:clamp(70px,19vw,110px)}.commercial{min-height:1000px;padding:90px 24px}.commercial h2{font-size:clamp(72px,19vw,110px)}.m1{width:57vw;height:29vh;right:27%;top:40%}.m2{width:50vw;height:26vh;right:1%;top:57%}.m3{width:54vw;height:28vh;right:19%;bottom:2%}.final h2{font-size:clamp(78px,20vw,120px)}.final-word{font-size:46vw}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.hero-video{transform:none!important}}
+:root{--bg:#27231e;--bg2:#1d1a16;--paper:#ebe6dc;--ink:#27231e;--muted:#a9a297;--line:rgba(235,230,220,.17);--accent:#aa8e67;--crimson:#9f302f;--crimson-soft:rgba(159,48,47,.16)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font-family:Inter,sans-serif;font-weight:300}a{text-decoration:none;color:inherit}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.header{position:fixed;z-index:50;top:0;left:0;right:0;height:78px;padding:0 0 0 0;display:flex;align-items:center;justify-content:space-between;background:rgba(39,35,30,.10);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+ .logo{height:78px;width:min(280px,32vw);display:flex;align-items:center;margin:0;padding:0}.logo-mark{height:100%;width:100%;display:block;background:#fff;mask-image:url("logo.png");-webkit-mask-image:url("logo.png");mask-repeat:no-repeat;-webkit-mask-repeat:no-repeat;mask-position:left center;-webkit-mask-position:left center;mask-size:contain;-webkit-mask-size:contain;transition:background-color .55s ease,transform .3s ease}.logo:after{display:none}.logo span{display:block;font:8px Inter;letter-spacing:.27em;color:var(--muted);margin-top:7px}
+.header-right{display:flex;gap:22px;align-items:center}.index-btn,.visit-btn{font-size:9px;letter-spacing:.2em;text-transform:uppercase}.visit-btn{border-bottom:1px solid var(--crimson);padding-bottom:6px}
+.index-panel{position:fixed;z-index:60;right:4vw;top:75px;width:min(440px,92vw);background:#28241f;border:1px solid var(--line);padding:28px;display:none;box-shadow:0 30px 80px #0007}.index-panel.open{display:block}.index-panel a{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font:27px "Cormorant Garamond"}.index-panel a small{font:8px Inter;letter-spacing:.15em;color:var(--crimson);align-self:center}
+.page{min-height:100vh;scroll-margin-top:78px}.hero{height:100vh;min-height:720px;position:relative;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.43) saturate(.62)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#27231ef0 0,#27231e91 48%,#27231e20)}.hero-content{position:relative;z-index:2;width:min(1280px,90vw);margin:auto}.eyebrow{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}.hero .eyebrow{color:#d9aaa5}.hero-count{color:var(--crimson)!important}.service-num,.step b{color:var(--crimson)!important}h1,h2,h3{font-family:"Cormorant Garamond";font-weight:300;line-height:.88;margin:0}h1{font-size:clamp(80px,13vw,190px);letter-spacing:-.055em}h2{font-size:clamp(58px,8vw,115px);letter-spacing:-.04em}h3{font-size:42px}.lead{font-size:13px;line-height:1.9;color:#c5bfb5;max-width:490px}.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:45px}.hero-count{font:27px "Cormorant Garamond";color:var(--accent)}
+.container{width:min(1280px,90vw);margin:auto}.section{padding:125px 0}.paper{background:var(--paper);color:var(--ink)}.paper .lead{color:#615c54}.line{height:1px;background:var(--line);margin:38px 0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}.grid2.wideleft{grid-template-columns:1.25fr .75fr}.grid2.wideright{grid-template-columns:.75fr 1.25fr}.img{overflow:hidden;background:#15130f}.img img{width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.62);transition:transform .8s}.img:hover img{transform:scale(1.045)}.img-lg{height:680px}.img-md{height:510px}.img-sm{height:310px}.offset{margin-left:10vw}.caption{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-top:12px;display:flex;justify-content:space-between}
+.statement{background:var(--bg2);padding:120px 0}.statement p{font:300 clamp(48px,7vw,100px)/.94 "Cormorant Garamond";max-width:1050px;margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:90px}.stat{background:var(--bg);padding:42px 25px}.stat strong{font:300 65px "Cormorant Garamond";display:block}.stat span{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}.card{background:#2b2721;padding:14px}.card .img{height:360px}.card-body{padding:25px 10px 18px}.card h3{margin:14px 0;font-size:39px}.card p{font-size:11px;line-height:1.7;color:#aaa39a}.tags{display:flex;gap:8px;flex-wrap:wrap}.tag{border:1px solid var(--line);padding:7px 9px;font-size:7px;letter-spacing:.14em;text-transform:uppercase}
+.masonry{display:grid;grid-template-columns:1fr 1.2fr .8fr;gap:15px;align-items:start}.masonry .a{height:460px}.masonry .b{height:700px}.masonry .c{height:350px;margin-top:160px}
+.service-row{border-top:1px solid var(--line);display:grid;grid-template-columns:90px 1fr 1.1fr;gap:35px;padding:35px 0}.service-row:last-child{border-bottom:1px solid var(--line)}.service-num{font:28px "Cormorant Garamond";color:var(--accent)}.service-row h3{font-size:50px}.service-row p{font-size:11px;line-height:1.8;color:#bbb4a9;max-width:450px}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}.step{background:#2a2620;padding:38px 25px;min-height:260px}.step b{font:40px "Cormorant Garamond";color:var(--accent)}.step h3{font-size:32px;margin:60px 0 12px}.step p{font-size:10px;line-height:1.7;color:#aaa39a}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}.project{background:#29251f;min-height:620px;position:relative;overflow:hidden}.project img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.52) brightness(.7);transition:.8s}.project:hover img{transform:scale(1.04);filter:saturate(.62) brightness(.75)}.project-info{position:absolute;z-index:2;left:32px;right:32px;bottom:30px}.project-info h3{font-size:54px}.project-info p{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#c2bbb0}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw}.form{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{border-bottom:1px solid var(--line);padding:12px 0}.field.full{grid-column:1/-1}.field label{display:block;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}.field input,.field textarea,.field select{width:100%;background:none;border:0;outline:0;color:var(--paper);font:300 14px Inter}.field textarea{min-height:120px;resize:vertical}.field option{background:var(--bg)}.btn{display:inline-flex;border:1px solid rgba(235,230,220,.3);padding:15px 20px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;transition:.25s}.btn:hover{background:var(--paper);color:var(--ink)}.btn:first-letter{color:inherit}
+.footer{padding:120px 0 35px;border-top:1px solid var(--line);overflow:hidden}.footer-grid{display:flex;justify-content:space-between;gap:40px;align-items:flex-end}.footer-logo-wrap{width:min(920px,92vw);margin:70px 0 20px}.footer-logo-wrap img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:left bottom;background:transparent!important;filter:none!important}.footer-brand{font:40px "Cormorant Garamond";letter-spacing:.08em;text-transform:uppercase}.toast{position:fixed;right:24px;bottom:24px;background:var(--paper);color:var(--ink);padding:15px 20px;font-size:9px;letter-spacing:.12em;transform:translateY(150px);transition:.35s;z-index:100}.toast.show{transform:none}
+@media(max-width:850px){.footer-logo-wrap{width:94vw;margin-top:55px}.footer-logo-wrap img{max-height:190px}.header{height:68px}.logo{height:68px;width:min(240px,55vw)}.header-right .visit-btn{display:none}.grid2,.grid2.wideleft,.grid2.wideright,.contact-grid{grid-template-columns:1fr;gap:45px}.offset{margin-left:0}.cards,.projects{grid-template-columns:1fr}.masonry{grid-template-columns:1fr 1fr}.masonry .b{height:520px}.masonry .c{margin-top:0}.service-row{grid-template-columns:55px 1fr}.service-row p{grid-column:2}.process{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{display:block}.footer-logo-wrap{width:min(520px,92vw);margin-bottom:24px}.footer-logo-wrap img{max-height:130px}.footer-brand{margin-bottom:25px}.hero-bottom{display:block}.hero-bottom .lead{margin:25px 0}}
+@media(max-width:520px){h1{font-size:68px}.section{padding:80px 0}.hero{min-height:650px}.masonry{grid-template-columns:1fr}.masonry .a,.masonry .b,.masonry .c{height:420px}.process,.stats{grid-template-columns:1fr}.service-row h3{font-size:40px}.img-lg{height:520px}}
 </style>
 </head>
 <body>
-<header class="site-header" id="header">
-  <nav class="nav-left"><a class="nav-link" href="#about">About</a><a class="nav-link" href="#services">Services</a><a class="nav-link" href="#process">Process</a></nav>
-  <a class="logo-wrap" href="#top" aria-label="FIZZA Interior"><img src="logo.png" alt="FIZZA Interior"></a>
-  <nav class="nav-right"><a class="nav-link" href="#projects">Projects</a><a class="nav-link" href="#craft">Craft</a><a class="help" href="#contact">Start a project</a></nav>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+<header class="header">
+<a class="logo" href="#home" aria-label="FIZZA Interior Home"><span class="logo-mark" aria-hidden="true"></span></a>
+<div class="header-right"><a class="visit-btn" href="#contact">Private consultation</a><button class="index-btn" onclick="toggleIndex()">Index +</button></div>
 </header>
-<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:var(--paper);z-index:999;padding:100px 28px;color:#111">
-  <button id="closeMenu" style="position:absolute;right:25px;top:25px;border:0;background:none;font-size:28px">×</button>
-  <a href="#about" class="moblink">About</a><a href="#services" class="moblink">Services</a><a href="#process" class="moblink">Process</a><a href="#projects" class="moblink">Projects</a><a href="#craft" class="moblink">Craft</a><a href="#contact" class="moblink">Start a project</a>
+<nav class="index-panel" id="indexPanel">
+<div class="eyebrow">FIZZA INTERIOR / Index</div>
+<a href="#home" onclick="closeIndex()">01 <span>Home</span><small>01</small></a>
+<a href="#services" onclick="closeIndex()">02 <span>Turnkey Services</span><small>02</small></a>
+<a href="#process" onclick="closeIndex()">03 <span>Process</span><small>03</small></a>
+<a href="#residential" onclick="closeIndex()">04 <span>Residential</span><small>04</small></a>
+<a href="#commercial" onclick="closeIndex()">05 <span>Commercial</span><small>05</small></a>
+<a href="#craft" onclick="closeIndex()">06 <span>Craft & Materials</span><small>06</small></a>
+<a href="#projects" onclick="closeIndex()">07 <span>Selected Projects</span><small>07</small></a>
+<a href="#contact" onclick="closeIndex()">08 <span>Private Consultation</span><small>08</small></a>
+</nav>
+
+<main id="home">
+<section class="hero page">
+<div class="hero-bg" style="background-image:url('hero-staircase.jpg')"></div>
+<div class="hero-content">
+<div class="eyebrow">FIZZA INTERIOR · TURNKEY CONTRACTORS · 2026</div>
+<h1>SPACES<br>BUILT<br>COMPLETE.</h1>
+<div class="hero-bottom"><p class="lead">A turnkey contracting studio for discerning homeowners, developers and real-estate clients. From shell to final styling, one team carries the project through.</p><div class="hero-count">01 / 08</div></div>
+<div style="margin-top:38px"><a class="btn" href="#services">Discover Fizza Interior →</a></div>
 </div>
-<main id="top">
-<section class="hero" id="about" data-theme="dark">
-  <video class="hero-video" id="heroVideo" muted playsinline preload="auto" poster="hero-staircase.jpg"><source src="fizza-hero-property-scrub.mp4" type="video/mp4"></video>
-  <div class="hero-frame"></div>
-  <div class="hero-copy"><div class="hero-kicker">FIZZA INTERIOR / TURNKEY EXECUTION</div><h1 class="hero-title">CRAFTING<br><i>LANDMARKS.</i></h1><p class="hero-sub">From concept to handover, we design, build and finish spaces as one complete system.</p></div>
-  <div class="hero-poster"><img src="position.jpg" alt="FIZZA interior detail"><strong>THE<br>DETAIL.</strong><small>DESIGN / BUILD / EXECUTE</small></div>
-  <div class="hero-meta">EST. 2012 · INTERIORS / CONTRACTING / EXECUTION</div><div class="hero-scroll">SCROLL / ENTER</div>
 </section>
-<section class="editorial" id="services" data-theme="light"><div class="micro">01 / ONE TEAM. ONE DIRECTION.</div><h2>EVERYTHING <em>IN</em><br>ALIGNMENT.</h2><div class="editorial-intro">FIZZA brings design, construction, materials, furniture and site execution into one accountable process. The result is a space where the original idea survives all the way to the final detail.</div><div class="marquee">DESIGN — BUILD — DETAIL — DELIVER —</div><div class="service-grid"><article class="service"><small>01 / DESIGN</small><h3>Spatial Direction</h3><p>Concept, planning, material language and architectural detailing developed as one coherent vision.</p></article><article class="service"><small>02 / BUILD</small><h3>Turnkey Execution</h3><p>Civil, electrical, ceilings, finishes, carpentry and coordination handled through one execution team.</p></article><article class="service"><small>03 / CUSTOM</small><h3>Furniture & Detail</h3><p>Custom elements created specifically for the proportions, function and character of each interior.</p></article><article class="service"><small>04 / DELIVERY</small><h3>Final Handover</h3><p>Every visible junction, finish and installation checked before the project is considered complete.</p></article></div></section>
-<section class="dark" id="process" data-theme="dark"><div class="micro">02 / THE FIZZA METHOD</div><h2>THIS IS <em>HOW</em><br>WE BUILD.</h2><div class="dark-copy">A considered interior is coordinated from the beginning. Brief, design, procurement, people and site execution move together so the final space feels intentional rather than assembled.<br><a href="#projects">CONTINUE READING →</a></div><div class="dark-image"><img src="process-control.jpg" alt="FIZZA project process"></div><div class="steps"><div class="step"><b>01</b>BRIEF</div><div class="step"><b>02</b>DESIGN</div><div class="step"><b>03</b>EXECUTE</div><div class="step"><b>04</b>HANDOVER</div></div></section>
-<section class="projects" id="projects" data-theme="light"><div class="projects-head"><span>03 / SELECTED WORK</span><span>RESIDENTIAL + COMMERCIAL</span></div><div class="projects-word">SPACES</div><article class="project-card p1"><img src="residential-01.jpg" alt="Residential project"><div><small>RESIDENTIAL / 01</small><strong>Private Residence</strong></div></article><article class="project-card p2"><img src="commercial-main.jpg" alt="Commercial project"><div><small>COMMERCIAL / 01</small><strong>Built for Business</strong></div></article><article class="project-card p3"><img src="residential-02.jpg" alt="Residential project detail"><div><small>RESIDENTIAL / 02</small><strong>Quiet Materiality</strong></div></article><div class="project-note"><small>01—03</small>Environments where design intent and construction discipline meet.</div></section>
-<section class="craft" id="craft" data-theme="dark"><div class="craft-image"><img src="craft-main.jpg" alt="FIZZA craftsmanship"></div><div class="craft-copy"><div class="micro">04 / CRAFT</div><h2>DETAIL<br><i>IS</i><br>DESIGN.</h2><p>Materials, junctions, proportions and finishes are treated as part of the architecture. The final detail is never an afterthought.</p><div class="materials"><span>WOOD</span><span>STONE</span><span>METAL</span><span>TEXTURE</span></div></div></section>
-<section class="commercial" data-theme="light"><div class="micro">05 / COMMERCIAL</div><h2>MADE FOR<br><i>PEOPLE.</i></h2><p>Workplaces, retail, hospitality and experience-led environments with a clear visual identity and disciplined execution.</p><article class="mini m1"><img src="commercial-workspaces.jpg" alt="Commercial workspace"><span>WORKSPACE / 01</span></article><article class="mini m2"><img src="commercial-boutique.jpg" alt="Boutique interior"><span>RETAIL / 01</span></article><article class="mini m3"><img src="commercial-show-homes.jpg" alt="Show home interior"><span>SHOW HOME / 01</span></article></section>
-<section class="final" id="contact" data-theme="dark"><div class="final-content"><div class="micro">FIZZA INTERIOR / CRAFTING LANDMARKS</div><h2>LET'S MAKE<br><i>THE SPACE.</i></h2><p>Design. Build. Detail. Deliver.</p><a href="mailto:hello@fizzainterior.com">START A PROJECT →</a></div><div class="final-word">FIZZA</div></section>
+
+<section class="section page"><div class="container grid2">
+<div><div class="eyebrow">01 / The position</div><h2>ONE TEAM.<br>ONE STANDARD.</h2><p class="lead" style="margin-top:38px">FIZZA INTERIOR operates at the intersection of real estate, architecture, interior design and execution. We coordinate the details that turn a premium property into a finished address.</p></div>
+<div class="img img-lg"><img src="position.jpg"></div>
+</div></section>
+
+<section class="statement page"><div class="container"><p>“The luxury is not in adding more. It is in getting every layer right.”</p><div class="stats"><div class="stat"><strong>360°</strong><span>Turnkey execution</span></div><div class="stat"><strong>01</strong><span>Single project partner</span></div><div class="stat"><strong>04</strong><span>Core execution disciplines</span></div><div class="stat"><strong>∞</strong><span>Attention to detail</span></div></div></div></section>
 </main>
+
+<section id="services" class="section page"><div class="container">
+<div class="eyebrow">02 / Turnkey services</div><h1>FROM<br>SHELL<br>TO SOUL.</h1><p class="lead" style="margin:45px 0 80px">FIZZA INTERIOR can manage the full delivery of a premium space, coordinating design intent, procurement, site execution, specialist trades and final handover.</p>
+<div class="service-row"><div class="service-num">01</div><h3>Civil & Structure</h3><p>Site preparation, partitions, ceilings, flooring, waterproofing, masonry coordination and the invisible work that makes the finished interior precise.</p></div>
+<div class="service-row"><div class="service-num">02</div><h3>Interior Execution</h3><p>Custom joinery, kitchens, wardrobes, stone, metal, glass, wall treatments, lighting and complete interior installation.</p></div>
+<div class="service-row"><div class="service-num">03</div><h3>MEP Coordination</h3><p>Electrical, HVAC, plumbing, lighting controls and specialist services coordinated with the architecture and interior programme.</p></div>
+<div class="service-row"><div class="service-num">04</div><h3>Final Styling</h3><p>Furniture placement, soft furnishings, art coordination and the final layer of presentation before the keys are handed over.</p></div>
+</div></section>
+
+<section id="process" class="section page paper"><div class="container">
+<div class="eyebrow">03 / Process</div><h1>CALM<br>DELIVERY.</h1><p class="lead" style="margin:45px 0 75px">A premium project should feel controlled. Our process is built around clarity, accountable coordination and disciplined site execution.</p>
+<div class="process">
+<div class="step"><b>01</b><h3>Brief</h3><p>Understand the property, lifestyle, budget, aesthetic direction and delivery ambition.</p></div>
+<div class="step"><b>02</b><h3>Plan</h3><p>Translate the design into drawings, quantities, procurement schedules and a realistic site programme.</p></div>
+<div class="step"><b>03</b><h3>Build</h3><p>Coordinate specialist teams and trades while protecting quality, sequencing and finish standards.</p></div>
+<div class="step"><b>04</b><h3>Handover</h3><p>Snag, refine, style and deliver a finished space ready for occupation.</p></div>
+</div>
+<div class="grid2" style="margin-top:100px"><div class="img img-md"><img src="process-control.jpg"></div><div><div class="eyebrow">Project control</div><h2>DETAIL IS A<br>DELIVERY TOOL.</h2><p class="lead">The visual result depends on hundreds of decisions being made in the correct sequence. That is where turnkey coordination matters.</p></div></div>
+</div></section>
+
+<section id="residential" class="section page"><div class="container">
+<div class="eyebrow">04 / Residential</div><h1>HOMES FOR<br>PEOPLE WHO<br>NOTICE.</h1>
+<div class="masonry" style="margin-top:85px"><div class="img a"><img src="residential-01.jpg"></div><div class="img b"><img src="residential-02.jpg"></div><div class="img c"><img src="residential-03.jpg"></div></div>
+<div class="grid2" style="margin-top:110px"><div><h2>PRIVATE<br>RESIDENCES.</h2></div><div><p class="lead">For villas, penthouses and high-value apartments, FIZZA INTERIOR takes responsibility for the complete interior delivery — allowing the client to work with one accountable execution partner.</p><div class="tags" style="margin-top:25px"><span class="tag">Villas</span><span class="tag">Penthouses</span><span class="tag">Apartments</span><span class="tag">Second homes</span></div></div></div>
+</div></section>
+
+<section id="commercial" class="section page"><div class="container">
+<div class="eyebrow">05 / Commercial & real estate</div><h1>PLACES<br>THAT SELL<br>THE VISION.</h1>
+<div class="grid2 wideleft" style="margin-top:90px"><div class="img img-lg"><img src="commercial-main.jpg"></div><div><div class="eyebrow">Developer / Investor / Brand</div><h2>EXECUTION<br>AT SCALE.</h2><p class="lead">Show apartments, sales galleries, luxury offices, hospitality environments and high-end commercial interiors require speed without making the finish feel rushed.</p><div class="line"></div><p class="lead">FIZZA INTERIOR can work from an architect's drawings or collaborate with the design team to convert intent into a buildable, finished environment.</p></div></div>
+<div class="cards" style="margin-top:100px">
+<div class="card"><div class="img"><img src="commercial-workspaces.jpg"></div><div class="card-body"><div class="eyebrow">Corporate</div><h3>Workspaces</h3><p>Executive offices and client-facing environments with controlled material and lighting details.</p></div></div>
+<div class="card"><div class="img"><img src="commercial-show-homes.jpg"></div><div class="card-body"><div class="eyebrow">Real estate</div><h3>Show Homes</h3><p>Sales environments designed to communicate the future value of a development.</p></div></div>
+<div class="card"><div class="img"><img src="commercial-boutique.jpg"></div><div class="card-body"><div class="eyebrow">Hospitality</div><h3>Boutique Spaces</h3><p>Guest-facing interiors where detailing, durability and atmosphere have to coexist.</p></div></div>
+</div></div></section>
+
+<section id="craft" class="section page"><div class="container">
+<div class="eyebrow">06 / Craft & materials</div><h1>THE LAST<br>5% IS<br>EVERYTHING.</h1>
+<div class="grid2 wideright" style="margin-top:90px"><div><p class="lead">Luxury execution is judged at close range: junctions, shadow gaps, stone veins, hardware alignment, paint transitions and the quality of the final clean.</p><div class="line"></div><div class="tags"><span class="tag">Natural stone</span><span class="tag">Solid timber</span><span class="tag">Metalwork</span><span class="tag">Glass</span><span class="tag">Microcement</span><span class="tag">Custom joinery</span></div></div><div class="img img-lg"><img src="craft-main.jpg"></div></div>
+<div class="masonry" style="margin-top:110px"><div class="img a"><img src="craft-01.jpg"></div><div class="img b"><img src="craft-02.jpg"></div><div class="img c"><img src="craft-03.jpg"></div></div>
+</div></section>
+
+<section id="projects" class="section page"><div class="container">
+<div class="eyebrow">07 / Selected projects</div><h1>MADE<br>VISIBLE.</h1>
+<p class="lead" style="margin:40px 0 75px">A project portfolio should demonstrate execution, not just decoration. Replace these presentation images and captions with FIZZA INTERIOR's verified completed work before launch.</p>
+<div class="projects">
+<article class="project"><img src="craft-01.jpg"><div class="project-info"><div class="eyebrow">Private Residence / Interior execution</div><h3>Quiet House</h3><p>Full turnkey · joinery · stone · lighting</p></div></article>
+<article class="project"><img src="commercial-boutique.jpg"><div class="project-info"><div class="eyebrow">Penthouse / Turnkey</div><h3>City Gallery</h3><p>Shell-to-finish · custom interiors</p></div></article>
+<article class="project"><img src="commercial-main.jpg"><div class="project-info"><div class="eyebrow">Commercial / Workplace</div><h3>Private Office</h3><p>Design coordination · MEP · execution</p></div></article>
+<article class="project"><img src="residential-01.jpg"><div class="project-info"><div class="eyebrow">Villa / Complete interior</div><h3>Garden Residence</h3><p>Architecture coordination · interiors · styling</p></div></article>
+</div>
+</div></section>
+
+<section id="contact" class="section page paper"><div class="container contact-grid">
+<div><div class="eyebrow">08 / Private consultation</div><h1>BUILD<br>SOMETHING<br>EXACT.</h1><p class="lead" style="margin-top:40px">Tell us about the property, stage of construction and level of involvement you require. We will arrange a private consultation.</p><div class="line"></div><div class="eyebrow">FIZZA INTERIOR</div><p style="font-size:12px;line-height:1.9">Turnkey contracting<br>Premium residential & commercial interiors<br>Design coordination · Procurement · Execution</p></div>
+<form class="form" onsubmit="submitForm(event)">
+<div class="field"><label>Name</label><input required placeholder="Your name"></div>
+<div class="field"><label>Phone</label><input required type="tel" placeholder="+91"></div>
+<div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+<div class="field"><label>Project type</label><select><option>Private residence</option><option>Villa</option><option>Penthouse</option><option>Commercial</option><option>Developer / Show home</option></select></div>
+<div class="field full"><label>Project details</label><textarea placeholder="Property location, approximate area, construction stage and what you need us to handle"></textarea></div>
+<div class="field full" style="border:0"><button class="btn" type="submit">Request private consultation →</button></div>
+</form>
+</div>
+<footer class="footer"><div class="container footer-grid"><div><div class="footer-brand">FIZZA INTERIOR</div><div class="eyebrow" style="margin-top:10px">Turnkey Contracting · Premium Real Estate</div></div><p class="lead">A focused digital presentation for FIZZA INTERIOR. Replace placeholder portfolio photography and project information with verified company assets before publication.</p></div><div class="container footer-logo-wrap"><img src="logo.png" alt="FIZZA INTERIOR — Crafting Landmarks"></div></footer>
+</section>
+
+<div class="toast" id="toast">Thank you — your private consultation request has been received.</div>
 <script>
-gsap.registerPlugin(ScrollTrigger);
-const isTouch=matchMedia('(pointer:coarse)').matches||innerWidth<801;
-const video=document.getElementById('heroVideo');
-let videoReady=false, targetTime=0, seeking=false, rafId=0;
-function smoothVideoSeek(){
-  if(!videoReady){rafId=requestAnimationFrame(smoothVideoSeek);return;}
-  const delta=targetTime-video.currentTime;
-  if(Math.abs(delta)>0.006 && !seeking){
-    const next=video.currentTime + delta*(isTouch?.30:.42);
-    seeking=true;
-    video.currentTime=Math.max(0,Math.min(video.duration||0,next));
-    seeking=false;
-  }
-  rafId=requestAnimationFrame(smoothVideoSeek);
+const panel=document.getElementById('indexPanel');
+function toggleIndex(){panel.classList.toggle('open')}
+function closeIndex(){panel.classList.remove('open')}
+document.addEventListener('click',e=>{if(panel.classList.contains('open')&&!panel.contains(e.target)&&!e.target.closest('.index-btn'))closeIndex()});
+function submitForm(e){e.preventDefault();document.getElementById('toast').classList.add('show');e.target.reset();setTimeout(()=>document.getElementById('toast').classList.remove('show'),3500)}
+function updateNavLogoColor(){
+ const logo=document.querySelector('.logo-mark');
+ if(!logo)return;
+ const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
+ const p=Math.min(0.999,Math.max(0,window.scrollY/max));
+ const stops=['#ffffff','#2456c7','#e5c62e','#9f302f','#b88a3b','#718565','#171717','#ffffff'];
+ const scaled=p*(stops.length-1),i=Math.min(stops.length-2,Math.floor(scaled)),t=scaled-i;
+ const hex=n=>parseInt(n,16), mix=(a,b,t)=>Math.round(a+(b-a)*t).toString(16).padStart(2,'0');
+ const A=stops[i].slice(1),B=stops[i+1].slice(1);
+ logo.style.backgroundColor='#'+mix(hex(A.slice(0,2)),hex(B.slice(0,2)),t)+mix(hex(A.slice(2,4)),hex(B.slice(2,4)),t)+mix(hex(A.slice(4,6)),hex(B.slice(4,6)),t);
 }
-function setupVideo(){
-  if(videoReady||!video.duration||!isFinite(video.duration))return;
-  videoReady=true; video.pause(); video.currentTime=0;
-  const dur=video.duration;
-  ScrollTrigger.create({
-    trigger:'.hero',start:'top top',end:'+=190%',pin:true,
-    scrub:isTouch?0.18:0.9,anticipatePin:1,invalidateOnRefresh:true,
-    onUpdate:self=>{targetTime=self.progress*dur;}
-  });
-  gsap.to('.hero-video',{scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.12:.8}});
-  gsap.fromTo('.hero-copy',{xPercent:-18,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 90%',end:'top 45%',scrub:isTouch?.15:.7}});
-  gsap.fromTo('.hero-poster',{xPercent:30,rotation:8,opacity:0},{xPercent:0,rotation:3,opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'top 75%',end:'top 35%',scrub:isTouch?.16:.8}});
-  gsap.to('.hero-frame',{scale:.94,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'+=190%',scrub:isTouch?.15:.8}});
-  if(!rafId) rafId=requestAnimationFrame(smoothVideoSeek);
-}
-if(video.readyState>=1)setupVideo();
-video.addEventListener('loadedmetadata',setupVideo);
-video.addEventListener('canplay',setupVideo);
-const editorial=document.querySelector('.editorial');gsap.fromTo('.editorial h2',{xPercent:-12,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:editorial,start:'top 82%',end:'top 28%',scrub:isTouch?.35:1.2}});gsap.fromTo('.editorial-intro',{xPercent:15,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:editorial,start:'top 72%',end:'top 35%',scrub:isTouch?.3:1}});gsap.fromTo('.marquee',{xPercent:-10},{xPercent:8,ease:'none',scrollTrigger:{trigger:editorial,start:'top bottom',end:'bottom top',scrub:isTouch?.5:1.6}});gsap.from('.service',{y:55,opacity:0,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.service-grid',start:'top 78%',once:true}});
-const dark=document.querySelector('.dark');gsap.fromTo('.dark h2',{xPercent:-14,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 78%',end:'top 25%',scrub:isTouch?.35:1.2}});gsap.fromTo('.dark-copy',{x:80,opacity:0},{x:0,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 65%',end:'top 30%',scrub:isTouch?.3:1}});gsap.fromTo('.dark-image',{x:120,rotation:10,opacity:0},{x:0,rotation:4,opacity:1,ease:'none',scrollTrigger:{trigger:dark,start:'top 68%',end:'top 28%',scrub:isTouch?.35:1.1}});
-const projects=document.querySelector('.projects');gsap.fromTo('.projects-word',{xPercent:-8},{xPercent:8,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.6:1.8}});gsap.to('.p1',{y:-70,rotation:-5,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.5:1.7}});gsap.to('.p2',{y:70,rotation:6,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.55:1.9}});gsap.to('.p3',{y:-90,rotation:-1,ease:'none',scrollTrigger:{trigger:projects,start:'top bottom',end:'bottom top',scrub:isTouch?.6:2}});
-const craft=document.querySelector('.craft');gsap.fromTo('.craft-image',{clipPath:'inset(0 15% 0 0)'},{clipPath:'inset(0 0 0 0)',ease:'none',scrollTrigger:{trigger:craft,start:'top 82%',end:'top 25%',scrub:isTouch?.4:1.2}});gsap.fromTo('.craft-copy h2',{xPercent:-15,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:craft,start:'top 75%',end:'top 30%',scrub:isTouch?.35:1.1}});
-const commercial=document.querySelector('.commercial');gsap.fromTo('.commercial h2',{xPercent:-15,opacity:0},{xPercent:0,opacity:1,ease:'none',scrollTrigger:{trigger:commercial,start:'top 78%',end:'top 30%',scrub:isTouch?.35:1.1}});gsap.to('.m1',{y:-80,rotation:1,ease:'none',scrollTrigger:{trigger:commercial,start:'top bottom',end:'bottom top',scrub:isTouch?.55:1.8}});gsap.to('.m2',{y:90,rotation:-7,ease:'none',scrollTrigger:{trigger:commercial,start:'top bottom',end:'bottom top',scrub:isTouch?.6:2}});gsap.to('.m3',{y:-60,rotation:4,ease:'none',scrollTrigger:{trigger:commercial,start:'top bottom',end:'bottom top',scrub:isTouch?.65:2.1}});
-gsap.fromTo('.final h2',{y:90,opacity:0},{y:0,opacity:1,ease:'none',scrollTrigger:{trigger:'.final',start:'top 82%',end:'top 28%',scrub:isTouch?.35:1.2}});gsap.to('.final-word',{xPercent:7,ease:'none',scrollTrigger:{trigger:'.final',start:'top bottom',end:'bottom top',scrub:isTouch?.6:2}});
-const sections=[...document.querySelectorAll('[data-theme]')];function updateHeader(){let hit=null;sections.forEach(s=>{const r=s.getBoundingClientRect();if(r.top<innerHeight*.25&&r.bottom>innerHeight*.25)hit=s});document.getElementById('header').classList.toggle('light',hit?.dataset.theme==='light')}ScrollTrigger.create({start:0,end:'max',onUpdate:updateHeader});
-const menu=document.getElementById('mobileMenu');document.getElementById('menuBtn').onclick=()=>menu.style.display='block';document.getElementById('closeMenu').onclick=()=>menu.style.display='none';document.querySelectorAll('.moblink').forEach(a=>a.onclick=()=>menu.style.display='none');
-ScrollTrigger.config({limitCallbacks:true});addEventListener('load',()=>setTimeout(()=>ScrollTrigger.refresh(),500));addEventListener('resize',()=>ScrollTrigger.refresh());
+window.addEventListener('scroll',updateNavLogoColor,{passive:true});
+window.addEventListener('resize',updateNavLogoColor);
+window.addEventListener('load',updateNavLogoColor);
+
 </script>
-<style>
-.moblink{display:block;font:500 48px/.9 var(--serif);padding:16px 0;border-bottom:1px solid var(--line)}
-@media(max-width:800px){html{scroll-behavior:auto!important}body{overscroll-behavior-y:auto;-webkit-overflow-scrolling:touch}.hero-video{transform:none!important;filter:saturate(.72) contrast(1.02)!important}.hero-video{object-position:center center}.hero:after{background:linear-gradient(0deg,rgba(0,0,0,.65),rgba(0,0,0,.08) 55%,rgba(0,0,0,.28))}.hero-poster{z-index:4}.hero-title{position:relative;z-index:6}.hero-copy{z-index:6}.project-card{z-index:4}.projects-word{z-index:1}.project-note{z-index:7}.mini{z-index:4}.commercial h2,.commercial p{position:relative;z-index:8}.craft-copy{position:relative;z-index:3}.dark-copy{position:relative;z-index:6}.dark-image{z-index:4}}
-</style>
 </body>
 </html>
