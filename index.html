@@ -332,6 +332,7 @@ h3{
 .img{
     overflow:hidden;
     background:#15130f;
+    height:460px;
 }
 
 .img img{
@@ -347,16 +348,10 @@ h3{
     transform:scale(1.045);
 }
 
-.img-lg{
-    height:680px;
-}
-
-.img-md{
-    height:510px;
-}
-
+.img-lg,
+.img-md,
 .img-sm{
-    height:310px;
+    height:460px;
 }
 
 .offset{
@@ -429,7 +424,7 @@ h3{
     padding:14px;
 }
 
-.card .img{
+.card.img{
     height:360px;
 }
 
@@ -477,17 +472,11 @@ h3{
     align-items:start;
 }
 
-.masonry .a{
-    height:460px;
-}
-
-.masonry .b{
-    height:700px;
-}
-
+.masonry .a,
+.masonry .b,
 .masonry .c{
-    height:350px;
-    margin-top:160px;
+    height:460px;
+    margin-top:0;
 }
 
 /* =========================================================
@@ -568,7 +557,8 @@ h3{
 
 .project{
     background:#29251f;
-    min-height:620px;
+    min-height:460px;
+    height:460px;
     position:relative;
     overflow:hidden;
 }
@@ -688,6 +678,7 @@ h3{
     padding:120px 0 35px;
     border-top:1px solid var(--line);
     overflow:hidden;
+    background:#710014;
 }
 
 .footer-grid{
@@ -765,6 +756,22 @@ section{
    ========================================================= */
 
 @media(max-width:850px){
+
+    .img,
+    .img-lg,
+    .img-md,
+    .img-sm,
+    .card .img,
+    .masonry .a,
+    .masonry .b,
+    .masonry .c{
+        height:360px;
+    }
+
+    .project{
+        min-height:360px;
+        height:360px;
+    }
 
     .footer-logo-wrap{
         width:94vw;
@@ -873,6 +880,22 @@ section{
 
 @media(max-width:520px){
 
+    .img,
+    .img-lg,
+    .img-md,
+    .img-sm,
+    .card .img,
+    .masonry .a,
+    .masonry .b,
+    .masonry .c{
+        height:300px;
+    }
+
+    .project{
+        min-height:300px;
+        height:300px;
+    }
+
     h1{
         font-size:68px;
     }
@@ -912,7 +935,7 @@ section{
     .masonry .a,
     .masonry .b,
     .masonry .c{
-        height:420px;
+        height:300px;
     }
 
     .process,
@@ -941,7 +964,8 @@ section{
     }
 
     .project{
-        min-height:520px;
+        min-height:300px;
+        height:300px;
     }
 
     .project-info{
@@ -2139,480 +2163,257 @@ section{
      ========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
-
-<!-- =========================================================
-     EXISTING SITE JAVASCRIPT
-     ========================================================= -->
-
 <script>
-
-const panel = document.getElementById('indexPanel');
-
-
-function toggleIndex(){
-    panel.classList.toggle('open');
-}
-
-
-function closeIndex(){
-    panel.classList.remove('open');
-}
-
-
-document.addEventListener('click', function(e){
-
-    if(
-        panel.classList.contains('open') &&
-        !panel.contains(e.target) &&
-        !e.target.closest('.index-btn')
-    ){
-        closeIndex();
-    }
-
-});
-
-
-function submitForm(e){
-
-    e.preventDefault();
-
-    document
-        .getElementById('toast')
-        .classList.add('show');
-
-    e.target.reset();
-
-    setTimeout(function(){
-
-        document
-            .getElementById('toast')
-            .classList.remove('show');
-
-    },3500);
-
-}
-
-
-/* =========================================================
-   EXISTING DYNAMIC LOGO COLOUR
-   ========================================================= */
-
-function updateNavLogoColor(){
-
-    const logo = document.querySelector('.logo-mark');
-
-    if(!logo){
-        return;
-    }
-
-    const max = Math.max(
-        1,
-        document.documentElement.scrollHeight -
-        window.innerHeight
-    );
-
-    const p = Math.min(
-        0.999,
-        Math.max(
-            0,
-            window.scrollY / max
-        )
-    );
-
-    const stops = [
-        '#ffffff',
-        '#2456c7',
-        '#e5c62e',
-        '#9f302f',
-        '#b88a3b',
-        '#718565',
-        '#171717',
-        '#ffffff'
-    ];
-
-    const scaled = p * (stops.length - 1);
-
-    const i = Math.min(
-        stops.length - 2,
-        Math.floor(scaled)
-    );
-
-    const t = scaled - i;
-
-    const hex = n => parseInt(n,16);
-
-    const mix = (a,b,t) =>
-        Math.round(
-            a + (b-a)*t
-        )
-        .toString(16)
-        .padStart(2,'0');
-
-    const A = stops[i].slice(1);
-    const B = stops[i+1].slice(1);
-
-    logo.style.backgroundColor =
-        '#' +
-        mix(
-            hex(A.slice(0,2)),
-            hex(B.slice(0,2)),
-            t
-        ) +
-        mix(
-            hex(A.slice(2,4)),
-            hex(B.slice(2,4)),
-            t
-        ) +
-        mix(
-            hex(A.slice(4,6)),
-            hex(B.slice(4,6)),
-            t
-        );
-
-}
-
-
-window.addEventListener(
-    'scroll',
-    updateNavLogoColor,
-    {passive:true}
-);
-
-window.addEventListener(
-    'resize',
-    updateNavLogoColor
-);
-
-window.addEventListener(
-    'load',
-    updateNavLogoColor
-);
-
-
 /* =========================================================
    FIZZA INTERIOR
-   GSAP CINEMATIC HEADING SYSTEM
+   ROBUST GSAP HEADING MOTION — DESKTOP + MOBILE
    ========================================================= */
-
 (function(){
+    'use strict';
 
-    /*
-       Stop here if GSAP failed to load.
-       This means the rest of the website still works
-       even if the animation CDN is temporarily unavailable.
-    */
+    const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if(
-        typeof gsap === 'undefined' ||
-        typeof ScrollTrigger === 'undefined'
-    ){
-        console.warn(
-            'FIZZA INTERIOR: GSAP / ScrollTrigger unavailable.'
-        );
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
 
+    function showAll(){
+        document.querySelectorAll('h1,h2,h3,.hero-content').forEach(function(el){
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.willChange = 'auto';
+        });
+    }
+
+    if(reduceMotion){
+        showAll();
         return;
     }
 
-
-    gsap.registerPlugin(ScrollTrigger);
-
-
-    /*
-       Android browser address-bar resizing can repeatedly
-       trigger viewport changes. This prevents unnecessary
-       ScrollTrigger recalculation while scrolling.
-    */
-
-    ScrollTrigger.config({
-        ignoreMobileResize:true
-    });
-
-
-    /*
-       Reduced-motion users receive the normal visible state.
-    */
-
-    const reducedMotion =
-        window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
-
-
-    if(reducedMotion){
-
-        gsap.set(
-            'h1, h2, h3',
-            {
-                x:0,
-                opacity:1,
-                clearProps:'willChange'
+    function loadScript(src){
+        return new Promise(function(resolve, reject){
+            const existing = document.querySelector('script[src="' + src + '"]');
+            if(existing){
+                if(src.indexOf('ScrollTrigger') !== -1 && window.ScrollTrigger) return resolve();
+                if(src.indexOf('gsap') !== -1 && window.gsap) return resolve();
             }
-        );
-
-        gsap.set(
-            '.hero-content',
-            {
-                x:0,
-                opacity:1
-            }
-        );
-
-        return;
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = false;
+            script.onload = function(){ resolve(); };
+            script.onerror = function(){ reject(new Error('Failed: ' + src)); };
+            document.head.appendChild(script);
+        });
     }
 
+    async function ensureGSAP(){
+        if(window.gsap && window.ScrollTrigger) return true;
 
-    /*
-       Detect mobile/tablet.
-    */
+        const pairs = [
+            [
+                'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js',
+                'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js'
+            ],
+            [
+                'https://unpkg.com/gsap@3.12.7/dist/gsap.min.js',
+                'https://unpkg.com/gsap@3.12.7/dist/ScrollTrigger.min.js'
+            ]
+        ];
 
-    const mobile =
-        window.matchMedia(
-            '(max-width: 768px)'
-        ).matches;
-
-
-    /*
-       Mobile gets less horizontal travel.
-       This is deliberately lighter for Android.
-    */
-
-    const headingStartX =
-        mobile ? -72 : -105;
-
-
-    const headingScrub =
-        mobile ? 0.65 : 0.9;
-
-
-    /* =====================================================
-       HERO
-       =====================================================
-
-       IMPORTANT:
-
-       On initial page load the hero is deliberately clean.
-
-       No hero typography is visible.
-
-       The first downward scroll progressively brings
-       the complete hero content from the left.
-
-       Scrolling back upward reverses the same animation.
-       ===================================================== */
-
-    const hero =
-        document.querySelector('.hero');
-
-    const heroContent =
-        document.querySelector('.hero-content');
-
-
-    if(hero && heroContent){
-
-        gsap.set(
-            heroContent,
-            {
-                xPercent:headingStartX,
-                opacity:0,
-                force3D:true,
-                willChange:'transform,opacity'
+        for(const pair of pairs){
+            try{
+                if(!window.gsap) await loadScript(pair[0]);
+                if(!window.ScrollTrigger) await loadScript(pair[1]);
+                if(window.gsap && window.ScrollTrigger) return true;
+            }catch(err){
+                /* Try the next CDN pair, then use native fallback. */
             }
-        );
-
-
-        gsap.to(
-            heroContent,
-            {
-                xPercent:0,
-                opacity:1,
-                ease:'none',
-
-                scrollTrigger:{
-                    trigger:hero,
-
-                    start:'top top',
-
-                    end:mobile
-                        ? 'top 45%'
-                        : 'top 38%',
-
-                    scrub:headingScrub,
-
-                    invalidateOnRefresh:true
-                }
-            }
-        );
-
+        }
+        return false;
     }
 
-
-    /* =====================================================
-       ALL OTHER HEADINGS
-       =====================================================
-
-       Every h1, h2 and h3 follows the same visual rule:
-
-       BEFORE ENTERING:
-       ← off-screen
-
-       WHILE SCROLLING DOWN:
-       ← heading enters
-
-       FULLY REVEALED:
-       heading reaches its natural position
-
-       WHILE SCROLLING UP:
-       heading returns toward the left
-
-       There is no one-way "once only" animation.
-       ===================================================== */
-
-    const headings =
-        document.querySelectorAll(
+    function nativeFallback(){
+        const headings = Array.from(document.querySelectorAll(
             'main h1, main h2, main h3, section h1, section h2, section h3'
-        );
+        )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
 
+        const heroContent = document.querySelector('.hero-content');
+        const items = heroContent ? [heroContent].concat(headings.filter(function(h){
+            return !h.closest('.hero');
+        })) : headings.filter(function(h){ return !h.closest('.hero'); });
 
-    headings.forEach(function(heading){
+        items.forEach(function(el){
+            el.style.willChange = 'transform, opacity';
+            el.style.opacity = '0';
+        });
 
-        /*
-           The hero heading is already controlled by the
-           complete hero-content animation above.
-        */
+        function update(){
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            const mobile = mobileQuery.matches;
+            const start = mobile ? vh * 0.98 : vh * 0.92;
+            const end = mobile ? vh * 0.60 : vh * 0.55;
+            items.forEach(function(el){
+                const r = el.getBoundingClientRect();
+                let progress = (start - r.top) / (start - end);
+                if(el === heroContent){
+                    progress = (start - r.top) / Math.max(1, start - vh * 0.45);
+                }
+                progress = Math.max(0, Math.min(1, progress));
+                const x = (mobile ? -26 : -38) * (1 - progress);
+                el.style.opacity = String(progress);
+                el.style.transform = 'translate3d(' + x + '%,0,0)';
+            });
+        }
 
-        if(
-            heading.closest('.hero')
-        ){
+        let ticking = false;
+        function requestUpdate(){
+            if(ticking) return;
+            ticking = true;
+            requestAnimationFrame(function(){
+                ticking = false;
+                update();
+            });
+        }
+
+        window.addEventListener('scroll', requestUpdate, {passive:true});
+        window.addEventListener('resize', requestUpdate, {passive:true});
+        window.addEventListener('orientationchange', function(){ setTimeout(update, 250); });
+        update();
+    }
+
+    function initGSAP(){
+        if(!window.gsap || !window.ScrollTrigger){
+            nativeFallback();
             return;
         }
 
+        try{
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.config({
+                ignoreMobileResize:true,
+                limitCallbacks:true
+            });
 
-        heading.classList.add(
-            'gsap-heading'
-        );
+            const mobile = mobileQuery.matches;
+            const startX = mobile ? -28 : -42;
+            const scrub = mobile ? 0.72 : 0.9;
 
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
 
-        gsap.set(
-            heading,
-            {
-                xPercent:headingStartX,
-                opacity:0,
-                force3D:true,
-                willChange:'transform,opacity'
+            if(hero && heroContent){
+                gsap.set(heroContent, {
+                    xPercent:startX,
+                    opacity:0,
+                    force3D:true,
+                    willChange:'transform,opacity'
+                });
+
+                gsap.to(heroContent, {
+                    xPercent:0,
+                    opacity:1,
+                    ease:'none',
+                    overwrite:'auto',
+                    scrollTrigger:{
+                        trigger:hero,
+                        start:'top top',
+                        end:mobile ? 'top 52%' : 'top 38%',
+                        scrub:scrub,
+                        invalidateOnRefresh:true,
+                        fastScrollEnd:true
+                    }
+                });
             }
-        );
 
+            const headings = Array.from(document.querySelectorAll(
+                'main h1, main h2, main h3, section h1, section h2, section h3'
+            )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
 
-        gsap.to(
-            heading,
-            {
-                xPercent:0,
-                opacity:1,
-                ease:'none',
+            headings.forEach(function(heading){
+                if(heading.closest('.hero')) return;
 
-                scrollTrigger:{
-                    trigger:heading,
+                heading.classList.add('gsap-heading');
 
-                    start:mobile
-                        ? 'top 91%'
-                        : 'top 84%',
+                gsap.set(heading, {
+                    xPercent:startX,
+                    opacity:0,
+                    force3D:true,
+                    willChange:'transform,opacity'
+                });
 
-                    end:mobile
-                        ? 'top 60%'
-                        : 'top 55%',
+                gsap.to(heading, {
+                    xPercent:0,
+                    opacity:1,
+                    ease:'none',
+                    overwrite:'auto',
+                    scrollTrigger:{
+                        trigger:heading,
+                        start:mobile ? 'top 96%' : 'top 86%',
+                        end:mobile ? 'top 66%' : 'top 56%',
+                        scrub:scrub,
+                        invalidateOnRefresh:true,
+                        fastScrollEnd:true
+                    }
+                });
+            });
 
-                    scrub:headingScrub,
+            const refresh = function(){
+                requestAnimationFrame(function(){
+                    try{ ScrollTrigger.refresh(); }catch(e){}
+                });
+            };
 
-                    invalidateOnRefresh:true
+            window.addEventListener('load', function(){
+                setTimeout(refresh, 300);
+                if(document.fonts && document.fonts.ready){
+                    document.fonts.ready.then(function(){ setTimeout(refresh, 80); }).catch(function(){});
                 }
+            }, {once:true});
+
+            let resizeTimer = null;
+            function safeRefresh(){
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(refresh, 280);
             }
-        );
+            window.addEventListener('resize', safeRefresh, {passive:true});
+            window.addEventListener('orientationchange', function(){
+                setTimeout(refresh, 420);
+            }, {passive:true});
 
-    });
+            if(window.visualViewport){
+                let viewportTimer = null;
+                window.visualViewport.addEventListener('resize', function(){
+                    if(!mobileQuery.matches) return;
+                    clearTimeout(viewportTimer);
+                    viewportTimer = setTimeout(refresh, 320);
+                }, {passive:true});
+            }
 
+            /* Refresh as each local image resolves so trigger positions stay accurate. */
+            document.querySelectorAll('img').forEach(function(img){
+                if(!img.complete){
+                    img.addEventListener('load', refresh, {once:true, passive:true});
+                    img.addEventListener('error', refresh, {once:true, passive:true});
+                }
+            });
 
-    /* =====================================================
-       IMAGE LOAD REFRESH
-       =====================================================
-
-       Your local architectural images can have different
-       dimensions. Once they finish loading, refresh the
-       ScrollTrigger measurements.
-       ===================================================== */
-
-    window.addEventListener(
-        'load',
-        function(){
-
-            setTimeout(
-                function(){
-
-                    ScrollTrigger.refresh();
-
-                },
-                250
-            );
-
+        }catch(err){
+            /* A failed animation layer must never hide the site content. */
+            console.warn('FIZZA INTERIOR: heading animation fallback engaged.', err);
+            showAll();
         }
-    );
+    }
 
-
-    /* =====================================================
-       SAFE RESIZE
-       ===================================================== */
-
-    let resizeTimer;
-
-
-    window.addEventListener(
-        'resize',
-        function(){
-
-            clearTimeout(
-                resizeTimer
-            );
-
-
-            resizeTimer =
-                setTimeout(
-                    function(){
-
-                        ScrollTrigger.refresh();
-
-                    },
-                    300
-                );
-
+    (async function(){
+        const ready = await ensureGSAP();
+        if(ready){
+            requestAnimationFrame(initGSAP);
+        }else{
+            nativeFallback();
         }
-    );
-
-
-    /* =====================================================
-       ORIENTATION CHANGE
-       ===================================================== */
-
-    window.addEventListener(
-        'orientationchange',
-        function(){
-
-            setTimeout(
-                function(){
-
-                    ScrollTrigger.refresh();
-
-                },
-                400
-            );
-
-        }
-    );
-
-
+    })();
 })();
-
 </script>
 
 </body>
