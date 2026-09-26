@@ -681,6 +681,58 @@ h3{
     background:#710014;
 }
 
+.footer-contact{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:7vw;
+    margin-top:72px;
+    padding-top:30px;
+    border-top:1px solid rgba(235,230,220,.28);
+}
+
+.footer-contact-title{
+    font:300 clamp(44px,5.5vw,78px)/.9 "Cormorant Garamond";
+    letter-spacing:-.035em;
+    margin:0;
+}
+
+.footer-contact-list{
+    display:grid;
+    gap:18px;
+    align-content:start;
+}
+
+.footer-contact-item{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(235,230,220,.20);
+}
+
+.footer-contact-item .label{
+    font:500 8px/1 Inter,sans-serif;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:#e8d7cf;
+    padding-top:4px;
+}
+
+.footer-contact-item .value,
+.footer-contact-item a{
+    font:300 15px/1.65 Inter,sans-serif;
+    color:var(--paper);
+}
+
+.footer-contact-item a{
+    text-decoration:none;
+    transition:opacity .25s ease;
+}
+
+.footer-contact-item a:hover{
+    opacity:.72;
+}
+
 .footer-grid{
     display:flex;
     justify-content:space-between;
@@ -850,6 +902,22 @@ section{
 
     .footer-grid{
         display:block;
+    }
+
+    .footer-contact{
+        grid-template-columns:1fr;
+        gap:38px;
+        margin-top:55px;
+    }
+
+    .footer-contact-item{
+        grid-template-columns:78px 1fr;
+        gap:14px;
+    }
+
+    .footer-contact-item .value,
+    .footer-contact-item a{
+        font-size:13px;
     }
 
     .footer-logo-wrap{
@@ -2127,10 +2195,39 @@ section{
 <p class="lead">
 
     A focused digital presentation for FIZZA INTERIOR.
-    Replace placeholder portfolio photography and project
-    information with verified company assets before publication.
+    Premium residential & commercial interiors with turnkey
+    contracting, procurement and execution.
 
 </p>
+
+</div>
+
+
+<div class="footer-contact">
+
+    <div>
+        <div class="eyebrow">Reach us / Studio</div>
+        <h2 class="footer-contact-title">LET'S BUILD<br>IT EXACT.</h2>
+    </div>
+
+    <div class="footer-contact-list">
+
+        <div class="footer-contact-item">
+            <div class="label">Address</div>
+            <div class="value">84, VIRWANI IND. ESTATE<br>GOREGAON (E)<br>MUMBAI - 400063</div>
+        </div>
+
+        <div class="footer-contact-item">
+            <div class="label">Phone</div>
+            <a href="tel:+912240232051">022 - 40232051/52/55<br><span style="display:block;margin-top:4px">Mob : No. 9004455115</span></a>
+        </div>
+
+        <div class="footer-contact-item">
+            <div class="label">Email</div>
+            <a href="mailto:fizzainteriorsign@gmail.com">fizzainteriorsign@gmail.com</a>
+        </div>
+
+    </div>
 
 </div>
 
