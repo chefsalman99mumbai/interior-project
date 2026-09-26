@@ -2311,6 +2311,51 @@ section{
      GSAP
      ========================================================= -->
 
+
+<script>
+/* =========================================================
+   FIZZA INTERIOR — INDEX / NAV PANEL
+   ========================================================= */
+(function(){
+    const panel = () => document.getElementById('indexPanel');
+    const button = () => document.querySelector('.index-btn');
+
+    window.toggleIndex = function(){
+        const el = panel();
+        const btn = button();
+        if(!el) return;
+        const isOpen = el.classList.toggle('open');
+        if(btn){
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+    };
+
+    window.closeIndex = function(){
+        const el = panel();
+        const btn = button();
+        if(el) el.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+    };
+
+    document.addEventListener('click', function(event){
+        const el = panel();
+        const btn = button();
+        if(!el || !el.classList.contains('open')) return;
+        if(el.contains(event.target) || (btn && btn.contains(event.target))) return;
+        closeIndex();
+    });
+
+    document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape') closeIndex();
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+        const btn = button();
+        if(btn) btn.setAttribute('aria-expanded','false');
+    });
+})();
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
@@ -2433,10 +2478,10 @@ section{
 
     function initGSAP(){
         /*
-         * Bullet-proof heading system:
-         * GSAP performs only the animation. A lightweight viewport check
-         * decides when to start it. No mobile scrub, no clip-path, no blur,
-         * and no dependency on Android's changing browser viewport height.
+         * Final heading reveal:
+         * The heading is NEVER opacity:0. GSAP moves the real typography
+         * horizontally from the left while keeping it visible. This makes the
+         * effect reliable on Android and avoids the blank-heading failure.
          */
         if(!window.gsap){
             nativeFallback();
@@ -2446,60 +2491,64 @@ section{
         try{
             const gs = window.gsap;
             const isMobile = window.matchMedia('(max-width: 850px)').matches;
-            const allHeadings = Array.from(document.querySelectorAll(
+            const headings = Array.from(document.querySelectorAll(
                 'main h1, main h2, main h3, section h1, section h2, section h3'
-            ));
+            )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
 
-            /* Remove duplicates while preserving document order. */
-            const headings = allHeadings.filter(function(el, i, arr){
-                return arr.indexOf(el) === i;
-            });
-
-            /* Hero is deliberately separate from the section-heading system. */
             const heroContent = document.querySelector('.hero-content');
             if(heroContent){
                 gs.fromTo(heroContent,
                     {xPercent:isMobile ? -18 : -28, opacity:0},
-                    {xPercent:0, opacity:1, duration:1.1, ease:'power3.out', overwrite:'auto'}
+                    {xPercent:0, opacity:1, duration:1.15, ease:'power4.out', overwrite:'auto'}
                 );
             }
 
             const played = new WeakSet();
+            const prepared = new WeakSet();
             let ticking = false;
+
+            /* Prepare only the transform. Opacity stays at 1. */
+            headings.forEach(function(heading){
+                heading.classList.add('gsap-heading');
+                heading.style.visibility = 'visible';
+                heading.style.opacity = '1';
+                heading.style.willChange = 'transform';
+                gs.set(heading, {
+                    xPercent: isMobile ? -30 : -42,
+                    y: 0,
+                    force3D: true
+                });
+                prepared.add(heading);
+            });
 
             function reveal(heading){
                 if(!heading || played.has(heading)) return;
                 played.add(heading);
 
-                heading.classList.add('gsap-heading');
-
-                gs.fromTo(heading,
-                    {
-                        xPercent:isMobile ? -24 : -38,
-                        y:0,
-                        opacity:0
-                    },
-                    {
-                        xPercent:0,
-                        y:0,
-                        opacity:1,
-                        duration:isMobile ? 0.78 : 0.92,
-                        ease:'power3.out',
-                        overwrite:'auto',
-                        clearProps:'willChange'
+                gs.killTweensOf(heading);
+                gs.to(heading, {
+                    xPercent: 0,
+                    y: 0,
+                    duration: isMobile ? 0.92 : 1.02,
+                    ease: 'power4.out',
+                    overwrite: 'auto',
+                    force3D: true,
+                    onComplete: function(){
+                        heading.style.willChange = 'auto';
                     }
-                );
+                });
             }
 
-            function checkHeadings(){
+            function revealVisibleHeadings(){
                 ticking = false;
                 const vh = window.innerHeight || document.documentElement.clientHeight || 800;
-                const trigger = isMobile ? vh * 0.94 : vh * 0.88;
+                /* Start early enough that the complete left-to-right motion is visible. */
+                const trigger = isMobile ? vh * 0.90 : vh * 0.86;
 
                 headings.forEach(function(heading){
                     if(played.has(heading)) return;
                     const rect = heading.getBoundingClientRect();
-                    if(rect.top <= trigger && rect.bottom >= -40){
+                    if(rect.top <= trigger && rect.bottom >= -120){
                         reveal(heading);
                     }
                 });
@@ -2508,49 +2557,35 @@ section{
             function requestHeadingCheck(){
                 if(ticking) return;
                 ticking = true;
-                requestAnimationFrame(checkHeadings);
+                requestAnimationFrame(revealVisibleHeadings);
             }
 
-            /*
-             * Critical safety rule: headings are NEVER left permanently hidden.
-             * They start visible, then GSAP creates the reveal only when they
-             * enter the viewport. This prevents the Android blank-heading bug.
-             */
-            headings.forEach(function(heading){
-                heading.classList.add('gsap-heading');
-                heading.style.opacity = '1';
-                heading.style.transform = 'translate3d(0,0,0)';
-                heading.style.visibility = 'visible';
-                heading.style.willChange = 'transform, opacity';
-            });
-
-            /* Native viewport check is the primary mobile trigger. */
             window.addEventListener('scroll', requestHeadingCheck, {passive:true});
             window.addEventListener('resize', requestHeadingCheck, {passive:true});
             window.addEventListener('orientationchange', function(){
-                setTimeout(requestHeadingCheck, 120);
-                setTimeout(requestHeadingCheck, 500);
+                setTimeout(requestHeadingCheck, 100);
+                setTimeout(requestHeadingCheck, 450);
             }, {passive:true});
 
-            /* IntersectionObserver is an additional trigger, never the only one. */
+            /* IntersectionObserver accelerates the trigger but is not required. */
             if('IntersectionObserver' in window){
                 const observer = new IntersectionObserver(function(entries){
                     entries.forEach(function(entry){
                         if(entry.isIntersecting) reveal(entry.target);
                     });
                 }, {
-                    root:null,
-                    rootMargin:'120px 0px 120px 0px',
-                    threshold:0
+                    root: null,
+                    rootMargin: isMobile ? '0px 0px -8% 0px' : '0px 0px -12% 0px',
+                    threshold: 0
                 });
                 headings.forEach(function(heading){ observer.observe(heading); });
             }
 
-            /* Initial checks after layout, fonts and images settle. */
+            /* Initial checks after the page has had time to settle. */
             requestAnimationFrame(requestHeadingCheck);
-            setTimeout(requestHeadingCheck, 100);
+            setTimeout(requestHeadingCheck, 120);
             setTimeout(requestHeadingCheck, 400);
-            setTimeout(requestHeadingCheck, 900);
+            setTimeout(requestHeadingCheck, 850);
 
             if(document.fonts && document.fonts.ready){
                 document.fonts.ready.then(function(){
@@ -2564,7 +2599,7 @@ section{
                 setTimeout(requestHeadingCheck, 250);
             }, {once:true});
 
-            /* Keep the existing dynamic logo behaviour intact. */
+            /* Keep existing ScrollTrigger registration available for other site logic. */
             if(window.ScrollTrigger){
                 try{
                     gs.registerPlugin(window.ScrollTrigger);
