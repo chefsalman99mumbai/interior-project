@@ -332,6 +332,7 @@ h3{
 .img{
     overflow:hidden;
     background:#15130f;
+    height:460px;
 }
 
 .img img{
@@ -347,16 +348,10 @@ h3{
     transform:scale(1.045);
 }
 
-.img-lg{
-    height:680px;
-}
-
-.img-md{
-    height:510px;
-}
-
+.img-lg,
+.img-md,
 .img-sm{
-    height:310px;
+    height:460px;
 }
 
 .offset{
@@ -429,7 +424,7 @@ h3{
     padding:14px;
 }
 
-.card .img{
+.card.img{
     height:360px;
 }
 
@@ -477,17 +472,11 @@ h3{
     align-items:start;
 }
 
-.masonry .a{
-    height:460px;
-}
-
-.masonry .b{
-    height:700px;
-}
-
+.masonry .a,
+.masonry .b,
 .masonry .c{
-    height:350px;
-    margin-top:160px;
+    height:460px;
+    margin-top:0;
 }
 
 /* =========================================================
@@ -568,7 +557,8 @@ h3{
 
 .project{
     background:#29251f;
-    min-height:620px;
+    min-height:460px;
+    height:460px;
     position:relative;
     overflow:hidden;
 }
@@ -688,6 +678,62 @@ h3{
     padding:120px 0 35px;
     border-top:1px solid var(--line);
     overflow:hidden;
+    background:#710014;
+}
+
+.footer-contact{
+    width:min(1280px,90vw);
+    margin-left:auto;
+    margin-right:auto;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:7vw;
+    margin-top:72px;
+    padding-top:30px;
+    border-top:1px solid rgba(235,230,220,.28);
+}
+
+.footer-contact-title{
+    font:300 clamp(44px,5.5vw,78px)/.9 "Cormorant Garamond";
+    letter-spacing:-.035em;
+    margin:0;
+}
+
+.footer-contact-list{
+    display:grid;
+    gap:18px;
+    align-content:start;
+}
+
+.footer-contact-item{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(235,230,220,.20);
+}
+
+.footer-contact-item .label{
+    font:500 8px/1 Inter,sans-serif;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:#e8d7cf;
+    padding-top:4px;
+}
+
+.footer-contact-item .value,
+.footer-contact-item a{
+    font:300 15px/1.65 Inter,sans-serif;
+    color:var(--paper);
+}
+
+.footer-contact-item a{
+    text-decoration:none;
+    transition:opacity .25s ease;
+}
+
+.footer-contact-item a:hover{
+    opacity:.72;
 }
 
 .footer-grid{
@@ -765,6 +811,22 @@ section{
    ========================================================= */
 
 @media(max-width:850px){
+
+    .img,
+    .img-lg,
+    .img-md,
+    .img-sm,
+    .card .img,
+    .masonry .a,
+    .masonry .b,
+    .masonry .c{
+        height:360px;
+    }
+
+    .project{
+        min-height:360px;
+        height:360px;
+    }
 
     .footer-logo-wrap{
         width:94vw;
@@ -845,6 +907,22 @@ section{
         display:block;
     }
 
+    .footer-contact{
+        grid-template-columns:1fr;
+        gap:38px;
+        margin-top:55px;
+    }
+
+    .footer-contact-item{
+        grid-template-columns:78px 1fr;
+        gap:14px;
+    }
+
+    .footer-contact-item .value,
+    .footer-contact-item a{
+        font-size:13px;
+    }
+
     .footer-logo-wrap{
         width:min(520px,92vw);
         margin-bottom:24px;
@@ -872,6 +950,22 @@ section{
    ========================================================= */
 
 @media(max-width:520px){
+
+    .img,
+    .img-lg,
+    .img-md,
+    .img-sm,
+    .card .img,
+    .masonry .a,
+    .masonry .b,
+    .masonry .c{
+        height:300px;
+    }
+
+    .project{
+        min-height:300px;
+        height:300px;
+    }
 
     h1{
         font-size:68px;
@@ -912,7 +1006,7 @@ section{
     .masonry .a,
     .masonry .b,
     .masonry .c{
-        height:420px;
+        height:300px;
     }
 
     .process,
@@ -941,7 +1035,8 @@ section{
     }
 
     .project{
-        min-height:520px;
+        min-height:300px;
+        height:300px;
     }
 
     .project-info{
@@ -965,6 +1060,55 @@ section{
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
+
+@media(max-width:850px){
+    .footer-contact{
+        width:90vw;
+        grid-template-columns:1fr;
+        gap:34px;
+        margin-top:58px;
+        padding-top:26px;
+    }
+
+    .footer-contact-list{
+        width:100%;
+    }
+
+    .footer-contact-item{
+        grid-template-columns:78px minmax(0,1fr);
+        gap:14px;
+        align-items:start;
+    }
+
+    .footer-contact-item .value,
+    .footer-contact-item a{
+        overflow-wrap:anywhere;
+        word-break:break-word;
+    }
+}
+
+@media(max-width:520px){
+    .footer-contact{
+        width:88vw;
+        gap:30px;
+    }
+
+    .footer-contact-item{
+        grid-template-columns:68px minmax(0,1fr);
+        gap:12px;
+    }
+
+    .footer-contact-item .label{
+        font-size:7px;
+        letter-spacing:.14em;
+    }
+
+    .footer-contact-item .value,
+    .footer-contact-item a{
+        font-size:14px;
+        line-height:1.6;
+    }
+}
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1087,7 +1231,7 @@ section{
 <div class="hero-content">
 
 <div class="eyebrow">
-    FIZZA INTERIOR · TURNKEY CONTRACTORS · 2026
+    FIZZA INTERIOR · TURNKEY CONTRACTOR · 2012
 </div>
 
 <h1>
@@ -2103,10 +2247,36 @@ section{
 <p class="lead">
 
     A focused digital presentation for FIZZA INTERIOR.
-    Replace placeholder portfolio photography and project
-    information with verified company assets before publication.
+    Premium residential & commercial interiors with turnkey
+    contracting, procurement and execution.
 
 </p>
+
+</div>
+
+
+<div class="footer-contact">
+
+    <div>
+        <div class="eyebrow">Reach us / Studio</div>
+        <h2 class="footer-contact-title">LET'S BUILD<br>IT EXACT.</h2>
+    </div>
+
+    <div class="footer-contact-list">
+
+        <div class="footer-contact-item">
+            <div class="label">Address</div>
+            <div class="value">84, VIRWANI IND. ESTATE<br>GOREGAON (E)<br>MUMBAI - 400063</div>
+        </div>
+
+        <div class="footer-contact-item">
+            <div class="label">Phone</div>
+            <a href="tel:+912240232051">022 - 40232051/52/55<br><span style="display:block;margin-top:4px">Mob : No. 90040 15018</span></a>
+        </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -2138,481 +2308,399 @@ section{
      GSAP
      ========================================================= -->
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-
-
-<!-- =========================================================
-     EXISTING SITE JAVASCRIPT
-     ========================================================= -->
 
 <script>
-
-const panel = document.getElementById('indexPanel');
-
-
-function toggleIndex(){
-    panel.classList.toggle('open');
-}
-
-
-function closeIndex(){
-    panel.classList.remove('open');
-}
-
-
-document.addEventListener('click', function(e){
-
-    if(
-        panel.classList.contains('open') &&
-        !panel.contains(e.target) &&
-        !e.target.closest('.index-btn')
-    ){
-        closeIndex();
-    }
-
-});
-
-
-function submitForm(e){
-
-    e.preventDefault();
-
-    document
-        .getElementById('toast')
-        .classList.add('show');
-
-    e.target.reset();
-
-    setTimeout(function(){
-
-        document
-            .getElementById('toast')
-            .classList.remove('show');
-
-    },3500);
-
-}
-
-
 /* =========================================================
-   EXISTING DYNAMIC LOGO COLOUR
+   FIZZA INTERIOR — INDEX / NAV PANEL
    ========================================================= */
-
-function updateNavLogoColor(){
-
-    const logo = document.querySelector('.logo-mark');
-
-    if(!logo){
-        return;
-    }
-
-    const max = Math.max(
-        1,
-        document.documentElement.scrollHeight -
-        window.innerHeight
-    );
-
-    const p = Math.min(
-        0.999,
-        Math.max(
-            0,
-            window.scrollY / max
-        )
-    );
-
-    const stops = [
-        '#ffffff',
-        '#2456c7',
-        '#e5c62e',
-        '#9f302f',
-        '#b88a3b',
-        '#718565',
-        '#171717',
-        '#ffffff'
-    ];
-
-    const scaled = p * (stops.length - 1);
-
-    const i = Math.min(
-        stops.length - 2,
-        Math.floor(scaled)
-    );
-
-    const t = scaled - i;
-
-    const hex = n => parseInt(n,16);
-
-    const mix = (a,b,t) =>
-        Math.round(
-            a + (b-a)*t
-        )
-        .toString(16)
-        .padStart(2,'0');
-
-    const A = stops[i].slice(1);
-    const B = stops[i+1].slice(1);
-
-    logo.style.backgroundColor =
-        '#' +
-        mix(
-            hex(A.slice(0,2)),
-            hex(B.slice(0,2)),
-            t
-        ) +
-        mix(
-            hex(A.slice(2,4)),
-            hex(B.slice(2,4)),
-            t
-        ) +
-        mix(
-            hex(A.slice(4,6)),
-            hex(B.slice(4,6)),
-            t
-        );
-
-}
-
-
-window.addEventListener(
-    'scroll',
-    updateNavLogoColor,
-    {passive:true}
-);
-
-window.addEventListener(
-    'resize',
-    updateNavLogoColor
-);
-
-window.addEventListener(
-    'load',
-    updateNavLogoColor
-);
-
-
-/* =========================================================
-   FIZZA INTERIOR
-   GSAP CINEMATIC HEADING SYSTEM
-   ========================================================= */
-
 (function(){
+    const panel = () => document.getElementById('indexPanel');
+    const button = () => document.querySelector('.index-btn');
 
-    /*
-       Stop here if GSAP failed to load.
-       This means the rest of the website still works
-       even if the animation CDN is temporarily unavailable.
-    */
+    window.toggleIndex = function(){
+        const el = panel();
+        const btn = button();
+        if(!el) return;
+        const isOpen = el.classList.toggle('open');
+        if(btn){
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        }
+    };
 
-    if(
-        typeof gsap === 'undefined' ||
-        typeof ScrollTrigger === 'undefined'
-    ){
-        console.warn(
-            'FIZZA INTERIOR: GSAP / ScrollTrigger unavailable.'
-        );
+    window.closeIndex = function(){
+        const el = panel();
+        const btn = button();
+        if(el) el.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+    };
 
-        return;
-    }
-
-
-    gsap.registerPlugin(ScrollTrigger);
-
-
-    /*
-       Android browser address-bar resizing can repeatedly
-       trigger viewport changes. This prevents unnecessary
-       ScrollTrigger recalculation while scrolling.
-    */
-
-    ScrollTrigger.config({
-        ignoreMobileResize:true
+    document.addEventListener('click', function(event){
+        const el = panel();
+        const btn = button();
+        if(!el || !el.classList.contains('open')) return;
+        if(el.contains(event.target) || (btn && btn.contains(event.target))) return;
+        closeIndex();
     });
 
+    document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape') closeIndex();
+    });
 
-    /*
-       Reduced-motion users receive the normal visible state.
-    */
+    document.addEventListener('DOMContentLoaded', function(){
+        const btn = button();
+        if(btn) btn.setAttribute('aria-expanded','false');
+    });
+})();
+</script>
 
-    const reducedMotion =
-        window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
+<script>
+/* =========================================================
+   FIZZA INTERIOR
+   ROBUST GSAP HEADING MOTION — DESKTOP + MOBILE
+   ========================================================= */
+(function(){
+    'use strict';
 
-    if(reducedMotion){
+    const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        gsap.set(
-            'h1, h2, h3',
-            {
-                x:0,
-                opacity:1,
-                clearProps:'willChange'
-            }
-        );
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
 
-        gsap.set(
-            '.hero-content',
-            {
-                x:0,
-                opacity:1
-            }
-        );
+    function showAll(){
+        document.querySelectorAll('h1,h2,h3,.hero-content').forEach(function(el){
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.willChange = 'auto';
+        });
+    }
 
+    if(reduceMotion){
+        showAll();
         return;
     }
 
-
-    /*
-       Detect mobile/tablet.
-    */
-
-    const mobile =
-        window.matchMedia(
-            '(max-width: 768px)'
-        ).matches;
-
-
-    /*
-       Mobile gets less horizontal travel.
-       This is deliberately lighter for Android.
-    */
-
-    const headingStartX =
-        mobile ? -72 : -105;
-
-
-    const headingScrub =
-        mobile ? 0.65 : 0.9;
-
-
-    /* =====================================================
-       HERO
-       =====================================================
-
-       IMPORTANT:
-
-       On initial page load the hero is deliberately clean.
-
-       No hero typography is visible.
-
-       The first downward scroll progressively brings
-       the complete hero content from the left.
-
-       Scrolling back upward reverses the same animation.
-       ===================================================== */
-
-    const hero =
-        document.querySelector('.hero');
-
-    const heroContent =
-        document.querySelector('.hero-content');
-
-
-    if(hero && heroContent){
-
-        gsap.set(
-            heroContent,
-            {
-                xPercent:headingStartX,
-                opacity:0,
-                force3D:true,
-                willChange:'transform,opacity'
+    function loadScript(src){
+        return new Promise(function(resolve, reject){
+            const existing = document.querySelector('script[src="' + src + '"]');
+            if(existing){
+                if(src.indexOf('ScrollTrigger') !== -1 && window.ScrollTrigger) return resolve();
+                if(src.indexOf('gsap') !== -1 && window.gsap) return resolve();
             }
-        );
-
-
-        gsap.to(
-            heroContent,
-            {
-                xPercent:0,
-                opacity:1,
-                ease:'none',
-
-                scrollTrigger:{
-                    trigger:hero,
-
-                    start:'top top',
-
-                    end:mobile
-                        ? 'top 45%'
-                        : 'top 38%',
-
-                    scrub:headingScrub,
-
-                    invalidateOnRefresh:true
-                }
-            }
-        );
-
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = false;
+            script.onload = function(){ resolve(); };
+            script.onerror = function(){ reject(new Error('Failed: ' + src)); };
+            document.head.appendChild(script);
+        });
     }
 
+    async function ensureGSAP(){
+        if(window.gsap && window.ScrollTrigger) return true;
 
-    /* =====================================================
-       ALL OTHER HEADINGS
-       =====================================================
+        const pairs = [
+            [
+                'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js',
+                'https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js'
+            ],
+            [
+                'https://unpkg.com/gsap@3.12.7/dist/gsap.min.js',
+                'https://unpkg.com/gsap@3.12.7/dist/ScrollTrigger.min.js'
+            ]
+        ];
 
-       Every h1, h2 and h3 follows the same visual rule:
+        for(const pair of pairs){
+            try{
+                if(!window.gsap) await loadScript(pair[0]);
+                if(!window.ScrollTrigger) await loadScript(pair[1]);
+                if(window.gsap && window.ScrollTrigger) return true;
+            }catch(err){
+                /* Try the next CDN pair, then use native fallback. */
+            }
+        }
+        return false;
+    }
 
-       BEFORE ENTERING:
-       ← off-screen
-
-       WHILE SCROLLING DOWN:
-       ← heading enters
-
-       FULLY REVEALED:
-       heading reaches its natural position
-
-       WHILE SCROLLING UP:
-       heading returns toward the left
-
-       There is no one-way "once only" animation.
-       ===================================================== */
-
-    const headings =
-        document.querySelectorAll(
+    function nativeFallback(){
+        const headings = Array.from(document.querySelectorAll(
             'main h1, main h2, main h3, section h1, section h2, section h3'
-        );
+        )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
 
+        const heroContent = document.querySelector('.hero-content');
+        const items = heroContent ? [heroContent].concat(headings.filter(function(h){
+            return !h.closest('.hero');
+        })) : headings.filter(function(h){ return !h.closest('.hero'); });
 
-    headings.forEach(function(heading){
+        items.forEach(function(el){
+            el.style.willChange = 'transform, opacity';
+            el.style.opacity = '0';
+        });
 
+        function update(){
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            const mobile = mobileQuery.matches;
+            const start = mobile ? vh * 0.98 : vh * 0.92;
+            const end = mobile ? vh * 0.60 : vh * 0.55;
+            items.forEach(function(el){
+                const r = el.getBoundingClientRect();
+                let progress = (start - r.top) / (start - end);
+                if(el === heroContent){
+                    progress = (start - r.top) / Math.max(1, start - vh * 0.45);
+                }
+                progress = Math.max(0, Math.min(1, progress));
+                const x = (mobile ? -26 : -38) * (1 - progress);
+                el.style.opacity = String(progress);
+                el.style.transform = 'translate3d(' + x + '%,0,0)';
+            });
+        }
+
+        let ticking = false;
+        function requestUpdate(){
+            if(ticking) return;
+            ticking = true;
+            requestAnimationFrame(function(){
+                ticking = false;
+                update();
+            });
+        }
+
+        window.addEventListener('scroll', requestUpdate, {passive:true});
+        window.addEventListener('resize', requestUpdate, {passive:true});
+        window.addEventListener('orientationchange', function(){ setTimeout(update, 250); });
+        update();
+    }
+
+    function initGSAP(){
         /*
-           The hero heading is already controlled by the
-           complete hero-content animation above.
-        */
-
-        if(
-            heading.closest('.hero')
-        ){
+         * Final heading reveal:
+         * The heading is NEVER opacity:0. GSAP moves the real typography
+         * horizontally from the left while keeping it visible. This makes the
+         * effect reliable on Android and avoids the blank-heading failure.
+         */
+        if(!window.gsap){
+            nativeFallback();
             return;
         }
 
+        try{
+            const gs = window.gsap;
+            const isMobile = window.matchMedia('(max-width: 850px)').matches;
+            const headings = Array.from(document.querySelectorAll(
+                'main h1, main h2, main h3, section h1, section h2, section h3'
+            )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
 
-        heading.classList.add(
-            'gsap-heading'
-        );
-
-
-        gsap.set(
-            heading,
-            {
-                xPercent:headingStartX,
-                opacity:0,
-                force3D:true,
-                willChange:'transform,opacity'
-            }
-        );
-
-
-        gsap.to(
-            heading,
-            {
-                xPercent:0,
-                opacity:1,
-                ease:'none',
-
-                scrollTrigger:{
-                    trigger:heading,
-
-                    start:mobile
-                        ? 'top 91%'
-                        : 'top 84%',
-
-                    end:mobile
-                        ? 'top 60%'
-                        : 'top 55%',
-
-                    scrub:headingScrub,
-
-                    invalidateOnRefresh:true
-                }
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       IMAGE LOAD REFRESH
-       =====================================================
-
-       Your local architectural images can have different
-       dimensions. Once they finish loading, refresh the
-       ScrollTrigger measurements.
-       ===================================================== */
-
-    window.addEventListener(
-        'load',
-        function(){
-
-            setTimeout(
-                function(){
-
-                    ScrollTrigger.refresh();
-
-                },
-                250
-            );
-
-        }
-    );
-
-
-    /* =====================================================
-       SAFE RESIZE
-       ===================================================== */
-
-    let resizeTimer;
-
-
-    window.addEventListener(
-        'resize',
-        function(){
-
-            clearTimeout(
-                resizeTimer
-            );
-
-
-            resizeTimer =
-                setTimeout(
-                    function(){
-
-                        ScrollTrigger.refresh();
-
-                    },
-                    300
+            const heroContent = document.querySelector('.hero-content');
+            if(heroContent){
+                gs.fromTo(heroContent,
+                    {xPercent:isMobile ? -18 : -28, opacity:0},
+                    {xPercent:0, opacity:1, duration:1.15, ease:'power4.out', overwrite:'auto'}
                 );
+            }
 
+            const played = new WeakSet();
+            const prepared = new WeakSet();
+            let ticking = false;
+
+            /* Prepare only the transform. Opacity stays at 1. */
+            headings.forEach(function(heading){
+                heading.classList.add('gsap-heading');
+                heading.style.visibility = 'visible';
+                heading.style.opacity = '1';
+                heading.style.willChange = 'transform';
+                gs.set(heading, {
+                    xPercent: isMobile ? -30 : -42,
+                    y: 0,
+                    force3D: true
+                });
+                prepared.add(heading);
+            });
+
+            function reveal(heading){
+                if(!heading || played.has(heading)) return;
+                played.add(heading);
+
+                gs.killTweensOf(heading);
+                gs.to(heading, {
+                    xPercent: 0,
+                    y: 0,
+                    duration: isMobile ? 0.92 : 1.02,
+                    ease: 'power4.out',
+                    overwrite: 'auto',
+                    force3D: true,
+                    onComplete: function(){
+                        heading.style.willChange = 'auto';
+                    }
+                });
+            }
+
+            function revealVisibleHeadings(){
+                ticking = false;
+                const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+                /* Start early enough that the complete left-to-right motion is visible. */
+                const trigger = isMobile ? vh * 0.90 : vh * 0.86;
+
+                headings.forEach(function(heading){
+                    if(played.has(heading)) return;
+                    const rect = heading.getBoundingClientRect();
+                    if(rect.top <= trigger && rect.bottom >= -120){
+                        reveal(heading);
+                    }
+                });
+            }
+
+            function requestHeadingCheck(){
+                if(ticking) return;
+                ticking = true;
+                requestAnimationFrame(revealVisibleHeadings);
+            }
+
+            window.addEventListener('scroll', requestHeadingCheck, {passive:true});
+            window.addEventListener('resize', requestHeadingCheck, {passive:true});
+            window.addEventListener('orientationchange', function(){
+                setTimeout(requestHeadingCheck, 100);
+                setTimeout(requestHeadingCheck, 450);
+            }, {passive:true});
+
+            /* IntersectionObserver accelerates the trigger but is not required. */
+            if('IntersectionObserver' in window){
+                const observer = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if(entry.isIntersecting) reveal(entry.target);
+                    });
+                }, {
+                    root: null,
+                    rootMargin: isMobile ? '0px 0px -8% 0px' : '0px 0px -12% 0px',
+                    threshold: 0
+                });
+                headings.forEach(function(heading){ observer.observe(heading); });
+            }
+
+            /* Initial checks after the page has had time to settle. */
+            requestAnimationFrame(requestHeadingCheck);
+            setTimeout(requestHeadingCheck, 120);
+            setTimeout(requestHeadingCheck, 400);
+            setTimeout(requestHeadingCheck, 850);
+
+            if(document.fonts && document.fonts.ready){
+                document.fonts.ready.then(function(){
+                    requestHeadingCheck();
+                    setTimeout(requestHeadingCheck, 180);
+                }).catch(function(){});
+            }
+
+            window.addEventListener('load', function(){
+                requestHeadingCheck();
+                setTimeout(requestHeadingCheck, 250);
+            }, {once:true});
+
+            /* Keep existing ScrollTrigger registration available for other site logic. */
+            if(window.ScrollTrigger){
+                try{
+                    gs.registerPlugin(window.ScrollTrigger);
+                    window.ScrollTrigger.config({
+                        ignoreMobileResize:true,
+                        limitCallbacks:true
+                    });
+                }catch(e){}
+            }
+
+        }catch(err){
+            console.warn('FIZZA INTERIOR: GSAP heading fallback engaged.', err);
+            showAll();
         }
-    );
+    }
 
-
-    /* =====================================================
-       ORIENTATION CHANGE
-       ===================================================== */
-
-    window.addEventListener(
-        'orientationchange',
-        function(){
-
-            setTimeout(
-                function(){
-
-                    ScrollTrigger.refresh();
-
-                },
-                400
-            );
-
+    (async function(){
+        const ready = await ensureGSAP();
+        if(ready){
+            requestAnimationFrame(initGSAP);
+        }else{
+            nativeFallback();
         }
-    );
-
-
+    })();
 })();
+</script>
 
+<script>
+/* =========================================================
+   FIZZA INTERIOR — 20-STOP LOGO COLOUR JOURNEY
+   Surgical add-on: affects ONLY .logo-mark
+   ========================================================= */
+(function(){
+    'use strict';
+
+    var logo = document.querySelector('.logo-mark');
+    if(!logo) return;
+
+    var stops = [
+        '#FFFDF7', '#E8F7F2', '#B8F2E6', '#45E0D0', '#12BFA3',
+        '#00A878', '#008F70', '#007C83', '#00646A', '#2457D6',
+        '#3047B8', '#3F2CA8', '#5B238E', '#762A91', '#9A2F8F',
+        '#A52A68', '#A5163A', '#710014', '#2A050D', '#000000'
+    ];
+
+    function hexToRgb(hex){
+        var value = hex.replace('#','');
+        return {
+            r:parseInt(value.slice(0,2),16),
+            g:parseInt(value.slice(2,4),16),
+            b:parseInt(value.slice(4,6),16)
+        };
+    }
+
+    var rgbStops = stops.map(hexToRgb);
+    var raf = 0;
+
+    function clamp(value,min,max){
+        return Math.max(min,Math.min(max,value));
+    }
+
+    function render(){
+        raf = 0;
+
+        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        var progress = clamp(window.scrollY / maxScroll, 0, 1);
+        var scaled = progress * (rgbStops.length - 1);
+        var index = Math.min(rgbStops.length - 2, Math.floor(scaled));
+        var local = scaled - index;
+
+        /* Smoothstep keeps the colour transition elegant rather than linear/jarring. */
+        local = local * local * (3 - 2 * local);
+
+        var a = rgbStops[index];
+        var b = rgbStops[Math.min(index + 1, rgbStops.length - 1)];
+        var r = Math.round(a.r + (b.r - a.r) * local);
+        var g = Math.round(a.g + (b.g - a.g) * local);
+        var bl = Math.round(a.b + (b.b - a.b) * local);
+
+        logo.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + bl + ')';
+    }
+
+    function requestRender(){
+        if(raf) return;
+        raf = window.requestAnimationFrame(render);
+    }
+
+    /* Start exactly at the first colour. */
+    logo.style.backgroundColor = stops[0];
+    requestRender();
+
+    window.addEventListener('scroll', requestRender, {passive:true});
+    window.addEventListener('resize', requestRender, {passive:true});
+    window.addEventListener('orientationchange', function(){
+        setTimeout(requestRender, 100);
+        setTimeout(requestRender, 450);
+    }, {passive:true});
+
+    if(window.visualViewport){
+        window.visualViewport.addEventListener('resize', requestRender, {passive:true});
+    }
+
+    window.addEventListener('load', requestRender, {once:true});
+})();
 </script>
 
 </body>
