@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -766,6 +766,106 @@ h3{
 }
 
 /* =========================================================
+   REFINED SECTION SCRIPT + NAV BUTTON SCALE
+   ========================================================= */
+
+/* Eight numbered section labels: 01 / ... through 08 / ... */
+/* Great Vibes gives the labels a flowing, interconnected handwritten rhythm. */
+.section-script-heading{
+    font-family:"Great Vibes",cursive;
+    font-size:36px;
+    line-height:1.05;
+    font-weight:400;
+    letter-spacing:.01em;
+    text-transform:none;
+    color:#710014;
+    display:inline-block;
+    margin:0;
+    white-space:nowrap;
+}
+
+/* Larger navigation controls without changing the 78px header height. */
+.header-right{
+    gap:26px;
+}
+
+.index-btn,
+.visit-btn{
+    font-size:11px;
+    letter-spacing:.17em;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:38px;
+    padding:10px 12px;
+}
+
+.visit-btn{
+    padding:10px 12px 9px;
+}
+
+@media(max-width:850px){
+    .section-script-heading{
+        font-size:32px;
+    }
+
+    .index-btn{
+        font-size:10.5px;
+        min-height:36px;
+        padding:9px 11px;
+    }
+}
+
+@media(max-width:520px){
+    .section-script-heading{
+        font-size:27px;
+    }
+
+    .index-btn{
+        font-size:10px;
+        min-height:34px;
+        padding:8px 10px;
+    }
+}
+
+/* =========================================================
+   NAV ADMIN EYEBROW
+   ========================================================= */
+
+.admin-login-btn{
+    font:500 8px/1 Inter,sans-serif;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:9px 0;
+    border-bottom:1px solid transparent;
+    white-space:nowrap;
+    transition:color .25s ease,border-color .25s ease;
+}
+
+.admin-login-btn:hover,
+.admin-login-btn:focus-visible{
+    color:var(--crimson);
+    border-bottom-color:var(--crimson);
+    outline:none;
+}
+
+@media(max-width:850px){
+    .admin-login-btn{
+        font-size:7.5px;
+        letter-spacing:.20em;
+        padding:8px 0;
+    }
+}
+
+@media(max-width:520px){
+    .admin-login-btn{
+        font-size:7px;
+        letter-spacing:.17em;
+    }
+}
+/* =========================================================
    FOOTER BOTTOM / SOCIALS
    ========================================================= */
 
@@ -1272,6 +1372,13 @@ section{
     </a>
 
     <button
+        class="admin-login-btn"
+        type="button"
+        aria-label="Admin Login">
+        Admin Login
+    </button>
+
+    <button
         class="index-btn"
         onclick="toggleIndex()">
         Index +
@@ -1401,7 +1508,7 @@ section{
 
 <div>
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     01 / The position
 </div>
 
@@ -1488,7 +1595,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     02 / Turnkey services
 </div>
 
@@ -1597,7 +1704,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     03 / Process
 </div>
 
@@ -1731,7 +1838,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     04 / Residential
 </div>
 
@@ -1823,7 +1930,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     05 / Commercial & real estate
 </div>
 
@@ -1986,7 +2093,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     06 / Craft & materials
 </div>
 
@@ -2080,7 +2187,7 @@ section{
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     07 / Selected projects
 </div>
 
@@ -2220,7 +2327,7 @@ section{
 
 <div>
 
-<div class="eyebrow">
+<div class="eyebrow section-script-heading">
     08 / Private consultation
 </div>
 
