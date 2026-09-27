@@ -766,6 +766,130 @@ h3{
 }
 
 /* =========================================================
+   FOOTER BOTTOM / SOCIALS
+   ========================================================= */
+
+.footer-bottom{
+    width:min(1280px,90vw);
+    margin:45px auto 0;
+    padding:24px 0 0;
+    border-top:1px solid rgba(235,230,220,.18);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+    text-align:center;
+}
+
+.footer-socials{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.footer-socials a{
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(235,230,220,.22);
+    border-radius:50%;
+    color:var(--paper);
+    transition:background-color .25s ease,color .25s ease,transform .25s ease,border-color .25s ease;
+}
+
+.footer-socials a:hover{
+    background:var(--paper);
+    color:var(--ink);
+    border-color:var(--paper);
+    transform:translateY(-2px);
+}
+
+.footer-socials svg{
+    width:12px;
+    height:12px;
+    display:block;
+    fill:currentColor;
+}
+
+.footer-bottom-copy{
+    margin:0;
+    font:400 7px/1.5 Inter,sans-serif;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:rgba(235,230,220,.70);
+}
+
+.footer-legal{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:7px 15px;
+}
+
+.footer-legal li{
+    margin:0;
+    padding:0;
+}
+
+.footer-legal a{
+    font:400 7px/1.5 Inter,sans-serif;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    color:rgba(235,230,220,.58);
+    transition:opacity .25s ease;
+}
+
+.footer-legal a:hover{
+    opacity:.95;
+}
+
+@media(max-width:520px){
+
+    .footer-bottom{
+        width:88vw;
+        margin-top:38px;
+        padding-top:20px;
+        gap:11px;
+    }
+
+    .footer-socials{
+        gap:11px;
+    }
+
+    .footer-socials a{
+        width:26px;
+        height:26px;
+    }
+
+    .footer-socials svg{
+        width:11px;
+        height:11px;
+    }
+
+    .footer-bottom-copy{
+        font-size:6px;
+        letter-spacing:.11em;
+    }
+
+    .footer-legal{
+        gap:6px 11px;
+    }
+
+    .footer-legal a{
+        font-size:6px;
+        letter-spacing:.08em;
+    }
+}
+
+/* =========================================================
    TOAST
    ========================================================= */
 
@@ -1231,7 +1355,7 @@ section{
 <div class="hero-content">
 
 <div class="eyebrow">
-    FIZZA INTERIOR · TURNKEY CONTRACTOR · 2012
+    Turnkey Contracting House · 2012
 </div>
 
 <h1>
@@ -1969,10 +2093,11 @@ section{
     class="lead"
     style="margin:40px 0 75px">
 
-    A project portfolio should demonstrate execution,
-    not just decoration. Replace these presentation
-    images and captions with FIZZA INTERIOR's verified
-    completed work before launch.
+    From private residences to commercial environments,
+    FIZZA INTERIOR delivers turnkey interiors with the
+    same disciplined attention to detail — design
+    coordination, procurement, execution and handover.
+</p>
 
 </p>
 
@@ -1983,7 +2108,7 @@ section{
 
 <img
     src="craft-01.jpg"
-    alt="Quiet House">
+    alt="Private Residence">
 
 <div class="project-info">
 
@@ -1992,7 +2117,7 @@ section{
 </div>
 
 <h3>
-    Quiet House
+    Private Residence
 </h3>
 
 <p>
@@ -2008,7 +2133,7 @@ section{
 
 <img
     src="commercial-boutique.jpg"
-    alt="City Gallery">
+    alt="Penthouse Interior">
 
 <div class="project-info">
 
@@ -2017,7 +2142,7 @@ section{
 </div>
 
 <h3>
-    City Gallery
+    Penthouse Interior
 </h3>
 
 <p>
@@ -2033,7 +2158,7 @@ section{
 
 <img
     src="commercial-main.jpg"
-    alt="Private Office">
+    alt="Commercial Workspace">
 
 <div class="project-info">
 
@@ -2042,7 +2167,7 @@ section{
 </div>
 
 <h3>
-    Private Office
+    Commercial Workspace
 </h3>
 
 <p>
@@ -2058,7 +2183,7 @@ section{
 
 <img
     src="residential-01.jpg"
-    alt="Garden Residence">
+    alt="Villa Interior">
 
 <div class="project-info">
 
@@ -2067,7 +2192,7 @@ section{
 </div>
 
 <h3>
-    Garden Residence
+    Villa Interior
 </h3>
 
 <p>
@@ -2243,22 +2368,10 @@ section{
 
 </div>
 
-
-<p class="lead">
-
-    A focused digital presentation for FIZZA INTERIOR.
-    Premium residential & commercial interiors with turnkey
-    contracting, procurement and execution.
-
-</p>
-
-</div>
-
-
 <div class="footer-contact">
 
     <div>
-        <div class="eyebrow">Reach us / Studio</div>
+        <div class="eyebrow">Reach us</div>
         <h2 class="footer-contact-title">LET'S BUILD<br>IT EXACT.</h2>
     </div>
 
@@ -2286,6 +2399,49 @@ section{
 <img
     src="logo.png"
     alt="FIZZA INTERIOR — Crafting Landmarks">
+
+</div>
+    <div class="footer-bottom">
+
+<!-- FIZZA-FOOTER-SOCIALS-ADDED -->
+    <div class="footer-socials" aria-label="Social media links">
+
+        <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.5 6z"/>
+            </svg>
+        </a>
+
+        <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H8v3h2.4v8h3.1z"/>
+            </svg>
+        </a>
+
+        <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5.1 8.1A1.9 1.9 0 1 1 5.1 4.3a1.9 1.9 0 0 1 0 3.8zM3.4 9.6h3.4V21H3.4V9.6zm5.5 0h3.2v1.6h.1c.4-.8 1.5-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-3.4v-5.1c0-1.2 0-2.8-1.8-2.8s-2 1.3-2 2.7V21H8.9V9.6z"/>
+            </svg>
+        </a>
+
+        <a href="#" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.5 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3zm-8.4 18.1c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.7 1 1-3.6-.2-.3a9.8 9.8 0 1 1 8 4.4zm5.4-7.3c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1 1-.1 2.5.8 1.5 2.9 3.6 5 4.9.7.4 1.2.6 1.6.8.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3z"/>
+            </svg>
+        </a>
+
+    </div>
+    <p class="footer-bottom-copy">
+        &copy; <span id="currentYear">2026</span> FIZZA INTERIOR. All rights reserved.
+    </p>
+
+    <ul class="footer-legal">
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+    </ul>
 
 </div>
 
