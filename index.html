@@ -1232,8 +1232,8 @@ h3{ font-size:42px; }
 #sm-loader{position:fixed;inset:0;z-index:50;background:#03050a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transition:opacity .65s ease,visibility .65s;opacity:1;visibility:visible;font-family:Inter,sans-serif;color:#f4efe4}#sm-loader.done{opacity:0;visibility:hidden;pointer-events:none}#sm-loader .t{font:300 clamp(20px,3vw,38px)/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.5em;text-transform:uppercase;padding-left:.5em}#sm-loader .s{font:500 10px/1 Inter,sans-serif;letter-spacing:.4em;text-transform:uppercase;color:#c9a24ae6}#sm-loader .line{width:min(280px,60vw);height:1px;background:#f4efe426;position:relative;overflow:hidden}#sm-loader .line i{position:absolute;inset:0;width:0;background:#d4af37;box-shadow:0 0 16px #d4af37}
 #sm-err{position:fixed;inset:0;z-index:99;display:none;align-items:center;justify-content:center;background:#03050a;padding:40px;text-align:center;font:300 15px/2 "Cormorant Garamond",Georgia,serif;color:#e8dcc0}.err-title{font:400 22px/1 Inter,sans-serif;letter-spacing:.3em;margin-bottom:20px}
 .sm-hero~section,.sm-hero~footer{position:relative;z-index:2}
-@media(max-width:700px){#sm-ui{padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))}.sm-topbar{gap:10px}.sm-brand{font-size:14px;letter-spacing:.28em}.sm-brand small{font-size:.48em;letter-spacing:.18em}.sm-meta{font-size:8px;letter-spacing:.16em;line-height:1.65}.sm-chapter{max-width:88vw;margin-bottom:4vh}.sm-chapter h2{font-size:clamp(25px,9vw,42px)}.sm-chapter p{font-size:11px;line-height:1.6;max-width:34ch;margin-top:.8em}.sm-bottombar{gap:14px}.sm-progress{max-width:58vw}.sm-progress .lbl,.sm-hint{font-size:8px;letter-spacing:.2em}.sm-hint{min-width:52px}#sm-loader .t{font-size:22px;letter-spacing:.35em}#sm-loader .s{font-size:8px;letter-spacing:.28em;text-align:center;padding:0 20px}}
-@media(max-width:420px){.sm-meta{display:none}.sm-chapter{max-width:92vw}.sm-chapter h2{font-size:clamp(24px,9.5vw,38px)}.sm-chapter p{max-width:31ch}.sm-progress{max-width:68vw}.sm-hint{display:none}}
+@media(max-width:700px){.sm-hero{height:720vh!important}.sm-hero #sm-spacer{height:720vh!important}#sm-ui{padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))}.sm-topbar{gap:10px}.sm-brand{font-size:14px;letter-spacing:.28em}.sm-brand small{font-size:.48em;letter-spacing:.18em}.sm-meta{font-size:8px;letter-spacing:.16em;line-height:1.65}.sm-chapter{max-width:88vw;margin-bottom:4vh}.sm-chapter h2{font-size:clamp(25px,9vw,42px)}.sm-chapter p{font-size:11px;line-height:1.6;max-width:34ch;margin-top:.8em}.sm-bottombar{gap:14px}.sm-progress{max-width:58vw}.sm-progress .lbl,.sm-hint{font-size:8px;letter-spacing:.2em}.sm-hint{min-width:52px}#sm-loader .t{font-size:22px;letter-spacing:.35em}#sm-loader .s{font-size:8px;letter-spacing:.28em;text-align:center;padding:0 20px}}
+@media(max-width:420px){.sm-hero{height:680vh!important}.sm-hero #sm-spacer{height:680vh!important}.sm-meta{display:none}.sm-chapter{max-width:92vw}.sm-chapter h2{font-size:clamp(24px,9.5vw,38px)}.sm-chapter p{max-width:31ch}.sm-progress{max-width:68vw}.sm-hint{display:none}}
 @media(prefers-reduced-motion:reduce){#sm-scene,#sm-ui{transition:none}.sm-hint .bar{animation:none}}
 </style>
 </head>
@@ -1354,22 +1354,22 @@ h3{ font-size:42px; }
      ========================================================= -->
 
 <section id="home" class="hero page sm-hero">
-  <canvas id="sm-scene" aria-label="Interactive cinematic South Mumbai hero"></canvas>
+  <canvas id="sm-scene" aria-label="Interactive cinematic FIZZA Interior hero"></canvas>
 
   <div id="sm-ui" aria-hidden="true">
     <div class="sm-topbar">
-      <div class="sm-brand">South Mumbai<small>Maharashtra · India</small></div>
-      <div class="sm-meta"><div>Longitude <b>72.8777° E</b></div><div>Latitude <b>18.9220° N</b></div><div id="sm-clock">18:12</div></div>
+      <div class="sm-brand">FIZZA INTERIOR<small>The Art of Sensory Walls · Mumbai</small></div>
+      <div class="sm-meta"><div>DISCIPLINE <b>INTERIORS</b></div><div>CRAFT <b>SENSORY WALLS</b></div><div id="sm-clock">EST. 2026</div></div>
     </div>
 
     <div class="sm-chapter" id="sm-chapter">
       <div class="num" id="sm-chNum">Chapter I</div>
-      <h2 id="sm-chTitle">Gateway of India</h2>
-      <p id="sm-chText">Basalt, sea wind and the first pale light. South Mumbai begins at the water — monumental, salt-washed and impossibly cinematic.</p>
+      <h2 id="sm-chTitle">Spaces That Speak.</h2>
+      <p id="sm-chText">FIZZA INTERIOR transforms architecture into atmosphere — crafted walls, refined surfaces and interiors designed to be felt, not simply seen.</p>
     </div>
 
     <div class="sm-bottombar">
-      <div class="sm-progress"><div class="track"><div class="fill" id="sm-fill"></div></div><div class="lbl"><span id="sm-pct">00%</span><span>Scroll to travel</span></div></div>
+      <div class="sm-progress"><div class="track"><div class="fill" id="sm-fill"></div></div><div class="lbl"><span id="sm-pct">00%</span><span>Scroll to enter</span></div></div>
       <div class="sm-hint" id="sm-hint"><span class="bar"></span><br>Scroll</div>
     </div>
   </div>
@@ -1377,12 +1377,12 @@ h3{ font-size:42px; }
   <div id="sm-spacer" aria-hidden="true"></div>
 
   <div id="sm-loader">
-    <div class="t">South Mumbai</div>
+    <div class="t">FIZZA INTERIOR</div>
     <div class="line"><i id="sm-ldbar"></i></div>
-    <div class="s" id="sm-ldtxt">Constructing the city…</div>
+    <div class="s" id="sm-ldtxt">Constructing a world of interiors…</div>
   </div>
 
-  <div id="sm-err"><div><div class="err-title">SOUTH MUMBAI</div>Your browser could not initialise WebGL 2.<br>Please try a modern browser with hardware acceleration enabled.</div></div>
+  <div id="sm-err"><div><div class="err-title">SOUTH MUMBAI</div>Your browser could not initialise the interactive 3D experience.<br>Please try a modern browser with hardware acceleration enabled.</div></div>
 </section>
 
 
@@ -3008,13 +3008,21 @@ const MAT_IRON = new THREE.MeshStandardMaterial({ color:0x24262a, roughness:.55,
 const MAT_GLASS_PANE = new THREE.MeshPhysicalMaterial({ color:0xa8c4d8, transparent:true, opacity:.22, roughness:.06, metalness:0, side:THREE.DoubleSide, depthWrite:false });
 const MAT_GLASS_CLEAR = new THREE.MeshPhysicalMaterial({ color:0xcfe0ee, transparent:true, opacity:.13, roughness:.03, metalness:0, side:THREE.DoubleSide, depthWrite:false });
 
-const MARBLE_CANVAS = makeMarble();
-const MOSAIC_CANVAS = makeMosaic();
-const BRICK_CANVAS = makeBrick();
+const TEX_WORK_SCALE = MOBILE_RENDER ? 0.72 : 1;
+const makeMobileTexture = (factory)=>{
+  if(!MOBILE_RENDER) return factory();
+  const src=factory();
+  const c=makeCanvas(Math.max(192,Math.round(src.width*TEX_WORK_SCALE)),Math.max(192,Math.round(src.height*TEX_WORK_SCALE)));
+  c.getContext('2d').drawImage(src,0,0,c.width,c.height);
+  return c;
+};
+const MARBLE_CANVAS = makeMobileTexture(makeMarble);
+const MOSAIC_CANVAS = makeMobileTexture(makeMosaic);
+const BRICK_CANVAS = makeMobileTexture(makeBrick);
 const MAT_MARBLE = new THREE.MeshStandardMaterial({ map:tex(MARBLE_CANVAS,{repeat:[4,4]}), roughness:.14, metalness:.03, color:0xffffff });
 const MAT_MOSAIC = new THREE.MeshStandardMaterial({ map:tex(MOSAIC_CANVAS,{repeat:[3,12]}), roughness:.35, metalness:.05 });
 
-const cobbleCanvas = makeCobble();
+const cobbleCanvas = makeMobileTexture(makeCobble);
 /* Keep the full-resolution cobble color texture, but build its normal map at a
    smaller working resolution on mobile. The road still reads richly; startup
    avoids a 512² JavaScript pixel loop on constrained devices. */
@@ -3967,7 +3975,11 @@ const elChTitle=document.getElementById('sm-chTitle');
 const elChText=document.getElementById('sm-chText');
 const elChapter=document.getElementById('sm-chapter');
 
-function setSpacerHeight(){ spacer.style.height=(window.innerHeight*15)+'px'; }
+function setSpacerHeight(){
+  const mobile=window.innerWidth<=700;
+  const compact=window.innerWidth<=420;
+  spacer.style.height=(window.innerHeight*(compact?6.8:(mobile?7.2:15)))+'px';
+}
 setSpacerHeight();
 
 let scrollTarget=0, progress=0, hintHidden=false;
@@ -3989,16 +4001,16 @@ window.addEventListener('scroll', ()=>{
 }, { passive:true });
 
 const CHAPTERS=[
- {from:0.000,to:0.130,num:'Chapter I',title:'Gateway of India',text:'Basalt, sea wind and the first pale light. South Mumbai begins at the water — monumental, salt-washed and impossibly cinematic.'},
- {from:0.130,to:0.285,num:'Chapter II',title:'Colaba Causeway',text:'Colonial facades, shopfronts and palms compress into a living street canyon where old Mumbai and modern luxury share the same pavement.'},
- {from:0.285,to:0.405,num:'Chapter III',title:'Kala Ghoda',text:'Stone, galleries and heritage silhouettes gather around a quieter square. The city slows here without ever becoming still.'},
- {from:0.405,to:0.495,num:'Chapter IV',title:'Chhatrapati Shivaji Terminus',text:'A cathedral of movement — Indo-Saracenic towers, carved stone and the pulse of one of the world’s great railway cities.'},
- {from:0.495,to:0.605,num:'Chapter V',title:'Marine Drive',text:'The architecture opens. The Arabian Sea takes over the horizon, and the road begins to read like a ribbon of light.'},
- {from:0.605,to:0.700,num:'Chapter VI',title:'The Queen’s Necklace',text:'Art Deco facades hold the edge of the bay while the promenade bends toward the lights of Nariman Point.'},
- {from:0.700,to:0.805,num:'Chapter VII',title:'Nariman Point',text:'Glass towers rise from the reclaimed edge of the city. Traffic, offices and sea converge beneath the changing sky.'},
- {from:0.805,to:0.885,num:'Chapter VIII',title:'Malabar Hill',text:'The road climbs. Palms move in the coastal air and the city falls away beneath a darker, quieter ridge.'},
- {from:0.885,to:0.950,num:'Chapter IX',title:'The Ascent',text:'Concrete, glass and reflected monsoon light. The elevator line rises above the South Mumbai skyline.'},
- {from:0.950,to:1.001,num:'Chapter X',title:'The Penthouse · Marine Drive',text:'The city falls behind the glass. We cross the threshold, step onto the private balcony, and the Queen’s Necklace opens beneath the South Mumbai night.'},
+ {from:0.000,to:0.130,num:'Chapter I',title:'Spaces That Speak',text:'FIZZA INTERIOR transforms architecture into atmosphere — crafted walls, refined surfaces and interiors designed to be felt, not simply seen.'},
+ {from:0.130,to:0.285,num:'Chapter II',title:'Sensory Walls',text:'Texture becomes architecture. From sculpted surfaces to acoustic treatments, every wall is conceived to change the character of a space.'},
+ {from:0.285,to:0.405,num:'Chapter III',title:'Material & Craft',text:'Stone, timber, fabric, metal and light come together with precision — a tactile language built around the identity of each project.'},
+ {from:0.405,to:0.495,num:'Chapter IV',title:'Turnkey Execution',text:'Design is only the beginning. FIZZA coordinates detailing, fabrication, site execution and finishing into one controlled, seamless process.'},
+ {from:0.495,to:0.605,num:'Chapter V',title:'Residential',text:'From intimate bedrooms to expansive living spaces, every residential interior is shaped around comfort, proportion, light and personality.'},
+ {from:0.605,to:0.700,num:'Chapter VI',title:'Commercial Spaces',text:'Workplaces, retail environments and hospitality interiors engineered to carry a brand’s presence from the first impression to the final detail.'},
+ {from:0.700,to:0.805,num:'Chapter VII',title:'Acoustic Intelligence',text:'Where performance matters, walls do more than divide space. Acoustic layers are integrated with finish, form and function without compromising the visual language.'},
+ {from:0.805,to:0.885,num:'Chapter VIII',title:'The FIZZA Detail',text:'Edges, reveals, junctions and light lines disappear into the composition. Luxury is often decided by what the eye almost misses.'},
+ {from:0.885,to:0.950,num:'Chapter IX',title:'Designed. Executed. Delivered.',text:'One accountable studio from concept through completion — bringing design intent into the built environment with discipline and care.'},
+ {from:0.950,to:1.001,num:'Chapter X',title:'Live Inside the Art',text:'The journey ends where every FIZZA project begins: with a space that feels unmistakably yours — refined, immersive and made to live beautifully.'},
 ];
 let lastChapter=-1;
 function updateUI(p){
@@ -4076,7 +4088,7 @@ function animate(){
   const t=clock.elapsedTime;
   adaptRenderBudget(dt);
 
-  const k=1-Math.pow(.0022, dt);
+  const k=MOBILE_RENDER ? (1-Math.pow(.0000007, dt)) : (1-Math.pow(.0022, dt));
   smoothProgress+=(scrollTarget-smoothProgress)*k;
   if(Math.abs(scrollTarget-smoothProgress)<.00002) smoothProgress=scrollTarget;
   progress=clamp(smoothProgress,0,1);
@@ -4173,7 +4185,7 @@ function animate(){
         clearInterval(bootInterval);
         loader.classList.add('done');
         const idle=window.requestIdleCallback||((fn)=>setTimeout(fn,120));
-        idle(()=>{ finishCobbleNormal(); enablePostFX(); },{timeout:1000});
+        idle(()=>{ finishCobbleNormal(); if(!MOBILE_RENDER){ enablePostFX(); } else { setTimeout(enablePostFX, 900); } },{timeout:1400});
       });
     }
   }
@@ -4203,7 +4215,7 @@ const loader=document.getElementById('sm-loader');
 const ldbar=document.getElementById('sm-ldbar');
 const ldtxt=document.getElementById('sm-ldtxt');
 let bootStep=0;
-const bootSteps=['Constructing South Mumbai…','Polishing the stone…','Lighting the windows…','Entering the city…'];
+const bootSteps=['Shaping the interior…','Crafting the surfaces…','Tuning the atmosphere…','Entering FIZZA INTERIOR…'];
 const bootInterval=setInterval(()=>{
   bootStep++;
   if(bootStep<bootSteps.length) ldtxt.textContent=bootSteps[bootStep];
@@ -4239,4 +4251,4 @@ window.addEventListener('pagehide',()=>{ pageVisible=false; });
 document.getElementById('sm-scene').addEventListener('contextmenu', e=>e.preventDefault());
 </script>
 </body>
-</html>
+</html>   
