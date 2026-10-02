@@ -42,6 +42,9 @@
     --accent:var(--gold);
     --crimson:var(--gold);
     --crimson-soft:rgba(212,175,55,.16);
+
+    /* live logo tint — driven by scroll */
+    --logo-color:#D4AF37;
 }
 
 *{ box-sizing:border-box; }
@@ -90,7 +93,7 @@ main, section{ overflow-x:clip; }
 
 .logo{
     height:78px;
-    width:min(280px,32vw);
+    width:min(360px,42vw);
     display:flex;
     align-items:center;
     margin:0;
@@ -99,19 +102,23 @@ main, section{ overflow-x:clip; }
     z-index:1;
 }
 
-/* Clean image logo — no mask, no forced background.
-   Transparency of logo.png is respected as-is. */
 .logo-mark{
     height:100%;
     width:100%;
     display:block;
-    object-fit:contain;
-    object-position:left center;
-    background:transparent;
+    background-color:var(--logo-color,#D4AF37);
+    mask-image:url("logo.png?v=2");
+    -webkit-mask-image:url("logo.png?v=2");
+    mask-repeat:no-repeat;
+    -webkit-mask-repeat:no-repeat;
+    mask-position:left center;
+    -webkit-mask-position:left center;
+    mask-size:contain;
+    -webkit-mask-size:contain;
     border:0;
-    padding:4px 0;
+    padding:8px 0;
     pointer-events:none;
-    -webkit-user-drag:none;
+    will-change:background-color;
 }
 
 .header-right{
@@ -368,7 +375,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   HERO
+   HERO — transparent overlay, text sits on the image
    ========================================================= */
 
 .hero{
@@ -389,27 +396,46 @@ h3{ font-size:42px; }
     transform:scale(1.001);
 }
 
+/* darker from the left, fading out to the right — keeps
+   the text legible without a white card */
 .hero:after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(90deg, #0B3C26e0 0, #0B3C2680 48%, #0B3C2618 100%);
+    background:linear-gradient(90deg, #05170Fd9 0, #05170F99 42%, #05170F1a 100%);
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-    width:min(600px,90vw);
-    background:var(--alabaster);
-    padding:52px 50px 46px;
+    width:min(640px,90vw);
+    background:transparent;
+    padding:0;
     margin-left:max(5vw, calc((100vw - 1280px)/2));
-    box-shadow:0 40px 100px rgba(0,0,0,.38);
+    box-shadow:none;
 }
 
-.hero .eyebrow{ color:var(--gold-deep); font-weight:500; }
-.hero h1{ color:var(--emerald); margin-top:18px; }
-.hero .lead{ color:var(--body-muted); max-width:none; margin:0 0 18px; }
-.hero-count{ font:27px "Cormorant Garamond"; color:var(--gold-deep); }
+.hero .eyebrow{
+    color:var(--gold);
+    font-weight:500;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.hero h1{
+    color:var(--alabaster);
+    margin-top:18px;
+    text-shadow:0 6px 40px rgba(0,0,0,.55);
+}
+.hero .lead{
+    color:rgba(253,251,247,.86);
+    max-width:520px;
+    margin:0 0 18px;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.hero-count{
+    font:27px "Cormorant Garamond";
+    color:var(--gold);
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
 .hero-bottom{ display:block; margin-top:32px; }
 
 /* =========================================================
@@ -673,7 +699,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   SIGNATURE ACOUSTIC STRIP — slim capability signature
+   SIGNATURE ACOUSTIC STRIP
    ========================================================= */
 
 .acoustic-band{
@@ -918,17 +944,22 @@ h3{ font-size:42px; }
     margin:70px 0 20px;
 }
 
-/* Clean image logo — footer. No mask, no forced background. */
 .footer-logo-mark{
     display:block;
     width:100%;
     height:300px;
-    object-fit:contain;
-    object-position:left bottom;
-    background:transparent;
+    background-color:var(--logo-color,#D4AF37);
+    mask-image:url("logo.png?v=2");
+    -webkit-mask-image:url("logo.png?v=2");
+    mask-repeat:no-repeat;
+    -webkit-mask-repeat:no-repeat;
+    mask-position:left bottom;
+    -webkit-mask-position:left bottom;
+    mask-size:contain;
+    -webkit-mask-size:contain;
     border:0;
     pointer-events:none;
-    -webkit-user-drag:none;
+    will-change:background-color;
 }
 
 .footer-brand{
@@ -1060,8 +1091,8 @@ h3{ font-size:42px; }
     .project{ min-height:360px; height:360px; }
 
     .header{ height:68px; }
-    .logo{ height:68px; width:min(240px,55vw); }
-    .logo-mark{ padding:12px 0; }
+    .logo{ height:68px; width:min(300px,58vw); }
+    .logo-mark{ padding:6px 0; }
     .header-right .visit-btn{ display:none; }
     .admin-login-btn{ font-size:7.5px; letter-spacing:.20em; padding:8px 0; }
     .index-btn{ font-size:10.5px; min-height:36px; padding:9px 11px; }
@@ -1090,7 +1121,6 @@ h3{ font-size:42px; }
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    /* Acoustic strip — stack */
     .acoustic-band{ padding:60px 0; }
     .acoustic-inner{
         grid-template-columns:1fr;
@@ -1116,7 +1146,7 @@ h3{ font-size:42px; }
     .hero-bottom .lead{ margin:25px 0; }
     .hero-content{
         width:min(620px,92vw);
-        padding:42px 36px 38px;
+        padding:0;
         margin-left:4vw;
     }
 }
@@ -1141,7 +1171,7 @@ h3{ font-size:42px; }
     .hero{ min-height:650px; }
     .hero-content{
         width:88vw;
-        padding:36px 30px 34px;
+        padding:0;
         margin-left:6vw;
     }
     .hero-bottom{ margin-top:30px; }
@@ -1178,7 +1208,6 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    /* Acoustic strip — mobile */
     .acoustic-band{ padding:56px 0; }
     .acoustic-band h2{ font-size:38px; }
     .acoustic-lead{ font-size:11.5px; }
@@ -1234,7 +1263,7 @@ h3{ font-size:42px; }
 <header class="header">
 
 <a class="logo" href="#home" aria-label="FIZZA Interior Home">
-    <img class="logo-mark" src="logo.png?v=2" alt="FIZZA INTERIOR">
+    <span class="logo-mark" aria-hidden="true"></span>
 </a>
 
 <div class="header-right">
@@ -1338,7 +1367,7 @@ h3{ font-size:42px; }
 <main id="home">
 
 <!-- =========================================================
-     HERO
+     HERO — text sits directly on the staircase image
      ========================================================= -->
 
 <section class="hero page">
@@ -1996,8 +2025,6 @@ h3{ font-size:42px; }
 
 <!-- =========================================================
      SIGNATURE ACOUSTIC STRIP
-     Slim capability signature — quiet complement to the
-     interiors brand without competing for space.
      ========================================================= -->
 
 <section id="acoustic" class="acoustic-band">
@@ -2264,7 +2291,7 @@ h3{ font-size:42px; }
 
 
 <div class="container footer-logo-wrap">
-    <img class="footer-logo-mark" src="logo.png?v=2" alt="FIZZA INTERIOR — Crafting Landmarks">
+    <span class="footer-logo-mark" role="img" aria-label="FIZZA INTERIOR — Crafting Landmarks"></span>
 </div>
 
 
@@ -2632,6 +2659,95 @@ function submitForm(e){
         if(ready){ requestAnimationFrame(initGSAP); }
         else{ nativeFallback(); }
     })();
+})();
+</script>
+
+
+<!-- =========================================================
+     SCROLL-DRIVEN LOGO COLOR CYCLING
+     ========================================================= -->
+
+<script>
+(function(){
+    'use strict';
+
+    var stops = [
+        '#D4AF37', // 01 original champagne gold
+        '#F0D77C', // 02 pale champagne
+        '#E8B93C', // 03 warm amber
+        '#D4943C', // 04 honey
+        '#B87333', // 05 copper
+        '#9C5A3C', // 06 warm bronze
+        '#B76E79', // 07 rose gold
+        '#F5E6D3', // 08 pearl cream
+        '#E0F2E9', // 09 pale mint
+        '#A7E3C2', // 10 soft jade
+        '#6FBF9A', // 11 seafoam
+        '#3DA88C', // 12 jade green
+        '#1E8A78', // 13 emerald teal
+        '#0F6E5E', // 14 deep emerald
+        '#D4AF37'  // 15 back to original gold
+    ];
+
+    function hexToRgb(hex){
+        var value = hex.replace('#','');
+        return {
+            r:parseInt(value.slice(0,2),16),
+            g:parseInt(value.slice(2,4),16),
+            b:parseInt(value.slice(4,6),16)
+        };
+    }
+
+    var rgbStops = stops.map(hexToRgb);
+
+    function colorAt(progress){
+        var scaled = progress * (rgbStops.length - 1);
+        var index  = Math.min(rgbStops.length - 2, Math.floor(scaled));
+        var local  = scaled - index;
+        local = local * local * (3 - 2 * local);
+
+        var a  = rgbStops[index];
+        var b  = rgbStops[Math.min(index + 1, rgbStops.length - 1)];
+
+        var r  = Math.round(a.r + (b.r - a.r) * local);
+        var g  = Math.round(a.g + (b.g - a.g) * local);
+        var bl = Math.round(a.b + (b.b - a.b) * local);
+
+        return 'rgb(' + r + ',' + g + ',' + bl + ')';
+    }
+
+    function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+    var raf = 0;
+
+    function render(){
+        raf = 0;
+        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        var progress  = clamp(window.scrollY / maxScroll, 0, 1);
+        var color     = colorAt(progress);
+
+        document.documentElement.style.setProperty('--logo-color', color);
+    }
+
+    function requestRender(){
+        if(raf) return;
+        raf = window.requestAnimationFrame(render);
+    }
+
+    render();
+
+    window.addEventListener('scroll', requestRender, {passive:true});
+    window.addEventListener('resize', requestRender, {passive:true});
+    window.addEventListener('orientationchange', function(){
+        setTimeout(requestRender, 100);
+        setTimeout(requestRender, 450);
+    }, {passive:true});
+
+    if(window.visualViewport){
+        window.visualViewport.addEventListener('resize', requestRender, {passive:true});
+    }
+
+    window.addEventListener('load', requestRender, {once:true});
 })();
 </script>
 
