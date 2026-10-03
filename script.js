@@ -317,21 +317,21 @@ function submitForm(e){
     'use strict';
 
     var stops = [
-        '#D4AF37', // 01 original champagne gold
-        '#F0D77C', // 02 pale champagne
-        '#E8B93C', // 03 warm amber
-        '#D4943C', // 04 honey
-        '#B87333', // 05 copper
-        '#9C5A3C', // 06 warm bronze
-        '#B76E79', // 07 rose gold
-        '#F5E6D3', // 08 pearl cream
-        '#E0F2E9', // 09 pale mint
-        '#A7E3C2', // 10 soft jade
-        '#6FBF9A', // 11 seafoam
-        '#3DA88C', // 12 jade green
-        '#1E8A78', // 13 emerald teal
-        '#0F6E5E', // 14 deep emerald
-        '#D4AF37'  // 15 back to original gold
+        '#D4AF37',
+        '#F0D77C',
+        '#E8B93C',
+        '#D4943C',
+        '#B87333',
+        '#9C5A3C',
+        '#B76E79',
+        '#F5E6D3',
+        '#E0F2E9',
+        '#A7E3C2',
+        '#6FBF9A',
+        '#3DA88C',
+        '#1E8A78',
+        '#0F6E5E',
+        '#D4AF37'
     ];
 
     function hexToRgb(hex){
