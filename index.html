@@ -96,8 +96,6 @@ main, section{ overflow-x:clip; }
     position:relative;
     z-index:1;
     flex-shrink:0;
-       transform:scale(1.05);
-    transform-origin:left center;
 }
 
 .logo-img{
@@ -788,34 +786,6 @@ h3{ font-size:42px; }
     align-items:flex-end;
 }
 
-/* ===== Cream plaque — logo signature ===== */
-
-.footer-logo-wrap{
-    width:min(680px,90vw);
-    margin:80px auto 0;
-    padding:56px 40px;
-    background:var(--alabaster);
-    display:flex;
-    justify-content:center;
-    box-sizing:border-box;
-    border:1px solid rgba(212,175,55,.45);
-    box-shadow:0 30px 80px rgba(0,0,0,.28);
-}
-
-.footer-logo-mark{
-    display:block;
-    width:100%;
-    height:220px;
-    background-image:url("logo.png?v=2");
-    background-repeat:no-repeat;
-    background-position:center center;
-    background-size:contain;
-    border:0;
-    pointer-events:none;
-}
-
-/* ===== end cream plaque ===== */
-
 .footer-brand{
     font:40px "Cormorant Garamond";
     letter-spacing:.08em;
@@ -977,8 +947,6 @@ h3{ font-size:42px; }
     .footer-contact-item .value,
     .footer-contact-item a{ font-size:13px; overflow-wrap:anywhere; word-break:break-word; }
 
-    .footer-logo-wrap{ width:min(560px,90vw); padding:44px 32px; margin:64px auto 0; }
-    .footer-logo-mark{ height:170px; }
     .footer-brand{ margin-bottom:25px; }
 }
 
@@ -1051,9 +1019,6 @@ h3{ font-size:42px; }
     .footer-contact-item .label{ font-size:7px; letter-spacing:.14em; }
     .footer-contact-item .value,
     .footer-contact-item a{ font-size:14px; line-height:1.6; }
-
-    .footer-logo-wrap{ width:88vw; padding:32px 22px; margin:50px auto 0; }
-    .footer-logo-mark{ height:120px; }
 
     .footer-bottom{ width:88vw; margin-top:38px; padding-top:20px; gap:11px; }
     .footer-socials{ gap:11px; }
@@ -1421,10 +1386,6 @@ h3{ font-size:42px; }
         </div>
     </div>
 </div>
-</div>
-
-<div class="footer-logo-wrap">
-    <span class="footer-logo-mark" role="img" aria-label="FIZZA INTERIOR — Crafting Landmarks"></span>
 </div>
 
 <div class="footer-bottom">
