@@ -140,7 +140,7 @@ function submitForm(e){
                 if(!window.gsap) await loadScript(pair[0]);
                 if(!window.ScrollTrigger) await loadScript(pair[1]);
                 if(window.gsap && window.ScrollTrigger) return true;
-            }catch(err){ /* try next CDN */ }
+            }catch(err){}
         }
         return false;
     }
@@ -293,7 +293,7 @@ function submitForm(e){
                 try{
                     gs.registerPlugin(window.ScrollTrigger);
                     window.ScrollTrigger.config({ ignoreMobileResize:true, limitCallbacks:true });
-                }catch(e){ /* noop */ }
+                }catch(e){}
             }
         }catch(err){
             console.warn('FIZZA INTERIOR: GSAP heading fallback engaged.', err);
@@ -317,29 +317,17 @@ function submitForm(e){
     'use strict';
 
     var stops = [
-        '#D4AF37',
-        '#F0D77C',
-        '#E8B93C',
-        '#D4943C',
-        '#B87333',
-        '#9C5A3C',
-        '#B76E79',
-        '#F5E6D3',
-        '#E0F2E9',
-        '#A7E3C2',
-        '#6FBF9A',
-        '#3DA88C',
-        '#1E8A78',
-        '#0F6E5E',
-        '#D4AF37'
+        '#D4AF37','#F0D77C','#E8B93C','#D4943C','#B87333','#9C5A3C',
+        '#B76E79','#F5E6D3','#E0F2E9','#A7E3C2','#6FBF9A','#3DA88C',
+        '#1E8A78','#0F6E5E','#D4AF37'
     ];
 
     function hexToRgb(hex){
-        var value = hex.replace('#','');
+        var v = hex.replace('#','');
         return {
-            r:parseInt(value.slice(0,2),16),
-            g:parseInt(value.slice(2,4),16),
-            b:parseInt(value.slice(4,6),16)
+            r:parseInt(v.slice(0,2),16),
+            g:parseInt(v.slice(2,4),16),
+            b:parseInt(v.slice(4,6),16)
         };
     }
 
@@ -350,14 +338,11 @@ function submitForm(e){
         var index  = Math.min(rgbStops.length - 2, Math.floor(scaled));
         var local  = scaled - index;
         local = local * local * (3 - 2 * local);
-
         var a  = rgbStops[index];
         var b  = rgbStops[Math.min(index + 1, rgbStops.length - 1)];
-
         var r  = Math.round(a.r + (b.r - a.r) * local);
         var g  = Math.round(a.g + (b.g - a.g) * local);
         var bl = Math.round(a.b + (b.b - a.b) * local);
-
         return 'rgb(' + r + ',' + g + ',' + bl + ')';
     }
 
@@ -369,9 +354,7 @@ function submitForm(e){
         raf = 0;
         var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
         var progress  = clamp(window.scrollY / maxScroll, 0, 1);
-        var color     = colorAt(progress);
-
-        document.documentElement.style.setProperty('--logo-color', color);
+        document.documentElement.style.setProperty('--logo-color', colorAt(progress));
     }
 
     function requestRender(){
@@ -380,45 +363,44 @@ function submitForm(e){
     }
 
     render();
-
     window.addEventListener('scroll', requestRender, {passive:true});
     window.addEventListener('resize', requestRender, {passive:true});
     window.addEventListener('orientationchange', function(){
         setTimeout(requestRender, 100);
         setTimeout(requestRender, 450);
     }, {passive:true});
-
     if(window.visualViewport){
         window.visualViewport.addEventListener('resize', requestRender, {passive:true});
     }
-
     window.addEventListener('load', requestRender, {once:true});
 })();
 
 
 /* =========================================================
-   TRUSTED-BY — SCROLL-REVEALED BATCHES
+   TRUSTED-BY — PINNED BATCH SEQUENCE
    ========================================================= */
 
 (function(){
     'use strict';
 
+    var section = document.getElementById('clients');
+    if(!section) return;
+
+    var stage = document.getElementById('clientsStage');
+    if(!stage) return;
+
     var batches = Array.prototype.slice.call(
-        document.querySelectorAll('.clients-batch')
+        stage.querySelectorAll('.clients-batch')
     );
-    if(!batches.length) return;
+    if(batches.length < 2) return;
+
+    var fill = document.getElementById('clientsProgressFill');
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if(reduceMotion){
-        /* show everything instantly */
-        batches.forEach(function(b){
-            b.querySelectorAll('.client-item').forEach(function(el){
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
-        });
+        section.classList.add('no-motion');
         return;
     }
 
@@ -429,28 +411,78 @@ function submitForm(e){
         gs.registerPlugin(window.ScrollTrigger);
 
         var isMobile = window.matchMedia('(max-width: 850px)').matches;
-        var startX   = isMobile ? -30 : -60;
+        var startX   = isMobile ? -40 : -80;
 
-        batches.forEach(function(batch){
-            var items = batch.querySelectorAll('.client-item');
+        var b1 = batches[0].querySelectorAll('.client-name');
+        var b2 = batches[1].querySelectorAll('.client-name');
+        var b3 = batches[2] ? batches[2].querySelectorAll('.client-name') : null;
 
-            gs.fromTo(items,
-                { x: startX, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    duration: isMobile ? 0.7 : 0.9,
-                    ease: 'power2.out',
-                    stagger: { each: isMobile ? 0.06 : 0.09, from: 'start' },
-                    scrollTrigger: {
-                        trigger: batch,
-                        start: 'top 88%',
-                        end:   'top 38%',
-                        scrub: 0.6
+        /* ensure batches 2 and 3 start hidden */
+        gs.set(batches[1], { opacity: 0 });
+        if(batches[2]) gs.set(batches[2], { opacity: 0 });
+
+        gs.set(b2, { x: startX, opacity: 0 });
+        if(b3) gs.set(b3, { x: startX, opacity: 0 });
+
+        var tl = gs.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: 'top top',
+                end: isMobile ? '+=1800' : '+=2600',
+                pin: true,
+                scrub: 0.7,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onUpdate: function(self){
+                    if(fill){
+                        gs.set(fill, { scaleX: self.progress });
                     }
                 }
-            );
+            }
         });
+
+        /* --- Phase 1: batch 1 slides out --- */
+        tl.to(b1, {
+            x: startX,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.05,
+            ease: 'power2.in'
+        }, 0);
+
+        /* --- Phase 2: batch 2 slides in --- */
+        tl.to(batches[2] ? batches[1] : batches[1], { opacity: 1, duration: 0.01 }, 1.2);
+        tl.to(b2, {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.05,
+            ease: 'power2.out'
+        }, 1.2);
+
+        /* --- hold --- */
+        tl.to({}, { duration: 0.4 });
+
+        /* --- Phase 3: batch 2 slides out --- */
+        tl.to(b2, {
+            x: startX,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.05,
+            ease: 'power2.in'
+        }, '+=0');
+
+        /* --- Phase 4: batch 3 slides in --- */
+        if(b3){
+            tl.to(batches[2], { opacity: 1, duration: 0.01 });
+            tl.to(b3, {
+                x: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.05,
+                ease: 'power2.out'
+            }, '-=0.7');
+        }
     }
 
     var tries = 0;
