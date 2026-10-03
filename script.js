@@ -397,7 +397,7 @@ function submitForm(e){
 
 
 /* =========================================================
-   TRUSTED-BY — 3D ORBIT RING
+   TRUSTED-BY — ROTATING RING
    ========================================================= */
 
 (function(){
@@ -406,104 +406,102 @@ function submitForm(e){
     var section = document.querySelector('.clients-band');
     if(!section) return;
 
-    var reduceMotion = window.matchMedia &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduceMotion) return;
-
-    var ring = document.getElementById('clientsRing');
-    if(!ring) return;
+    var scene = section.querySelector('.clients-scene');
+    var ring  = document.getElementById('clientsRing');
+    if(!scene || !ring) return;
 
     var items = Array.prototype.slice.call(
         ring.querySelectorAll('.client-item')
     );
     if(!items.length) return;
 
-    function radiusFor(width){
-        if(width < 520) return 420;
-        if(width < 850) return 620;
-        return 880;
-    }
+    var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(reduceMotion) return;
 
     function init(){
-        if(!window.gsap || !window.ScrollTrigger) return;
+        if(!window.gsap) return;
 
         var gs = window.gsap;
-        gs.registerPlugin(window.ScrollTrigger);
+        var total = items.length;
+        var step  = 360 / total;
+        var rotation = 0;
 
-        var total   = items.length;
-        var step    = 360 / total;
-        var radius  = radiusFor(window.innerWidth);
-        var progressFill = document.getElementById('clientsProgress');
-
-        function layoutItems(){
-            items.forEach(function(item, i){
-                var angle = i * step;
-                item.style.transform =
-                    'rotateY(' + angle + 'deg) translateZ(' + radius + 'px)';
-            });
+        function radius(){
+            var w = window.innerWidth;
+            if(w < 520) return 200;
+            if(w < 850) return 300;
+            return Math.min(w * 0.36, 520);
         }
 
-        layoutItems();
+        var R = radius();
+
+        function paint(rot){
+            items.forEach(function(item, i){
+                var angle = (i * step + rot) * Math.PI / 180;
+
+                var cos = Math.cos(angle);
+
+                var x = Math.sin(angle) * R;
+                var depth = (cos + 1) / 2;
+
+                var scale   = 0.55 + 0.55 * depth;
+                var opacity = 0.18 + 0.82 * depth;
+                var blur    = (1 - depth) * 2.6;
+
+                item.style.transform =
+                    'translate(-50%,-50%) translate3d(' +
+                    x.toFixed(2) + 'px,0,0) scale(' +
+                    scale.toFixed(3) + ')';
+
+                item.style.opacity = opacity.toFixed(3);
+                item.style.filter  = blur > 0.05
+                    ? 'blur(' + blur.toFixed(2) + 'px)'
+                    : 'none';
+
+                item.style.zIndex = Math.round(depth * 1000);
+            });
+        }
 
         section.classList.add('orbit-active');
 
-        function paintFacing(rotDeg){
-            items.forEach(function(item, i){
-                var a = (i * step + rotDeg) % 360;
-                if(a < 0) a += 360;
+        var speed = 360 / 90;
+        var last  = performance.now();
+        var paused = false;
 
-                var rad = a * Math.PI / 180;
-                var facing = Math.cos(rad);
+        scene.addEventListener('mouseenter', function(){ paused = true; });
+        scene.addEventListener('mouseleave', function(){ paused = false; });
 
-                var op = 0.15 + 0.85 * ((facing + 1) / 2);
-                item.style.opacity = op.toFixed(3);
+        function tick(now){
+            var dt = (now - last) / 1000;
+            last = now;
 
-                var blur = Math.max(0, -facing) * 2.4;
-                item.style.filter = blur > 0.05
-                    ? 'blur(' + blur.toFixed(2) + 'px)'
-                    : 'none';
-            });
+            if(!paused){
+                rotation = (rotation + speed * dt) % 360;
+            }
+
+            paint(rotation);
         }
 
-        paintFacing(0);
-
-        var TOTAL_ROTATION = 360 * 2;
-
-        ScrollTrigger.create({
-            trigger: section,
-            start: 'top top',
-            end: '+=2000',
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: function(self){
-                var rot = -self.progress * TOTAL_ROTATION;
-                gs.set(ring, { rotationY: rot, force3D: true });
-
-                if(progressFill){
-                    gs.set(progressFill, { scaleX: self.progress });
-                }
-
-                paintFacing(rot);
-            }
-        });
+        gs.ticker.add(tick);
 
         var resizeTimer;
         window.addEventListener('resize', function(){
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(function(){
-                radius = radiusFor(window.innerWidth);
-                layoutItems();
-                ScrollTrigger.refresh();
-            }, 180);
+                R = radius();
+                paint(rotation);
+            }, 150);
         });
+
+        paint(0);
     }
 
     var tries = 0;
     var timer = setInterval(function(){
         tries++;
-        if(window.gsap && window.ScrollTrigger){
+        if(window.gsap){
             clearInterval(timer);
             init();
         } else if(tries > 60){
