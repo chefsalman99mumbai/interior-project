@@ -23,7 +23,6 @@
     --accent:var(--gold);
     --crimson:var(--gold);
     --crimson-soft:rgba(212,175,55,.16);
-    --logo-color:#D4AF37;
 }
 
 *{ box-sizing:border-box; }
@@ -85,19 +84,13 @@ main, section{ overflow-x:clip; }
     height:100%;
     width:100%;
     display:block;
-    background-color:var(--logo-color,#D4AF37);
-    mask-image:url("logo.png?v=2");
-    -webkit-mask-image:url("logo.png?v=2");
-    mask-repeat:no-repeat;
-    -webkit-mask-repeat:no-repeat;
-    mask-position:left center;
-    -webkit-mask-position:left center;
-    mask-size:contain;
-    -webkit-mask-size:contain;
+    background-image:url("logo.png?v=2");
+    background-repeat:no-repeat;
+    background-position:left center;
+    background-size:contain;
     border:0;
     padding:8px 0;
     pointer-events:none;
-    will-change:background-color;
 }
 
 .header-right{
@@ -764,18 +757,12 @@ h3{ font-size:42px; }
     display:block;
     width:100%;
     height:300px;
-    background-color:var(--logo-color,#D4AF37);
-    mask-image:url("logo.png?v=2");
-    -webkit-mask-image:url("logo.png?v=2");
-    mask-repeat:no-repeat;
-    -webkit-mask-repeat:no-repeat;
-    mask-position:left bottom;
-    -webkit-mask-position:left bottom;
-    mask-size:contain;
-    -webkit-mask-size:contain;
+    background-image:url("logo.png?v=2");
+    background-repeat:no-repeat;
+    background-position:left bottom;
+    background-size:contain;
     border:0;
     pointer-events:none;
-    will-change:background-color;
 }
 
 .footer-brand{
