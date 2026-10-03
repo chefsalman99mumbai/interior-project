@@ -582,13 +582,12 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   TRUSTED-BY — EDITORIAL GRID
+   TRUSTED-BY — 3D ORBIT RING
    ========================================================= */
 
 .clients-band{
     position:relative;
     background:var(--emerald-deep);
-    padding:125px 0;
     border-top:1px solid rgba(212,175,55,.18);
     border-bottom:1px solid rgba(212,175,55,.18);
     overflow:hidden;
@@ -612,14 +611,20 @@ h3{ font-size:42px; }
     pointer-events:none;
 }
 
-.clients-band .container{
+.clients-stage{
     position:relative;
-    z-index:1;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:32px;
+    padding:100px 0 60px;
 }
 
 .clients-head{
+    position:relative;
+    z-index:2;
     max-width:640px;
-    margin-bottom:70px;
 }
 
 .clients-band h2{
@@ -637,54 +642,120 @@ h3{ font-size:42px; }
     max-width:520px;
 }
 
-.clients-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    column-gap:5vw;
-    row-gap:0;
-    border-top:1px solid rgba(212,175,55,.16);
+/* -------- 3D scene -------- */
+
+.clients-scene{
+    position:relative;
+    width:100%;
+    height:clamp(280px,40vh,420px);
+    perspective:2600px;
+    perspective-origin:50% 50%;
+    overflow:visible;
+}
+
+.clients-scene::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 45% 70% at 50% 50%, rgba(212,175,55,.10), transparent 72%);
+    pointer-events:none;
+}
+
+.clients-ring{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:0;
+    height:0;
+    transform-style:preserve-3d;
 }
 
 .client-item{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:24px 0;
-    border-bottom:1px solid rgba(212,175,55,.12);
-    cursor:default;
-    transition:padding-left .35s ease;
-    will-change:transform,opacity;
-}
-
-.client-item:hover{
-    padding-left:6px;
-}
-
-.client-dot{
-    width:4px;
-    height:4px;
-    border-radius:50%;
-    background:var(--gold);
-    opacity:.42;
-    flex-shrink:0;
-    transition:opacity .35s ease, transform .35s ease;
-}
-
-.client-item:hover .client-dot{
-    opacity:1;
-    transform:scale(1.5);
+    position:absolute;
+    top:0;
+    left:0;
+    width:440px;
+    margin-left:-220px;
+    margin-top:-30px;
+    text-align:center;
+    opacity:0;
+    transform-style:preserve-3d;
+    will-change:transform, opacity, filter;
+    pointer-events:none;
 }
 
 .client-name{
-    font:300 clamp(17px,1.5vw,22px)/1.35 "Cormorant Garamond", serif;
-    letter-spacing:.005em;
-    color:rgba(253,251,247,.72);
-    transition:color .35s ease;
+    display:block;
+    font:300 clamp(28px,3vw,44px)/1.1 "Cormorant Garamond", serif;
+    letter-spacing:-.01em;
+    color:rgba(253,251,247,.92);
+    white-space:nowrap;
 }
 
-.client-item:hover .client-name{
-    color:var(--gold);
+/* -------- progress -------- */
+
+.clients-foot{
+    position:relative;
+    z-index:2;
+}
+
+.clients-progress{
+    position:relative;
+    height:1px;
+    width:100%;
+    background:rgba(212,175,55,.14);
+    overflow:hidden;
+}
+
+.clients-progress-fill{
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left center;
+    will-change:transform;
+}
+
+/* -------- reduced-motion fallback -------- */
+
+.clients-band.no-motion .clients-stage{
+    min-height:auto;
+    padding:100px 0;
+}
+
+.clients-band.no-motion .clients-scene{
+    perspective:none;
+    height:auto;
+}
+
+.clients-band.no-motion .clients-scene::before{
+    display:none;
+}
+
+.clients-band.no-motion .clients-ring{
+    position:static;
+    width:100%;
+    height:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0 5vw;
+}
+
+.clients-band.no-motion .client-item{
+    position:relative;
+    width:auto;
+    margin:0;
+    text-align:left;
+    opacity:1!important;
+    filter:none!important;
+    transform:none!important;
+    padding:22px 0;
+    border-bottom:1px solid rgba(212,175,55,.12);
+}
+
+.clients-band.no-motion .client-name{
+    font-size:20px;
+    color:rgba(253,251,247,.85)!important;
 }
 
 /* =========================================================
@@ -971,15 +1042,28 @@ h3{ font-size:42px; }
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    .clients-band{ padding:85px 0; }
-    .clients-head{ margin-bottom:50px; }
-    .clients-band h2{ font-size:clamp(38px,7vw,58px); }
-    .clients-grid{
-        grid-template-columns:repeat(2,1fr);
-        column-gap:6vw;
+    .clients-stage{
+        gap:24px;
+        padding:80px 0 50px;
     }
-    .client-item{ padding:20px 0; }
-    .client-name{ font-size:18px; }
+    .clients-band h2{ font-size:clamp(38px,7vw,58px); }
+    .clients-scene{
+        height:clamp(220px,32vh,320px);
+        perspective:1600px;
+    }
+    .client-item{
+        width:320px;
+        margin-left:-160px;
+        margin-top:-22px;
+    }
+    .client-name{
+        font-size:clamp(20px,3.4vw,30px);
+    }
+
+    .clients-band.no-motion .clients-ring{
+        grid-template-columns:repeat(2,1fr);
+    }
+    .clients-band.no-motion .client-name{ font-size:18px; }
 
     .footer-grid{ display:block; }
     .footer-contact{
@@ -1051,16 +1135,30 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    .clients-band{ padding:70px 0; }
-    .clients-head{ margin-bottom:40px; }
+    .clients-stage{
+        padding:70px 0 45px;
+        gap:20px;
+    }
     .clients-band h2{ font-size:38px; }
     .clients-lead{ font-size:11.5px; }
-    .clients-grid{
-        grid-template-columns:1fr;
-        column-gap:0;
+    .clients-scene{
+        height:200px;
+        perspective:1100px;
     }
-    .client-item{ padding:16px 0; gap:12px; }
-    .client-name{ font-size:17px; }
+    .client-item{
+        width:230px;
+        margin-left:-115px;
+        margin-top:-18px;
+    }
+    .client-name{
+        font-size:20px;
+    }
+
+    .clients-band.no-motion .clients-ring{
+        grid-template-columns:1fr;
+    }
+    .clients-band.no-motion .client-name{ font-size:17px; }
+    .clients-band.no-motion .client-item{ padding:16px 0; }
 
     .footer-contact{ width:88vw; gap:30px; }
     .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
@@ -1090,9 +1188,5 @@ h3{ font-size:42px; }
         animation-iteration-count:1!important;
         transition-duration:.01ms!important;
         scroll-behavior:auto!important;
-    }
-    .client-item{
-        opacity:1!important;
-        transform:none!important;
     }
 }
