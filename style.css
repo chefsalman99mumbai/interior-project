@@ -582,7 +582,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   TRUSTED-BY — 3D ORBIT RING
+   TRUSTED-BY — ROTATING RING
    ========================================================= */
 
 .clients-band{
@@ -613,12 +613,11 @@ h3{ font-size:42px; }
 
 .clients-stage{
     position:relative;
-    min-height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
-    gap:32px;
-    padding:100px 0 60px;
+    gap:44px;
+    padding:120px 0 110px;
 }
 
 .clients-head{
@@ -645,64 +644,55 @@ h3{ font-size:42px; }
 .clients-scene{
     position:relative;
     width:100%;
-    height:clamp(280px,40vh,420px);
-    perspective:2000px;
-    perspective-origin:50% 50%;
-    overflow:visible;
+    height:280px;
+    overflow:hidden;
+    mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
 }
 
 .clients-scene::before{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse 45% 70% at 50% 50%, rgba(212,175,55,.10), transparent 72%);
+    background:radial-gradient(ellipse 42% 80% at 50% 50%, rgba(212,175,55,.10), transparent 72%);
     pointer-events:none;
+    z-index:0;
 }
 
 .clients-ring{
     position:absolute;
-    top:50%;
-    left:50%;
-    width:0;
-    height:0;
-    transform-style:preserve-3d;
-    will-change:transform;
+    inset:0;
+    z-index:1;
 }
 
 .client-item{
     position:absolute;
-    top:0;
-    left:0;
-    width:440px;
-    margin-left:-220px;
-    margin-top:-30px;
-    text-align:center;
-    transform-style:preserve-3d;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
+    top:50%;
+    left:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform-origin:center center;
     will-change:transform, opacity, filter;
     pointer-events:none;
     opacity:0;
+    transform:translate(-50%,-50%);
 }
 
 .client-name{
     display:block;
     font:300 clamp(28px,3vw,44px)/1.1 "Cormorant Garamond", serif;
     letter-spacing:-.01em;
-    color:rgba(253,251,247,.92);
+    color:rgba(253,251,247,.95);
     white-space:nowrap;
 }
 
-.clients-band:not(.orbit-active) .clients-stage{
-    min-height:auto;
-    padding:100px 0;
-    gap:40px;
-}
-
+/* Fallback grid while JS has not activated the ring */
 .clients-band:not(.orbit-active) .clients-scene{
-    perspective:none;
     height:auto;
     overflow:visible;
+    mask-image:none;
+    -webkit-mask-image:none;
 }
 
 .clients-band:not(.orbit-active) .clients-scene::before{
@@ -711,24 +701,19 @@ h3{ font-size:42px; }
 
 .clients-band:not(.orbit-active) .clients-ring{
     position:static;
-    width:100%;
-    height:auto;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     column-gap:4vw;
-    transform:none !important;
 }
 
 .clients-band:not(.orbit-active) .client-item{
     position:static;
-    width:auto;
-    margin:0;
-    text-align:left;
-    opacity:1 !important;
     transform:none !important;
+    opacity:1 !important;
     filter:none !important;
     padding:22px 0;
     border-bottom:1px solid rgba(212,175,55,.12);
+    justify-content:flex-start;
     will-change:auto;
 }
 
@@ -736,28 +721,6 @@ h3{ font-size:42px; }
     font-size:clamp(17px,1.5vw,20px);
     color:rgba(253,251,247,.85);
     white-space:normal;
-}
-
-.clients-foot{
-    position:relative;
-    z-index:2;
-}
-
-.clients-progress{
-    position:relative;
-    height:1px;
-    width:100%;
-    background:rgba(212,175,55,.14);
-    overflow:hidden;
-}
-
-.clients-progress-fill{
-    position:absolute;
-    inset:0;
-    background:var(--gold);
-    transform:scaleX(0);
-    transform-origin:left center;
-    will-change:transform;
 }
 
 /* =========================================================
@@ -1045,22 +1008,12 @@ h3{ font-size:42px; }
     .field.full{ grid-column:auto; }
 
     .clients-stage{
-        gap:24px;
-        padding:80px 0 50px;
+        padding:90px 0 80px;
+        gap:34px;
     }
     .clients-band h2{ font-size:clamp(38px,7vw,58px); }
-    .clients-scene{
-        height:clamp(220px,32vh,320px);
-        perspective:1500px;
-    }
-    .client-item{
-        width:320px;
-        margin-left:-160px;
-        margin-top:-22px;
-    }
-    .client-name{
-        font-size:clamp(20px,3.4vw,30px);
-    }
+    .clients-scene{ height:220px; }
+    .client-name{ font-size:clamp(20px,3.4vw,30px); }
 
     .clients-band:not(.orbit-active) .clients-ring{
         grid-template-columns:repeat(2,1fr);
@@ -1138,23 +1091,13 @@ h3{ font-size:42px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
     .clients-stage{
-        padding:70px 0 45px;
-        gap:20px;
+        padding:80px 0 70px;
+        gap:26px;
     }
     .clients-band h2{ font-size:38px; }
     .clients-lead{ font-size:11.5px; }
-    .clients-scene{
-        height:200px;
-        perspective:1000px;
-    }
-    .client-item{
-        width:230px;
-        margin-left:-115px;
-        margin-top:-18px;
-    }
-    .client-name{
-        font-size:20px;
-    }
+    .clients-scene{ height:170px; }
+    .client-name{ font-size:20px; }
 
     .clients-band:not(.orbit-active) .clients-ring{
         grid-template-columns:1fr;
