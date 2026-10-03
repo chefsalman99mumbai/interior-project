@@ -552,20 +552,17 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   TRUSTED-BY — PINNED BATCH SEQUENCE
+   TRUSTED CLIENTS — PURE CSS MARQUEE
    ========================================================= */
 
 .clients-band{
     position:relative;
-    min-height:100vh;
     background:var(--emerald-deep);
+    padding:120px 0;
     border-top:1px solid rgba(212,175,55,.18);
     border-bottom:1px solid rgba(212,175,55,.18);
     overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:60px 0;
+    scroll-margin-top:78px;
 }
 
 .clients-band:before{
@@ -579,122 +576,71 @@ h3{ font-size:42px; }
         transparent 1px,
         transparent 16px
     );
-    mask-image:linear-gradient(180deg, transparent 0, #000 20%, #000 80%, transparent 100%);
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 20%, #000 80%, transparent 100%);
-    opacity:.35;
+    mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    opacity:.4;
     pointer-events:none;
 }
 
-.clients-inner{
+.clients-head{
     position:relative;
     z-index:2;
-    width:min(1280px,90vw);
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:clamp(28px,4vh,52px);
-}
-
-.clients-head{
-    max-width:640px;
+    margin-bottom:70px;
 }
 
 .clients-band h2{
     color:var(--alabaster);
-    font-size:clamp(38px,4.6vw,66px);
+    font-size:clamp(44px,5.4vw,78px);
     letter-spacing:-.04em;
-    margin:0 0 18px;
-}
-
-.clients-lead{
-    font-size:12px;
-    line-height:1.85;
-    color:var(--muted-light);
     margin:0;
-    max-width:520px;
 }
 
-.clients-stage{
+.clients-marquee{
     position:relative;
     width:100%;
-    height:clamp(220px,36vh,340px);
+    overflow:hidden;
+    padding:32px 0;
+    mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.clients-track{
     display:flex;
     align-items:center;
-    justify-content:center;
-}
-
-.clients-batch{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:100%;
-    max-width:1200px;
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    column-gap:3vw;
-    row-gap:22px;
-    justify-items:center;
-    align-items:center;
-    opacity:0;
-    pointer-events:none;
-}
-
-.clients-batch:first-child{
-    opacity:1;
-    pointer-events:auto;
-}
-
-.clients-batch.batch-small{
-    grid-template-columns:repeat(5,minmax(0,1fr));
-    max-width:1300px;
-}
-
-.client-name{
-    display:inline-block;
-    font:300 clamp(17px,1.55vw,24px)/1.25 "Cormorant Garamond", serif;
-    letter-spacing:.005em;
-    color:rgba(253,251,247,.92);
-    text-align:center;
-    white-space:nowrap;
-    will-change:transform, opacity;
-}
-
-.clients-progress{
-    position:relative;
-    width:100%;
-    height:1px;
-    background:rgba(212,175,55,.16);
-    overflow:hidden;
-    margin-top:clamp(18px,3vh,30px);
-}
-
-.clients-progress-fill{
-    position:absolute;
-    inset:0;
-    background:var(--gold);
-    transform:scaleX(0);
-    transform-origin:left center;
+    gap:70px;
+    width:max-content;
+    animation:marqueeScroll 140s linear infinite;
     will-change:transform;
 }
 
-/* Reduced-motion fallback — all batches stacked */
-.clients-band.no-motion .clients-stage{
-    height:auto;
-    display:block;
+.client-name{
+    display:inline-flex;
+    align-items:center;
+    gap:70px;
+    font:300 clamp(22px,2.2vw,34px)/1.2 "Cormorant Garamond", serif;
+    letter-spacing:.005em;
+    color:rgba(253,251,247,.88);
+    white-space:nowrap;
+    flex-shrink:0;
 }
 
-.clients-band.no-motion .clients-batch{
-    position:static;
-    transform:none;
-    opacity:1!important;
-    pointer-events:auto;
-    margin-bottom:30px;
+.client-name:after{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.6;
+    flex-shrink:0;
 }
 
-.clients-band.no-motion .client-name{
-    opacity:1!important;
-    transform:none!important;
+@keyframes marqueeScroll{
+    from{ transform:translate3d(0,0,0); }
+    to{ transform:translate3d(-50%,0,0); }
+}
+
+.clients-marquee:hover .clients-track{
+    animation-play-state:paused;
 }
 
 /* =========================================================
@@ -966,18 +912,11 @@ h3{ font-size:42px; }
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    .clients-band{ padding:50px 0; }
-    .clients-band h2{ font-size:clamp(34px,6.5vw,52px); }
-    .clients-stage{ height:clamp(240px,44vh,340px); }
-    .clients-batch{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        column-gap:5vw;
-        row-gap:20px;
-    }
-    .clients-batch.batch-small{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-    .client-name{ font-size:17px; white-space:normal; }
+    .clients-band{ padding:90px 0; }
+    .clients-head{ margin-bottom:50px; }
+    .clients-band h2{ font-size:clamp(38px,7vw,58px); }
+    .clients-track{ gap:50px; animation-duration:110s; }
+    .client-name{ gap:50px; font-size:22px; }
 
     .footer-grid{ display:block; }
     .footer-contact{
@@ -1047,18 +986,13 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    .clients-band{ padding:40px 0; }
-    .clients-band h2{ font-size:34px; }
-    .clients-lead{ font-size:11.5px; }
-    .clients-stage{ height:clamp(260px,52vh,380px); }
-    .clients-batch{
-        grid-template-columns:1fr;
-        row-gap:14px;
-    }
-    .clients-batch.batch-small{
-        grid-template-columns:1fr;
-    }
-    .client-name{ font-size:17px; }
+    .clients-band{ padding:70px 0; }
+    .clients-head{ margin-bottom:40px; }
+    .clients-band h2{ font-size:38px; }
+    .clients-marquee{ padding:24px 0; }
+    .clients-track{ gap:34px; animation-duration:90s; }
+    .client-name{ gap:34px; font-size:18px; }
+    .client-name:after{ width:4px; height:4px; }
 
     .footer-contact{ width:88vw; gap:30px; }
     .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
@@ -1089,4 +1023,12 @@ h3{ font-size:42px; }
         transition-duration:.01ms!important;
         scroll-behavior:auto!important;
     }
+    .clients-track{
+        animation:none!important;
+        transform:none!important;
+        flex-wrap:wrap;
+        justify-content:center;
+        row-gap:20px;
+    }
+    .client-name{ white-space:normal; }
 }
