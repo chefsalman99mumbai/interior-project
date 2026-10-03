@@ -394,3 +394,67 @@ function submitForm(e){
 
     window.addEventListener('load', requestRender, {once:true});
 })();
+
+
+/* =========================================================
+   TRUSTED-BY — PINNED HORIZONTAL GALLERY
+   ========================================================= */
+
+(function(){
+    'use strict';
+
+    var section = document.querySelector('.clients-band');
+    if(!section) return;
+
+    var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion) return;
+
+    function init(){
+        if(!window.gsap || !window.ScrollTrigger) return;
+
+        var gs = window.gsap;
+        gs.registerPlugin(window.ScrollTrigger);
+
+        ScrollTrigger.matchMedia({
+            '(min-width: 901px)': function(){
+                var track = section.querySelector('.clients-track');
+                var wrap  = section.querySelector('.clients-track-wrap');
+                var fill  = section.querySelector('.clients-progress-fill');
+                if(!track || !wrap || !fill) return;
+
+                function distance(){
+                    return Math.max(0, track.scrollWidth - wrap.clientWidth);
+                }
+
+                gs.to(track, {
+                    x: function(){ return -distance(); },
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top top',
+                        end: function(){ return '+=' + distance(); },
+                        pin: true,
+                        scrub: 1,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true,
+                        onUpdate: function(self){
+                            gs.set(fill, { scaleX: self.progress });
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    var tries = 0;
+    var timer = setInterval(function(){
+        tries++;
+        if(window.gsap && window.ScrollTrigger){
+            clearInterval(timer);
+            init();
+        } else if(tries > 50){
+            clearInterval(timer);
+        }
+    }, 100);
+})();
