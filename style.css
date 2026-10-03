@@ -583,20 +583,19 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   SIGNATURE ACOUSTIC STRIP
+   TRUSTED-BY — PINNED HORIZONTAL GALLERY
    ========================================================= */
 
-.acoustic-band{
+.clients-band{
     position:relative;
     background:var(--emerald-deep);
-    padding:72px 0;
     border-top:1px solid rgba(212,175,55,.18);
     border-bottom:1px solid rgba(212,175,55,.18);
     overflow:hidden;
     scroll-margin-top:78px;
 }
 
-.acoustic-band:before{
+.clients-band:before{
     content:"";
     position:absolute;
     inset:0;
@@ -609,46 +608,123 @@ h3{ font-size:42px; }
     );
     mask-image:linear-gradient(180deg, transparent 0, #000 40%, #000 60%, transparent 100%);
     -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 40%, #000 60%, transparent 100%);
-    opacity:.55;
+    opacity:.42;
     pointer-events:none;
 }
 
-.acoustic-inner{
+.clients-pin{
     position:relative;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6vw;
-    align-items:center;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:64px;
+    padding:120px 0 70px;
 }
 
-.acoustic-band h2{
+.clients-head{
+    max-width:640px;
+}
+
+.clients-band h2{
     color:var(--alabaster);
     font-size:clamp(38px,4.8vw,68px);
     letter-spacing:-.04em;
-    margin:0;
+    margin:0 0 22px;
 }
 
-.acoustic-lead{
+.clients-lead{
     font-size:12px;
     line-height:1.8;
     color:var(--muted-light);
-    margin:0 0 24px;
+    margin:0;
     max-width:520px;
 }
 
-.acoustic-marks{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
+/* -------- track -------- */
+
+.clients-track-wrap{
+    position:relative;
+    overflow:hidden;
+    padding:24px 0;
+    mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
 }
 
-.ac-mark{
-    border:1px solid rgba(212,175,55,.35);
-    padding:8px 12px;
-    font:500 7px/1 Inter,sans-serif;
-    letter-spacing:.22em;
-    text-transform:uppercase;
+.clients-track{
+    display:flex;
+    align-items:center;
+    padding-left:max(5vw, calc((100vw - 1280px)/2));
+    padding-right:8vw;
+    will-change:transform;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+.client-card{
+    position:relative;
+    flex-shrink:0;
+    padding:38px 44px;
+    transition:color .35s ease;
+}
+
+.client-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:50%;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.55;
+    transform:translateY(-50%);
+    transition:opacity .35s ease, transform .35s ease;
+}
+
+.client-card:first-child::before{
+    display:none;
+}
+
+.client-name{
+    display:block;
+    font:300 clamp(28px,3.4vw,48px)/1.05 "Cormorant Garamond", serif;
+    letter-spacing:-.018em;
+    color:var(--alabaster);
+    white-space:nowrap;
+    transition:color .35s ease;
+}
+
+.client-card:hover .client-name{
     color:var(--gold);
+}
+
+.client-card:hover::before{
+    opacity:1;
+    transform:translateY(-50%) scale(1.4);
+}
+
+/* -------- progress -------- */
+
+.clients-foot{
+    margin-top:8px;
+}
+
+.clients-progress{
+    position:relative;
+    height:1px;
+    width:100%;
+    background:rgba(212,175,55,.16);
+    overflow:hidden;
+}
+
+.clients-progress-fill{
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left center;
+    will-change:transform;
 }
 
 /* =========================================================
@@ -935,11 +1011,31 @@ h3{ font-size:42px; }
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    .acoustic-band{ padding:60px 0; }
-    .acoustic-inner{
-        grid-template-columns:1fr;
-        gap:26px;
+    .clients-pin{
+        min-height:auto;
+        padding:80px 0 70px;
+        gap:44px;
     }
+    .clients-head{ margin-bottom:0; }
+    .clients-track-wrap{
+        overflow-x:auto;
+        overflow-y:hidden;
+        -webkit-overflow-scrolling:touch;
+        scroll-snap-type:x mandatory;
+        padding:24px 0;
+        mask-image:none;
+        -webkit-mask-image:none;
+    }
+    .clients-track{
+        padding-left:6vw;
+        padding-right:6vw;
+        transform:none !important;
+    }
+    .client-card{
+        scroll-snap-align:start;
+        padding:30px 30px;
+    }
+    .client-name{ font-size:26px; }
 
     .footer-grid{ display:block; }
     .footer-contact{
@@ -1011,14 +1107,16 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    .acoustic-band{ padding:56px 0; }
-    .acoustic-band h2{ font-size:38px; }
-    .acoustic-lead{ font-size:11.5px; }
-    .ac-mark{
-        font-size:6.5px;
-        padding:7px 10px;
-        letter-spacing:.18em;
+    .clients-pin{
+        padding:60px 0 55px;
+        gap:36px;
     }
+    .clients-band h2{ font-size:38px; }
+    .clients-lead{ font-size:11.5px; }
+    .client-card{
+        padding:24px 24px;
+    }
+    .client-name{ font-size:22px; }
 
     .footer-contact{ width:88vw; gap:30px; }
     .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
@@ -1048,5 +1146,9 @@ h3{ font-size:42px; }
         animation-iteration-count:1!important;
         transition-duration:.01ms!important;
         scroll-behavior:auto!important;
+    }
+    .clients-track-wrap{
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
     }
 }
