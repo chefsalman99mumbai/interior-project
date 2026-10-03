@@ -397,64 +397,76 @@ function submitForm(e){
 
 
 /* =========================================================
-   TRUSTED-BY — PINNED HORIZONTAL GALLERY
+   TRUSTED-BY — STAGGER REVEAL
    ========================================================= */
 
 (function(){
     'use strict';
 
-    var section = document.querySelector('.clients-band');
-    if(!section) return;
+    var grid = document.getElementById('clientsGrid');
+    if(!grid) return;
+
+    var items = Array.prototype.slice.call(
+        grid.querySelectorAll('.client-item')
+    );
+    if(!items.length) return;
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduceMotion) return;
 
-    function init(){
-        if(!window.gsap || !window.ScrollTrigger) return;
-
-        var gs = window.gsap;
-        gs.registerPlugin(window.ScrollTrigger);
-
-        ScrollTrigger.matchMedia({
-            '(min-width: 901px)': function(){
-                var track = section.querySelector('.clients-track');
-                var wrap  = section.querySelector('.clients-track-wrap');
-                var fill  = section.querySelector('.clients-progress-fill');
-                if(!track || !wrap || !fill) return;
-
-                function distance(){
-                    return Math.max(0, track.scrollWidth - wrap.clientWidth);
-                }
-
-                gs.to(track, {
-                    x: function(){ return -distance(); },
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top top',
-                        end: function(){ return '+=' + distance(); },
-                        pin: true,
-                        scrub: 1,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true,
-                        onUpdate: function(self){
-                            gs.set(fill, { scaleX: self.progress });
-                        }
-                    }
-                });
-            }
+    if(reduceMotion){
+        items.forEach(function(el){
+            el.style.opacity = '1';
+            el.style.transform = 'none';
         });
+        return;
+    }
+
+    function run(){
+        if(!window.gsap) return;
+        var gs = window.gsap;
+        var isMobile = window.matchMedia('(max-width: 850px)').matches;
+
+        gs.fromTo(items,
+            {
+                opacity: 0,
+                y: isMobile ? 14 : 22
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: isMobile ? 0.55 : 0.75,
+                ease: 'power3.out',
+                stagger: {
+                    each: isMobile ? 0.025 : 0.045,
+                    from: 'start'
+                },
+                scrollTrigger: window.ScrollTrigger ? {
+                    trigger: grid,
+                    start: isMobile ? 'top 88%' : 'top 82%',
+                    once: true
+                } : undefined,
+                onComplete: function(){
+                    items.forEach(function(el){
+                        el.style.willChange = 'auto';
+                    });
+                }
+            }
+        );
     }
 
     var tries = 0;
     var timer = setInterval(function(){
         tries++;
-        if(window.gsap && window.ScrollTrigger){
+        if(window.gsap){
             clearInterval(timer);
-            init();
+            run();
         } else if(tries > 50){
             clearInterval(timer);
+            items.forEach(function(el){
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
         }
     }, 100);
 })();
