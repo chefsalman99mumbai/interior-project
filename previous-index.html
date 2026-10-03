@@ -12,7 +12,7 @@
 
 <style>
 /* =========================================================
-   FIZZA INTERIOR — LUXURY PALETTE
+   FIZZA INTERIOR — 60·30·10 LUXURY PALETTE
    60% Luxury Alabaster       #FDFBF7
    30% Deep Emerald Forest    #0B3C26
    10% Brushed Champagne Gold #D4AF37
@@ -23,28 +23,23 @@
     --emerald:#0B3C26;
     --emerald-deep:#082E1D;
     --emerald-soft:#0E4A2F;
+
     --gold:#D4AF37;
     --gold-soft:#C9A230;
     --gold-deep:#A8871F;
 
-    --charcoal:#2B2B28;
-    --body-muted:#4A5750;
+    --ink:#0B3C26;
+    --body-text:#33453C;
+    --body-muted:#5C6B62;
     --muted:#8FA398;
     --muted-light:#B8C5BD;
 
-    --line:rgba(253,251,247,.16);
+    --line:rgba(11,60,38,.16);
     --line-dark:rgba(11,60,38,.14);
+    --line-light:rgba(253,251,247,.16);
 
-    --bg:var(--emerald);
-    --bg2:var(--emerald-deep);
     --paper:var(--alabaster);
-    --ink:var(--emerald);
-    --accent:var(--gold);
-    --crimson:var(--gold);
-    --crimson-soft:rgba(212,175,55,.16);
-
-    /* live logo tint — driven by scroll */
-    --logo-color:#D4AF37;
+    --bg:var(--alabaster);
 }
 
 *{ box-sizing:border-box; }
@@ -53,8 +48,8 @@ html{ scroll-behavior:smooth; overflow-x:hidden; }
 
 body{
     margin:0;
-    background:var(--emerald);
-    color:var(--alabaster);
+    background:var(--alabaster);
+    color:var(--body-text);
     font-family:Inter,sans-serif;
     font-weight:300;
     overflow-x:hidden;
@@ -85,49 +80,43 @@ main, section{ overflow-x:clip; }
     display:flex;
     align-items:center;
     justify-content:space-between;
-    background:rgba(11,60,38,.30);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(253,251,247,.14);
+    background:var(--alabaster);
+    border-bottom:1px solid rgba(212,175,55,.35);
+    box-shadow:0 1px 0 rgba(11,60,38,.04);
+    padding:0 24px 0 0;
 }
 
 .logo{
     height:78px;
-    width:min(360px,42vw);
     display:flex;
     align-items:center;
+    justify-content:flex-start;
     margin:0;
-    padding:0;
+    padding:0 0 0 22px;
     position:relative;
     z-index:1;
+    flex-shrink:0;
 }
 
-.logo-mark{
-    height:100%;
-    width:100%;
+.logo-img{
     display:block;
-    background-color:var(--logo-color,#D4AF37);
-    mask-image:url("logo.png?v=2");
-    -webkit-mask-image:url("logo.png?v=2");
-    mask-repeat:no-repeat;
-    -webkit-mask-repeat:no-repeat;
-    mask-position:left center;
-    -webkit-mask-position:left center;
-    mask-size:contain;
-    -webkit-mask-size:contain;
-    border:0;
-    padding:8px 0;
+    height:100%;
+    width:auto;
+    max-width:min(440px,46vw);
+    object-fit:contain;
+    object-position:left center;
     pointer-events:none;
-    will-change:background-color;
+    user-select:none;
+    -webkit-user-drag:none;
 }
 
 .header-right{
     display:flex;
-    gap:26px;
+    gap:14px;
     align-items:center;
+    padding-right:8px;
 }
 
-.index-btn,
 .visit-btn{
     font-size:11px;
     letter-spacing:.17em;
@@ -136,35 +125,62 @@ main, section{ overflow-x:clip; }
     align-items:center;
     justify-content:center;
     min-height:38px;
-    padding:10px 12px;
-    text-transform:uppercase;
-}
-
-.visit-btn{
-    border-bottom:1px solid var(--gold);
     padding:10px 12px 9px;
+    text-transform:uppercase;
+    color:var(--emerald);
+    border-bottom:1px solid var(--gold);
+    transition:color .3s ease,border-color .3s ease;
 }
 
-.admin-login-btn{
-    font:500 11px/1 Inter,sans-serif;
-    letter-spacing:.17em;
+.visit-btn:hover,
+.visit-btn:focus-visible{
+    color:var(--gold-deep);
+    border-bottom-color:var(--gold-deep);
+    outline:none;
+}
+
+.admin-login-btn,
+.index-btn{
+    font:500 10px/1 Inter,sans-serif;
+    letter-spacing:.22em;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    min-height:38px;
-    padding:10px 12px;
+    min-height:36px;
+    min-width:128px;
+    padding:0 18px;
     text-transform:uppercase;
-    color:var(--muted);
-    border-bottom:1px solid transparent;
+    background:transparent;
+    border-radius:0;
     white-space:nowrap;
-    transition:color .25s ease,border-color .25s ease;
+    cursor:pointer;
+    position:relative;
+    transition:color .35s ease, background-color .35s ease, border-color .35s ease;
 }
+
+.index-btn{
+    color:var(--emerald);
+    border:1px solid rgba(212,175,55,.70);
+}
+
+.index-btn:hover,
+.index-btn:focus-visible{
+    color:var(--emerald);
+    background:var(--gold);
+    border-color:var(--gold);
+    outline:none;
+}
+
+.admin-login-btn{
+    color:var(--body-muted);
+    border:1px solid rgba(11,60,38,.20);
 }
 
 .admin-login-btn:hover,
 .admin-login-btn:focus-visible{
-    color:var(--gold);
-    border-bottom-color:var(--gold);
+    color:var(--alabaster);
+    background:var(--emerald);
+    border-color:var(--emerald);
     outline:none;
 }
 
@@ -178,20 +194,18 @@ main, section{ overflow-x:clip; }
     right:4vw;
     top:75px;
     width:min(460px,92vw);
-    background:#0A3220;
-    border:1px solid rgba(253,251,247,.14);
+    background:var(--emerald);
+    border:1px solid rgba(212,175,55,.22);
     padding:28px;
     display:none;
-    box-shadow:0 30px 80px #0007;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
     max-height:calc(100vh - 100px);
     overflow-y:auto;
 }
 
 .index-panel.open{ display:block; }
 
-.index-item{
-    border-bottom:1px solid rgba(253,251,247,.12);
-}
+.index-item{ border-bottom:1px solid var(--line-light); }
 
 .index-row{
     display:flex;
@@ -203,7 +217,6 @@ main, section{ overflow-x:clip; }
 .index-link{
     display:flex;
     align-items:center;
-    gap:14px;
     flex:1;
     padding:15px 0;
     font:27px "Cormorant Garamond";
@@ -212,14 +225,6 @@ main, section{ overflow-x:clip; }
 }
 
 .index-link:hover{ color:var(--gold); }
-
-.idx-num{
-    font:11px Inter,sans-serif;
-    font-weight:500;
-    letter-spacing:.18em;
-    color:var(--gold);
-    min-width:24px;
-}
 
 .index-toggle{
     width:32px;
@@ -250,10 +255,7 @@ main, section{ overflow-x:clip; }
     border-color:var(--gold);
 }
 
-.index-submenu{
-    display:none;
-    padding:4px 0 18px 38px;
-}
+.index-submenu{ display:none; padding:4px 0 18px 0; }
 
 .index-item.open .index-submenu{
     display:block;
@@ -275,10 +277,7 @@ main, section{ overflow-x:clip; }
     transition:color .25s ease, padding-left .25s ease;
 }
 
-.index-submenu a:hover{
-    color:var(--gold);
-    padding-left:6px;
-}
+.index-submenu a:hover{ color:var(--gold); padding-left:6px; }
 
 .index-submenu a:before{
     content:"—";
@@ -291,16 +290,13 @@ main, section{ overflow-x:clip; }
    GLOBAL
    ========================================================= */
 
-.page{
-    min-height:100vh;
-    scroll-margin-top:78px;
-}
+.page{ min-height:100vh; scroll-margin-top:78px; }
 
 .eyebrow{
     font-size:8px;
     letter-spacing:.28em;
     text-transform:uppercase;
-    color:var(--muted);
+    color:var(--body-muted);
 }
 
 h1, h2, h3{
@@ -308,7 +304,7 @@ h1, h2, h3{
     font-weight:300;
     line-height:.88;
     margin:0;
-    color:inherit;
+    color:var(--emerald);
 }
 
 h1{ font-size:clamp(80px,13vw,190px); letter-spacing:-.055em; }
@@ -318,7 +314,7 @@ h3{ font-size:42px; }
 .lead{
     font-size:13px;
     line-height:1.9;
-    color:var(--muted-light);
+    color:var(--body-text);
     max-width:490px;
 }
 
@@ -331,11 +327,11 @@ h3{ font-size:42px; }
 
 .paper{
     background:var(--alabaster);
-    color:var(--body-muted);
+    color:var(--body-text);
 }
 
 .paper h1, .paper h2, .paper h3{ color:var(--emerald); }
-.paper .lead{ color:var(--body-muted); }
+.paper .lead{ color:var(--body-text); }
 .paper .eyebrow{ color:var(--body-muted); }
 
 .paper .line{
@@ -356,7 +352,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   SECTION LABELS — clean Inter uppercase, gold underline
+   SECTION LABELS
    ========================================================= */
 
 .section-script-heading{
@@ -366,21 +362,16 @@ h3{ font-size:42px; }
     font-weight:500;
     letter-spacing:.30em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--gold-deep);
     display:inline-block;
     margin:0 0 22px;
     padding-bottom:10px;
-    border-bottom:1px solid rgba(212,175,55,.45);
+    border-bottom:1px solid rgba(168,135,31,.45);
     white-space:nowrap;
 }
 
-.paper .section-script-heading{
-    color:var(--gold-deep);
-    border-bottom-color:rgba(168,135,31,.45);
-}
-
 /* =========================================================
-   HERO — transparent overlay, text sits on the image
+   HERO
    ========================================================= */
 
 .hero{
@@ -390,24 +381,25 @@ h3{ font-size:42px; }
     display:flex;
     align-items:center;
     overflow:hidden;
+    background:var(--emerald);
 }
 
 .hero-bg{
     position:absolute;
     inset:0;
+    width:100%;
+    height:100%;
     background-size:cover;
     background-position:center;
     filter:brightness(.55) saturate(.72);
-    transform:scale(1.001);
 }
 
-/* darker from the left, fading out to the right — keeps
-   the text legible without a white card */
 .hero:after{
     content:"";
     position:absolute;
     inset:0;
     background:linear-gradient(90deg, #05170Fd9 0, #05170F99 42%, #05170F1a 100%);
+    z-index:1;
 }
 
 .hero-content{
@@ -418,6 +410,7 @@ h3{ font-size:42px; }
     padding:0;
     margin-left:max(5vw, calc((100vw - 1280px)/2));
     box-shadow:none;
+    display:block;
 }
 
 .hero .eyebrow{
@@ -425,23 +418,22 @@ h3{ font-size:42px; }
     font-weight:500;
     text-shadow:0 2px 14px rgba(0,0,0,.55);
 }
+
 .hero h1{
     color:var(--alabaster);
     margin-top:18px;
     text-shadow:0 6px 40px rgba(0,0,0,.55);
 }
+
 .hero .lead{
     color:rgba(253,251,247,.86);
     max-width:520px;
     margin:0 0 18px;
     text-shadow:0 2px 14px rgba(0,0,0,.55);
 }
-.hero-count{
-    font:27px "Cormorant Garamond";
-    color:var(--gold);
-    text-shadow:0 2px 14px rgba(0,0,0,.55);
-}
+
 .hero-bottom{ display:block; margin-top:32px; }
+.hero-cta{ margin-top:30px; }
 
 /* =========================================================
    IMAGE SYSTEM
@@ -454,12 +446,9 @@ h3{ font-size:42px; }
     align-items:center;
 }
 
-.grid2.wideleft{ grid-template-columns:1.25fr .75fr; }
-.grid2.wideright{ grid-template-columns:.75fr 1.25fr; }
-
 .img{
     overflow:hidden;
-    background:#061F14;
+    background:#EFE9DD;
     height:460px;
 }
 
@@ -468,7 +457,7 @@ h3{ font-size:42px; }
     height:100%;
     display:block;
     object-fit:cover;
-    filter:saturate(.62);
+    filter:saturate(.72);
     transition:transform .8s ease;
 }
 
@@ -502,79 +491,21 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   STATEMENT
-   ========================================================= */
-
-.statement{
-    background:var(--emerald-deep);
-    padding:120px 0;
-}
-
-.statement p{
-    font:300 clamp(48px,7vw,100px)/.94 "Cormorant Garamond";
-    max-width:1050px;
-    margin:0;
-    color:var(--alabaster);
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:rgba(212,175,55,.18);
-    margin-top:90px;
-}
-
-.stat{
-    background:var(--emerald);
-    padding:42px 25px;
-}
-
-.stat strong{
-    font:300 65px "Cormorant Garamond";
-    display:block;
-    color:var(--gold);
-}
-
-.stat span{
-    font-size:8px;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--muted);
-}
-
-/* =========================================================
    SERVICE PILLARS
    ========================================================= */
 
-.pillars{
-    display:grid;
-    gap:0;
-    margin-top:80px;
-}
+.pillars{ display:grid; gap:0; margin-top:80px; }
 
 .pillar{
-    border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:100px 1fr;
-    gap:40px;
+    border-top:1px solid var(--line-dark);
     padding:60px 0;
 }
 
-.pillar:last-of-type{
-    border-bottom:1px solid var(--line);
-}
-
-.pillar-num{
-    font:32px "Cormorant Garamond";
-    color:var(--gold);
-    letter-spacing:.02em;
-    padding-top:6px;
-}
+.pillar:last-of-type{ border-bottom:1px solid var(--line-dark); }
 
 .pillar-body h3{
     font-size:clamp(38px,4.4vw,62px);
-    color:var(--alabaster);
+    color:var(--emerald);
     margin:0 0 22px;
     letter-spacing:-.03em;
 }
@@ -582,7 +513,7 @@ h3{ font-size:42px; }
 .pillar-intro{
     font-size:12px;
     line-height:1.9;
-    color:var(--muted-light);
+    color:var(--body-muted);
     max-width:640px;
     margin:0 0 36px;
 }
@@ -591,20 +522,18 @@ h3{ font-size:42px; }
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:2px;
-    background:rgba(212,175,55,.16);
+    background:rgba(212,175,55,.20);
 }
 
-.pillar-grid.two{
-    grid-template-columns:repeat(2,1fr);
-}
+.pillar-grid.two{ grid-template-columns:repeat(2,1fr); }
 
 .pillar-item{
-    background:#0E4A2F;
+    background:var(--emerald);
     padding:28px 24px;
     transition:background-color .35s ease;
 }
 
-.pillar-item:hover{ background:#115737; }
+.pillar-item:hover{ background:var(--emerald-soft); }
 
 .pillar-item h4{
     font-family:"Cormorant Garamond";
@@ -636,88 +565,32 @@ h3{ font-size:42px; }
    TAGS
    ========================================================= */
 
-.tags{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-}
+.tags{ display:flex; gap:8px; flex-wrap:wrap; }
 
 .tag{
-    border:1px solid var(--line);
+    border:1px solid var(--line-dark);
     padding:7px 9px;
     font-size:7px;
     letter-spacing:.14em;
     text-transform:uppercase;
-    color:var(--alabaster);
+    color:var(--emerald);
 }
 
 /* =========================================================
-   MASONRY
+   TRUSTED CLIENTS
    ========================================================= */
 
-.masonry{
-    display:grid;
-    grid-template-columns:1fr 1.2fr .8fr;
-    gap:15px;
-    align-items:start;
-}
-
-.masonry .a,
-.masonry .b,
-.masonry .c{
-    height:460px;
-    margin-top:0;
-}
-
-/* =========================================================
-   PROCESS
-   ========================================================= */
-
-.process{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:rgba(212,175,55,.18);
-}
-
-.step{
-    background:#0E4A2F;
-    padding:38px 25px;
-    min-height:260px;
-}
-
-.step b{
-    font:40px "Cormorant Garamond";
-    color:var(--gold);
-}
-
-.step h3{
-    font-size:32px;
-    margin:60px 0 12px;
-    color:var(--alabaster);
-}
-
-.step p{
-    font-size:10px;
-    line-height:1.7;
-    color:var(--muted-light);
-}
-
-/* =========================================================
-   SIGNATURE ACOUSTIC STRIP
-   ========================================================= */
-
-.acoustic-band{
+.clients-band{
     position:relative;
-    background:var(--emerald-deep);
-    padding:72px 0;
-    border-top:1px solid rgba(212,175,55,.18);
-    border-bottom:1px solid rgba(212,175,55,.18);
+    background:var(--emerald);
+    padding:120px 0;
+    border-top:1px solid rgba(212,175,55,.20);
+    border-bottom:1px solid rgba(212,175,55,.20);
     overflow:hidden;
     scroll-margin-top:78px;
 }
 
-.acoustic-band:before{
+.clients-band:before{
     content:"";
     position:absolute;
     inset:0;
@@ -726,107 +599,79 @@ h3{ font-size:42px; }
         rgba(212,175,55,.06) 0,
         rgba(212,175,55,.06) 1px,
         transparent 1px,
-        transparent 14px
+        transparent 16px
     );
-    mask-image:linear-gradient(180deg, transparent 0, #000 40%, #000 60%, transparent 100%);
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 40%, #000 60%, transparent 100%);
-    opacity:.55;
+    mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    opacity:.5;
     pointer-events:none;
 }
 
-.acoustic-inner{
+.clients-head{
     position:relative;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6vw;
-    align-items:center;
+    z-index:2;
+    margin-bottom:70px;
 }
 
-.acoustic-band h2{
+.clients-head .section-script-heading{
+    color:var(--gold);
+    border-bottom-color:rgba(212,175,55,.55);
+}
+
+.clients-band h2{
     color:var(--alabaster);
-    font-size:clamp(38px,4.8vw,68px);
+    font-size:clamp(44px,5.4vw,78px);
     letter-spacing:-.04em;
     margin:0;
 }
 
-.acoustic-lead{
-    font-size:12px;
-    line-height:1.8;
-    color:var(--muted-light);
-    margin:0 0 24px;
-    max-width:520px;
-}
-
-.acoustic-marks{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.ac-mark{
-    border:1px solid rgba(212,175,55,.35);
-    padding:8px 12px;
-    font:500 7px/1 Inter,sans-serif;
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--gold);
-}
-
-/* =========================================================
-   PROJECTS
-   ========================================================= */
-
-.projects{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:2px;
-    background:rgba(212,175,55,.18);
-}
-
-.project{
-    background:var(--emerald-deep);
-    min-height:460px;
-    height:460px;
+.clients-marquee{
     position:relative;
-    overflow:hidden;
-}
-
-.project img{
-    position:absolute;
-    inset:0;
     width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:saturate(.52) brightness(.7);
-    transition:.8s ease;
+    overflow:hidden;
+    padding:32px 0;
+    mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
-.project:hover img{
-    transform:scale(1.04);
-    filter:saturate(.62) brightness(.75);
+.clients-track{
+    display:flex;
+    align-items:center;
+    gap:70px;
+    width:max-content;
+    animation:marqueeScroll 140s linear infinite;
+    will-change:transform;
 }
 
-.project-info{
-    position:absolute;
-    z-index:2;
-    left:32px;
-    right:32px;
-    bottom:30px;
+.client-name{
+    display:inline-flex;
+    align-items:center;
+    gap:70px;
+    font:300 clamp(22px,2.2vw,34px)/1.2 "Cormorant Garamond", serif;
+    letter-spacing:.005em;
+    color:rgba(253,251,247,.92);
+    white-space:nowrap;
+    flex-shrink:0;
 }
 
-.project-info h3{
-    font-size:54px;
-    color:var(--alabaster);
+.client-name:after{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.7;
+    flex-shrink:0;
 }
 
-.project-info p{
-    font-size:9px;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    color:var(--muted-light);
+@keyframes marqueeScroll{
+    from{ transform:translate3d(0,0,0); }
+    to{ transform:translate3d(-50%,0,0); }
 }
 
-.project-info .eyebrow{ color:var(--gold); }
+.clients-marquee:hover .clients-track{
+    animation-play-state:paused;
+}
 
 /* =========================================================
    CONTACT
@@ -871,11 +716,7 @@ h3{ font-size:42px; }
     font:300 14px Inter;
 }
 
-.field textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
+.field textarea{ min-height:120px; resize:vertical; }
 .field option{ background:var(--alabaster); color:var(--emerald); }
 
 /* =========================================================
@@ -887,6 +728,7 @@ h3{ font-size:42px; }
     border-top:1px solid rgba(212,175,55,.22);
     overflow:hidden;
     background:var(--emerald);
+    color:var(--alabaster);
 }
 
 .footer-contact{
@@ -944,29 +786,6 @@ h3{ font-size:42px; }
     align-items:flex-end;
 }
 
-.footer-logo-wrap{
-    width:min(920px,92vw);
-    margin:70px 0 20px;
-}
-
-.footer-logo-mark{
-    display:block;
-    width:100%;
-    height:300px;
-    background-color:var(--logo-color,#D4AF37);
-    mask-image:url("logo.png?v=2");
-    -webkit-mask-image:url("logo.png?v=2");
-    mask-repeat:no-repeat;
-    -webkit-mask-repeat:no-repeat;
-    mask-position:left bottom;
-    -webkit-mask-position:left bottom;
-    mask-size:contain;
-    -webkit-mask-size:contain;
-    border:0;
-    pointer-events:none;
-    will-change:background-color;
-}
-
 .footer-brand{
     font:40px "Cormorant Garamond";
     letter-spacing:.08em;
@@ -974,15 +793,11 @@ h3{ font-size:42px; }
     color:var(--alabaster);
 }
 
-/* =========================================================
-   FOOTER BOTTOM / SOCIALS
-   ========================================================= */
-
 .footer-bottom{
     width:min(1280px,90vw);
     margin:45px auto 0;
     padding:24px 0 0;
-    border-top:1px solid rgba(212,175,55,.18);
+    border-top:1px solid rgba(212,175,55,.20);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -1003,7 +818,7 @@ h3{ font-size:42px; }
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid rgba(212,175,55,.32);
+    border:1px solid rgba(212,175,55,.42);
     border-radius:50%;
     color:var(--gold);
     transition:background-color .25s ease,color .25s ease,transform .25s ease,border-color .25s ease;
@@ -1016,19 +831,14 @@ h3{ font-size:42px; }
     transform:translateY(-2px);
 }
 
-.footer-socials svg{
-    width:12px;
-    height:12px;
-    display:block;
-    fill:currentColor;
-}
+.footer-socials svg{ width:12px; height:12px; display:block; fill:currentColor; }
 
 .footer-bottom-copy{
     margin:0;
     font:400 7px/1.5 Inter,sans-serif;
     letter-spacing:.13em;
     text-transform:uppercase;
-    color:rgba(253,251,247,.70);
+    color:rgba(253,251,247,.72);
 }
 
 .footer-legal{
@@ -1046,7 +856,7 @@ h3{ font-size:42px; }
     font:400 7px/1.5 Inter,sans-serif;
     letter-spacing:.10em;
     text-transform:uppercase;
-    color:rgba(253,251,247,.58);
+    color:rgba(253,251,247,.60);
     transition:opacity .25s ease;
 }
 
@@ -1060,8 +870,8 @@ h3{ font-size:42px; }
     position:fixed;
     right:24px;
     bottom:24px;
-    background:var(--alabaster);
-    color:var(--emerald);
+    background:var(--emerald);
+    color:var(--alabaster);
     padding:15px 20px;
     font-size:9px;
     letter-spacing:.12em;
@@ -1090,47 +900,41 @@ h3{ font-size:42px; }
 
 @media(max-width:850px){
 
-    .img, .img-lg, .img-md, .img-sm,
-    .masonry .a, .masonry .b, .masonry .c{ height:360px; }
+    .img, .img-lg, .img-md, .img-sm{ height:360px; }
 
-    .project{ min-height:360px; height:360px; }
+    .header{ height:68px; padding:0 20px 0 0; }
+    .logo{ height:68px; padding:0 0 0 18px; }
+    .logo-img{ max-width:min(340px,52vw); }
 
-    .header{ height:68px; }
-    .logo{ height:68px; width:min(300px,58vw); }
-    .logo-mark{ padding:6px 0; }
+    .header-right{ gap:10px; padding-right:6px; }
     .header-right .visit-btn{ display:none; }
-    .admin-login-btn{ font-size:7.5px; letter-spacing:.20em; padding:8px 0; }
-    .index-btn{ font-size:10.5px; min-height:36px; padding:9px 11px; }
+
+    .admin-login-btn,
+    .index-btn{
+        font-size:9px;
+        letter-spacing:.18em;
+        min-height:34px;
+        min-width:108px;
+        padding:0 14px;
+    }
+
     .section-script-heading{ font-size:10.5px; letter-spacing:.26em; }
 
-    .grid2, .grid2.wideleft, .grid2.wideright,
+    .grid2,
     .contact-grid{ grid-template-columns:1fr; gap:45px; }
 
-    .projects{ grid-template-columns:1fr; }
-    .masonry{ grid-template-columns:1fr 1fr; }
-    .masonry .b{ height:520px; }
-    .masonry .c{ margin-top:0; }
-
-    .pillar{
-        grid-template-columns:60px 1fr;
-        gap:20px;
-        padding:45px 0;
-    }
-    .pillar-num{ font-size:26px; }
+    .pillar{ padding:45px 0; }
     .pillar-grid,
     .pillar-grid.two{ grid-template-columns:1fr; }
-
-    .process{ grid-template-columns:1fr 1fr; }
-    .stats{ grid-template-columns:1fr 1fr; }
 
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    .acoustic-band{ padding:60px 0; }
-    .acoustic-inner{
-        grid-template-columns:1fr;
-        gap:26px;
-    }
+    .clients-band{ padding:90px 0; }
+    .clients-head{ margin-bottom:50px; }
+    .clients-band h2{ font-size:clamp(38px,7vw,58px); }
+    .clients-track{ gap:50px; animation-duration:110s; }
+    .client-name{ gap:50px; font-size:22px; }
 
     .footer-grid{ display:block; }
     .footer-contact{
@@ -1143,17 +947,7 @@ h3{ font-size:42px; }
     .footer-contact-item .value,
     .footer-contact-item a{ font-size:13px; overflow-wrap:anywhere; word-break:break-word; }
 
-    .footer-logo-wrap{ width:min(520px,92vw); margin-bottom:24px; }
-    .footer-logo-mark{ height:130px; }
     .footer-brand{ margin-bottom:25px; }
-
-    .hero-bottom{ display:block; }
-    .hero-bottom .lead{ margin:25px 0; }
-    .hero-content{
-        width:min(620px,92vw);
-        padding:0;
-        margin-left:4vw;
-    }
 }
 
 /* =========================================================
@@ -1162,10 +956,7 @@ h3{ font-size:42px; }
 
 @media(max-width:520px){
 
-    .img, .img-lg, .img-md, .img-sm,
-    .masonry .a, .masonry .b, .masonry .c{ height:300px; }
-
-    .project{ min-height:300px; height:300px; }
+    .img, .img-lg, .img-md, .img-sm{ height:300px; }
 
     h1{ font-size:68px; }
     h2{ font-size:55px; }
@@ -1173,25 +964,29 @@ h3{ font-size:42px; }
 
     .section{ padding:80px 0; }
 
+    .header{ height:64px; padding:0 14px 0 0; }
+    .logo{ height:64px; padding:0 0 0 14px; }
+    .logo-img{ max-width:min(230px,58vw); }
+
+    .header-right{ gap:8px; padding-right:4px; }
+
+    .admin-login-btn,
+    .index-btn{
+        font-size:8px;
+        letter-spacing:.14em;
+        min-height:32px;
+        min-width:0;
+        padding:0 10px;
+    }
+
     .hero{ min-height:650px; }
     .hero-content{
         width:88vw;
-        padding:0;
         margin-left:6vw;
     }
-    .hero-bottom{ margin-top:30px; }
-    .hero-count{ margin-top:22px; }
+    .hero h1{ font-size:64px; }
 
-    .masonry{ grid-template-columns:1fr; }
-    .masonry .a, .masonry .b, .masonry .c{ height:300px; }
-
-    .process, .stats{ grid-template-columns:1fr; }
-
-    .pillar{
-        grid-template-columns:1fr;
-        gap:10px;
-    }
-    .pillar-num{ font-size:22px; padding-top:0; }
+    .pillar{ padding:40px 0; }
     .pillar-body h3{ font-size:36px; }
     .pillar-item{ padding:22px 18px; }
     .pillar-item h4{ font-size:20px; }
@@ -1210,21 +1005,14 @@ h3{ font-size:42px; }
     .index-submenu a{ font-size:10.5px; }
 
     .section-script-heading{ font-size:9.5px; letter-spacing:.22em; }
-    .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
-    .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    .acoustic-band{ padding:56px 0; }
-    .acoustic-band h2{ font-size:38px; }
-    .acoustic-lead{ font-size:11.5px; }
-    .ac-mark{
-        font-size:6.5px;
-        padding:7px 10px;
-        letter-spacing:.18em;
-    }
-
-    .project{ min-height:300px; height:300px; }
-    .project-info{ left:22px; right:22px; bottom:22px; }
-    .project-info h3{ font-size:44px; }
+    .clients-band{ padding:70px 0; }
+    .clients-head{ margin-bottom:40px; }
+    .clients-band h2{ font-size:38px; }
+    .clients-marquee{ padding:24px 0; }
+    .clients-track{ gap:34px; animation-duration:90s; }
+    .client-name{ gap:34px; font-size:18px; }
+    .client-name:after{ width:4px; height:4px; }
 
     .footer-contact{ width:88vw; gap:30px; }
     .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
@@ -1255,34 +1043,31 @@ h3{ font-size:42px; }
         transition-duration:.01ms!important;
         scroll-behavior:auto!important;
     }
+    .clients-track{
+        animation:none!important;
+        transform:none!important;
+        flex-wrap:wrap;
+        justify-content:center;
+        row-gap:20px;
+    }
+    .client-name{ white-space:normal; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
-
 <header class="header">
-
 <a class="logo" href="#home" aria-label="FIZZA Interior Home">
-    <span class="logo-mark" aria-hidden="true"></span>
+    <img class="logo-img" src="logo.png?v=2" alt="FIZZA INTERIOR — Timeless Elegant Spaces">
 </a>
-
 <div class="header-right">
     <a class="visit-btn" href="#contact">Private consultation</a>
     <button class="admin-login-btn" type="button" aria-label="Admin Login">Admin Login</button>
     <button class="index-btn" type="button" onclick="toggleIndex()" aria-expanded="false">Index +</button>
 </div>
-
 </header>
 
-
-<!-- =========================================================
-     INDEX PANEL — 6 main headings
-     ========================================================= -->
 
 <nav class="index-panel" id="indexPanel" aria-label="Site index">
 
@@ -1290,33 +1075,21 @@ h3{ font-size:42px; }
     FIZZA INTERIOR / Index
 </div>
 
-<!-- 01 — HOME -->
 <div class="index-item">
     <div class="index-row">
-        <a href="#home" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">01</span>
-            <span>Home</span>
-        </a>
+        <a href="#home" class="index-link" onclick="indexNav(event, this)">Home</a>
     </div>
 </div>
 
-<!-- 02 — ABOUT -->
 <div class="index-item">
     <div class="index-row">
-        <a href="#about" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">02</span>
-            <span>About</span>
-        </a>
+        <a href="#about" class="index-link" onclick="indexNav(event, this)">About</a>
     </div>
 </div>
 
-<!-- 03 — SERVICES (dropdown) -->
 <div class="index-item">
     <div class="index-row">
-        <a href="#services" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">03</span>
-            <span>Services</span>
-        </a>
+        <a href="#services" class="index-link" onclick="indexNav(event, this)">Services</a>
         <button class="index-toggle" type="button" onclick="toggleSubmenu(this)" aria-label="Show Services submenu" aria-expanded="false">+</button>
     </div>
     <div class="index-submenu">
@@ -1328,41 +1101,15 @@ h3{ font-size:42px; }
     </div>
 </div>
 
-<!-- 04 — PROCESS -->
 <div class="index-item">
     <div class="index-row">
-        <a href="#process" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">04</span>
-            <span>Process</span>
-        </a>
+        <a href="#clients" class="index-link" onclick="indexNav(event, this)">Clients</a>
     </div>
 </div>
 
-<!-- 05 — PORTFOLIO (dropdown) -->
 <div class="index-item">
     <div class="index-row">
-        <a href="#projects" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">05</span>
-            <span>Portfolio</span>
-        </a>
-        <button class="index-toggle" type="button" onclick="toggleSubmenu(this)" aria-label="Show Portfolio submenu" aria-expanded="false">+</button>
-    </div>
-    <div class="index-submenu">
-        <a href="#residential" onclick="indexNav(event, this)">Residential Interiors</a>
-        <a href="#commercial" onclick="indexNav(event, this)">Commercial &amp; Corporate</a>
-        <a href="#craft" onclick="indexNav(event, this)">Craft &amp; Materials</a>
-        <a href="#acoustic" onclick="indexNav(event, this)">Acoustic Signatures</a>
-        <a href="#projects" onclick="indexNav(event, this)">Selected Projects</a>
-    </div>
-</div>
-
-<!-- 06 — GET A QUOTE -->
-<div class="index-item">
-    <div class="index-row">
-        <a href="#contact" class="index-link" onclick="indexNav(event, this)">
-            <span class="idx-num">06</span>
-            <span>Get a Quote</span>
-        </a>
+        <a href="#contact" class="index-link" onclick="indexNav(event, this)">Contact</a>
     </div>
 </div>
 
@@ -1370,10 +1117,6 @@ h3{ font-size:42px; }
 
 
 <main id="home">
-
-<!-- =========================================================
-     HERO — text sits directly on the staircase image
-     ========================================================= -->
 
 <section class="hero page">
 
@@ -1383,25 +1126,17 @@ h3{ font-size:42px; }
 
 <div class="eyebrow">Turnkey Contracting House · 2012</div>
 
-<h1>
-    SPACES<br>
-    BUILT<br>
-    COMPLETE.
-</h1>
+<h1>SPACES<br>BUILT<br>COMPLETE.</h1>
 
 <div class="hero-bottom">
-
 <p class="lead">
     A turnkey contracting studio for discerning homeowners,
     developers and real-estate clients. From shell to final
     styling, one team carries the project through.
 </p>
-
-<div class="hero-count" style="margin-top:8px">01 / 06</div>
-
 </div>
 
-<div style="margin-top:30px">
+<div class="hero-cta">
     <a class="btn" href="#contact">Get a Quote →</a>
 </div>
 
@@ -1410,121 +1145,44 @@ h3{ font-size:42px; }
 </section>
 
 
-<!-- =========================================================
-     ABOUT — THE TURNKEY ADVANTAGE
-     ========================================================= -->
-
 <section id="about" class="section page paper">
-
 <div class="container grid2">
-
 <div>
-
-<div class="eyebrow section-script-heading">
-    01 / About &amp; the Turnkey Advantage
-</div>
-
-<h2>
-    ONE TEAM.<br>
-    ONE STANDARD.
-</h2>
-
+<div class="eyebrow section-script-heading">About &amp; the Turnkey Advantage</div>
+<h2>ONE TEAM.<br>ONE STANDARD.</h2>
 <p class="lead" style="margin-top:38px">
     FIZZA INTERIOR operates at the intersection of
     real estate, architecture, interior design, acoustics
     and execution. We coordinate the details that turn a
     premium property into a finished address.
 </p>
-
 <p class="lead" style="margin-top:22px">
     The Turnkey Advantage is simple: a single point of
     accountability from first brief to final handover.
     No hand-offs between vendors. No gaps in sequence.
     One standard held across every trade.
 </p>
-
 <div class="line"></div>
-
 <div class="tags">
     <span class="tag">Single-point delivery</span>
     <span class="tag">In-house trades</span>
     <span class="tag">Fixed programme</span>
     <span class="tag">Protected finish quality</span>
 </div>
-
 </div>
-
 <div class="img img-lg">
     <img src="position.jpg" alt="FIZZA Interior — the turnkey advantage">
 </div>
-
 </div>
-
-</section>
-
-
-<!-- =========================================================
-     STATEMENT
-     ========================================================= -->
-
-<section class="statement page">
-
-<div class="container">
-
-<p>
-    “The luxury is not in adding more.
-    It is in getting every layer right.”
-</p>
-
-<div class="stats">
-
-<div class="stat">
-<strong>360°</strong>
-<span>Turnkey execution</span>
-</div>
-
-<div class="stat">
-<strong>01</strong>
-<span>Single project partner</span>
-</div>
-
-<div class="stat">
-<strong>05</strong>
-<span>Core service pillars</span>
-</div>
-
-<div class="stat">
-<strong>∞</strong>
-<span>Attention to detail</span>
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 </main>
 
 
-<!-- =========================================================
-     SERVICES — 5 PILLARS
-     ========================================================= -->
-
-<section id="services" class="section page">
-
+<section id="services" class="section page paper">
 <div class="container">
-
-<div class="eyebrow section-script-heading">
-    02 / Services
-</div>
-
-<h1>
-    FROM<br>
-    SHELL<br>
-    TO SOUL.
-</h1>
-
+<div class="eyebrow section-script-heading">Services</div>
+<h1>FROM<br>SHELL<br>TO SOUL.</h1>
 <p class="lead" style="margin:45px 0 20px">
     FIZZA INTERIOR delivers the full built environment
     in five disciplined pillars — each one a specialist
@@ -1533,690 +1191,143 @@ h3{ font-size:42px; }
 
 <div class="pillars">
 
-<!-- PILLAR 01 -->
-<article class="pillar">
-<div class="pillar-num">01</div>
-<div class="pillar-body">
-
+<article class="pillar"><div class="pillar-body">
 <h3>Turnkey Interior Solutions</h3>
-
-<p class="pillar-intro">
-    End-to-end design and execution for premium residential
-    and commercial spaces — one contract, one site team,
-    one final handover.
-</p>
-
+<p class="pillar-intro">End-to-end design and execution for premium residential and commercial spaces — one contract, one site team, one final handover.</p>
 <div class="pillar-grid">
-
-<div class="pillar-item">
-<span class="pi-tag">Residential</span>
-<h4>Residential Interior Fit-Outs</h4>
-<p>Full home transformations, space planning and premium styling for apartments, villas and penthouses.</p>
+<div class="pillar-item"><span class="pi-tag">Residential</span><h4>Residential Interior Fit-Outs</h4><p>Full home transformations, space planning and premium styling for apartments, villas and penthouses.</p></div>
+<div class="pillar-item"><span class="pi-tag">Commercial</span><h4>Commercial &amp; Corporate Workspaces</h4><p>Full-scale office renovations, bare-shell fit-outs, conference rooms, executive cabins and retail outlets.</p></div>
+<div class="pillar-item"><span class="pi-tag">Joinery</span><h4>Customized Furniture &amp; Joinery</h4><p>Bespoke wardrobe manufacturing, modular kitchen setups, storage units and loose furniture tailored to the space.</p></div>
 </div>
+</div></article>
 
-<div class="pillar-item">
-<span class="pi-tag">Commercial</span>
-<h4>Commercial &amp; Corporate Workspaces</h4>
-<p>Full-scale office renovations, bare-shell fit-outs, conference rooms, executive cabins and retail outlets.</p>
-</div>
-
-<div class="pillar-item">
-<span class="pi-tag">Joinery</span>
-<h4>Customized Furniture &amp; Joinery</h4>
-<p>Bespoke wardrobe manufacturing, modular kitchen setups, storage units and loose furniture tailored to the space.</p>
-</div>
-
-</div>
-
-</div>
-</article>
-
-
-<!-- PILLAR 02 -->
-<article class="pillar">
-<div class="pillar-num">02</div>
-<div class="pillar-body">
-
+<article class="pillar"><div class="pillar-body">
 <h3>Civil &amp; Finishing Works</h3>
-
-<p class="pillar-intro">
-    Structural finishing and surface preparation executed
-    to architectural tolerance — the invisible discipline
-    behind every precise interior.
-</p>
-
+<p class="pillar-intro">Structural finishing and surface preparation executed to architectural tolerance — the invisible discipline behind every precise interior.</p>
 <div class="pillar-grid">
-
-<div class="pillar-item">
-<span class="pi-tag">Exterior</span>
-<h4>External Plastering &amp; Painting</h4>
-<p>High-durability external plastering, weather-resistant painting, texture coatings and full scaffolding execution.</p>
+<div class="pillar-item"><span class="pi-tag">Exterior</span><h4>External Plastering &amp; Painting</h4><p>High-durability external plastering, weather-resistant painting, texture coatings and full scaffolding execution.</p></div>
+<div class="pillar-item"><span class="pi-tag">Interior</span><h4>Internal Plastering &amp; Surface Preparation</h4><p>Levelled internal wall plastering, smooth wall putty application and architectural internal painting.</p></div>
+<div class="pillar-item"><span class="pi-tag">Flooring</span><h4>Premium Tile &amp; Flooring Layouts</h4><p>Precision installation of vitrified tiles, marble, granite, ceramic tiling and specialised wall cladding.</p></div>
 </div>
+</div></article>
 
-<div class="pillar-item">
-<span class="pi-tag">Interior</span>
-<h4>Internal Plastering &amp; Surface Preparation</h4>
-<p>Levelled internal wall plastering, smooth wall putty application and architectural internal painting.</p>
-</div>
-
-<div class="pillar-item">
-<span class="pi-tag">Flooring</span>
-<h4>Premium Tile &amp; Flooring Layouts</h4>
-<p>Precision installation of vitrified tiles, marble, granite, ceramic tiling and specialised wall cladding.</p>
-</div>
-
-</div>
-
-</div>
-</article>
-
-
-<!-- PILLAR 03 -->
-<article class="pillar">
-<div class="pillar-num">03</div>
-<div class="pillar-body">
-
+<article class="pillar"><div class="pillar-body">
 <h3>False Ceiling &amp; Surface Art</h3>
-
-<p class="pillar-intro">
-    Decorative and structural overhead works — where
-    engineering meets ornament, and the ceiling becomes
-    part of the design.
-</p>
-
+<p class="pillar-intro">Decorative and structural overhead works — where engineering meets ornament, and the ceiling becomes part of the design.</p>
 <div class="pillar-grid two">
-
-<div class="pillar-item">
-<span class="pi-tag">Gypsum</span>
-<h4>Gypsum False Ceilings &amp; Partitions</h4>
-<p>Modern grid ceilings, drop ceilings and functional space partition walls for residential and commercial interiors.</p>
+<div class="pillar-item"><span class="pi-tag">Gypsum</span><h4>Gypsum False Ceilings &amp; Partitions</h4><p>Modern grid ceilings, drop ceilings and functional space partition walls for residential and commercial interiors.</p></div>
+<div class="pillar-item"><span class="pi-tag">POP</span><h4>Plaster of Paris (POP) Artistry</h4><p>Elegant cornices, traditional mouldings, custom ceiling domes and decorative wall finishes.</p></div>
 </div>
+</div></article>
 
-<div class="pillar-item">
-<span class="pi-tag">POP</span>
-<h4>Plaster of Paris (POP) Artistry</h4>
-<p>Elegant cornices, traditional mouldings, custom ceiling domes and decorative wall finishes.</p>
-</div>
-
-</div>
-
-</div>
-</article>
-
-
-<!-- PILLAR 04 -->
-<article class="pillar">
-<div class="pillar-num">04</div>
-<div class="pillar-body">
-
+<article class="pillar"><div class="pillar-body">
 <h3>Acoustic &amp; Soundproofing Engineering</h3>
-
-<p class="pillar-intro">
-    A specialist niche for high-value spaces — studios,
-    home theatres, auditoriums and boardrooms where
-    silence is part of the spec.
-</p>
-
+<p class="pillar-intro">A specialist niche for high-value spaces — studios, home theatres, auditoriums and boardrooms where silence is part of the spec.</p>
 <div class="pillar-grid two">
-
-<div class="pillar-item">
-<span class="pi-tag">Barrier</span>
-<h4>Architectural Soundproofing</h4>
-<p>High-performance sound barrier installations for walls, floors and ceilings.</p>
+<div class="pillar-item"><span class="pi-tag">Barrier</span><h4>Architectural Soundproofing</h4><p>High-performance sound barrier installations for walls, floors and ceilings.</p></div>
+<div class="pillar-item"><span class="pi-tag">Treatment</span><h4>Acoustic Treatment &amp; Insulation</h4><p>Echo reduction, acoustic panelling, perforated ceiling tiles and fabric padding for home theatres, recording studios, auditoriums and conference rooms.</p></div>
 </div>
+</div></article>
 
-<div class="pillar-item">
-<span class="pi-tag">Treatment</span>
-<h4>Acoustic Treatment &amp; Insulation</h4>
-<p>Echo reduction, acoustic panelling, perforated ceiling tiles and fabric padding for home theatres, recording studios, auditoriums and conference rooms.</p>
-</div>
-
-</div>
-
-</div>
-</article>
-
-
-<!-- PILLAR 05 — HOME AUTOMATION -->
-<article class="pillar">
-<div class="pillar-num">05</div>
-<div class="pillar-body">
-
+<article class="pillar"><div class="pillar-body">
 <h3>Home Automation &amp; Smart Living</h3>
-
-<p class="pillar-intro">
-    Intelligent systems engineered into the architecture —
-    lighting, climate, security and entertainment working
-    as one seamless, voice-controlled environment.
-</p>
-
+<p class="pillar-intro">Intelligent systems engineered into the architecture — lighting, climate, security and entertainment working as one seamless, voice-controlled environment.</p>
 <div class="pillar-grid">
-
-<div class="pillar-item">
-<span class="pi-tag">Lighting &amp; Climate</span>
-<h4>Smart Lighting, Shading &amp; HVAC</h4>
-<p>Scene-based lighting, motorised blinds and zoned climate control with app, voice and wall-panel command.</p>
+<div class="pillar-item"><span class="pi-tag">Lighting &amp; Climate</span><h4>Smart Lighting, Shading &amp; HVAC</h4><p>Scene-based lighting, motorised blinds and zoned climate control with app, voice and wall-panel command.</p></div>
+<div class="pillar-item"><span class="pi-tag">Security</span><h4>Access Control &amp; Surveillance</h4><p>Smart locks, video door phones, CCTV and sensor networks with remote monitoring and automated alerts.</p></div>
+<div class="pillar-item"><span class="pi-tag">AV &amp; Control</span><h4>Multi-Room Audio &amp; Centralised Hubs</h4><p>Distributed audio, home theatre and single-app control across lighting, climate, security and curtains.</p></div>
 </div>
-
-<div class="pillar-item">
-<span class="pi-tag">Security</span>
-<h4>Access Control &amp; Surveillance</h4>
-<p>Smart locks, video door phones, CCTV and sensor networks with remote monitoring and automated alerts.</p>
-</div>
-
-<div class="pillar-item">
-<span class="pi-tag">AV &amp; Control</span>
-<h4>Multi-Room Audio &amp; Centralised Hubs</h4>
-<p>Distributed audio, home theatre and single-app control across lighting, climate, security and curtains.</p>
-</div>
+</div></article>
 
 </div>
-
 </div>
-</article>
+</section>
 
+
+<section id="clients" class="clients-band">
+
+<div class="container clients-head">
+    <div class="eyebrow section-script-heading">Trusted by</div>
+    <h2>OUR TRUSTED<br>CLIENTS.</h2>
 </div>
 
+<div class="clients-marquee">
+    <div class="clients-track">
+
+        <span class="client-name">Larsen &amp; Toubro Ltd</span>
+        <span class="client-name">Oberoi Realty</span>
+        <span class="client-name">Satellite Group</span>
+        <span class="client-name">Neelkanth Group</span>
+        <span class="client-name">Sheth Developers Pvt. Ltd.</span>
+        <span class="client-name">Naman Group</span>
+        <span class="client-name">Wadhwa Group</span>
+        <span class="client-name">Puranik Developers</span>
+        <span class="client-name">Yashraj Developers</span>
+        <span class="client-name">Lokhandwala Const. Pvt. Ltd.</span>
+        <span class="client-name">Shreelaxmi Developers</span>
+        <span class="client-name">City Corporation Ltd.</span>
+        <span class="client-name">Ashford HSG Corporation</span>
+        <span class="client-name">Ajmera Group</span>
+        <span class="client-name">Bafna Builders &amp; Developers</span>
+        <span class="client-name">Ashapura Developers</span>
+        <span class="client-name">Ashapura &amp; Ratan Developers</span>
+        <span class="client-name">Kalpataru Enterprises</span>
+        <span class="client-name">Tata Housing</span>
+        <span class="client-name">Sheth N Chopra Developers</span>
+        <span class="client-name">Gee Cee Venture Pvt. Ltd.</span>
+
+        <span class="client-name" aria-hidden="true">Larsen &amp; Toubro Ltd</span>
+        <span class="client-name" aria-hidden="true">Oberoi Realty</span>
+        <span class="client-name" aria-hidden="true">Satellite Group</span>
+        <span class="client-name" aria-hidden="true">Neelkanth Group</span>
+        <span class="client-name" aria-hidden="true">Sheth Developers Pvt. Ltd.</span>
+        <span class="client-name" aria-hidden="true">Naman Group</span>
+        <span class="client-name" aria-hidden="true">Wadhwa Group</span>
+        <span class="client-name" aria-hidden="true">Puranik Developers</span>
+        <span class="client-name" aria-hidden="true">Yashraj Developers</span>
+        <span class="client-name" aria-hidden="true">Lokhandwala Const. Pvt. Ltd.</span>
+        <span class="client-name" aria-hidden="true">Shreelaxmi Developers</span>
+        <span class="client-name" aria-hidden="true">City Corporation Ltd.</span>
+        <span class="client-name" aria-hidden="true">Ashford HSG Corporation</span>
+        <span class="client-name" aria-hidden="true">Ajmera Group</span>
+        <span class="client-name" aria-hidden="true">Bafna Builders &amp; Developers</span>
+        <span class="client-name" aria-hidden="true">Ashapura Developers</span>
+        <span class="client-name" aria-hidden="true">Ashapura &amp; Ratan Developers</span>
+        <span class="client-name" aria-hidden="true">Kalpataru Enterprises</span>
+        <span class="client-name" aria-hidden="true">Tata Housing</span>
+        <span class="client-name" aria-hidden="true">Sheth N Chopra Developers</span>
+        <span class="client-name" aria-hidden="true">Gee Cee Venture Pvt. Ltd.</span>
+
+    </div>
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     PROCESS
-     ========================================================= -->
-
-<section id="process" class="section page paper">
-
-<div class="container">
-
-<div class="eyebrow section-script-heading">
-    03 / Process
-</div>
-
-<h1>
-    CALM<br>
-    DELIVERY.
-</h1>
-
-<p class="lead" style="margin:45px 0 75px">
-    A premium project should feel controlled.
-    Our process is built around clarity, accountable
-    coordination and disciplined site execution.
-</p>
-
-<div class="process">
-
-<div class="step">
-<b>01</b>
-<h3>Brief</h3>
-<p>Understand the property, lifestyle, budget, aesthetic direction and delivery ambition.</p>
-</div>
-
-<div class="step">
-<b>02</b>
-<h3>Plan</h3>
-<p>Translate the design into drawings, quantities, procurement schedules and a realistic site programme.</p>
-</div>
-
-<div class="step">
-<b>03</b>
-<h3>Build</h3>
-<p>Coordinate specialist teams and trades while protecting quality, sequencing and finish standards.</p>
-</div>
-
-<div class="step">
-<b>04</b>
-<h3>Handover</h3>
-<p>Snag, refine, style and deliver a finished space ready for occupation.</p>
-</div>
-
-</div>
-
-
-<div class="grid2" style="margin-top:100px">
-
-<div class="img img-md">
-<img src="process-control.jpg" alt="FIZZA Interior project control">
-</div>
-
-<div>
-
-<div class="eyebrow">Project control</div>
-
-<h2>
-    DETAIL IS A<br>
-    DELIVERY TOOL.
-</h2>
-
-<p class="lead">
-    The visual result depends on hundreds of decisions
-    being made in the correct sequence. That is where
-    turnkey coordination matters.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     RESIDENTIAL
-     ========================================================= -->
-
-<section id="residential" class="section page">
-
-<div class="container">
-
-<div class="eyebrow section-script-heading">
-    04 / Residential
-</div>
-
-<h1>
-    HOMES FOR<br>
-    PEOPLE WHO<br>
-    NOTICE.
-</h1>
-
-<div class="masonry" style="margin-top:85px">
-<div class="img a"><img src="residential-01.jpg" alt="Residential interior"></div>
-<div class="img b"><img src="residential-02.jpg" alt="Residential interior"></div>
-<div class="img c"><img src="residential-03.jpg" alt="Residential interior"></div>
-</div>
-
-<div class="grid2" style="margin-top:110px">
-
-<div>
-<h2>
-    PRIVATE<br>
-    RESIDENCES.
-</h2>
-</div>
-
-<div>
-
-<p class="lead">
-    For villas, penthouses and high-value apartments,
-    FIZZA INTERIOR takes responsibility for the complete
-    interior delivery — allowing the client to work with
-    one accountable execution partner.
-</p>
-
-<div class="tags" style="margin-top:25px">
-<span class="tag">Villas</span>
-<span class="tag">Penthouses</span>
-<span class="tag">Apartments</span>
-<span class="tag">Second homes</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     COMMERCIAL
-     ========================================================= -->
-
-<section id="commercial" class="section page">
-
-<div class="container">
-
-<div class="eyebrow section-script-heading">
-    05 / Commercial &amp; corporate
-</div>
-
-<h1>
-    PLACES<br>
-    THAT SELL<br>
-    THE VISION.
-</h1>
-
-<div class="grid2 wideleft" style="margin-top:90px">
-
-<div class="img img-lg">
-<img src="commercial-main.jpg" alt="Commercial interior">
-</div>
-
-<div>
-
-<div class="eyebrow" style="color:var(--gold)">Developer / Investor / Brand</div>
-
-<h2>
-    EXECUTION<br>
-    AT SCALE.
-</h2>
-
-<p class="lead">
-    Show apartments, sales galleries, luxury offices,
-    hospitality environments and high-end commercial
-    interiors require speed without making the finish
-    feel rushed.
-</p>
-
-<div class="line"></div>
-
-<p class="lead">
-    FIZZA INTERIOR can work from an architect's drawings
-    or collaborate with the design team to convert intent
-    into a buildable, finished environment.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="pillars" style="margin-top:100px">
-
-<article class="pillar">
-<div class="pillar-num">A</div>
-<div class="pillar-body">
-<h3>Workspaces &amp; Retail</h3>
-<p class="pillar-intro">
-    Executive offices, bare-shell corporate fit-outs,
-    conference rooms, executive cabins and branded
-    retail outlets — detailed, durable and on-programme.
-</p>
-<div class="img img-md">
-<img src="commercial-workspaces.jpg" alt="Commercial workspaces">
-</div>
-</div>
-</article>
-
-<article class="pillar">
-<div class="pillar-num">B</div>
-<div class="pillar-body">
-<h3>Show Homes &amp; Sales Galleries</h3>
-<p class="pillar-intro">
-    Sales environments engineered to communicate the
-    future value of a development — built fast, styled
-    to close.
-</p>
-<div class="img img-md">
-<img src="commercial-show-homes.jpg" alt="Commercial show homes">
-</div>
-</div>
-</article>
-
-<article class="pillar">
-<div class="pillar-num">C</div>
-<div class="pillar-body">
-<h3>Hospitality &amp; Boutique Spaces</h3>
-<p class="pillar-intro">
-    Guest-facing interiors where detailing, durability
-    and atmosphere have to coexist — cafés, boutique
-    retail and premium F&amp;B.
-</p>
-<div class="img img-md">
-<img src="commercial-boutique.jpg" alt="Commercial boutique">
-</div>
-</div>
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     CRAFT
-     ========================================================= -->
-
-<section id="craft" class="section page paper">
-
-<div class="container">
-
-<div class="eyebrow section-script-heading">
-    06 / Craft &amp; materials
-</div>
-
-<h1>
-    THE LAST<br>
-    5% IS<br>
-    EVERYTHING.
-</h1>
-
-<div class="grid2 wideright" style="margin-top:90px">
-
-<div>
-
-<p class="lead">
-    Luxury execution is judged at close range:
-    junctions, shadow gaps, stone veins, hardware
-    alignment, paint transitions and the quality
-    of the final clean.
-</p>
-
-<div class="line"></div>
-
-<div class="tags">
-<span class="tag">Natural stone</span>
-<span class="tag">Solid timber</span>
-<span class="tag">Metalwork</span>
-<span class="tag">Glass</span>
-<span class="tag">Microcement</span>
-<span class="tag">Custom joinery</span>
-</div>
-
-</div>
-
-<div class="img img-lg">
-<img src="craft-main.jpg" alt="Craft and materials">
-</div>
-
-</div>
-
-<div class="masonry" style="margin-top:110px">
-<div class="img a"><img src="craft-01.jpg" alt="Craft detail"></div>
-<div class="img b"><img src="craft-02.jpg" alt="Craft detail"></div>
-<div class="img c"><img src="craft-03.jpg" alt="Craft detail"></div>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     SIGNATURE ACOUSTIC STRIP
-     ========================================================= -->
-
-<section id="acoustic" class="acoustic-band">
-
-<div class="container acoustic-inner">
-
-<div class="acoustic-left">
-
-<div class="eyebrow section-script-heading">
-    Signature / Acoustic engineering
-</div>
-
-<h2>
-    BUILT FOR<br>
-    SILENCE.
-</h2>
-
-</div>
-
-<div class="acoustic-right">
-
-<p class="acoustic-lead">
-    A quieter room is a more valuable room. Engineered
-    into private residences, home theatres, studios and
-    corporate boardrooms — where silence is measured,
-    not assumed.
-</p>
-
-<div class="acoustic-marks">
-    <span class="ac-mark">dB-Calibrated</span>
-    <span class="ac-mark">Reverberation Control</span>
-    <span class="ac-mark">Isolated Structures</span>
-    <span class="ac-mark">Studio-Grade Finish</span>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     PROJECT PORTFOLIO
-     ========================================================= -->
-
-<section id="projects" class="section page">
-
-<div class="container">
-
-<div class="eyebrow section-script-heading">
-    07 / Portfolio
-</div>
-
-<h1>
-    MADE<br>
-    VISIBLE.
-</h1>
-
-<p class="lead" style="margin:40px 0 75px">
-    From private residences to commercial environments
-    and acoustic-engineered rooms — FIZZA INTERIOR
-    delivers turnkey interiors with the same disciplined
-    attention to detail.
-</p>
-
-<div class="projects">
-
-<article class="project">
-<img src="craft-01.jpg" alt="Private Residence">
-<div class="project-info">
-<div class="eyebrow">Residential / Turnkey Fit-Out</div>
-<h3>Private Residence</h3>
-<p>Full turnkey · joinery · stone · lighting</p>
-</div>
-</article>
-
-<article class="project">
-<img src="commercial-boutique.jpg" alt="Penthouse Interior">
-<div class="project-info">
-<div class="eyebrow">Residential / Penthouse</div>
-<h3>Penthouse Interior</h3>
-<p>Shell-to-finish · custom interiors</p>
-</div>
-</article>
-
-<article class="project">
-<img src="commercial-main.jpg" alt="Commercial Workspace">
-<div class="project-info">
-<div class="eyebrow">Commercial / Corporate</div>
-<h3>Commercial Workspace</h3>
-<p>Design coordination · MEP · execution</p>
-</div>
-</article>
-
-<article class="project">
-<img src="residential-01.jpg" alt="Villa Interior">
-<div class="project-info">
-<div class="eyebrow">Residential / Villa</div>
-<h3>Villa Interior</h3>
-<p>Architecture coordination · interiors · styling</p>
-</div>
-</article>
-
-<article class="project">
-<img src="commercial-show-homes.jpg" alt="Show Home">
-<div class="project-info">
-<div class="eyebrow">Real Estate / Show Home</div>
-<h3>Sales Show Home</h3>
-<p>Fast-track fit-out · styling · handover</p>
-</div>
-</article>
-
-<article class="project">
-<img src="craft-02.jpg" alt="Acoustic Room">
-<div class="project-info">
-<div class="eyebrow">Acoustic / Specialist</div>
-<h3>Home Theatre</h3>
-<p>Soundproofing · acoustic treatment · joinery</p>
-</div>
-</article>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT / GET A QUOTE
-     ========================================================= -->
 
 <section id="contact" class="section page paper">
-
 <div class="container contact-grid">
-
 <div>
-
-<div class="eyebrow section-script-heading">
-    08 / Get a quote
-</div>
-
-<h1>
-    BUILD<br>
-    SOMETHING<br>
-    EXACT.
-</h1>
-
+<div class="eyebrow section-script-heading">Contact</div>
+<h1>BUILD<br>SOMETHING<br>EXACT.</h1>
 <p class="lead" style="margin-top:40px">
     Tell us about the property, stage of construction
     and level of involvement you require. We will arrange
     a private consultation.
 </p>
-
 <div class="line"></div>
-
 <div class="eyebrow" style="color:var(--emerald)">FIZZA INTERIOR</div>
-
-<p style="font-size:12px;line-height:1.9;color:var(--body-muted)">
+<p style="font-size:12px;line-height:1.9;color:var(--body-text)">
     Turnkey contracting · Civil finishing<br>
     Residential &amp; commercial interiors<br>
     False ceiling · Acoustic engineering · Home automation
 </p>
-
 </div>
-
 
 <form class="form" onsubmit="submitForm(event)">
-
-<div class="field">
-<label>Name</label>
-<input required placeholder="Your name">
-</div>
-
-<div class="field">
-<label>Phone</label>
-<input required type="tel" placeholder="+91">
-</div>
-
-<div class="field">
-<label>Email</label>
-<input type="email" placeholder="you@example.com">
-</div>
-
-<div class="field">
-<label>Project type</label>
+<div class="field"><label>Name</label><input required placeholder="Your name"></div>
+<div class="field"><label>Phone</label><input required type="tel" placeholder="+91"></div>
+<div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+<div class="field"><label>Project type</label>
 <select>
 <option>Residential fit-out</option>
 <option>Villa / Penthouse</option>
@@ -2229,111 +1340,64 @@ h3{ font-size:42px; }
 <option>False ceiling / POP only</option>
 </select>
 </div>
-
-<div class="field">
-<label>Project location</label>
-<input placeholder="City / Locality">
-</div>
-
-<div class="field">
-<label>Approx. area (sq ft)</label>
-<input placeholder="e.g. 2,400">
-</div>
-
-<div class="field full">
-<label>Project details</label>
-<textarea placeholder="Construction stage, scope of work, timeline and what you need us to handle"></textarea>
-</div>
-
-<div class="field full" style="border:0">
-<button class="btn" type="submit">Request Private Consultation →</button>
-</div>
-
+<div class="field"><label>Project location</label><input placeholder="City / Locality"></div>
+<div class="field"><label>Approx. area (sq ft)</label><input placeholder="e.g. 2,400"></div>
+<div class="field full"><label>Project details</label><textarea placeholder="Construction stage, scope of work, timeline and what you need us to handle"></textarea></div>
+<div class="field full" style="border:0"><button class="btn" type="submit">Request Private Consultation →</button></div>
 </form>
-
 </div>
+</section>
 
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
 
 <footer class="footer">
-
 <div class="container footer-grid">
-
 <div>
 <div class="footer-brand">FIZZA INTERIOR</div>
 <div class="eyebrow" style="margin-top:10px;color:var(--gold)">
-    Turnkey Contracting · Acoustic Engineering · Home Automation
+    Turnkey Contracting House
 </div>
 </div>
-
 <div class="footer-contact">
-
     <div>
         <div class="eyebrow" style="color:var(--gold)">Reach us</div>
         <h2 class="footer-contact-title">LET'S BUILD<br>IT EXACT.</h2>
     </div>
-
     <div class="footer-contact-list">
-
         <div class="footer-contact-item">
             <div class="label">Address</div>
-            <div class="value">84, VIRWANI IND. ESTATE<br>GOREGAON (E)<br>MUMBAI - 400063</div>
+            <div class="value">
+                810, Opposite City Mall,<br>
+                Next to Global Junction,<br>
+                Veera Desai Industrial Estates,<br>
+                New Link Road, Andheri-West,<br>
+                Mumbai - 400053
+            </div>
         </div>
-
         <div class="footer-contact-item">
             <div class="label">Phone</div>
-            <a href="tel:+912240232051">022 - 40232051/52/55<br><span style="display:block;margin-top:4px">Mob : No. 90040 15018</span></a>
+            <a href="tel:+912240232051">
+                022 - 40232051/52/55
+                <span style="display:block;margin-top:4px">Mob : No. 90044 55115</span>
+            </a>
         </div>
-
+        <div class="footer-contact-item">
+            <div class="label">Email</div>
+            <a href="mailto:Fizzainteriorsign@gmail.com">Fizzainteriorsign@gmail.com</a>
+        </div>
     </div>
-
 </div>
-
 </div>
-
-
-<div class="container footer-logo-wrap">
-    <span class="footer-logo-mark" role="img" aria-label="FIZZA INTERIOR — Crafting Landmarks"></span>
-</div>
-
 
 <div class="footer-bottom">
-
     <div class="footer-socials" aria-label="Social media links">
-
-        <a href="#" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.5 6z"/>
-            </svg>
-        </a>
-
-        <a href="#" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H8v3h2.4v8h3.1z"/>
-            </svg>
-        </a>
-
-        <a href="#" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M5.1 8.1A1.9 1.9 0 1 1 5.1 4.3a1.9 1.9 0 0 1 0 3.8zM3.4 9.6h3.4V21H3.4V9.6zm5.5 0h3.2v1.6h.1c.4-.8 1.5-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-3.4v-5.1c0-1.2 0-2.8-1.8-2.8s-2 1.3-2 2.7V21H8.9V9.6z"/>
-            </svg>
-        </a>
-
-        <a href="#" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.5 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3zm-8.4 18.1c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.7 1 1-3.6-.2-.3a9.8 9.8 0 1 1 8 4.4zm5.4-7.3c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1 1-.1 2.5.8 1.5 2.9 3.6 5 4.9.7.4 1.2.6 1.6.8.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3z"/>
-            </svg>
-        </a>
-
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.5 6z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H8v3h2.4v8h3.1z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.1 8.1A1.9 1.9 0 1 1 5.1 4.3a1.9 1.9 0 0 1 0 3.8zM3.4 9.6h3.4V21H3.4V9.6zm5.5 0h3.2v1.6h.1c.4-.8 1.5-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-3.4v-5.1c0-1.2 0-2.8-1.8-2.8s-2 1.3-2 2.7V21H8.9V9.6z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.5 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3zm-8.4 18.1c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.7 1 1-3.6-.2-.3a9.8 9.8 0 1 1 8 4.4zm5.4-7.3c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1 1-.1 2.5.8 1.5 2.9 3.6 5 4.9.7.4 1.2.6 1.6.8.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3z"/></svg></a>
     </div>
-
     <p class="footer-bottom-copy">
         &copy; <span id="currentYear">2026</span> FIZZA INTERIOR. All rights reserved.
     </p>
-
     <ul class="footer-legal">
         <li><a href="/privacy-policy.html">Privacy Policy</a></li>
         <li><a href="/terms-conditions.html">Terms &amp; Conditions</a></li>
@@ -2341,12 +1405,8 @@ h3{ font-size:42px; }
         <li><a href="/disclaimer.html">Disclaimer</a></li>
         <li><a href="/accessibility.html">Accessibility</a></li>
     </ul>
-
 </div>
-
 </footer>
-
-</section>
 
 
 <div class="toast" id="toast">
@@ -2354,11 +1414,14 @@ h3{ font-size:42px; }
 </div>
 
 
-<!-- =========================================================
-     NAVIGATION & UI SCRIPTS
-     ========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 
 <script>
+/* =========================================================
+   NAVIGATION & UI
+   ========================================================= */
+
 (function(){
     'use strict';
 
@@ -2446,13 +1509,12 @@ function submitForm(e){
     const el = document.getElementById('currentYear');
     if(el) el.textContent = new Date().getFullYear();
 })();
-</script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+/* =========================================================
+   GSAP HEADING REVEALS + NATIVE FALLBACK
+   ========================================================= */
 
-<script>
 (function(){
     'use strict';
 
@@ -2498,7 +1560,7 @@ function submitForm(e){
                 if(!window.gsap) await loadScript(pair[0]);
                 if(!window.ScrollTrigger) await loadScript(pair[1]);
                 if(window.gsap && window.ScrollTrigger) return true;
-            }catch(err){ /* try next CDN */ }
+            }catch(err){}
         }
         return false;
     }
@@ -2651,7 +1713,7 @@ function submitForm(e){
                 try{
                     gs.registerPlugin(window.ScrollTrigger);
                     window.ScrollTrigger.config({ ignoreMobileResize:true, limitCallbacks:true });
-                }catch(e){ /* noop */ }
+                }catch(e){}
             }
         }catch(err){
             console.warn('FIZZA INTERIOR: GSAP heading fallback engaged.', err);
@@ -2664,95 +1726,6 @@ function submitForm(e){
         if(ready){ requestAnimationFrame(initGSAP); }
         else{ nativeFallback(); }
     })();
-})();
-</script>
-
-
-<!-- =========================================================
-     SCROLL-DRIVEN LOGO COLOR CYCLING
-     ========================================================= -->
-
-<script>
-(function(){
-    'use strict';
-
-    var stops = [
-        '#D4AF37', // 01 original champagne gold
-        '#F0D77C', // 02 pale champagne
-        '#E8B93C', // 03 warm amber
-        '#D4943C', // 04 honey
-        '#B87333', // 05 copper
-        '#9C5A3C', // 06 warm bronze
-        '#B76E79', // 07 rose gold
-        '#F5E6D3', // 08 pearl cream
-        '#E0F2E9', // 09 pale mint
-        '#A7E3C2', // 10 soft jade
-        '#6FBF9A', // 11 seafoam
-        '#3DA88C', // 12 jade green
-        '#1E8A78', // 13 emerald teal
-        '#0F6E5E', // 14 deep emerald
-        '#D4AF37'  // 15 back to original gold
-    ];
-
-    function hexToRgb(hex){
-        var value = hex.replace('#','');
-        return {
-            r:parseInt(value.slice(0,2),16),
-            g:parseInt(value.slice(2,4),16),
-            b:parseInt(value.slice(4,6),16)
-        };
-    }
-
-    var rgbStops = stops.map(hexToRgb);
-
-    function colorAt(progress){
-        var scaled = progress * (rgbStops.length - 1);
-        var index  = Math.min(rgbStops.length - 2, Math.floor(scaled));
-        var local  = scaled - index;
-        local = local * local * (3 - 2 * local);
-
-        var a  = rgbStops[index];
-        var b  = rgbStops[Math.min(index + 1, rgbStops.length - 1)];
-
-        var r  = Math.round(a.r + (b.r - a.r) * local);
-        var g  = Math.round(a.g + (b.g - a.g) * local);
-        var bl = Math.round(a.b + (b.b - a.b) * local);
-
-        return 'rgb(' + r + ',' + g + ',' + bl + ')';
-    }
-
-    function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
-
-    var raf = 0;
-
-    function render(){
-        raf = 0;
-        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        var progress  = clamp(window.scrollY / maxScroll, 0, 1);
-        var color     = colorAt(progress);
-
-        document.documentElement.style.setProperty('--logo-color', color);
-    }
-
-    function requestRender(){
-        if(raf) return;
-        raf = window.requestAnimationFrame(render);
-    }
-
-    render();
-
-    window.addEventListener('scroll', requestRender, {passive:true});
-    window.addEventListener('resize', requestRender, {passive:true});
-    window.addEventListener('orientationchange', function(){
-        setTimeout(requestRender, 100);
-        setTimeout(requestRender, 450);
-    }, {passive:true});
-
-    if(window.visualViewport){
-        window.visualViewport.addEventListener('resize', requestRender, {passive:true});
-    }
-
-    window.addEventListener('load', requestRender, {once:true});
 })();
 </script>
 
