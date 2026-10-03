@@ -189,7 +189,6 @@ main, section{ overflow-x:clip; }
 .index-link{
     display:flex;
     align-items:center;
-    gap:14px;
     flex:1;
     padding:15px 0;
     font:27px "Cormorant Garamond";
@@ -198,14 +197,6 @@ main, section{ overflow-x:clip; }
 }
 
 .index-link:hover{ color:var(--gold); }
-
-.idx-num{
-    font:11px Inter,sans-serif;
-    font-weight:500;
-    letter-spacing:.18em;
-    color:var(--gold);
-    min-width:24px;
-}
 
 .index-toggle{
     width:32px;
@@ -238,7 +229,7 @@ main, section{ overflow-x:clip; }
 
 .index-submenu{
     display:none;
-    padding:4px 0 18px 38px;
+    padding:4px 0 18px 0;
 }
 
 .index-item.open .index-submenu{
@@ -366,7 +357,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   HERO — transparent overlay, text sits on the image
+   HERO
    ========================================================= */
 
 .hero{
@@ -387,8 +378,6 @@ h3{ font-size:42px; }
     transform:scale(1.001);
 }
 
-/* darker from the left, fading out to the right — keeps
-   the text legible without a white card */
 .hero:after{
     content:"";
     position:absolute;
@@ -420,11 +409,6 @@ h3{ font-size:42px; }
     color:rgba(253,251,247,.86);
     max-width:520px;
     margin:0 0 18px;
-    text-shadow:0 2px 14px rgba(0,0,0,.55);
-}
-.hero-count{
-    font:27px "Cormorant Garamond";
-    color:var(--gold);
     text-shadow:0 2px 14px rgba(0,0,0,.55);
 }
 .hero-bottom{ display:block; margin-top:32px; }
@@ -541,21 +525,11 @@ h3{ font-size:42px; }
 
 .pillar{
     border-top:1px solid var(--line);
-    display:grid;
-    grid-template-columns:100px 1fr;
-    gap:40px;
     padding:60px 0;
 }
 
 .pillar:last-of-type{
     border-bottom:1px solid var(--line);
-}
-
-.pillar-num{
-    font:32px "Cormorant Garamond";
-    color:var(--gold);
-    letter-spacing:.02em;
-    padding-top:6px;
 }
 
 .pillar-body h3{
@@ -672,14 +646,9 @@ h3{ font-size:42px; }
     min-height:260px;
 }
 
-.step b{
-    font:40px "Cormorant Garamond";
-    color:var(--gold);
-}
-
 .step h3{
     font-size:32px;
-    margin:60px 0 12px;
+    margin:0 0 12px;
     color:var(--alabaster);
 }
 
@@ -1098,11 +1067,8 @@ h3{ font-size:42px; }
     .masonry .c{ margin-top:0; }
 
     .pillar{
-        grid-template-columns:60px 1fr;
-        gap:20px;
         padding:45px 0;
     }
-    .pillar-num{ font-size:26px; }
     .pillar-grid,
     .pillar-grid.two{ grid-template-columns:1fr; }
 
@@ -1166,7 +1132,6 @@ h3{ font-size:42px; }
         margin-left:6vw;
     }
     .hero-bottom{ margin-top:30px; }
-    .hero-count{ margin-top:22px; }
 
     .masonry{ grid-template-columns:1fr; }
     .masonry .a, .masonry .b, .masonry .c{ height:300px; }
@@ -1174,10 +1139,8 @@ h3{ font-size:42px; }
     .process, .stats{ grid-template-columns:1fr; }
 
     .pillar{
-        grid-template-columns:1fr;
-        gap:10px;
+        padding:40px 0;
     }
-    .pillar-num{ font-size:22px; padding-top:0; }
     .pillar-body h3{ font-size:36px; }
     .pillar-item{ padding:22px 18px; }
     .pillar-item h4{ font-size:20px; }
