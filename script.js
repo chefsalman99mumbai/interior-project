@@ -397,99 +397,70 @@ function submitForm(e){
 
 
 /* =========================================================
-   TRUSTED-BY — CLIENT SPOTLIGHT
+   TRUSTED-BY — SCROLL-REVEALED BATCHES
    ========================================================= */
 
 (function(){
     'use strict';
 
-    var stage = document.getElementById('spotlightStage');
-    if(!stage) return;
-
-    var names = Array.prototype.slice.call(
-        stage.querySelectorAll('.spotlight-name')
+    var batches = Array.prototype.slice.call(
+        document.querySelectorAll('.clients-batch')
     );
-    if(!names.length) return;
-
-    var counter     = document.getElementById('spotlightCurrent');
-    var fill        = document.getElementById('spotlightFill');
-    var total       = names.length;
+    if(!batches.length) return;
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ---- reduced motion: show all stacked, no cycling ---- */
     if(reduceMotion){
-        names.forEach(function(n){ n.style.position = 'static'; n.style.opacity = '1'; });
+        /* show everything instantly */
+        batches.forEach(function(b){
+            b.querySelectorAll('.client-item').forEach(function(el){
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        });
         return;
     }
 
-    var index = 0;
-    names[0].classList.add('is-active');
+    function init(){
+        if(!window.gsap || !window.ScrollTrigger) return;
 
-    function pad(n){ return (n < 10 ? '0' : '') + n; }
+        var gs = window.gsap;
+        gs.registerPlugin(window.ScrollTrigger);
 
-    function setCounter(i){
-        if(counter) counter.textContent = pad(i + 1);
-    }
+        var isMobile = window.matchMedia('(max-width: 850px)').matches;
+        var startX   = isMobile ? -30 : -60;
 
-    function cycle(){
-        if(!window.gsap){
-            /* fallback: plain CSS transition */
-            var prev = names[index];
-            index = (index + 1) % total;
-            var next = names[index];
-            prev.classList.remove('is-active');
-            next.classList.add('is-active');
-            setCounter(index);
-            return;
-        }
+        batches.forEach(function(batch){
+            var items = batch.querySelectorAll('.client-item');
 
-        var gs   = window.gsap;
-        var prev = names[index];
-        index    = (index + 1) % total;
-        var next = names[index];
-
-        gs.killTweensOf([prev, next]);
-
-        gs.set(next, { yPercent: 40, opacity: 0 });
-
-        var tl = gs.timeline({
-            defaults: { duration: 0.75, ease: 'power3.out' },
-            onStart: function(){
-                next.classList.add('is-active');
-                setCounter(index);
-            }
-        });
-
-        tl.to(prev, { yPercent: -40, opacity: 0 })
-          .to(next, { yPercent: 0, opacity: 1 }, 0);
-
-        /* progress bar per-cycle fill */
-        if(fill){
-            gs.fromTo(fill,
-                { scaleX: 0 },
-                { scaleX: 1, duration: 2.5, ease: 'none', overwrite: true }
+            gs.fromTo(items,
+                { x: startX, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: isMobile ? 0.7 : 0.9,
+                    ease: 'power2.out',
+                    stagger: { each: isMobile ? 0.06 : 0.09, from: 'start' },
+                    scrollTrigger: {
+                        trigger: batch,
+                        start: 'top 88%',
+                        end:   'top 38%',
+                        scrub: 0.6
+                    }
+                }
             );
+        });
+    }
+
+    var tries = 0;
+    var timer = setInterval(function(){
+        tries++;
+        if(window.gsap && window.ScrollTrigger){
+            clearInterval(timer);
+            init();
+        } else if(tries > 60){
+            clearInterval(timer);
         }
-    }
-
-    /* first cycle begins after a short pause */
-    var startDelay = 900;
-
-    function startLoop(){
-        cycle();
-        setInterval(cycle, 2500);
-    }
-
-    if(window.gsap){
-        window.gsap.delayedCall(startDelay / 1000, startLoop);
-    } else {
-        setTimeout(startLoop, startDelay);
-    }
-
-    /* pause when tab is not visible to save CPU */
-    document.addEventListener('visibilitychange', function(){
-        /* no-op, kept simple */
-    });
+    }, 100);
 })();
