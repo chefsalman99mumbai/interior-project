@@ -397,115 +397,99 @@ function submitForm(e){
 
 
 /* =========================================================
-   TRUSTED-BY — ROTATING RING
+   TRUSTED-BY — CLIENT SPOTLIGHT
    ========================================================= */
 
 (function(){
     'use strict';
 
-    var section = document.querySelector('.clients-band');
-    if(!section) return;
+    var stage = document.getElementById('spotlightStage');
+    if(!stage) return;
 
-    var scene = section.querySelector('.clients-scene');
-    var ring  = document.getElementById('clientsRing');
-    if(!scene || !ring) return;
-
-    var items = Array.prototype.slice.call(
-        ring.querySelectorAll('.client-item')
+    var names = Array.prototype.slice.call(
+        stage.querySelectorAll('.spotlight-name')
     );
-    if(!items.length) return;
+    if(!names.length) return;
+
+    var counter     = document.getElementById('spotlightCurrent');
+    var fill        = document.getElementById('spotlightFill');
+    var total       = names.length;
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if(reduceMotion) return;
-
-    function init(){
-        if(!window.gsap) return;
-
-        var gs = window.gsap;
-        var total = items.length;
-        var step  = 360 / total;
-        var rotation = 0;
-
-        function radius(){
-            var w = window.innerWidth;
-            if(w < 520) return 200;
-            if(w < 850) return 300;
-            return Math.min(w * 0.36, 520);
-        }
-
-        var R = radius();
-
-        function paint(rot){
-            items.forEach(function(item, i){
-                var angle = (i * step + rot) * Math.PI / 180;
-
-                var cos = Math.cos(angle);
-
-                var x = Math.sin(angle) * R;
-                var depth = (cos + 1) / 2;
-
-                var scale   = 0.55 + 0.55 * depth;
-                var opacity = 0.18 + 0.82 * depth;
-                var blur    = (1 - depth) * 2.6;
-
-                item.style.transform =
-                    'translate(-50%,-50%) translate3d(' +
-                    x.toFixed(2) + 'px,0,0) scale(' +
-                    scale.toFixed(3) + ')';
-
-                item.style.opacity = opacity.toFixed(3);
-                item.style.filter  = blur > 0.05
-                    ? 'blur(' + blur.toFixed(2) + 'px)'
-                    : 'none';
-
-                item.style.zIndex = Math.round(depth * 1000);
-            });
-        }
-
-        section.classList.add('orbit-active');
-
-        var speed = 360 / 90;
-        var last  = performance.now();
-        var paused = false;
-
-        scene.addEventListener('mouseenter', function(){ paused = true; });
-        scene.addEventListener('mouseleave', function(){ paused = false; });
-
-        function tick(now){
-            var dt = (now - last) / 1000;
-            last = now;
-
-            if(!paused){
-                rotation = (rotation + speed * dt) % 360;
-            }
-
-            paint(rotation);
-        }
-
-        gs.ticker.add(tick);
-
-        var resizeTimer;
-        window.addEventListener('resize', function(){
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function(){
-                R = radius();
-                paint(rotation);
-            }, 150);
-        });
-
-        paint(0);
+    /* ---- reduced motion: show all stacked, no cycling ---- */
+    if(reduceMotion){
+        names.forEach(function(n){ n.style.position = 'static'; n.style.opacity = '1'; });
+        return;
     }
 
-    var tries = 0;
-    var timer = setInterval(function(){
-        tries++;
-        if(window.gsap){
-            clearInterval(timer);
-            init();
-        } else if(tries > 60){
-            clearInterval(timer);
+    var index = 0;
+    names[0].classList.add('is-active');
+
+    function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+    function setCounter(i){
+        if(counter) counter.textContent = pad(i + 1);
+    }
+
+    function cycle(){
+        if(!window.gsap){
+            /* fallback: plain CSS transition */
+            var prev = names[index];
+            index = (index + 1) % total;
+            var next = names[index];
+            prev.classList.remove('is-active');
+            next.classList.add('is-active');
+            setCounter(index);
+            return;
         }
-    }, 100);
+
+        var gs   = window.gsap;
+        var prev = names[index];
+        index    = (index + 1) % total;
+        var next = names[index];
+
+        gs.killTweensOf([prev, next]);
+
+        gs.set(next, { yPercent: 40, opacity: 0 });
+
+        var tl = gs.timeline({
+            defaults: { duration: 0.75, ease: 'power3.out' },
+            onStart: function(){
+                next.classList.add('is-active');
+                setCounter(index);
+            }
+        });
+
+        tl.to(prev, { yPercent: -40, opacity: 0 })
+          .to(next, { yPercent: 0, opacity: 1 }, 0);
+
+        /* progress bar per-cycle fill */
+        if(fill){
+            gs.fromTo(fill,
+                { scaleX: 0 },
+                { scaleX: 1, duration: 2.5, ease: 'none', overwrite: true }
+            );
+        }
+    }
+
+    /* first cycle begins after a short pause */
+    var startDelay = 900;
+
+    function startLoop(){
+        cycle();
+        setInterval(cycle, 2500);
+    }
+
+    if(window.gsap){
+        window.gsap.delayedCall(startDelay / 1000, startLoop);
+    } else {
+        setTimeout(startLoop, startDelay);
+    }
+
+    /* pause when tab is not visible to save CPU */
+    document.addEventListener('visibilitychange', function(){
+        /* no-op, kept simple */
+    });
 })();
