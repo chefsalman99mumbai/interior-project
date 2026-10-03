@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +42,9 @@
     --accent:var(--gold);
     --crimson:var(--gold);
     --crimson-soft:rgba(212,175,55,.16);
+
+    /* live logo tint — driven by scroll */
+    --logo-color:#D4AF37;
 }
 
 *{ box-sizing:border-box; }
@@ -91,27 +93,32 @@ main, section{ overflow-x:clip; }
 
 .logo{
     height:78px;
-    width:min(280px,32vw);
+    width:min(360px,42vw);
     display:flex;
     align-items:center;
     margin:0;
     padding:0;
+    position:relative;
+    z-index:1;
 }
 
 .logo-mark{
     height:100%;
     width:100%;
     display:block;
-    background:var(--gold);
-    mask-image:url("logo.png");
-    -webkit-mask-image:url("logo.png");
+    background-color:var(--logo-color,#D4AF37);
+    mask-image:url("logo.png?v=2");
+    -webkit-mask-image:url("logo.png?v=2");
     mask-repeat:no-repeat;
     -webkit-mask-repeat:no-repeat;
     mask-position:left center;
     -webkit-mask-position:left center;
     mask-size:contain;
     -webkit-mask-size:contain;
-    transition:background-color .55s ease;
+    border:0;
+    padding:8px 0;
+    pointer-events:none;
+    will-change:background-color;
 }
 
 .header-right{
@@ -139,14 +146,19 @@ main, section{ overflow-x:clip; }
 }
 
 .admin-login-btn{
-    font:500 8px/1 Inter,sans-serif;
-    letter-spacing:.24em;
+    font:500 11px/1 Inter,sans-serif;
+    letter-spacing:.17em;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:38px;
+    padding:10px 12px;
     text-transform:uppercase;
     color:var(--muted);
-    padding:9px 0;
     border-bottom:1px solid transparent;
     white-space:nowrap;
     transition:color .25s ease,border-color .25s ease;
+}
 }
 
 .admin-login-btn:hover,
@@ -368,7 +380,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   HERO
+   HERO — transparent overlay, text sits on the image
    ========================================================= */
 
 .hero{
@@ -389,27 +401,46 @@ h3{ font-size:42px; }
     transform:scale(1.001);
 }
 
+/* darker from the left, fading out to the right — keeps
+   the text legible without a white card */
 .hero:after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(90deg, #0B3C26e0 0, #0B3C2680 48%, #0B3C2618 100%);
+    background:linear-gradient(90deg, #05170Fd9 0, #05170F99 42%, #05170F1a 100%);
 }
 
 .hero-content{
     position:relative;
     z-index:2;
-    width:min(600px,90vw);
-    background:var(--alabaster);
-    padding:52px 50px 46px;
+    width:min(640px,90vw);
+    background:transparent;
+    padding:0;
     margin-left:max(5vw, calc((100vw - 1280px)/2));
-    box-shadow:0 40px 100px rgba(0,0,0,.38);
+    box-shadow:none;
 }
 
-.hero .eyebrow{ color:var(--gold-deep); font-weight:500; }
-.hero h1{ color:var(--emerald); margin-top:18px; }
-.hero .lead{ color:var(--body-muted); max-width:none; margin:0 0 18px; }
-.hero-count{ font:27px "Cormorant Garamond"; color:var(--gold-deep); }
+.hero .eyebrow{
+    color:var(--gold);
+    font-weight:500;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.hero h1{
+    color:var(--alabaster);
+    margin-top:18px;
+    text-shadow:0 6px 40px rgba(0,0,0,.55);
+}
+.hero .lead{
+    color:rgba(253,251,247,.86);
+    max-width:520px;
+    margin:0 0 18px;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.hero-count{
+    font:27px "Cormorant Garamond";
+    color:var(--gold);
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
 .hero-bottom{ display:block; margin-top:32px; }
 
 /* =========================================================
@@ -673,7 +704,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   SIGNATURE ACOUSTIC STRIP — slim capability signature
+   SIGNATURE ACOUSTIC STRIP
    ========================================================= */
 
 .acoustic-band{
@@ -922,15 +953,18 @@ h3{ font-size:42px; }
     display:block;
     width:100%;
     height:300px;
-    background:var(--gold);
-    mask-image:url("logo.png");
-    -webkit-mask-image:url("logo.png");
+    background-color:var(--logo-color,#D4AF37);
+    mask-image:url("logo.png?v=2");
+    -webkit-mask-image:url("logo.png?v=2");
     mask-repeat:no-repeat;
     -webkit-mask-repeat:no-repeat;
     mask-position:left bottom;
     -webkit-mask-position:left bottom;
     mask-size:contain;
     -webkit-mask-size:contain;
+    border:0;
+    pointer-events:none;
+    will-change:background-color;
 }
 
 .footer-brand{
@@ -1062,7 +1096,8 @@ h3{ font-size:42px; }
     .project{ min-height:360px; height:360px; }
 
     .header{ height:68px; }
-    .logo{ height:68px; width:min(240px,55vw); }
+    .logo{ height:68px; width:min(300px,58vw); }
+    .logo-mark{ padding:6px 0; }
     .header-right .visit-btn{ display:none; }
     .admin-login-btn{ font-size:7.5px; letter-spacing:.20em; padding:8px 0; }
     .index-btn{ font-size:10.5px; min-height:36px; padding:9px 11px; }
@@ -1091,7 +1126,6 @@ h3{ font-size:42px; }
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    /* Acoustic strip — stack */
     .acoustic-band{ padding:60px 0; }
     .acoustic-inner{
         grid-template-columns:1fr;
@@ -1117,7 +1151,7 @@ h3{ font-size:42px; }
     .hero-bottom .lead{ margin:25px 0; }
     .hero-content{
         width:min(620px,92vw);
-        padding:42px 36px 38px;
+        padding:0;
         margin-left:4vw;
     }
 }
@@ -1142,7 +1176,7 @@ h3{ font-size:42px; }
     .hero{ min-height:650px; }
     .hero-content{
         width:88vw;
-        padding:36px 30px 34px;
+        padding:0;
         margin-left:6vw;
     }
     .hero-bottom{ margin-top:30px; }
@@ -1179,7 +1213,6 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    /* Acoustic strip — mobile */
     .acoustic-band{ padding:56px 0; }
     .acoustic-band h2{ font-size:38px; }
     .acoustic-lead{ font-size:11.5px; }
@@ -1339,7 +1372,7 @@ h3{ font-size:42px; }
 <main id="home">
 
 <!-- =========================================================
-     HERO
+     HERO — text sits directly on the staircase image
      ========================================================= -->
 
 <section class="hero page">
@@ -1997,8 +2030,6 @@ h3{ font-size:42px; }
 
 <!-- =========================================================
      SIGNATURE ACOUSTIC STRIP
-     Slim capability signature — quiet complement to the
-     interiors brand without competing for space.
      ========================================================= -->
 
 <section id="acoustic" class="acoustic-band">
@@ -2637,14 +2668,31 @@ function submitForm(e){
 </script>
 
 
+<!-- =========================================================
+     SCROLL-DRIVEN LOGO COLOR CYCLING
+     ========================================================= -->
+
 <script>
 (function(){
     'use strict';
 
-    var logo = document.querySelector('.logo-mark');
-    if(!logo) return;
-
-    var stops = ['#FDFBF7','#E8D28A','#D4AF37','#E8D28A','#FDFBF7'];
+    var stops = [
+        '#D4AF37', // 01 original champagne gold
+        '#F0D77C', // 02 pale champagne
+        '#E8B93C', // 03 warm amber
+        '#D4943C', // 04 honey
+        '#B87333', // 05 copper
+        '#9C5A3C', // 06 warm bronze
+        '#B76E79', // 07 rose gold
+        '#F5E6D3', // 08 pearl cream
+        '#E0F2E9', // 09 pale mint
+        '#A7E3C2', // 10 soft jade
+        '#6FBF9A', // 11 seafoam
+        '#3DA88C', // 12 jade green
+        '#1E8A78', // 13 emerald teal
+        '#0F6E5E', // 14 deep emerald
+        '#D4AF37'  // 15 back to original gold
+    ];
 
     function hexToRgb(hex){
         var value = hex.replace('#','');
@@ -2656,26 +2704,34 @@ function submitForm(e){
     }
 
     var rgbStops = stops.map(hexToRgb);
-    var raf = 0;
 
-    function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
-
-    function render(){
-        raf = 0;
-        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-        var progress = clamp(window.scrollY / maxScroll, 0, 1);
+    function colorAt(progress){
         var scaled = progress * (rgbStops.length - 1);
-        var index = Math.min(rgbStops.length - 2, Math.floor(scaled));
-        var local = scaled - index;
+        var index  = Math.min(rgbStops.length - 2, Math.floor(scaled));
+        var local  = scaled - index;
         local = local * local * (3 - 2 * local);
 
         var a  = rgbStops[index];
         var b  = rgbStops[Math.min(index + 1, rgbStops.length - 1)];
+
         var r  = Math.round(a.r + (b.r - a.r) * local);
         var g  = Math.round(a.g + (b.g - a.g) * local);
         var bl = Math.round(a.b + (b.b - a.b) * local);
 
-        logo.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + bl + ')';
+        return 'rgb(' + r + ',' + g + ',' + bl + ')';
+    }
+
+    function clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
+
+    var raf = 0;
+
+    function render(){
+        raf = 0;
+        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        var progress  = clamp(window.scrollY / maxScroll, 0, 1);
+        var color     = colorAt(progress);
+
+        document.documentElement.style.setProperty('--logo-color', color);
     }
 
     function requestRender(){
@@ -2683,8 +2739,7 @@ function submitForm(e){
         raf = window.requestAnimationFrame(render);
     }
 
-    logo.style.backgroundColor = stops[0];
-    requestRender();
+    render();
 
     window.addEventListener('scroll', requestRender, {passive:true});
     window.addEventListener('resize', requestRender, {passive:true});
