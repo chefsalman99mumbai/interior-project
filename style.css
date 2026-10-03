@@ -1,8 +1,5 @@
 /* =========================================================
    FIZZA INTERIOR — LUXURY PALETTE
-   60% Luxury Alabaster       #FDFBF7
-   30% Deep Emerald Forest    #0B3C26
-   10% Brushed Champagne Gold #D4AF37
    ========================================================= */
 
 :root{
@@ -582,12 +579,13 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   TRUSTED-BY — ROTATING RING
+   TRUSTED-BY — CLIENT SPOTLIGHT
    ========================================================= */
 
 .clients-band{
     position:relative;
     background:var(--emerald-deep);
+    padding:120px 0 110px;
     border-top:1px solid rgba(212,175,55,.18);
     border-bottom:1px solid rgba(212,175,55,.18);
     overflow:hidden;
@@ -611,19 +609,11 @@ h3{ font-size:42px; }
     pointer-events:none;
 }
 
-.clients-stage{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:44px;
-    padding:120px 0 110px;
-}
-
 .clients-head{
     position:relative;
     z-index:2;
     max-width:640px;
+    margin-bottom:70px;
 }
 
 .clients-band h2{
@@ -641,86 +631,86 @@ h3{ font-size:42px; }
     max-width:520px;
 }
 
-.clients-scene{
+.clients-spotlight{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:32px;
+}
+
+.spotlight-counter{
+    font:400 11px/1 Inter,sans-serif;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+}
+
+.spotlight-counter #spotlightCurrent{
+    font-family:"Cormorant Garamond", serif;
+    font-size:32px;
+    font-weight:300;
+    letter-spacing:0;
+}
+
+.spotlight-slash{
+    opacity:.5;
+    font-size:14px;
+}
+
+.spotlight-total{
+    opacity:.55;
+    font-size:11px;
+}
+
+.spotlight-stage{
     position:relative;
     width:100%;
-    height:280px;
-    overflow:hidden;
-    mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-}
-
-.clients-scene::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:radial-gradient(ellipse 42% 80% at 50% 50%, rgba(212,175,55,.10), transparent 72%);
-    pointer-events:none;
-    z-index:0;
-}
-
-.clients-ring{
-    position:absolute;
-    inset:0;
-    z-index:1;
-}
-
-.client-item{
-    position:absolute;
-    top:50%;
-    left:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transform-origin:center center;
-    will-change:transform, opacity, filter;
-    pointer-events:none;
-    opacity:0;
-    transform:translate(-50%,-50%);
-}
-
-.client-name{
+    min-height:clamp(80px,10vw,140px);
     display:block;
-    font:300 clamp(28px,3vw,44px)/1.1 "Cormorant Garamond", serif;
-    letter-spacing:-.01em;
-    color:rgba(253,251,247,.95);
+    overflow:hidden;
+}
+
+.spotlight-name{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    display:block;
+    font:300 clamp(40px,6vw,92px)/1.05 "Cormorant Garamond", serif;
+    letter-spacing:-.03em;
+    color:var(--alabaster);
     white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    opacity:0;
+    will-change:transform, opacity;
+    pointer-events:none;
 }
 
-/* Fallback grid while JS has not activated the ring */
-.clients-band:not(.orbit-active) .clients-scene{
-    height:auto;
-    overflow:visible;
-    mask-image:none;
-    -webkit-mask-image:none;
+.spotlight-name.is-active{
+    opacity:1;
 }
 
-.clients-band:not(.orbit-active) .clients-scene::before{
-    display:none;
+.spotlight-progress{
+    position:relative;
+    width:100%;
+    height:1px;
+    background:rgba(212,175,55,.16);
+    overflow:hidden;
 }
 
-.clients-band:not(.orbit-active) .clients-ring{
-    position:static;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    column-gap:4vw;
-}
-
-.clients-band:not(.orbit-active) .client-item{
-    position:static;
-    transform:none !important;
-    opacity:1 !important;
-    filter:none !important;
-    padding:22px 0;
-    border-bottom:1px solid rgba(212,175,55,.12);
-    justify-content:flex-start;
-    will-change:auto;
-}
-
-.clients-band:not(.orbit-active) .client-name{
-    font-size:clamp(17px,1.5vw,20px);
-    color:rgba(253,251,247,.85);
-    white-space:normal;
+.spotlight-progress-fill{
+    position:absolute;
+    inset:0;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left center;
+    will-change:transform;
 }
 
 /* =========================================================
@@ -869,10 +859,6 @@ h3{ font-size:42px; }
     color:var(--alabaster);
 }
 
-/* =========================================================
-   FOOTER BOTTOM / SOCIALS
-   ========================================================= */
-
 .footer-bottom{
     width:min(1280px,90vw);
     margin:45px auto 0;
@@ -998,27 +984,18 @@ h3{ font-size:42px; }
     .grid2,
     .contact-grid{ grid-template-columns:1fr; gap:45px; }
 
-    .pillar{
-        padding:45px 0;
-    }
+    .pillar{ padding:45px 0; }
     .pillar-grid,
     .pillar-grid.two{ grid-template-columns:1fr; }
 
     .form{ grid-template-columns:1fr; }
     .field.full{ grid-column:auto; }
 
-    .clients-stage{
-        padding:90px 0 80px;
-        gap:34px;
-    }
+    .clients-band{ padding:90px 0 80px; }
+    .clients-head{ margin-bottom:50px; }
     .clients-band h2{ font-size:clamp(38px,7vw,58px); }
-    .clients-scene{ height:220px; }
-    .client-name{ font-size:clamp(20px,3.4vw,30px); }
-
-    .clients-band:not(.orbit-active) .clients-ring{
-        grid-template-columns:repeat(2,1fr);
-    }
-    .clients-band:not(.orbit-active) .client-name{ font-size:17px; }
+    .spotlight-stage{ min-height:80px; }
+    .spotlight-name{ font-size:clamp(34px,7vw,56px); }
 
     .footer-grid{ display:block; }
     .footer-contact{
@@ -1066,9 +1043,7 @@ h3{ font-size:42px; }
     }
     .hero-bottom{ margin-top:30px; }
 
-    .pillar{
-        padding:40px 0;
-    }
+    .pillar{ padding:40px 0; }
     .pillar-body h3{ font-size:36px; }
     .pillar-item{ padding:22px 18px; }
     .pillar-item h4{ font-size:20px; }
@@ -1090,20 +1065,13 @@ h3{ font-size:42px; }
     .index-btn{ font-size:10px; min-height:34px; padding:8px 10px; }
     .admin-login-btn{ font-size:7px; letter-spacing:.17em; }
 
-    .clients-stage{
-        padding:80px 0 70px;
-        gap:26px;
-    }
+    .clients-band{ padding:70px 0 60px; }
+    .clients-head{ margin-bottom:40px; }
     .clients-band h2{ font-size:38px; }
     .clients-lead{ font-size:11.5px; }
-    .clients-scene{ height:170px; }
-    .client-name{ font-size:20px; }
-
-    .clients-band:not(.orbit-active) .clients-ring{
-        grid-template-columns:1fr;
-    }
-    .clients-band:not(.orbit-active) .client-name{ font-size:16px; }
-    .clients-band:not(.orbit-active) .client-item{ padding:16px 0; }
+    .spotlight-stage{ min-height:60px; }
+    .spotlight-name{ font-size:clamp(28px,9vw,42px); }
+    .spotlight-counter #spotlightCurrent{ font-size:26px; }
 
     .footer-contact{ width:88vw; gap:30px; }
     .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
@@ -1134,4 +1102,5 @@ h3{ font-size:42px; }
         transition-duration:.01ms!important;
         scroll-behavior:auto!important;
     }
+    .spotlight-name{ opacity:1!important; transform:none!important; position:static; }
 }
