@@ -92,7 +92,7 @@ main, section{ overflow-x:clip; }
     align-items:center;
     justify-content:flex-start;
     margin:0;
-    padding:0px 0 0px 22px;
+    padding:0 0 0 22px;
     position:relative;
     z-index:1;
     flex-shrink:0;
@@ -371,7 +371,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   HERO — full-width image with overlay text
+   HERO
    ========================================================= */
 
 .hero{
@@ -802,19 +802,24 @@ h3{ font-size:42px; }
     align-items:flex-end;
 }
 
+/* ===== Alabaster band — logo strip ===== */
+
 .footer-logo-wrap{
-    width:min(920px,92vw);
-    margin:70px auto 20px;
-    padding:0;
-    background:transparent;
+    width:100%;
+    margin:70px 0 0;
+    padding:70px 0;
+    background:var(--alabaster);
     display:flex;
     justify-content:center;
+    box-sizing:border-box;
+    border-top:1px solid rgba(212,175,55,.35);
+    border-bottom:1px solid rgba(212,175,55,.35);
 }
 
 .footer-logo-mark{
     display:block;
-    width:100%;
-    height:300px;
+    width:min(920px,92vw);
+    height:260px;
     background-image:url("logo.png?v=2");
     background-repeat:no-repeat;
     background-position:center center;
@@ -822,6 +827,8 @@ h3{ font-size:42px; }
     border:0;
     pointer-events:none;
 }
+
+/* ===== end alabaster band ===== */
 
 .footer-brand{
     font:40px "Cormorant Garamond";
@@ -940,7 +947,7 @@ h3{ font-size:42px; }
     .img, .img-lg, .img-md, .img-sm{ height:360px; }
 
     .header{ height:68px; padding:0 20px 0 0; }
-    .logo{ height:68px; padding:2px 0 2px 18px; }
+    .logo{ height:68px; padding:0 0 0 18px; }
     .logo-img{ max-width:min(340px,52vw); }
 
     .header-right{ gap:10px; padding-right:6px; }
@@ -984,8 +991,8 @@ h3{ font-size:42px; }
     .footer-contact-item .value,
     .footer-contact-item a{ font-size:13px; overflow-wrap:anywhere; word-break:break-word; }
 
-    .footer-logo-wrap{ width:min(520px,92vw); margin-bottom:24px; }
-    .footer-logo-mark{ height:130px; }
+    .footer-logo-wrap{ padding:50px 0; margin:50px 0 0; }
+    .footer-logo-mark{ height:180px; width:min(520px,92vw); }
     .footer-brand{ margin-bottom:25px; }
 }
 
@@ -1004,7 +1011,7 @@ h3{ font-size:42px; }
     .section{ padding:80px 0; }
 
     .header{ height:64px; padding:0 14px 0 0; }
-    .logo{ height:64px; padding:2px 0 2px 14px; }
+    .logo{ height:64px; padding:0 0 0 14px; }
     .logo-img{ max-width:min(230px,58vw); }
 
     .header-right{ gap:8px; padding-right:4px; }
@@ -1058,6 +1065,9 @@ h3{ font-size:42px; }
     .footer-contact-item .label{ font-size:7px; letter-spacing:.14em; }
     .footer-contact-item .value,
     .footer-contact-item a{ font-size:14px; line-height:1.6; }
+
+    .footer-logo-wrap{ padding:36px 0; margin:36px 0 0; }
+    .footer-logo-mark{ height:130px; width:88vw; }
 
     .footer-bottom{ width:88vw; margin-top:38px; padding-top:20px; gap:11px; }
     .footer-socials{ gap:11px; }
@@ -1421,7 +1431,7 @@ h3{ font-size:42px; }
 </div>
 </div>
 
-<div class="container footer-logo-wrap">
+<div class="footer-logo-wrap">
     <span class="footer-logo-mark" role="img" aria-label="FIZZA INTERIOR — Crafting Landmarks"></span>
 </div>
 
