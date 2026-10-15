@@ -1,1 +1,1732 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIZZA INTERIOR — Turnkey Contracting, Civil Finishing & Acoustic Interiors</title>
+<meta name="description" content="FIZZA INTERIOR is a turnkey contracting and interior execution company delivering residential, commercial, civil finishing, false-ceiling, acoustic and home automation interiors across Mumbai.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   FIZZA INTERIOR — 60·30·10 LUXURY PALETTE
+   60% Luxury Alabaster       #FDFBF7
+   30% Deep Emerald Forest    #0B3C26
+   10% Brushed Champagne Gold #D4AF37
+   ========================================================= */
+
+:root{
+    --alabaster:#FDFBF7;
+    --emerald:#0B3C26;
+    --emerald-deep:#082E1D;
+    --emerald-soft:#0E4A2F;
+
+    --gold:#D4AF37;
+    --gold-soft:#C9A230;
+    --gold-deep:#A8871F;
+
+    --ink:#0B3C26;
+    --body-text:#33453C;
+    --body-muted:#5C6B62;
+    --muted:#8FA398;
+    --muted-light:#B8C5BD;
+
+    --line:rgba(11,60,38,.16);
+    --line-dark:rgba(11,60,38,.14);
+    --line-light:rgba(253,251,247,.16);
+
+    --paper:var(--alabaster);
+    --bg:var(--alabaster);
+}
+
+*{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; overflow-x:hidden; }
+
+body{
+    margin:0;
+    background:var(--alabaster);
+    color:var(--body-text);
+    font-family:Inter,sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{ text-decoration:none; color:inherit; }
+
+button{
+    font:inherit;
+    color:inherit;
+    background:none;
+    border:0;
+    cursor:pointer;
+}
+
+main, section{ overflow-x:clip; }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+    position:fixed;
+    z-index:50;
+    top:0; left:0; right:0;
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--alabaster);
+    border-bottom:1px solid rgba(212,175,55,.35);
+    box-shadow:0 1px 0 rgba(11,60,38,.04);
+    padding:0 24px 0 0;
+}
+
+.logo{
+    height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    margin:0;
+    padding:0 0 0 22px;
+    position:relative;
+    z-index:1;
+    flex-shrink:0;
+}
+
+.logo-img{
+    display:block;
+    height:100%;
+    width:auto;
+    max-width:min(440px,46vw);
+    object-fit:contain;
+    object-position:left center;
+    pointer-events:none;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+.header-right{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    padding-right:8px;
+}
+
+.visit-btn{
+    font-size:11px;
+    letter-spacing:.17em;
+    line-height:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:38px;
+    padding:10px 12px 9px;
+    text-transform:uppercase;
+    color:var(--emerald);
+    border-bottom:1px solid var(--gold);
+    transition:color .3s ease,border-color .3s ease;
+}
+
+.visit-btn:hover,
+.visit-btn:focus-visible{
+    color:var(--gold-deep);
+    border-bottom-color:var(--gold-deep);
+    outline:none;
+}
+
+.admin-login-btn,
+.index-btn{
+    font:500 10px/1 Inter,sans-serif;
+    letter-spacing:.22em;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:36px;
+    min-width:128px;
+    padding:0 18px;
+    text-transform:uppercase;
+    background:transparent;
+    border-radius:0;
+    white-space:nowrap;
+    cursor:pointer;
+    position:relative;
+    transition:color .35s ease, background-color .35s ease, border-color .35s ease;
+}
+
+.index-btn{
+    color:var(--emerald);
+    border:1px solid rgba(212,175,55,.70);
+}
+
+.index-btn:hover,
+.index-btn:focus-visible{
+    color:var(--emerald);
+    background:var(--gold);
+    border-color:var(--gold);
+    outline:none;
+}
+
+.admin-login-btn{
+    color:var(--body-muted);
+    border:1px solid rgba(11,60,38,.20);
+}
+
+.admin-login-btn:hover,
+.admin-login-btn:focus-visible{
+    color:var(--alabaster);
+    background:var(--emerald);
+    border-color:var(--emerald);
+    outline:none;
+}
+
+/* =========================================================
+   INDEX PANEL
+   ========================================================= */
+
+.index-panel{
+    position:fixed;
+    z-index:60;
+    right:4vw;
+    top:75px;
+    width:min(460px,92vw);
+    background:var(--emerald);
+    border:1px solid rgba(212,175,55,.22);
+    padding:28px;
+    display:none;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+    max-height:calc(100vh - 100px);
+    overflow-y:auto;
+}
+
+.index-panel.open{ display:block; }
+
+.index-item{ border-bottom:1px solid var(--line-light); }
+
+.index-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.index-link{
+    display:flex;
+    align-items:center;
+    flex:1;
+    padding:15px 0;
+    font:27px "Cormorant Garamond";
+    color:var(--alabaster);
+    transition:color .25s ease;
+}
+
+.index-link:hover{ color:var(--gold); }
+
+.index-toggle{
+    width:32px;
+    height:32px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font:300 20px/1 Inter,sans-serif;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:50%;
+    transition:transform .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+
+.index-toggle:hover,
+.index-toggle:focus-visible{
+    background:var(--gold);
+    color:var(--emerald);
+    border-color:var(--gold);
+    outline:none;
+}
+
+.index-item.open .index-toggle{
+    transform:rotate(45deg);
+    background:var(--gold);
+    color:var(--emerald);
+    border-color:var(--gold);
+}
+
+.index-submenu{ display:none; padding:4px 0 18px 0; }
+
+.index-item.open .index-submenu{
+    display:block;
+    animation:indexSubFade .28s ease;
+}
+
+@keyframes indexSubFade{
+    from{ opacity:0; transform:translateY(-4px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.index-submenu a{
+    display:block;
+    padding:7px 0;
+    font:400 11px/1.5 Inter,sans-serif;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted-light);
+    transition:color .25s ease, padding-left .25s ease;
+}
+
+.index-submenu a:hover{ color:var(--gold); padding-left:6px; }
+
+.index-submenu a:before{
+    content:"—";
+    color:var(--gold);
+    margin-right:10px;
+    display:inline-block;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.page{ min-height:100vh; scroll-margin-top:78px; }
+
+.eyebrow{
+    font-size:8px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--body-muted);
+}
+
+h1, h2, h3{
+    font-family:"Cormorant Garamond";
+    font-weight:300;
+    line-height:.88;
+    margin:0;
+    color:var(--emerald);
+}
+
+h1{ font-size:clamp(80px,13vw,190px); letter-spacing:-.055em; }
+h2{ font-size:clamp(58px,8vw,115px); letter-spacing:-.04em; }
+h3{ font-size:42px; }
+
+.lead{
+    font-size:13px;
+    line-height:1.9;
+    color:var(--body-text);
+    max-width:490px;
+}
+
+.container{
+    width:min(1280px,90vw);
+    margin:auto;
+}
+
+.section{ padding:125px 0; }
+
+.paper{
+    background:var(--alabaster);
+    color:var(--body-text);
+}
+
+.paper h1, .paper h2, .paper h3{ color:var(--emerald); }
+.paper .lead{ color:var(--body-text); }
+.paper .eyebrow{ color:var(--body-muted); }
+
+.paper .line{
+    background:var(--line-dark);
+    height:1px;
+    margin:38px 0;
+}
+
+.paper .tag{
+    border-color:rgba(11,60,38,.22);
+    color:var(--emerald);
+}
+
+.line{
+    height:1px;
+    background:var(--line);
+    margin:38px 0;
+}
+
+/* =========================================================
+   SECTION LABELS
+   ========================================================= */
+
+.section-script-heading{
+    font-family:"Inter",sans-serif;
+    font-size:11px;
+    line-height:1.4;
+    font-weight:500;
+    letter-spacing:.30em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    display:inline-block;
+    margin:0 0 22px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(168,135,31,.45);
+    white-space:nowrap;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+    height:100vh;
+    min-height:720px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:var(--emerald);
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    filter:brightness(.55) saturate(.72);
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, #05170Fd9 0, #05170F99 42%, #05170F1a 100%);
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:min(640px,90vw);
+    background:transparent;
+    padding:0;
+    margin-left:max(5vw, calc((100vw - 1280px)/2));
+    box-shadow:none;
+    display:block;
+}
+
+.hero .eyebrow{
+    color:var(--gold);
+    font-weight:500;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+
+.hero h1{
+    color:var(--alabaster);
+    margin-top:18px;
+    text-shadow:0 6px 40px rgba(0,0,0,.55);
+}
+
+.hero .lead{
+    color:rgba(253,251,247,.86);
+    max-width:520px;
+    margin:0 0 18px;
+    text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+
+.hero-bottom{ display:block; margin-top:32px; }
+.hero-cta{ margin-top:30px; }
+
+/* =========================================================
+   IMAGE SYSTEM
+   ========================================================= */
+
+.grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8vw;
+    align-items:center;
+}
+
+.img{
+    overflow:hidden;
+    background:#EFE9DD;
+    height:460px;
+}
+
+.img img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    filter:saturate(.72);
+    transition:transform .8s ease;
+}
+
+.img:hover img{ transform:scale(1.045); }
+
+.img-lg, .img-md, .img-sm{ height:460px; }
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--gold);
+    color:var(--emerald);
+    border:1px solid var(--gold);
+    padding:15px 22px;
+    font-size:8px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:500;
+    transition:background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+.btn:hover{
+    background:var(--emerald);
+    color:var(--gold);
+    border-color:var(--emerald);
+}
+
+/* =========================================================
+   SERVICE PILLARS
+   ========================================================= */
+
+.pillars{ display:grid; gap:0; margin-top:80px; }
+
+.pillar{
+    border-top:1px solid var(--line-dark);
+    padding:60px 0;
+}
+
+.pillar:last-of-type{ border-bottom:1px solid var(--line-dark); }
+
+.pillar-body h3{
+    font-size:clamp(38px,4.4vw,62px);
+    color:var(--emerald);
+    margin:0 0 22px;
+    letter-spacing:-.03em;
+}
+
+.pillar-intro{
+    font-size:12px;
+    line-height:1.9;
+    color:var(--body-muted);
+    max-width:640px;
+    margin:0 0 36px;
+}
+
+.pillar-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    background:rgba(212,175,55,.20);
+}
+
+.pillar-grid.two{ grid-template-columns:repeat(2,1fr); }
+
+.pillar-item{
+    background:var(--emerald);
+    padding:28px 24px;
+    transition:background-color .35s ease;
+}
+
+.pillar-item:hover{ background:var(--emerald-soft); }
+
+.pillar-item h4{
+    font-family:"Cormorant Garamond";
+    font-size:22px;
+    font-weight:400;
+    line-height:1.15;
+    color:var(--alabaster);
+    margin:0 0 12px;
+    letter-spacing:-.01em;
+}
+
+.pillar-item p{
+    font-size:10.5px;
+    line-height:1.7;
+    color:var(--muted-light);
+    margin:0;
+}
+
+.pillar-item .pi-tag{
+    display:inline-block;
+    font:500 7px/1 Inter,sans-serif;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+}
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.tags{ display:flex; gap:8px; flex-wrap:wrap; }
+
+.tag{
+    border:1px solid var(--line-dark);
+    padding:7px 9px;
+    font-size:7px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--emerald);
+}
+
+/* =========================================================
+   TRUSTED CLIENTS — names styled as gold eyebrows
+   ========================================================= */
+
+.clients-band{
+    position:relative;
+    background:var(--emerald);
+    padding:120px 0;
+    border-top:1px solid rgba(212,175,55,.20);
+    border-bottom:1px solid rgba(212,175,55,.20);
+    overflow:hidden;
+    scroll-margin-top:78px;
+}
+
+.clients-band:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:repeating-linear-gradient(
+        90deg,
+        rgba(212,175,55,.06) 0,
+        rgba(212,175,55,.06) 1px,
+        transparent 1px,
+        transparent 16px
+    );
+    mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 25%, #000 75%, transparent 100%);
+    opacity:.5;
+    pointer-events:none;
+}
+
+.clients-head{
+    position:relative;
+    z-index:2;
+    margin-bottom:70px;
+}
+
+.clients-head .section-script-heading{
+    color:var(--gold);
+    border-bottom-color:rgba(212,175,55,.55);
+}
+
+.clients-band h2{
+    color:var(--alabaster);
+    font-size:clamp(44px,5.4vw,78px);
+    letter-spacing:-.04em;
+    margin:0;
+}
+
+.clients-marquee{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    padding:40px 0;
+    mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.clients-track{
+    display:flex;
+    align-items:center;
+    gap:70px;
+    width:max-content;
+    animation:marqueeScroll 140s linear infinite;
+    will-change:transform;
+}
+
+.client-name{
+    display:inline-block;
+    font:500 clamp(12px,1.05vw,15px)/1.15 Inter,sans-serif;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:var(--gold);
+    text-shadow:0 0 22px rgba(212,175,55,.28);
+    white-space:nowrap;
+    flex-shrink:0;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(212,175,55,.55);
+    transition:color .35s ease, border-color .35s ease, text-shadow .35s ease;
+}
+
+.client-name:hover{
+    color:var(--gold-soft);
+    border-bottom-color:var(--gold-soft);
+    text-shadow:0 0 30px rgba(212,175,55,.5);
+}
+
+@keyframes marqueeScroll{
+    from{ transform:translate3d(0,0,0); }
+    to{ transform:translate3d(-50%,0,0); }
+}
+
+.clients-marquee:hover .clients-track{
+    animation-play-state:paused;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:8vw;
+}
+
+.form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.field{
+    border-bottom:1px solid var(--line-dark);
+    padding:12px 0;
+}
+
+.field.full{ grid-column:1/-1; }
+
+.field label{
+    display:block;
+    font-size:8px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--body-muted);
+    margin-bottom:9px;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+    background:none;
+    border:0;
+    outline:0;
+    color:var(--emerald);
+    font:300 14px Inter;
+}
+
+.field textarea{ min-height:120px; resize:vertical; }
+.field option{ background:var(--alabaster); color:var(--emerald); }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+    padding:120px 0 35px;
+    border-top:1px solid rgba(212,175,55,.22);
+    overflow:hidden;
+    background:var(--emerald);
+    color:var(--alabaster);
+}
+
+.footer-contact{
+    width:min(1280px,90vw);
+    margin:72px auto 0;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:7vw;
+    padding-top:30px;
+    border-top:1px solid rgba(212,175,55,.22);
+}
+
+.footer-contact-title{
+    font:300 clamp(44px,5.5vw,78px)/.9 "Cormorant Garamond";
+    letter-spacing:-.035em;
+    margin:0;
+    color:var(--alabaster);
+}
+
+.footer-contact-list{
+    display:grid;
+    gap:18px;
+    align-content:start;
+}
+
+.footer-contact-item{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:20px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(212,175,55,.18);
+}
+
+.footer-contact-item .label{
+    font:500 8px/1 Inter,sans-serif;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    padding-top:4px;
+}
+
+.footer-contact-item .value,
+.footer-contact-item a{
+    font:300 15px/1.65 Inter,sans-serif;
+    color:var(--alabaster);
+}
+
+.footer-contact-item a{ transition:opacity .25s ease; }
+.footer-contact-item a:hover{ opacity:.72; }
+
+.footer-grid{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    align-items:flex-end;
+}
+
+.footer-brand{
+    font:40px "Cormorant Garamond";
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--alabaster);
+}
+
+.footer-bottom{
+    width:min(1280px,90vw);
+    margin:45px auto 0;
+    padding:24px 0 0;
+    border-top:1px solid rgba(212,175,55,.20);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    text-align:center;
+}
+
+.footer-socials{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.footer-socials a{
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(212,175,55,.42);
+    border-radius:50%;
+    color:var(--gold);
+    transition:background-color .25s ease,color .25s ease,transform .25s ease,border-color .25s ease;
+}
+
+.footer-socials a:hover{
+    background:var(--gold);
+    color:var(--emerald);
+    border-color:var(--gold);
+    transform:translateY(-2px);
+}
+
+.footer-socials svg{ width:12px; height:12px; display:block; fill:currentColor; }
+
+.footer-bottom-copy{
+    margin:0;
+    font:400 7px/1.5 Inter,sans-serif;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:rgba(253,251,247,.72);
+}
+
+.footer-legal{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:7px 15px;
+}
+
+.footer-legal a{
+    font:400 7px/1.5 Inter,sans-serif;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    color:rgba(253,251,247,.60);
+    transition:opacity .25s ease;
+}
+
+.footer-legal a:hover{ opacity:.95; }
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    background:var(--emerald);
+    color:var(--alabaster);
+    padding:15px 20px;
+    font-size:9px;
+    letter-spacing:.12em;
+    transform:translateY(150px);
+    transition:.35s;
+    z-index:100;
+    border-left:3px solid var(--gold);
+    max-width:calc(100vw - 48px);
+}
+
+.toast.show{ transform:none; }
+
+/* =========================================================
+   GSAP
+   ========================================================= */
+
+.gsap-heading{
+    will-change:transform,opacity;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media(max-width:850px){
+
+    .img, .img-lg, .img-md, .img-sm{ height:360px; }
+
+    .header{ height:68px; padding:0 20px 0 0; }
+    .logo{ height:68px; padding:0 0 0 18px; }
+    .logo-img{ max-width:min(340px,52vw); }
+
+    .header-right{ gap:10px; padding-right:6px; }
+    .header-right .visit-btn{ display:none; }
+
+    .admin-login-btn,
+    .index-btn{
+        font-size:9px;
+        letter-spacing:.18em;
+        min-height:34px;
+        min-width:108px;
+        padding:0 14px;
+    }
+
+    .section-script-heading{ font-size:10.5px; letter-spacing:.26em; }
+
+    .grid2,
+    .contact-grid{ grid-template-columns:1fr; gap:45px; }
+
+    .pillar{ padding:45px 0; }
+    .pillar-grid,
+    .pillar-grid.two{ grid-template-columns:1fr; }
+
+    .form{ grid-template-columns:1fr; }
+    .field.full{ grid-column:auto; }
+
+    .clients-band{ padding:90px 0; }
+    .clients-head{ margin-bottom:50px; }
+    .clients-band h2{ font-size:clamp(38px,7vw,58px); }
+    .clients-track{ gap:50px; animation-duration:110s; }
+    .client-name{ font-size:12px; letter-spacing:.24em; }
+
+    .footer-grid{ display:block; }
+    .footer-contact{
+        grid-template-columns:1fr;
+        gap:38px;
+        margin-top:58px;
+        padding-top:26px;
+    }
+    .footer-contact-item{ grid-template-columns:78px minmax(0,1fr); gap:14px; align-items:start; }
+    .footer-contact-item .value,
+    .footer-contact-item a{ font-size:13px; overflow-wrap:anywhere; word-break:break-word; }
+
+    .footer-brand{ margin-bottom:25px; }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media(max-width:520px){
+
+    .img, .img-lg, .img-md, .img-sm{ height:300px; }
+
+    h1{ font-size:68px; }
+    h2{ font-size:55px; }
+    h3{ font-size:38px; }
+
+    .section{ padding:80px 0; }
+
+    .header{ height:64px; padding:0 14px 0 0; }
+    .logo{ height:64px; padding:0 0 0 14px; }
+    .logo-img{ max-width:min(230px,58vw); }
+
+    .header-right{ gap:8px; padding-right:4px; }
+
+    .admin-login-btn,
+    .index-btn{
+        font-size:8px;
+        letter-spacing:.14em;
+        min-height:32px;
+        min-width:0;
+        padding:0 10px;
+    }
+
+    .hero{ min-height:650px; }
+    .hero-content{
+        width:88vw;
+        margin-left:6vw;
+    }
+    .hero h1{ font-size:64px; }
+
+    .pillar{ padding:40px 0; }
+    .pillar-body h3{ font-size:36px; }
+    .pillar-item{ padding:22px 18px; }
+    .pillar-item h4{ font-size:20px; }
+
+    .img-lg{ height:520px; }
+
+    .index-panel{
+        right:4vw;
+        left:4vw;
+        width:auto;
+        top:65px;
+        padding:22px;
+    }
+    .index-link{ font-size:22px; }
+    .index-submenu{ padding-left:30px; }
+    .index-submenu a{ font-size:10.5px; }
+
+    .section-script-heading{ font-size:9.5px; letter-spacing:.22em; }
+
+    .clients-band{ padding:70px 0; }
+    .clients-head{ margin-bottom:40px; }
+    .clients-band h2{ font-size:38px; }
+    .clients-marquee{ padding:32px 0; }
+    .clients-track{ gap:36px; animation-duration:90s; }
+    .client-name{ font-size:11px; letter-spacing:.22em; padding-bottom:10px; }
+
+    .footer-contact{ width:88vw; gap:30px; }
+    .footer-contact-item{ grid-template-columns:68px minmax(0,1fr); gap:12px; }
+    .footer-contact-item .label{ font-size:7px; letter-spacing:.14em; }
+    .footer-contact-item .value,
+    .footer-contact-item a{ font-size:14px; line-height:1.6; }
+
+    .footer-bottom{ width:88vw; margin-top:38px; padding-top:20px; gap:11px; }
+    .footer-socials{ gap:11px; }
+    .footer-socials a{ width:26px; height:26px; }
+    .footer-socials svg{ width:11px; height:11px; }
+    .footer-bottom-copy{ font-size:6px; letter-spacing:.11em; }
+    .footer-legal{ gap:6px 11px; }
+    .footer-legal a{ font-size:6px; letter-spacing:.08em; }
+
+    .toast{ left:16px; right:16px; bottom:16px; text-align:center; }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
+        scroll-behavior:auto!important;
+    }
+    .clients-track{
+        animation:none!important;
+        transform:none!important;
+        flex-wrap:wrap;
+        justify-content:center;
+        row-gap:20px;
+    }
+    .client-name{ white-space:normal; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<a class="logo" href="#home" aria-label="FIZZA Interior Home">
+    <img class="logo-img" src="logo.png?v=2" alt="FIZZA INTERIOR — Timeless Elegant Spaces">
+</a>
+<div class="header-right">
+    <a class="visit-btn" href="#contact">Private consultation</a>
+    <button class="admin-login-btn" type="button" aria-label="Admin Login">Admin Login</button>
+    <button class="index-btn" type="button" onclick="toggleIndex()" aria-expanded="false">Index +</button>
+</div>
+</header>
+
+
+<nav class="index-panel" id="indexPanel" aria-label="Site index">
+
+<div class="eyebrow" style="color:var(--gold);margin-bottom:6px">
+    FIZZA INTERIOR / Index
+</div>
+
+<div class="index-item">
+    <div class="index-row">
+        <a href="#home" class="index-link" onclick="indexNav(event, this)">Home</a>
+    </div>
+</div>
+
+<div class="index-item">
+    <div class="index-row">
+        <a href="#about" class="index-link" onclick="indexNav(event, this)">About</a>
+    </div>
+</div>
+
+<div class="index-item">
+    <div class="index-row">
+        <a href="#services" class="index-link" onclick="indexNav(event, this)">Services</a>
+        <button class="index-toggle" type="button" onclick="toggleSubmenu(this)" aria-label="Show Services submenu" aria-expanded="false">+</button>
+    </div>
+    <div class="index-submenu">
+        <a href="#services" onclick="indexNav(event, this)">Turnkey Interior Solutions</a>
+        <a href="#services" onclick="indexNav(event, this)">Civil &amp; Finishing Works</a>
+        <a href="#services" onclick="indexNav(event, this)">False Ceiling &amp; Surface Art</a>
+        <a href="#services" onclick="indexNav(event, this)">Acoustic &amp; Soundproofing</a>
+        <a href="#services" onclick="indexNav(event, this)">Home Automation</a>
+    </div>
+</div>
+
+<div class="index-item">
+    <div class="index-row">
+        <a href="#clients" class="index-link" onclick="indexNav(event, this)">Clients</a>
+    </div>
+</div>
+
+<div class="index-item">
+    <div class="index-row">
+        <a href="#contact" class="index-link" onclick="indexNav(event, this)">Contact</a>
+    </div>
+</div>
+
+</nav>
+
+
+<main id="home">
+
+<section class="hero page">
+
+<div class="hero-bg" style="background-image:url('hero-staircase.jpg')"></div>
+
+<div class="hero-content">
+
+<div class="eyebrow">Turnkey Contracting House · 2012</div>
+
+<h1>TIMELESS<br>ELEGANT<br>SPACES.</h1>
+
+<div class="hero-bottom">
+<p class="lead">
+    A turnkey contracting studio for discerning homeowners,
+    developers and real-estate clients. From shell to final
+    styling, one team carries the project through.
+</p>
+</div>
+
+<div class="hero-cta">
+    <a class="btn" href="#contact">Get a Quote →</a>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="about" class="section page paper">
+<div class="container grid2">
+<div>
+<div class="eyebrow section-script-heading">About &amp; the Turnkey Advantage</div>
+<h2>ONE TEAM.<br>ONE STANDARD.</h2>
+<p class="lead" style="margin-top:38px">
+    FIZZA INTERIOR operates at the intersection of
+    real estate, architecture, interior design, acoustics
+    and execution. We coordinate the details that turn a
+    premium property into a finished address.
+</p>
+<p class="lead" style="margin-top:22px">
+    The Turnkey Advantage is simple: a single point of
+    accountability from first brief to final handover.
+    No hand-offs between vendors. No gaps in sequence.
+    One standard held across every trade.
+</p>
+<div class="line"></div>
+<div class="tags">
+    <span class="tag">Single-point delivery</span>
+    <span class="tag">In-house trades</span>
+    <span class="tag">Fixed programme</span>
+    <span class="tag">Protected finish quality</span>
+</div>
+</div>
+<div class="img img-lg">
+    <img src="position.jpg" alt="FIZZA Interior — the turnkey advantage">
+</div>
+</div>
+</section>
+
+</main>
+
+
+<section id="services" class="section page paper">
+<div class="container">
+<div class="eyebrow section-script-heading">Services</div>
+<h1>FROM<br>SHELL<br>TO SOUL.</h1>
+<p class="lead" style="margin:45px 0 20px">
+    FIZZA INTERIOR delivers the full built environment
+    in five disciplined pillars — each one a specialist
+    team, all coordinated under a single turnkey contract.
+</p>
+
+<div class="pillars">
+
+<article class="pillar"><div class="pillar-body">
+<h3>Turnkey Interior Solutions</h3>
+<p class="pillar-intro">End-to-end design and execution for premium residential and commercial spaces — one contract, one site team, one final handover.</p>
+<div class="pillar-grid">
+<div class="pillar-item"><span class="pi-tag">Residential</span><h4>Residential Interior Fit-Outs</h4><p>Full home transformations, space planning and premium styling for apartments, villas and penthouses.</p></div>
+<div class="pillar-item"><span class="pi-tag">Commercial</span><h4>Commercial &amp; Corporate Workspaces</h4><p>Full-scale office renovations, bare-shell fit-outs, conference rooms, executive cabins and retail outlets.</p></div>
+<div class="pillar-item"><span class="pi-tag">Joinery</span><h4>Customized Furniture &amp; Joinery</h4><p>Bespoke wardrobe manufacturing, modular kitchen setups, storage units and loose furniture tailored to the space.</p></div>
+</div>
+</div></article>
+
+<article class="pillar"><div class="pillar-body">
+<h3>Civil &amp; Finishing Works</h3>
+<p class="pillar-intro">Structural finishing and surface preparation executed to architectural tolerance — the invisible discipline behind every precise interior.</p>
+<div class="pillar-grid">
+<div class="pillar-item"><span class="pi-tag">Exterior</span><h4>External Plastering &amp; Painting</h4><p>High-durability external plastering, weather-resistant painting, texture coatings and full scaffolding execution.</p></div>
+<div class="pillar-item"><span class="pi-tag">Interior</span><h4>Internal Plastering &amp; Surface Preparation</h4><p>Levelled internal wall plastering, smooth wall putty application and architectural internal painting.</p></div>
+<div class="pillar-item"><span class="pi-tag">Flooring</span><h4>Premium Tile &amp; Flooring Layouts</h4><p>Precision installation of vitrified tiles, marble, granite, ceramic tiling and specialised wall cladding.</p></div>
+</div>
+</div></article>
+
+<article class="pillar"><div class="pillar-body">
+<h3>False Ceiling &amp; Surface Art</h3>
+<p class="pillar-intro">Decorative and structural overhead works — where engineering meets ornament, and the ceiling becomes part of the design.</p>
+<div class="pillar-grid two">
+<div class="pillar-item"><span class="pi-tag">Gypsum</span><h4>Gypsum False Ceilings &amp; Partitions</h4><p>Modern grid ceilings, drop ceilings and functional space partition walls for residential and commercial interiors.</p></div>
+<div class="pillar-item"><span class="pi-tag">POP</span><h4>Plaster of Paris (POP) Artistry</h4><p>Elegant cornices, traditional mouldings, custom ceiling domes and decorative wall finishes.</p></div>
+</div>
+</div></article>
+
+<article class="pillar"><div class="pillar-body">
+<h3>Acoustic &amp; Soundproofing Engineering</h3>
+<p class="pillar-intro">A specialist niche for high-value spaces — studios, home theatres, auditoriums and boardrooms where silence is part of the spec.</p>
+<div class="pillar-grid two">
+<div class="pillar-item"><span class="pi-tag">Barrier</span><h4>Architectural Soundproofing</h4><p>High-performance sound barrier installations for walls, floors and ceilings.</p></div>
+<div class="pillar-item"><span class="pi-tag">Treatment</span><h4>Acoustic Treatment &amp; Insulation</h4><p>Echo reduction, acoustic panelling, perforated ceiling tiles and fabric padding for home theatres, recording studios, auditoriums and conference rooms.</p></div>
+</div>
+</div></article>
+
+<article class="pillar"><div class="pillar-body">
+<h3>Home Automation &amp; Smart Living</h3>
+<p class="pillar-intro">Intelligent systems engineered into the architecture — lighting, climate, security and entertainment working as one seamless, voice-controlled environment.</p>
+<div class="pillar-grid">
+<div class="pillar-item"><span class="pi-tag">Lighting &amp; Climate</span><h4>Smart Lighting, Shading &amp; HVAC</h4><p>Scene-based lighting, motorised blinds and zoned climate control with app, voice and wall-panel command.</p></div>
+<div class="pillar-item"><span class="pi-tag">Security</span><h4>Access Control &amp; Surveillance</h4><p>Smart locks, video door phones, CCTV and sensor networks with remote monitoring and automated alerts.</p></div>
+<div class="pillar-item"><span class="pi-tag">AV &amp; Control</span><h4>Multi-Room Audio &amp; Centralised Hubs</h4><p>Distributed audio, home theatre and single-app control across lighting, climate, security and curtains.</p></div>
+</div>
+</div></article>
+
+</div>
+</div>
+</section>
+
+
+<section id="clients" class="clients-band">
+
+<div class="container clients-head">
+    <div class="eyebrow section-script-heading">Names You'll Recognise</div>
+    <h2>OUR TRUSTED<br>CLIENTS.</h2>
+</div>
+
+<div class="clients-marquee">
+    <div class="clients-track">
+
+        <span class="client-name">Larsen &amp; Toubro Ltd</span>
+        <span class="client-name">Oberoi Realty</span>
+        <span class="client-name">Satellite Group</span>
+        <span class="client-name">Neelkanth Group</span>
+        <span class="client-name">Sheth Developers Pvt. Ltd.</span>
+        <span class="client-name">Naman Group</span>
+        <span class="client-name">Wadhwa Group</span>
+        <span class="client-name">Puranik Developers</span>
+        <span class="client-name">Yashraj Developers</span>
+        <span class="client-name">Lokhandwala Const. Pvt. Ltd.</span>
+        <span class="client-name">Shreelaxmi Developers</span>
+        <span class="client-name">City Corporation Ltd.</span>
+        <span class="client-name">Ashford HSG Corporation</span>
+        <span class="client-name">Ajmera Group</span>
+        <span class="client-name">Bafna Builders &amp; Developers</span>
+        <span class="client-name">Ashapura Developers</span>
+        <span class="client-name">Ashapura &amp; Ratan Developers</span>
+        <span class="client-name">Kalpataru Enterprises</span>
+        <span class="client-name">Tata Housing</span>
+        <span class="client-name">Sheth N Chopra Developers</span>
+        <span class="client-name">Gee Cee Venture Pvt. Ltd.</span>
+
+        <span class="client-name" aria-hidden="true">Larsen &amp; Toubro Ltd</span>
+        <span class="client-name" aria-hidden="true">Oberoi Realty</span>
+        <span class="client-name" aria-hidden="true">Satellite Group</span>
+        <span class="client-name" aria-hidden="true">Neelkanth Group</span>
+        <span class="client-name" aria-hidden="true">Sheth Developers Pvt. Ltd.</span>
+        <span class="client-name" aria-hidden="true">Naman Group</span>
+        <span class="client-name" aria-hidden="true">Wadhwa Group</span>
+        <span class="client-name" aria-hidden="true">Puranik Developers</span>
+        <span class="client-name" aria-hidden="true">Yashraj Developers</span>
+        <span class="client-name" aria-hidden="true">Lokhandwala Const. Pvt. Ltd.</span>
+        <span class="client-name" aria-hidden="true">Shreelaxmi Developers</span>
+        <span class="client-name" aria-hidden="true">City Corporation Ltd.</span>
+        <span class="client-name" aria-hidden="true">Ashford HSG Corporation</span>
+        <span class="client-name" aria-hidden="true">Ajmera Group</span>
+        <span class="client-name" aria-hidden="true">Bafna Builders &amp; Developers</span>
+        <span class="client-name" aria-hidden="true">Ashapura Developers</span>
+        <span class="client-name" aria-hidden="true">Ashapura &amp; Ratan Developers</span>
+        <span class="client-name" aria-hidden="true">Kalpataru Enterprises</span>
+        <span class="client-name" aria-hidden="true">Tata Housing</span>
+        <span class="client-name" aria-hidden="true">Sheth N Chopra Developers</span>
+        <span class="client-name" aria-hidden="true">Gee Cee Venture Pvt. Ltd.</span>
+
+    </div>
+</div>
+
+</section>
+
+
+<section id="contact" class="section page paper">
+<div class="container contact-grid">
+<div>
+<div class="eyebrow section-script-heading">Contact</div>
+<h1>BUILD<br>SOMETHING<br>EXACT.</h1>
+<p class="lead" style="margin-top:40px">
+    Tell us about the property, stage of construction
+    and level of involvement you require. We will arrange
+    a private consultation.
+</p>
+<div class="line"></div>
+<div class="eyebrow" style="color:var(--emerald)">FIZZA INTERIOR</div>
+<p style="font-size:12px;line-height:1.9;color:var(--body-text)">
+    Turnkey contracting · Civil finishing<br>
+    Residential &amp; commercial interiors<br>
+    False ceiling · Acoustic engineering · Home automation
+</p>
+</div>
+
+<form class="form" onsubmit="submitForm(event)">
+<div class="field"><label>Name</label><input required placeholder="Your name"></div>
+<div class="field"><label>Phone</label><input required type="tel" placeholder="+91"></div>
+<div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+<div class="field"><label>Project type</label>
+<select>
+<option>Residential fit-out</option>
+<option>Villa / Penthouse</option>
+<option>Commercial / Corporate workspace</option>
+<option>Retail / Boutique / F&amp;B</option>
+<option>Show home / Sales gallery</option>
+<option>Acoustic / Soundproofing</option>
+<option>Home Automation / Smart Home</option>
+<option>Civil &amp; finishing only</option>
+<option>False ceiling / POP only</option>
+</select>
+</div>
+<div class="field"><label>Project location</label><input placeholder="City / Locality"></div>
+<div class="field"><label>Approx. area (sq ft)</label><input placeholder="e.g. 2,400"></div>
+<div class="field full"><label>Project details</label><textarea placeholder="Construction stage, scope of work, timeline and what you need us to handle"></textarea></div>
+<div class="field full" style="border:0"><button class="btn" type="submit">Request Private Consultation →</button></div>
+</form>
+</div>
+</section>
+
+
+<footer class="footer">
+<div class="container footer-grid">
+<div>
+<div class="footer-brand">FIZZA INTERIOR</div>
+<div class="eyebrow" style="margin-top:10px;color:var(--gold)">
+    Turnkey Contracting House
+</div>
+</div>
+<div class="footer-contact">
+    <div>
+        <div class="eyebrow" style="color:var(--gold)">Reach us</div>
+        <h2 class="footer-contact-title">LET'S BUILD<br>IT EXACT.</h2>
+    </div>
+    <div class="footer-contact-list">
+        <div class="footer-contact-item">
+            <div class="label">Address</div>
+            <div class="value">
+                810, Opposite City Mall,<br>
+                Next to Global Junction,<br>
+                Veera Desai Industrial Estates,<br>
+                New Link Road, Andheri-West,<br>
+                Mumbai - 400053
+            </div>
+        </div>
+        <div class="footer-contact-item">
+            <div class="label">Phone</div>
+            <a href="tel:+912240232051">
+                022 - 40232051/52/55
+                <span style="display:block;margin-top:4px">Mob : No. 90044 55115</span>
+            </a>
+        </div>
+        <div class="footer-contact-item">
+            <div class="label">Email</div>
+            <a href="mailto:Fizzainteriorsign@gmail.com">Fizzainteriorsign@gmail.com</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer-bottom">
+    <div class="footer-socials" aria-label="Social media links">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.5 6z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V10H8v3h2.4v8h3.1z"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.1 8.1A1.9 1.9 0 1 1 5.1 4.3a1.9 1.9 0 0 1 0 3.8zM3.4 9.6h3.4V21H3.4V9.6zm5.5 0h3.2v1.6h.1c.4-.8 1.5-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-3.4v-5.1c0-1.2 0-2.8-1.8-2.8s-2 1.3-2 2.7V21H8.9V9.6z"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.2 1.6 6L.2 24l6.3-1.7c1.7.9 3.6 1.3 5.5 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3zm-8.4 18.1c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.7 1 1-3.6-.2-.3a9.8 9.8 0 1 1 8 4.4zm5.4-7.3c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.8.4-.3.3-1 1-.1 2.5.8 1.5 2.9 3.6 5 4.9.7.4 1.2.6 1.6.8.7.2 1.3.2 1.7.1.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.2-.2-.5-.3z"/></svg></a>
+    </div>
+    <p class="footer-bottom-copy">
+        &copy; <span id="currentYear">2026</span> FIZZA INTERIOR. All rights reserved.
+    </p>
+    <ul class="footer-legal">
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
+        <li><a href="/accessibility.html">Accessibility</a></li>
+    </ul>
+</div>
+</footer>
+
+
+<div class="toast" id="toast">
+    Thank you — your private consultation request has been received.
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<script>
+/* =========================================================
+   NAVIGATION & UI
+   ========================================================= */
+
+(function(){
+    'use strict';
+
+    const panel  = () => document.getElementById('indexPanel');
+    const button = () => document.querySelector('.index-btn');
+
+    window.toggleIndex = function(){
+        const el  = panel();
+        const btn = button();
+        if(!el) return;
+        const isOpen = el.classList.toggle('open');
+        if(btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    window.closeIndex = function(){
+        const el  = panel();
+        const btn = button();
+        if(el) el.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+    };
+
+    window.toggleSubmenu = function(btn){
+        const item = btn.closest('.index-item');
+        if(!item) return;
+        const isOpen = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    document.addEventListener('click', function(event){
+        const el  = panel();
+        const btn = button();
+        if(!el || !el.classList.contains('open')) return;
+        if(el.contains(event.target) || (btn && btn.contains(event.target))) return;
+        closeIndex();
+    });
+
+    document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape') closeIndex();
+    });
+
+    window.indexNav = function(evt, elem){
+        if(evt){
+            evt.preventDefault();
+            evt.stopPropagation();
+        }
+
+        const hash = (elem && elem.getAttribute)
+            ? elem.getAttribute('href')
+            : '';
+
+        const el  = panel();
+        const btn = button();
+        if(el)  el.classList.remove('open');
+        if(btn) btn.setAttribute('aria-expanded','false');
+
+        if(!hash || hash.charAt(0) !== '#') return;
+
+        requestAnimationFrame(function(){
+            const target = document.querySelector(hash);
+            if(!target) return;
+
+            target.scrollIntoView({behavior:'smooth', block:'start'});
+
+            if(history && history.replaceState){
+                history.replaceState(null, '', hash);
+            } else {
+                location.hash = hash;
+            }
+        });
+    };
+})();
+
+
+function submitForm(e){
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    if(!toast) return;
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 3600);
+    e.target.reset();
+}
+
+
+(function(){
+    const el = document.getElementById('currentYear');
+    if(el) el.textContent = new Date().getFullYear();
+})();
+
+
+/* =========================================================
+   GSAP HEADING REVEALS + NATIVE FALLBACK
+   ========================================================= */
+
+(function(){
+    'use strict';
+
+    const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+    function showAll(){
+        document.querySelectorAll('h1,h2,h3,.hero-content').forEach(function(el){
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.willChange = 'auto';
+        });
+    }
+
+    if(reduceMotion){ showAll(); return; }
+
+    function loadScript(src){
+        return new Promise(function(resolve, reject){
+            const existing = document.querySelector('script[src="' + src + '"]');
+            if(existing){
+                if(src.indexOf('ScrollTrigger') !== -1 && window.ScrollTrigger) return resolve();
+                if(src.indexOf('gsap') !== -1 && window.gsap) return resolve();
+            }
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = false;
+            script.onload = function(){ resolve(); };
+            script.onerror = function(){ reject(new Error('Failed: ' + src)); };
+            document.head.appendChild(script);
+        });
+    }
+
+    async function ensureGSAP(){
+        if(window.gsap && window.ScrollTrigger) return true;
+        const pairs = [
+            ['https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js','https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js'],
+            ['https://unpkg.com/gsap@3.12.7/dist/gsap.min.js','https://unpkg.com/gsap@3.12.7/dist/ScrollTrigger.min.js']
+        ];
+        for(const pair of pairs){
+            try{
+                if(!window.gsap) await loadScript(pair[0]);
+                if(!window.ScrollTrigger) await loadScript(pair[1]);
+                if(window.gsap && window.ScrollTrigger) return true;
+            }catch(err){}
+        }
+        return false;
+    }
+
+    function nativeFallback(){
+        const headings = Array.from(document.querySelectorAll(
+            'main h1, main h2, main h3, section h1, section h2, section h3'
+        )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
+
+        const heroContent = document.querySelector('.hero-content');
+        const items = heroContent
+            ? [heroContent].concat(headings.filter(function(h){ return !h.closest('.hero'); }))
+            : headings.filter(function(h){ return !h.closest('.hero'); });
+
+        items.forEach(function(el){
+            el.style.willChange = 'transform, opacity';
+            el.style.opacity = '0';
+        });
+
+        function update(){
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            const mobile = mobileQuery.matches;
+            const start = mobile ? vh * 0.98 : vh * 0.92;
+            const end   = mobile ? vh * 0.60 : vh * 0.55;
+
+            items.forEach(function(el){
+                const r = el.getBoundingClientRect();
+                let progress = (start - r.top) / (start - end);
+                if(el === heroContent){
+                    progress = (start - r.top) / Math.max(1, start - vh * 0.45);
+                }
+                progress = Math.max(0, Math.min(1, progress));
+                const x = (mobile ? -26 : -38) * (1 - progress);
+                el.style.opacity = String(progress);
+                el.style.transform = 'translate3d(' + x + '%,0,0)';
+            });
+        }
+
+        let ticking = false;
+        function requestUpdate(){
+            if(ticking) return;
+            ticking = true;
+            requestAnimationFrame(function(){ ticking = false; update(); });
+        }
+
+        window.addEventListener('scroll', requestUpdate, {passive:true});
+        window.addEventListener('resize', requestUpdate, {passive:true});
+        window.addEventListener('orientationchange', function(){ setTimeout(update, 250); });
+        update();
+    }
+
+    function initGSAP(){
+        if(!window.gsap){ nativeFallback(); return; }
+
+        try{
+            const gs = window.gsap;
+            const isMobile = window.matchMedia('(max-width: 850px)').matches;
+            const headings = Array.from(document.querySelectorAll(
+                'main h1, main h2, main h3, section h1, section h2, section h3'
+            )).filter(function(el, i, arr){ return arr.indexOf(el) === i; });
+
+            const heroContent = document.querySelector('.hero-content');
+            if(heroContent){
+                gs.fromTo(heroContent,
+                    {xPercent:isMobile ? -18 : -28, opacity:0},
+                    {xPercent:0, opacity:1, duration:1.15, ease:'power4.out', overwrite:'auto'}
+                );
+            }
+
+            const played = new WeakSet();
+            let ticking = false;
+
+            headings.forEach(function(heading){
+                heading.classList.add('gsap-heading');
+                heading.style.visibility = 'visible';
+                heading.style.opacity = '1';
+                heading.style.willChange = 'transform';
+                gs.set(heading, { xPercent: isMobile ? -30 : -42, y: 0, force3D: true });
+            });
+
+            function reveal(heading){
+                if(!heading || played.has(heading)) return;
+                played.add(heading);
+                gs.killTweensOf(heading);
+                gs.to(heading, {
+                    xPercent: 0, y: 0,
+                    duration: isMobile ? 0.92 : 1.02,
+                    ease: 'power4.out',
+                    overwrite: 'auto',
+                    force3D: true,
+                    onComplete: function(){ heading.style.willChange = 'auto'; }
+                });
+            }
+
+            function revealVisibleHeadings(){
+                ticking = false;
+                const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+                const trigger = isMobile ? vh * 0.90 : vh * 0.86;
+                headings.forEach(function(heading){
+                    if(played.has(heading)) return;
+                    const rect = heading.getBoundingClientRect();
+                    if(rect.top <= trigger && rect.bottom >= -120) reveal(heading);
+                });
+            }
+
+            function requestHeadingCheck(){
+                if(ticking) return;
+                ticking = true;
+                requestAnimationFrame(revealVisibleHeadings);
+            }
+
+            window.addEventListener('scroll', requestHeadingCheck, {passive:true});
+            window.addEventListener('resize', requestHeadingCheck, {passive:true});
+            window.addEventListener('orientationchange', function(){
+                setTimeout(requestHeadingCheck, 100);
+                setTimeout(requestHeadingCheck, 450);
+            }, {passive:true});
+
+            if('IntersectionObserver' in window){
+                const observer = new IntersectionObserver(function(entries){
+                    entries.forEach(function(entry){
+                        if(entry.isIntersecting) reveal(entry.target);
+                    });
+                }, {
+                    root: null,
+                    rootMargin: isMobile ? '0px 0px -8% 0px' : '0px 0px -12% 0px',
+                    threshold: 0
+                });
+                headings.forEach(function(heading){ observer.observe(heading); });
+            }
+
+            requestAnimationFrame(requestHeadingCheck);
+            setTimeout(requestHeadingCheck, 120);
+            setTimeout(requestHeadingCheck, 400);
+            setTimeout(requestHeadingCheck, 850);
+
+            if(document.fonts && document.fonts.ready){
+                document.fonts.ready.then(function(){
+                    requestHeadingCheck();
+                    setTimeout(requestHeadingCheck, 180);
+                }).catch(function(){});
+            }
+
+            window.addEventListener('load', function(){
+                requestHeadingCheck();
+                setTimeout(requestHeadingCheck, 250);
+            }, {once:true});
+
+            if(window.ScrollTrigger){
+                try{
+                    gs.registerPlugin(window.ScrollTrigger);
+                    window.ScrollTrigger.config({ ignoreMobileResize:true, limitCallbacks:true });
+                }catch(e){}
+            }
+        }catch(err){
+            console.warn('FIZZA INTERIOR: GSAP fallback engaged.', err);
+            showAll();
+        }
+    }
+
+    (async function(){
+        const ready = await ensureGSAP();
+        if(ready){ requestAnimationFrame(initGSAP); }
+        else{ nativeFallback(); }
+    })();
+})();
+</script>
+
+</body>
+</html>
