@@ -169,10 +169,9 @@
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fizzainterior.com/" },
         { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.fizzainterior.com/#about" },
         { "@type": "ListItem", "position": 3, "name": "Services", "item": "https://www.fizzainterior.com/#services" },
-        { "@type": "ListItem", "position": 4, "name": "Process", "item": "https://www.fizzainterior.com/#process" },
-        { "@type": "ListItem", "position": 5, "name": "Clients", "item": "https://www.fizzainterior.com/#clients" },
-        { "@type": "ListItem", "position": 6, "name": "FAQ", "item": "https://www.fizzainterior.com/#faq" },
-        { "@type": "ListItem", "position": 7, "name": "Contact", "item": "https://www.fizzainterior.com/#contact" }
+        { "@type": "ListItem", "position": 4, "name": "Clients", "item": "https://www.fizzainterior.com/#clients" },
+        { "@type": "ListItem", "position": 5, "name": "FAQ", "item": "https://www.fizzainterior.com/#faq" },
+        { "@type": "ListItem", "position": 6, "name": "Contact", "item": "https://www.fizzainterior.com/#contact" }
       ]
     },
     {
@@ -804,7 +803,7 @@ h3{ font-size:42px; }
 }
 
 /* =========================================================
-   WHY US  +  PROCESS  (new sections, same design language)
+   WHY US
    ========================================================= */
 
 .info-split{
@@ -843,47 +842,8 @@ h3{ font-size:42px; }
     font-weight:500;
 }
 
-.process-list{
-    list-style:none;
-    margin:60px 0 0;
-    padding:0;
-    display:grid;
-    gap:0;
-    border-top:1px solid var(--line-dark);
-}
-
-.process-list li{
-    border-bottom:1px solid var(--line-dark);
-    padding:32px 0;
-    display:grid;
-    grid-template-columns:70px 1fr;
-    gap:32px;
-    align-items:start;
-}
-
-.process-list .step-num{
-    font:400 42px/1 "Cormorant Garamond",Georgia,serif;
-    color:var(--gold-deep);
-    letter-spacing:-.03em;
-}
-
-.process-list .step-body h3{
-    font:400 24px/1.2 "Cormorant Garamond",Georgia,serif;
-    color:var(--emerald);
-    margin:0 0 12px;
-    letter-spacing:-.02em;
-}
-
-.process-list .step-body p{
-    font-size:12.5px;
-    line-height:1.9;
-    color:var(--body-muted);
-    margin:0;
-    max-width:760px;
-}
-
 /* =========================================================
-   FAQ  (new section, matches existing typography)
+   FAQ
    ========================================================= */
 
 .faq-list{
@@ -1288,9 +1248,6 @@ h3{ font-size:42px; }
     .footer-contact-item a{ font-size:13px; overflow-wrap:anywhere; word-break:break-word; }
 
     .footer-brand{ margin-bottom:25px; }
-
-    .process-list li{ grid-template-columns:52px 1fr; gap:22px; }
-    .process-list .step-num{ font-size:34px; }
 }
 
 /* =========================================================
@@ -1371,8 +1328,6 @@ h3{ font-size:42px; }
     .footer-legal a{ font-size:6px; letter-spacing:.08em; }
 
     .toast{ left:16px; right:16px; bottom:16px; text-align:center; }
-
-    .process-list li{ padding:26px 0; }
 }
 
 /* =========================================================
@@ -1542,19 +1497,7 @@ h3{ font-size:42px; }
 
 <div class="index-item">
     <div class="index-row">
-        <a href="#process" class="index-link" onclick="indexNav(event, this)">Process</a>
-    </div>
-</div>
-
-<div class="index-item">
-    <div class="index-row">
         <a href="#clients" class="index-link" onclick="indexNav(event, this)">Clients</a>
-    </div>
-</div>
-
-<div class="index-item">
-    <div class="index-row">
-        <a href="#faq" class="index-link" onclick="indexNav(event, this)">FAQ</a>
     </div>
 </div>
 
@@ -1709,21 +1652,6 @@ h3{ font-size:42px; }
 <li><strong>Track record since 2012.</strong> Delivered for Larsen &amp; Toubro, Oberoi Realty, Wadhwa Group, Tata Housing and 20+ other developers across Mumbai.</li>
 </ul>
 </div>
-</div>
-</section>
-
-
-<section id="process" class="section page paper" style="padding-top:0">
-<div class="container">
-<div class="eyebrow section-script-heading">How We Work</div>
-<h2>FIVE STEPS.<br>ZERO GAPS.</h2>
-<ol class="process-list">
-<li><span class="step-num">01</span><div class="step-body"><h3>Brief &amp; Site Survey</h3><p>We walk the site, capture measurements, assess the current stage of construction and take the client's design intent in writing. No assumptions, no ambiguity.</p></div></li>
-<li><span class="step-num">02</span><div class="step-body"><h3>Design Development &amp; BOQ</h3><p>Drawings, 3D views, material specifications, and a locked bill of quantities with line-item pricing. No hidden cost, no surprise variations.</p></div></li>
-<li><span class="step-num">03</span><div class="step-body"><h3>Contract &amp; Programme</h3><p>Signed scope, milestone schedule, payment stages and site mobilisation plan. The client receives a written programme before work starts.</p></div></li>
-<li><span class="step-num">04</span><div class="step-body"><h3>Execution</h3><p>Single site team, single point of contact, weekly progress reports. Every trade sequenced. Every finish checked against spec.</p></div></li>
-<li><span class="step-num">05</span><div class="step-body"><h3>Snagging &amp; Handover</h3><p>Punch list, joint inspection, rectification, styling, and formal handover with a warranty pack.</p></div></li>
-</ol>
 </div>
 </section>
 
