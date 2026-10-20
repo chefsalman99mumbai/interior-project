@@ -1794,8 +1794,16 @@ h3{ font-size:42px; }
 </p>
 </div>
 
-<form class="form" onsubmit="submitForm(event)">
+<!-- ============================================================
+     CONTACT FORM
+     - Primary path: JS AJAX POST to FormSubmit.co (toast + reset)
+     - Fallback path: native HTML POST to FormSubmit.co
+       (works even if JS fails; sends to Fizzainteriorsign@gmail.com)
+     - After native POST, _next returns user to #contact
+     ============================================================ -->
+<form class="form" action="https://formsubmit.co/Fizzainteriorsign@gmail.com" method="POST" onsubmit="submitForm(event)">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+<input type="hidden" name="_next" value="https://www.fizzainterior.com/#contact">
 <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required placeholder="Your name"></div>
 <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" autocomplete="tel" required type="tel" placeholder="+91"></div>
 <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" autocomplete="email" type="email" placeholder="you@example.com"></div>
@@ -1879,7 +1887,7 @@ h3{ font-size:42px; }
         <li><a href="#disclaimer" data-legal="disclaimer">Disclaimer</a></li>
         <li><a href="#accessibility" data-legal="accessibility">Accessibility</a></li>
     </ul>
-  <p class="footer-powered">Powered by Santinopole</p>
+
 </div>
 </footer>
 
@@ -2124,7 +2132,9 @@ h3{ font-size:42px; }
 
 
 /* =========================================================
-   CONTACT FORM
+   CONTACT FORM — sends to Fizzainteriorsign@gmail.com
+   Primary path  : AJAX POST to FormSubmit.co (toast + reset)
+   Fallback path : native POST to FormSubmit.co (HTML action)
    ========================================================= */
 
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/Fizzainteriorsign@gmail.com';
